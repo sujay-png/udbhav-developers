@@ -1,0 +1,18 @@
+---
+interface Props {
+  class?: string;
+  light?: boolean;
+}
+const { class: className = "", light = false } = Astro.props;
+---
+
+<p
+  class:list={[
+    "flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em]",
+    light ? "text-clay/80" : "text-clay",
+    className,
+  ]}
+>
+  <span class="h-px w-6 bg-current"></span>
+  <slot />
+</p>

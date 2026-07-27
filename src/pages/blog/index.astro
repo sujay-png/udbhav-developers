@@ -1,0 +1,83 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Eyebrow from "@/components/Eyebrow.astro";
+import ArtPanel from "@/components/ArtPanel.astro";
+import { Badge } from "@/components/ui/badge";
+import { getAllPosts } from "@/lib/wordpress";
+
+const posts = await getAllPosts(24);
+const [featured, ...rest] = posts;
+
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" });
+}
+---
+
+<BaseLayout title="Blog" description="Architectural Chronicles — insights on luxury real estate, investment strategy, and the craft of development from Udbhav Developers.">
+  <section class="mx-auto max-w-[1400px] px-5 pb-10 pt-16 md:px-10 md:pt-24">
+    <Eyebrow>Insights & Perspectives</Eyebrow>
+    <h1 class="mt-4 max-w-2xl text-balance font-display text-5xl leading-[1.05] md:text-6xl">
+      Architectural <em class="italic text-clay">Chronicles.</em>
+    </h1>
+    <p class="mt-5 max-w-lg text-[15px] leading-relaxed text-muted-foreground">
+      Exploring the future of urban living, investment strategies, and the craft of luxury development.
+    </p>
+  </section>
+
+  {
+    featured && (
+      <section class="mx-auto max-w-[1400px] px-5 pb-16 md:px-10">
+        <a href={`/blog/${featured.slug}`} class="group grid gap-6 overflow-hidden rounded-lg border border-border bg-white md:grid-cols-2">
+          <div class="relative aspect-[16/10] overflow-hidden md:aspect-auto">
+            {featured.featuredImage ? (
+              <img src={featured.featuredImage} alt={featured.title} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            ) : (
+              <ArtPanel seed={20} tone="clay" class="h-full w-full transition-transform duration-700 group-hover:scale-105" />
+            )}
+          </div>
+          <div class="flex flex-col justify-center p-8 md:p-10">
+            {featured.categories[0] && <Badge class="w-fit">{featured.categories[0]}</Badge>}
+            <p class="mt-4 text-xs uppercase tracking-wide text-muted-foreground">{formatDate(featured.date)}</p>
+            <h2 class="mt-2 font-display text-3xl leading-snug group-hover:text-clay transition-colors">{featured.title}</h2>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground line-clamp-3">{featured.excerpt}</p>
+            <span class="mt-5 text-[13px] font-medium uppercase tracking-wide text-clay">Read Article →</span>
+          </div>
+        </a>
+      </section>
+    )
+  }
+
+  <section class="mx-auto max-w-[1400px] px-5 pb-24 md:px-10">
+    {
+      rest.length === 0 && !featured ? (
+        <p class="py-16 text-center text-sm text-muted-foreground">
+          No posts published yet — check back soon.
+        </p>
+      ) : (
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            rest.map((post, i) => (
+              <a href={`/blog/${post.slug}`} class="group block">
+                <div class="relative aspect-[4/3] overflow-hidden rounded-lg">
+                  {post.featuredImage ? (
+                    <img src={post.featuredImage} alt={post.title} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  ) : (
+                    <ArtPanel seed={i + 21} tone={i % 2 === 0 ? "sand" : "clay"} class="h-full w-full transition-transform duration-700 group-hover:scale-105" />
+                  )}
+                  {post.categories[0] && (
+                    <div class="absolute left-3 top-3">
+                      <Badge variant="dark">{post.categories[0]}</Badge>
+                    </div>
+                  )}
+                </div>
+                <p class="mt-4 text-xs uppercase tracking-wide text-muted-foreground">{formatDate(post.date)}</p>
+                <h3 class="mt-1.5 font-display text-xl leading-snug group-hover:text-clay transition-colors">{post.title}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-2">{post.excerpt}</p>
+              </a>
+            ))
+          }
+        </div>
+      )
+    }
+  </section>
+</BaseLayout>

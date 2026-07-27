@@ -1,0 +1,37 @@
+---
+import { Icon } from "@/components/Icon";
+
+interface Props {
+  quote: string;
+  name: string;
+  location: string;
+  rating?: number;
+  featured?: boolean;
+}
+const { quote, name, location, rating = 5, featured = false } = Astro.props;
+---
+
+<div
+  class:list={[
+    "flex h-full flex-col justify-between rounded-lg p-7",
+    featured ? "bg-ink text-cream" : "bg-white",
+  ]}
+>
+  <div>
+    <div class="flex items-center justify-between">
+      <div class="flex gap-0.5">
+        {Array.from({ length: rating }).map(() => (
+          <Icon name="star" className="h-3.5 w-3.5 text-clay" />
+        ))}
+      </div>
+      <Icon name="quote" className={featured ? "h-6 w-6 text-cream/20" : "h-6 w-6 text-ink/10"} />
+    </div>
+    <p class:list={["mt-5 text-[15px] leading-relaxed", featured ? "text-cream/85" : "text-ink/75"]}>
+      "{quote}"
+    </p>
+  </div>
+  <div class:list={["mt-6 border-t pt-4", featured ? "border-cream/15" : "border-border"]}>
+    <p class="font-display text-base">{name}</p>
+    <p class:list={["mt-0.5 text-xs uppercase tracking-wide", featured ? "text-clay" : "text-muted-foreground"]}>{location}</p>
+  </div>
+</div>

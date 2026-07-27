@@ -1,0 +1,24 @@
+---
+import Skyline from "@/components/Skyline.astro";
+
+interface Props {
+  seed?: number;
+  class?: string;
+  tone?: "clay" | "ink" | "sand";
+}
+const { seed = 1, class: className = "", tone = "clay" } = Astro.props;
+
+const tones: Record<string, string> = {
+  clay: "from-[#c14b2e] via-[#a83a24] to-[#6f2416]",
+  ink: "from-[#3a322c] via-[#221c17] to-[#100d0a]",
+  sand: "from-[#d9b48f] via-[#c1885b] to-[#8f5230]",
+};
+---
+
+<div class:list={["relative overflow-hidden bg-gradient-to-br", tones[tone], className]}>
+  <div class="grain absolute inset-0"></div>
+  <div class="absolute inset-x-0 bottom-0 h-[70%] opacity-90">
+    <Skyline seed={seed} strokeClass="stroke-white/25" />
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/10"></div>
+</div>

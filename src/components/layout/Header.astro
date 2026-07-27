@@ -1,0 +1,96 @@
+---
+import { Icon } from "@/components/Icon";
+import { navLinks, siteConfig } from "@/lib/site-data";
+import { Button } from "@/components/ui/button";
+
+const path = Astro.url.pathname;
+const isActive = (href: string) => path === href || path.startsWith(href + "/");
+---
+
+<header class="sticky top-0 z-50 border-b border-border/70 bg-cream/90 backdrop-blur-md">
+  <div class="mx-auto flex h-[4.5rem] max-w-[1400px] items-center justify-between px-5 md:px-10">
+    <a href="/" class="font-display text-xl tracking-tight text-ink">
+      Udbhav <span class="text-clay">Developers</span>
+    </a>
+
+    <nav class="hidden items-center gap-9 lg:flex">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "text-[13px] font-medium uppercase tracking-[0.08em] transition-colors hover:text-clay",
+              isActive(link.href) ? "text-clay" : "text-ink/75",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="hidden lg:block">
+      <Button asChild size="default">
+        <a href="/contact">Enquiry</a>
+      </Button>
+    </div>
+
+    <button
+      id="menu-toggle"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      class="grid h-10 w-10 place-items-center rounded-sm border border-ink/15 text-ink lg:hidden"
+    >
+      <Icon name="menu" className="h-5 w-5" id="icon-open" />
+      <Icon name="x" className="hidden h-5 w-5" id="icon-close" />
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-border bg-cream lg:hidden">
+    <nav class="flex flex-col gap-1 px-5 py-4">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="flex items-center justify-between rounded-sm px-2 py-3 text-sm font-medium uppercase tracking-wide text-ink/85 hover:bg-muted hover:text-clay"
+          >
+            {link.label}
+            <Icon name="arrow-up-right" className="h-4 w-4 opacity-40" />
+          </a>
+        ))
+      }
+      <a
+        href="/contact"
+        class="mt-2 flex items-center justify-center rounded-sm bg-primary px-6 py-3 text-[13px] font-medium uppercase tracking-wide text-primary-foreground"
+      >
+        Enquiry
+      </a>
+      <div class="mt-3 border-t border-border pt-3 text-sm text-muted-foreground">
+        <a href={`tel:${siteConfig.phone}`} class="block py-1">{siteConfig.phone}</a>
+        <a href={`mailto:${siteConfig.email}`} class="block py-1">{siteConfig.email}</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("icon-open");
+  const iconClose = document.getElementById("icon-close");
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = menu?.classList.contains("hidden") === false;
+    menu?.classList.toggle("hidden");
+    iconOpen?.classList.toggle("hidden");
+    iconClose?.classList.toggle("hidden");
+    toggle.setAttribute("aria-expanded", String(!isOpen));
+  });
+
+  // Close mobile menu on route change (view transitions / normal nav)
+  document.addEventListener("astro:before-preparation", () => {
+    menu?.classList.add("hidden");
+    iconOpen?.classList.remove("hidden");
+    iconClose?.classList.add("hidden");
+  });
+</script>

@@ -1,0 +1,32 @@
+---
+import ArtPanel from "@/components/ArtPanel.astro";
+import { Button } from "@/components/ui/button";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  cta?: string;
+  href?: string;
+  seed?: number;
+}
+const {
+  title = "Let's build or choose from the dream space that you always wanted!",
+  subtitle = "Contact us and get ready to move into the space of your choice. It's time to upgrade to a lifestyle of excellence.",
+  cta = "Get in Touch",
+  href = "/contact",
+  seed = 6,
+} = Astro.props;
+---
+
+<section class="relative overflow-hidden">
+  <ArtPanel seed={seed} tone="clay" class="absolute inset-0" />
+  <div class="relative mx-auto max-w-3xl px-5 py-24 text-center text-cream md:px-10 md:py-28">
+    <h2 class="text-balance font-display text-3xl leading-tight md:text-5xl">{title}</h2>
+    <p class="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-cream/85">{subtitle}</p>
+    <div class="mt-9">
+      <Button asChild variant="dark" size="lg">
+        <a href={href}>{cta}</a>
+      </Button>
+    </div>
+  </div>
+</section>

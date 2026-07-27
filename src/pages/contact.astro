@@ -1,0 +1,71 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Eyebrow from "@/components/Eyebrow.astro";
+import { Icon } from "@/components/Icon";
+import { EnquiryForm } from "@/components/EnquiryForm";
+import { siteConfig } from "@/lib/site-data";
+---
+
+<BaseLayout title="Contact" description="Get in touch with Udbhav Developers — visit our Mangalore office, call, or send an enquiry about our residential and commercial projects.">
+  <section class="mx-auto max-w-[1400px] px-5 pb-10 pt-16 md:px-10 md:pt-24">
+    <Eyebrow>Get in Touch</Eyebrow>
+    <h1 class="mt-4 max-w-2xl text-balance font-display text-5xl leading-[1.05] md:text-6xl">
+      Let's craft your <em class="italic text-clay">future home.</em>
+    </h1>
+    <p class="mt-5 max-w-lg text-[15px] leading-relaxed text-muted-foreground">
+      Whether you're looking for a premium apartment or a strategic commercial space in Mangalore, our team is here to guide your investment.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-[1400px] gap-10 px-5 pb-24 md:px-10 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
+    <div class="space-y-8">
+      <div class="flex gap-4 rounded-lg border border-border bg-white p-6">
+        <div class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-muted text-clay">
+          <Icon name="map-pin" className="h-5 w-5" />
+        </div>
+        <div>
+          <p class="text-[11px] font-semibold uppercase tracking-wide text-clay">Corporate Office</p>
+          <p class="mt-1 font-display text-lg leading-snug">{siteConfig.address}</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 rounded-lg border border-border bg-white p-6">
+        <div class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-muted text-clay">
+          <Icon name="phone" className="h-5 w-5" />
+        </div>
+        <div>
+          <p class="text-[11px] font-semibold uppercase tracking-wide text-clay">Voice Assistance</p>
+          <p class="mt-1 font-display text-lg">{siteConfig.phoneAlt}</p>
+          <p class="font-display text-lg">{siteConfig.phone}</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 rounded-lg border border-border bg-white p-6">
+        <div class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-muted text-clay">
+          <Icon name="mail" className="h-5 w-5" />
+        </div>
+        <div>
+          <p class="text-[11px] font-semibold uppercase tracking-wide text-clay">Digital Inquiry</p>
+          <p class="mt-1 font-display text-lg">{siteConfig.email}</p>
+        </div>
+      </div>
+
+      <div class="relative aspect-[4/3] overflow-hidden rounded-lg border border-border">
+        <iframe
+          title="Udbhav Developers office location"
+          class="h-full w-full grayscale"
+          loading="lazy"
+          src={`https://maps.google.com/maps?q=${encodeURIComponent(siteConfig.address)}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
+        ></iframe>
+      </div>
+    </div>
+
+    <div class="mt-10 rounded-lg bg-ink p-8 text-cream md:p-10 lg:mt-0">
+      <h2 class="font-display text-3xl">Submit Enquiry</h2>
+      <p class="mt-2 text-sm text-cream/60">Tell us what you're looking for and we'll be in touch shortly.</p>
+      <div class="mt-8">
+        <EnquiryForm client:load dark={true} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

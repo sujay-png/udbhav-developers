@@ -1,0 +1,83 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Eyebrow from "@/components/Eyebrow.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import CtaBanner from "@/components/sections/CtaBanner.astro";
+import { projects } from "@/lib/site-data";
+
+const filters = ["All Projects", "Ongoing", "Completed", "Residential", "Commercial"];
+---
+
+<BaseLayout title="Portfolio" description="Explore Udbhav Developers' portfolio of residential and commercial projects across Mangalore — ongoing and completed.">
+  <section class="mx-auto max-w-[1400px] px-5 pb-10 pt-16 md:px-10 md:pt-24">
+    <Eyebrow>Our Work</Eyebrow>
+    <h1 class="mt-4 max-w-2xl text-balance font-display text-5xl leading-[1.05] md:text-6xl">
+      Projects built to <em class="italic text-clay">last.</em>
+    </h1>
+  </section>
+
+  <section class="mx-auto max-w-[1400px] px-5 md:px-10">
+    <div id="filter-bar" class="flex flex-wrap gap-x-7 gap-y-3 border-b border-border pb-4">
+      {
+        filters.map((f, i) => (
+          <button
+            type="button"
+            data-filter={f}
+            class:list={[
+              "filter-btn text-[13px] font-medium uppercase tracking-wide transition-colors",
+              i === 0 ? "text-clay" : "text-muted-foreground hover:text-ink",
+            ]}
+          >
+            {f}
+          </button>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[1400px] px-5 py-14 md:px-10">
+    <div id="project-grid" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        projects.map((p, i) => (
+          <div class="project-item" data-status={p.status} data-category={p.category}>
+            <ProjectCard project={p} seed={i + 2} />
+          </div>
+        ))
+      }
+    </div>
+    <p id="empty-state" class="hidden py-16 text-center text-sm text-muted-foreground">
+      No projects match this filter yet — check back soon.
+    </p>
+  </section>
+
+  <CtaBanner seed={14} />
+</BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+  const items = document.querySelectorAll<HTMLElement>(".project-item");
+  const empty = document.getElementById("empty-state");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      buttons.forEach((b) => b.classList.remove("text-clay"));
+      buttons.forEach((b) => b.classList.add("text-muted-foreground"));
+      btn.classList.add("text-clay");
+      btn.classList.remove("text-muted-foreground");
+
+      const filter = btn.dataset.filter;
+      let visibleCount = 0;
+
+      items.forEach((item) => {
+        const status = item.dataset.status;
+        const category = item.dataset.category;
+        const matches =
+          filter === "All Projects" || filter === status || filter === category;
+        item.style.display = matches ? "" : "none";
+        if (matches) visibleCount++;
+      });
+
+      empty?.classList.toggle("hidden", visibleCount > 0);
+    });
+  });
+</script>

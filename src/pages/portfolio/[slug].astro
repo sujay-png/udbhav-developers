@@ -1,0 +1,76 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ArtPanel from "@/components/ArtPanel.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import CtaBanner from "@/components/sections/CtaBanner.astro";
+import { Badge } from "@/components/ui/badge";
+import { Icon } from "@/components/Icon";
+import { projects } from "@/lib/site-data";
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const related = projects.filter((p) => p.slug !== project.slug).slice(0, 3);
+const seed = projects.findIndex((p) => p.slug === project.slug) + 2;
+---
+
+<BaseLayout title={project.name} description={`${project.tagline} — ${project.name} by Udbhav Developers in ${project.location}.`}>
+  <section class="relative overflow-hidden bg-ink text-cream">
+    <ArtPanel seed={seed} tone={project.category === "Commercial" ? "ink" : "clay"} class="absolute inset-0" />
+    <div class="relative mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
+      <a href="/portfolio" class="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-cream/60 hover:text-cream">
+        <Icon name="arrow-left" className="h-3.5 w-3.5" /> Back to Portfolio
+      </a>
+      <div class="mt-6 flex flex-wrap items-center gap-3">
+        <Badge>{project.status}</Badge>
+        <Badge variant="outline" class="border-cream/30 text-cream">{project.category}</Badge>
+      </div>
+      <h1 class="mt-5 max-w-2xl text-balance font-display text-5xl leading-[1.05] md:text-6xl">{project.name}</h1>
+      <p class="mt-4 max-w-lg text-[15px] text-cream/70">{project.tagline}</p>
+    </div>
+  </section>
+
+  <section class="mx-auto grid max-w-[1400px] gap-12 px-5 py-20 md:px-10 lg:grid-cols-[1fr_320px]">
+    <div>
+      <h2 class="font-display text-2xl">Overview</h2>
+      <p class="mt-4 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">{project.description}</p>
+    </div>
+    <aside class="h-fit space-y-5 rounded-lg border border-border bg-white p-7">
+      <div class="flex items-center justify-between border-b border-border pb-3">
+        <span class="text-xs uppercase tracking-wide text-muted-foreground">Location</span>
+        <span class="font-medium">{project.location}</span>
+      </div>
+      {project.units && (
+        <div class="flex items-center justify-between border-b border-border pb-3">
+          <span class="text-xs uppercase tracking-wide text-muted-foreground">Configuration</span>
+          <span class="font-medium">{project.units}</span>
+        </div>
+      )}
+      <div class="flex items-center justify-between border-b border-border pb-3">
+        <span class="text-xs uppercase tracking-wide text-muted-foreground">Year</span>
+        <span class="font-medium">{project.year}</span>
+      </div>
+      <div class="flex items-center justify-between">
+        <span class="text-xs uppercase tracking-wide text-muted-foreground">Status</span>
+        <span class="font-medium">{project.status}</span>
+      </div>
+      <a href="/contact" class="mt-2 flex items-center justify-center gap-2 rounded-sm bg-primary px-6 py-3 text-[13px] font-medium uppercase tracking-wide text-primary-foreground hover:bg-clay-hover">
+        Enquire About This Project
+      </a>
+    </aside>
+  </section>
+
+  <section class="mx-auto max-w-[1400px] px-5 pb-24 md:px-10">
+    <h2 class="font-display text-3xl">More Projects</h2>
+    <div class="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {related.map((p, i) => <ProjectCard project={p} seed={i + 5} />)}
+    </div>
+  </section>
+
+  <CtaBanner seed={seed + 3} />
+</BaseLayout>

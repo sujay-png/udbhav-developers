@@ -1,0 +1,68 @@
+---
+// Deterministic pseudo-random skyline silhouette, used as the site's signature
+// artwork wherever a project/blog photograph would normally sit. Keeps the
+// build fully self-contained (no stock photography / licensing) while still
+// feeling specific to a construction & real-estate brand.
+interface Props {
+  seed?: number;
+  class?: string;
+  strokeClass?: string;
+}
+const { seed = 1, class: className = "", strokeClass = "stroke-cream/70" } = Astro.props;
+
+function rand(n: number) {
+  const x = Math.sin(n) * 10000;
+  return x - Math.floor(x);
+}
+
+const buildings = Array.from({ length: 9 }).map((_, i) => {
+  const r = rand(seed * 13.7 + i * 5.3);
+  const w = 24 + r * 30;
+  const h = 60 + rand(seed * 3.1 + i) * 170;
+  const windows = Math.max(2, Math.floor(h / 22));
+  return { w, h, windows, hasSpire: rand(seed + i * 9.9) > 0.75 };
+});
+
+let x = 0;
+const total = buildings.reduce((sum, b) => sum + b.w + 6, 0);
+---
+
+<svg viewBox={`0 0 ${total} 240`} preserveAspectRatio="none" class:list={["h-full w-full", className]} xmlns="http://www.w3.org/2000/svg">
+  {
+    buildings.map((b) => {
+      const bx = x;
+      x += b.w + 6;
+      const rows = [];
+      for (let r = 0; r < b.windows; r++) {
+        rows.push(r);
+      }
+      return (
+        <g>
+          <rect
+            x={bx}
+            y={240 - b.h}
+            width={b.w}
+            height={b.h}
+            class={strokeClass}
+            fill="none"
+            stroke-width="1"
+          />
+          {b.hasSpire && (
+            <line x1={bx + b.w / 2} y1={240 - b.h} x2={bx + b.w / 2} y2={240 - b.h - 22} class={strokeClass} stroke-width="1" />
+          )}
+          {rows.map((r) => (
+            <line
+              x1={bx}
+              y1={240 - b.h + 10 + r * 20}
+              x2={bx + b.w}
+              y2={240 - b.h + 10 + r * 20}
+              class={strokeClass}
+              stroke-width="0.5"
+              opacity="0.5"
+            />
+          ))}
+        </g>
+      );
+    })
+  }
+</svg>

@@ -1,0 +1,32 @@
+---
+import { Icon } from "@/components/Icon";
+import ArtPanel from "@/components/ArtPanel.astro";
+import { Badge } from "@/components/ui/badge";
+import type { Project } from "@/lib/site-data";
+
+interface Props {
+  project: Project;
+  seed?: number;
+  size?: "default" | "large";
+}
+const { project, seed = 1, size = "default" } = Astro.props;
+const tone = project.category === "Commercial" ? "ink" : seed % 2 === 0 ? "sand" : "clay";
+---
+
+<a href={`/portfolio/${project.slug}`} class="group block">
+  <div class:list={["relative overflow-hidden rounded-lg", size === "large" ? "aspect-[16/11]" : "aspect-[4/3]"]}>
+    <ArtPanel seed={seed} tone={tone} class="h-full w-full transition-transform duration-700 group-hover:scale-[1.04]" />
+    <div class="absolute left-4 top-4">
+      <Badge variant={project.status === "Ongoing" ? "default" : "dark"}>{project.status}</Badge>
+    </div>
+    <div class="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-cream/90 text-ink opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+      <Icon name="arrow-up-right" className="h-4 w-4" />
+    </div>
+  </div>
+  <div class="mt-4 flex items-start justify-between gap-3">
+    <div>
+      <h3 class="font-display text-xl text-ink group-hover:text-clay transition-colors">{project.name}</h3>
+      <p class="mt-1 text-sm text-muted-foreground">{project.tagline}</p>
+    </div>
+  </div>
+</a>

@@ -1,0 +1,27 @@
+---
+import Eyebrow from "@/components/Eyebrow.astro";
+import TestimonialCard from "@/components/TestimonialCard.astro";
+import { testimonials } from "@/lib/site-data";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+const { title = "What people are saying", subtitle = "Voices of our proud home-owners and commercial partners." } = Astro.props;
+---
+
+<section class="mx-auto max-w-[1400px] px-5 py-24 md:px-10">
+  <div class="mx-auto max-w-xl text-center">
+    <Eyebrow class="justify-center">Voices of Trust</Eyebrow>
+    <h2 class="mt-3 text-balance font-display text-4xl leading-[1.1] md:text-[2.75rem]">{title}</h2>
+    <p class="mt-4 text-sm text-muted-foreground">{subtitle}</p>
+  </div>
+
+  <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+    {
+      testimonials.map((t) => (
+        <TestimonialCard quote={t.quote} name={t.name} location={t.location} rating={t.rating} featured={t.featured} />
+      ))
+    }
+  </div>
+</section>
