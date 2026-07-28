@@ -7,18 +7,7 @@ export const siteConfig = {
   email: "info@udbhavdevelopers.com",
   address: "C6, 1st Floor, City Gate Building, Kadri Shivabhag, Mangalore – 575 002",
   location: "Mangalore, Karnataka",
-};
-
-export const navLinks = [
-  { label: "AboutUs", href: "/Aboutus" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Services", href: "/services" },
-  { label: "Company", href: "/company" },
-  { label: "Process", href: "/process" },
-  { label: "Process", href: "/process" },
-  { label: "New Media", href: "/NewsMedia" },
-  { label: "Blog", href: "/blog" },
-];
+};  
 
 export type Project = {
   slug: string;
@@ -33,6 +22,7 @@ export type Project = {
   image: string;
 };
 
+// 1. Projects must be defined FIRST so navLinks can reference them
 export const projects: Project[] = [
   {
     slug: "udbhav-chinmaya",
@@ -62,7 +52,7 @@ export const projects: Project[] = [
   },
   {
     slug: "marcels-maison",
-    name: "Marcel's Maison",
+    name: "udbhav-chinmaya",
     category: "Residential",
     status: "Ongoing",
     tagline: "Sophisticated low-density residences",
@@ -73,18 +63,7 @@ export const projects: Project[] = [
     year: "2025",
     image: "marcels",
   },
-  {
-    slug: "udbhav-square",
-    name: "Udbhav Square",
-    category: "Commercial",
-    status: "Ongoing",
-    tagline: "Grade-A commercial hub for growing businesses",
-    description:
-      "A commercial address engineered for flexibility — column-free floor plates, dedicated parking, and infrastructure ready for modern workplaces.",
-    location: "Mangalore City Centre",
-    year: "2026",
-    image: "square",
-  },
+  
   {
     slug: "krk-aayush",
     name: "K.R.K. Aayush",
@@ -111,6 +90,33 @@ export const projects: Project[] = [
     year: "2021",
     image: "groves",
   },
+];
+
+// 2. navLinks can now safely filter through the projects array
+export const navLinks = [
+  { label: "AboutUs", href: "/Aboutus" },
+  { 
+    label: "Projects", 
+    href: "/portfolio",
+    children: [
+      {
+        label: "Ongoing",
+        status: "Ongoing",
+        href: "/portfolio?status=ongoing",
+        items: projects.filter(p => p.status === "Ongoing")
+      },
+      {
+        label: "Completed",
+        status: "Completed",
+        href: "/portfolio?status=completed",
+        items: projects.filter(p => p.status === "Completed")
+      }
+    ]
+  },
+  { label: "Services", href: "/services" },
+  { label: "Carrers", href: "/Careers" },
+  { label: "News Media", href: "/NewsMedia" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export const stats = [

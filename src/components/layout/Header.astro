@@ -13,19 +13,72 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
       Udbhav <span class="text-clay">Developers</span>
     </a>
 
-    <nav class="hidden items-center gap-9 lg:flex">
+    <!-- Desktop Navigation -->
+    <nav class="hidden items-center gap-7 lg:flex">
       {
-        navLinks.map((link) => (
-          <a
-            href={link.href}
-            class:list={[
-              "text-[13px] font-medium uppercase tracking-[0.08em] transition-colors hover:text-clay",
-              isActive(link.href) ? "text-clay" : "text-ink/75",
-            ]}
-          >
-            {link.label}
-          </a>
-        ))
+        navLinks.map((link) => {
+          const hasChildren = "children" in link && link.children;
+
+          if (hasChildren) {
+            return (
+              <div class="relative group py-4">
+                <a
+                  href={link.href}
+                  class:list={[
+                    "flex items-center gap-1 text-[13px] font-medium uppercase tracking-[0.08em] transition-colors hover:text-clay",
+                    isActive(link.href) ? "text-clay" : "text-ink/75",
+                  ]}
+                >
+                  {link.label}
+                  <Icon name="chevron-down" className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" />
+                </a>
+
+                {/* Primary Dropdown (Ongoing / Completed) */}
+                <div class="invisible absolute left-0 top-full w-56 translate-y-2 rounded-md border border-border bg-white p-1.5 shadow-xl opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                  {link.children.map((group) => (
+                    <div class="relative group/sub">
+                      <div class="flex items-center justify-between rounded-sm px-3 py-2 text-xs font-semibold uppercase tracking-wider text-ink/80 hover:bg-muted hover:text-clay cursor-pointer">
+                        <span>{group.label}</span>
+                        <Icon name="chevron-right" className="h-3.5 w-3.5 opacity-60" />
+                      </div>
+
+                      {/* Secondary Nested Dropdown (Project Names) */}
+                      <div class="invisible absolute left-full top-0 ml-1.5 w-64 -translate-x-2 rounded-md border border-border bg-white p-1.5 shadow-xl opacity-0 transition-all duration-200 group-hover/sub:visible group-hover/sub:translate-x-0 group-hover/sub:opacity-100">
+                        <div class="px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground border-b border-border/50 mb-1">
+                          {group.label} Projects
+                        </div>
+                        {group.items.length > 0 ? (
+                          group.items.map((project) => (
+                            <a
+                              href={`/portfolio/${project.slug}`}
+                              class="block rounded-sm px-3 py-2 text-xs font-medium text-ink/75 hover:bg-muted hover:text-clay transition-colors truncate"
+                            >
+                              {project.name}
+                            </a>
+                          ))
+                        ) : (
+                          <span class="block px-3 py-2 text-xs text-muted-foreground italic">No projects found</span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          }
+
+          return (
+            <a
+              href={link.href}
+              class:list={[
+                "text-[13px] font-medium uppercase tracking-[0.08em] transition-colors hover:text-clay",
+                isActive(link.href) ? "text-clay" : "text-ink/75",
+              ]}
+            >
+              {link.label}
+            </a>
+          );
+        })
       }
     </nav>
 
@@ -35,6 +88,7 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
       </Button>
     </div>
 
+    <!-- Mobile Menu Toggle Button -->
     <button
       id="menu-toggle"
       aria-label="Toggle menu"
@@ -46,18 +100,49 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
     </button>
   </div>
 
-  <div id="mobile-menu" class="hidden border-t border-border bg-cream lg:hidden">
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden border-t border-border bg-cream lg:hidden max-h-[calc(100vh-4.5rem)] overflow-y-auto">
     <nav class="flex flex-col gap-1 px-5 py-4">
       {
-        navLinks.map((link) => (
-          <a
-            href={link.href}
-            class="flex items-center justify-between rounded-sm px-2 py-3 text-sm font-medium uppercase tracking-wide text-ink/85 hover:bg-muted hover:text-clay"
-          >
-            {link.label}
-            <Icon name="arrow-up-right" className="h-4 w-4 opacity-40" />
-          </a>
-        ))
+        navLinks.map((link) => {
+          const hasChildren = "children" in link && link.children;
+
+          if (hasChildren) {
+            return (
+              <div class="flex flex-col">
+                <div class="flex items-center justify-between rounded-sm px-2 py-3 text-sm font-medium uppercase tracking-wide text-ink/85 bg-muted/40">
+                  {link.label}
+                </div>
+                <div class="pl-4 flex flex-col gap-1 my-1 border-l-2 border-clay/20 ml-2">
+                  {link.children.map((group) => (
+                    <div class="flex flex-col py-1">
+                      <span class="px-2 py-1 text-xs font-semibold uppercase text-clay">{group.label}</span>
+                      {group.items.map((project) => (
+                        <a
+                          href={`/portfolio/${project.slug}`}
+                          class="flex items-center justify-between rounded-sm px-2 py-2 text-xs font-medium text-ink/70 hover:bg-muted hover:text-clay"
+                        >
+                          {project.name}
+                          <Icon name="arrow-up-right" className="h-3 w-3 opacity-40" />
+                        </a>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          }
+
+          return (
+            <a
+              href={link.href}
+              class="flex items-center justify-between rounded-sm px-2 py-3 text-sm font-medium uppercase tracking-wide text-ink/85 hover:bg-muted hover:text-clay"
+            >
+              {link.label}
+              <Icon name="arrow-up-right" className="h-4 w-4 opacity-40" />
+            </a>
+          );
+        })
       }
       <a
         href="/contact"
