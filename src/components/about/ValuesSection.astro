@@ -1,0 +1,90 @@
+---
+const values = [
+    {
+        title: "Transparency",
+        description: "Honest communication and ethical practices",
+        icon: "/images/icon1.png",
+    },
+    {
+        title: "Value for Investment",
+        description: "Developments that deliver long-term financial sense",
+        icon: "/images/icon2.png",
+    },
+    {
+        title: "Customer Centricity",
+        description: "Designs shaped around real user needs",
+        icon: "/images/icon3.png",
+    },
+    {
+        title: "Quality First",
+        description: "Uncompromising standards in construction and delivery",
+        icon: "/images/icon4.png",
+    },
+    {
+        title: "Prime Locations",
+        description: "Sites chosen for relevance and appreciation",
+        icon: "/images/icon5.png",
+    },
+];
+---
+
+<section class="bg-white py-24">
+    <div class="mx-auto max-w-7xl px-6">
+        <!-- Heading -->
+
+        <div class="text-center">
+            <span
+                class="text-sm font-semibold uppercase tracking-[0.35em] text-red-600"
+            >
+                Core Values
+            </span>
+
+            <h2 class="mt-5 text-5xl font-bold text-[#142543]">
+                What Drives Every Project
+            </h2>
+
+            <p class="mx-auto mt-5 max-w-2xl text-lg text-gray-500">
+                These principles define every decision we make—from selecting
+                locations to delivering homes that stand the test of time.
+            </p>
+        </div>
+
+        <!-- Cards -->
+
+        <div class="mt-20 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+            {
+                values.map((value) => (
+                    <div class="group rounded-[28px] border border-gray-200 bg-white p-10 text-center shadow-lg transition-all duration-300 hover:-translate-y-3 hover:border-red-500 hover:shadow-2xl">
+                        <div class="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-red-50 transition group-hover:bg-red-100">
+                            <img
+                                src={value.icon}
+                                alt={value.title}
+                                class="h-16 w-16 object-contain"
+                            />
+                        </div>
+
+                        <h3 class="mt-8 text-2xl font-bold text-[#142543]">
+                            {value.title}
+                        </h3>
+
+                        <p class="mt-4 text-lg leading-8 text-gray-600">
+                            {value.description}
+                        </p>
+                    </div>
+                ))
+            }
+        </div>
+
+        <!-- Bottom Statement -->
+
+        <div
+            class="mx-auto mt-20 max-w-4xl rounded-3xl bg-[#142543] px-10 py-10 text-center"
+        >
+            <p class="text-xl leading-9 text-white">
+                These values are embedded into our company culture and reflected
+                consistently across every project, ensuring excellence,
+                reliability, and long-term customer satisfaction.
+            </p>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,353 @@
+---
+// JobPortalWithModal.astro
+// Ensure Tailwind CSS is configured in your Astro project.
+
+const jobs = [
+  {
+    id: "ud-01",
+    title: "Interior Designer",
+    department: "DESIGN",
+    ref: "REF: UD-01",
+    experience: "0-2 Years Experience",
+    openings: "01 Opening",
+    responsibilities: [
+      "Create high-end residential and commercial interior design concepts.",
+      "Select materials, finishes, lighting, and custom furniture pieces.",
+      "Collaborate closely with architects and execution teams.",
+      "Ensure designs meet client budgets and delivery schedules."
+    ],
+    skills: [
+      "Degree or Diploma in Interior Design",
+      "Proficiency in AutoCAD, SketchUp, and V-Ray",
+      "Strong portfolio showcasing spatial planning expertise"
+    ]
+  },
+  {
+    id: "ud-02",
+    title: "Architect",
+    department: "ARCHITECTURE",
+    ref: "REF: UD-02",
+    experience: "2-5 Years Experience",
+    openings: "02 Openings",
+    responsibilities: [
+      "Lead architectural and interior design planning for upcoming projects.",
+      "Prepare complete architectural drawings, layouts, and schematic concepts.",
+      "Coordinate with structural consultants, MEP engineers, and site managers.",
+      "Ensure all project designs comply with regional zoning regulations."
+    ],
+    skills: [
+      "Degree in Architecture (B.Arch / M.Arch)",
+      "Strong command over AutoCAD, Revit, and Rhino",
+      "Excellent leadership, project coordination, and problem-solving skills"
+    ]
+  },
+  {
+    id: "ud-03",
+    title: "Marketing Executive",
+    department: "MARKETING",
+    ref: "REF: UD-03",
+    experience: "0-2 Years Experience",
+    openings: "01 Opening",
+    responsibilities: [
+      "Execute digital and offline marketing campaigns for real estate projects.",
+      "Manage social media channels, content calendars, and community engagement.",
+      "Coordinate with external PR agencies and creative vendors.",
+      "Track and analyze campaign performance metrics."
+    ],
+    skills: [
+      "Degree in Marketing, Communications, or Business Administration",
+      "Familiarity with digital marketing tools and Meta/Google ads",
+      "Exceptional verbal and written communication skills"
+    ]
+  },
+  {
+    id: "ud-04",
+    title: "Graphic Designer",
+    department: "CREATIVE",
+    ref: "REF: UD-04",
+    experience: "0-2 Years Experience",
+    openings: "01 Opening",
+    responsibilities: [
+      "Design brochures, site hoarding visuals, and digital promotional assets.",
+      "Maintain brand consistency across all print and digital touchpoints.",
+      "Collaborate with marketing teams to translate project narratives into visuals."
+    ],
+    skills: [
+      "Proficiency in Adobe Creative Suite (Photoshop, Illustrator, InDesign)",
+      "Strong eye for typography, layout, and visual hierarchy",
+      "Portfolio demonstrating clean, modern design aesthetics"
+    ]
+  },
+  {
+    id: "ud-05",
+    title: "Sales Executive",
+    department: "SALES",
+    ref: "REF: UD-05",
+    experience: "0-2 Years Experience",
+    openings: "03 Openings",
+    responsibilities: [
+      "Handle incoming client inquiries and schedule site visits.",
+      "Present project offerings, floor plans, and pricing structures to buyers.",
+      "Maintain CRM pipeline data and follow up consistently with leads."
+    ],
+    skills: [
+      "Degree in Business, Communications, or related fields",
+      "Confident demeanor with stellar interpersonal and negotiation abilities",
+      "Prior real estate or high-ticket sales experience is a plus"
+    ]
+  },
+  {
+    id: "ud-06",
+    title: "Project Engineer (Civil & MEP)",
+    department: "ENGINEERING",
+    ref: "REF: UD-06",
+    experience: "0-2 Years Experience",
+    openings: "03 Openings",
+    responsibilities: [
+      "Supervise daily site construction activities and ensure quality control.",
+      "Coordinate mechanical, electrical, and plumbing installations.",
+      "Monitor site safety protocols and manage contractor scheduling."
+    ],
+    skills: [
+      "Degree in Civil Engineering or Mechanical Engineering",
+      "Understanding of building codes, safety regulations, and site execution",
+      "Strong analytical and technical problem-solving skills"
+    ]
+  }
+];
+---
+
+<section class="bg-[#FAF7F2] text-[#1A1A1A] py-16 px-6 md:px-12 lg:px-20 min-h-screen relative font-sans">
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- Header Section -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      <div>
+        <h2 class="text-4xl sm:text-5xl font-serif font-normal tracking-tight mb-3">
+          Current Opportunities
+        </h2>
+        <p class="text-gray-600 text-base sm:text-lg max-w-xl font-light">
+          Discover roles that challenge your skills and offer meaningful growth in the real estate industry.
+        </p>
+      </div>
+
+      <!-- Badge -->
+      <div class="mt-6 md:mt-0">
+        <span class="inline-block bg-white border border-gray-200/80 text-gray-700 text-xs font-medium px-4 py-2 rounded-full shadow-sm">
+          {jobs.length} Open Roles
+        </span>
+      </div>
+    </div>
+
+    <!-- Job Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {jobs.map((job) => (
+        <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm flex flex-col justify-between transition-all duration-300 hover:shadow-md">
+          
+          <div>
+            <!-- Top Tag & Ref -->
+            <div class="flex items-center justify-between mb-6">
+              <span class="bg-[#FBEBE8] text-[#9E3B29] text-[10px] font-bold tracking-wider px-3 py-1 rounded-md">
+                {job.department}
+              </span>
+              <span class="text-xs text-gray-400 font-mono">
+                {job.ref}
+              </span>
+            </div>
+
+            <!-- Job Title -->
+            <h3 class="text-2xl sm:text-3xl font-serif font-normal text-[#1A1A1A] mb-6 leading-tight">
+              {job.title}
+            </h3>
+
+            <!-- Experience & Openings Meta -->
+            <div class="space-y-3 mb-8 text-gray-600 text-sm font-light">
+              <div class="flex items-center gap-3">
+                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"></path>
+                </svg>
+                <span>{job.experience}</span>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+                <span>{job.openings}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="space-y-3">
+            <button class="w-full bg-[#1A1A1A] text-white text-sm font-medium py-3.5 rounded-full transition-colors hover:bg-black cursor-pointer">
+              Apply Now
+            </button>
+            <button 
+              class="view-desc-btn w-full bg-transparent border border-gray-200 text-[#1A1A1A] text-sm font-medium py-3.5 rounded-full transition-colors hover:bg-gray-50 cursor-pointer"
+              data-job-id={job.id}
+            >
+              View Description
+            </button>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+
+  <!-- Redesigned Modal Overlay -->
+  <div id="job-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+    
+    <!-- Modal Content Box -->
+    <div id="modal-box" class="bg-white w-full max-w-2xl rounded-[2.5rem] shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300 max-h-[90vh] flex flex-col">
+      
+      <!-- Modal Header -->
+      <div class="p-8 pb-6 border-b border-gray-100 flex items-start justify-between bg-[#FAF7F2]">
+        <div>
+          <div class="flex items-center gap-3 mb-2">
+            <span id="modal-department" class="bg-[#FBEBE8] text-[#9E3B29] text-[10px] font-bold tracking-wider px-3 py-1 rounded-md"></span>
+            <span id="modal-ref" class="text-xs text-gray-400 font-mono"></span>
+          </div>
+          <h3 id="modal-title" class="text-3xl font-serif text-[#1A1A1A]"></h3>
+          <div class="flex items-center gap-6 mt-3 text-xs text-gray-500 font-light">
+            <span id="modal-experience" class="flex items-center gap-1.5"></span>
+            <span id="modal-openings" class="flex items-center gap-1.5"></span>
+          </div>
+        </div>
+
+        <!-- Close Button -->
+        <button id="close-modal" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-100 transition-colors cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable) -->
+      <div class="p-8 overflow-y-auto space-y-8 flex-1">
+        
+        <!-- Roles & Responsibilities Section -->
+        <div>
+          <h4 class="text-xs font-semibold tracking-widest text-[#9E3B29] uppercase mb-4">
+            Roles & Responsibilities
+          </h4>
+          <ul id="modal-responsibilities" class="space-y-3 text-gray-600 text-sm sm:text-base font-light list-disc pl-5">
+            <!-- Injected via client script -->
+          </ul>
+        </div>
+
+        <!-- Skills Required Section -->
+        <div>
+          <h4 class="text-xs font-semibold tracking-widest text-[#9E3B29] uppercase mb-4">
+            Skills Required
+          </h4>
+          <ul id="modal-skills" class="space-y-3 text-gray-600 text-sm sm:text-base font-light list-disc pl-5">
+            <!-- Injected via client script -->
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-6 px-8 border-t border-gray-100 bg-gray-50 flex items-center justify-end gap-4">
+        <button id="modal-close-footer" class="px-6 py-3 rounded-full border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer">
+          Close
+        </button>
+        <button class="px-8 py-3 rounded-full bg-[#9E3B29] text-white text-sm font-medium hover:bg-[#863021] transition-colors shadow-sm cursor-pointer">
+          Apply For This Role
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- Embedded Job Data for Client-Side Scripting -->
+<script define:vars={{ jobs }}>
+  const jobMap = {};
+  jobs.forEach(job => {
+    jobMap[job.id] = job;
+  });
+
+  const modal = document.getElementById('job-modal');
+  const modalBox = document.getElementById('modal-box');
+  const closeBtn = document.getElementById('close-modal');
+  const closeFooterBtn = document.getElementById('modal-close-footer');
+  
+  const modalTitle = document.getElementById('modal-title');
+  const modalDept = document.getElementById('modal-department');
+  const modalRef = document.getElementById('modal-ref');
+  const modalExp = document.getElementById('modal-experience');
+  const modalOpenings = document.getElementById('modal-openings');
+  const modalRespList = document.getElementById('modal-responsibilities');
+  const modalSkillsList = document.getElementById('modal-skills');
+
+  function openModal(jobId) {
+    const job = jobMap[jobId];
+    if (!job) return;
+
+    modalTitle.textContent = job.title;
+    modalDept.textContent = job.department;
+    modalRef.textContent = job.ref;
+    modalExp.textContent = job.experience;
+    modalOpenings.textContent = job.openings;
+
+    // Populate responsibilities
+    modalRespList.innerHTML = '';
+    job.responsibilities.forEach(resp => {
+      const li = document.createElement('li');
+      li.textContent = resp;
+      modalRespList.appendChild(li);
+    });
+
+    // Populate skills
+    modalSkillsList.innerHTML = '';
+    job.skills.forEach(skill => {
+      const li = document.createElement('li');
+      li.textContent = skill;
+      modalSkillsList.appendChild(li);
+    });
+
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modalBox.classList.remove('scale-95');
+    modalBox.classList.add('scale-100');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    modalBox.classList.remove('scale-100');
+    modalBox.classList.add('scale-95');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Attach event listeners to all View Description buttons
+  document.querySelectorAll('.view-desc-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const jobId = button.getAttribute('data-job-id');
+      openModal(jobId);
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  closeFooterBtn.addEventListener('click', closeModal);
+  
+  // Close when clicking outside modal content
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+  h2, h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+</style>

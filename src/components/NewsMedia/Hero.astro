@@ -1,0 +1,76 @@
+---
+// FeaturedStoryHero.astro
+// Ensure Tailwind CSS is configured in your Astro project.
+---
+
+<section class="relative min-h-screen flex items-center justify-center px-6 md:px-16 lg:px-24 overflow-hidden font-sans">
+  
+  <!-- Background Image with Dark Overlay -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      src="https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=2000&q=80" 
+      alt="Udbhav Horizon architectural building" 
+      class="w-full h-full object-cover object-center"
+    />
+    <!-- Gradient overlay for text legibility -->
+    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20"></div>
+  </div>
+
+  <!-- Content Container -->
+  <div class="relative z-10 max-w-7xl w-full py-20 flex flex-col justify-between min-h-screen">
+    
+    <!-- Spacer top if needed, or flex alignment -->
+    <div></div>
+
+    <!-- Main Text Content -->
+    <div class="max-w-2xl text-white">
+      
+      <!-- Featured Story Badge -->
+      <span class="inline-block bg-[#E95D38] text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded mb-6">
+        FEATURED STORY
+      </span>
+
+      <!-- Headline -->
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif font-normal tracking-tight leading-[1.1] mb-6">
+        Udbhav Horizon: Redefining the Urban Skyline of 2024
+      </h1>
+
+      <!-- Description -->
+      <p class="text-gray-200 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-xl">
+        Explore our flagship mixed-use development that harmonizes sustainable architecture with high-luxury living in the heart of the capital.
+      </p>
+
+      <!-- CTA Button -->
+      <div>
+        <a 
+          href="#press-release" 
+          class="inline-flex items-center gap-3 bg-white hover:bg-gray-100 text-[#1A1A1A] font-medium text-sm px-8 py-4 rounded-full transition-all duration-300 shadow-lg group"
+        >
+          <span>Read Full Press Release</span>
+          <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Bottom Scroll Indicator -->
+    <div class="flex flex-col items-center justify-center pb-6 text-white/70">
+      <span class="text-[10px] font-semibold tracking-[0.25em] uppercase mb-2">SCROLL</span>
+      <div class="w-[1px] h-8 bg-white/40 relative overflow-hidden">
+        <div class="absolute inset-0 bg-white animate-bounce"></div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+</style>

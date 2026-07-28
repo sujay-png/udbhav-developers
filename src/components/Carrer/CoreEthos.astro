@@ -1,0 +1,77 @@
+---
+// CoreEthos.astro
+// Ensure Tailwind CSS is configured in your Astro project.
+---
+
+<section class="bg-[#FAF7F2] text-[#1A1A1A] py-16 px-6 md:px-16 lg:px-24 flex items-center justify-center min-h-screen">
+  <div class="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    
+    <!-- Left Column: Text & Stats -->
+    <div class="flex flex-col justify-center">
+      
+      <!-- Subheading -->
+      <span class="text-xs font-semibold tracking-widest text-[#B3543E] uppercase mb-3">
+        OUR CORE ETHOS
+      </span>
+
+      <!-- Main Heading -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-normal leading-[1.1] tracking-tight mb-6">
+        Building with Purpose,<br />
+        Driven by Trust.
+      </h1>
+
+      <!-- Description Paragraph -->
+      <p class="text-gray-600 text-base sm:text-lg leading-relaxed max-w-lg mb-8 font-light">
+        Since our inception in 2012, we have been committed to creating future-ready structures that blend thoughtful design with long-term value. We stand for excellence, integrity, and innovation.
+      </p>
+
+      <!-- Divider Line -->
+      <div class="w-full h-[1px] bg-gray-200 mb-8"></div>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 gap-8 max-w-md">
+        <!-- Stat 1 -->
+        <div>
+          <h3 class="text-3xl sm:text-4xl font-serif text-[#9E3B29] font-normal mb-1">
+            12<span class="text-xl">+</span>
+          </h3>
+          <p class="text-[10px] sm:text-xs font-semibold tracking-wider text-gray-500 uppercase">
+            YEARS OF EXCELLENCE
+          </p>
+        </div>
+
+        <!-- Stat 2 -->
+        <div>
+          <h3 class="text-3xl sm:text-4xl font-serif text-[#9E3B29] font-normal mb-1">
+            500<span class="text-xl">+</span>
+          </h3>
+          <p class="text-[10px] sm:text-xs font-semibold tracking-wider text-gray-500 uppercase">
+            HAPPY FAMILIES
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Column: Image -->
+    <div class="w-full flex justify-center lg:justify-end">
+      <div class="relative w-full max-w-lg lg:max-w-none aspect-[4/5] rounded-[2rem] overflow-hidden shadow-sm">
+        <img 
+          src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=80" 
+          alt="Team collaborating over architectural blueprints" 
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Optional: Import a serif font if not already present in your project config */
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+  h1, h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+</style>

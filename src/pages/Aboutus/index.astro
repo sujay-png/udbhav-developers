@@ -1,0 +1,29 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+import Hero from "@/components/about/hero.astro";
+import LegacySection from "@/components/about/LegacySection.astro";
+import AboutUdbhav from "@/components/about/AboutUdbhav.astro";
+import ValuesSection from "@/components/about/ValuesSection.astro";
+import FeaturedProjects from "@/components/sections/FeaturedProjects.astro";
+import ContactCta from "@/components/about/contactCta.astro";
+import Aboutus from "@/components/about/aboutus.astro";
+
+
+// import TestimonialCard from "@/components/TestimonialCard.astro";
+---
+
+<BaseLayout
+  title="About Us"
+  description="Learn more about Udbhav Developers, our vision, values, and projects."
+>
+  <Hero />
+  <Aboutus/>
+
+
+  <AboutUdbhav />
+  <ValuesSection />
+  
+  <!-- <TestimonialCard /> -->
+  <ContactCta />
+</BaseLayout>

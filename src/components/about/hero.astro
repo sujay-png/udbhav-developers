@@ -1,0 +1,79 @@
+---
+const heroImage = "/images/Udbhav-website.jpg"; // Replace with your image
+---
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<section class="relative overflow-hidden bg-[#fdf9f7]">
+  <!-- Background Image -->
+  <div class="absolute inset-0">
+    <img
+      src={heroImage}
+      alt="About Udbhav Developers"
+      class="h-full w-full object-cover object-center opacity-20 grayscale"
+    />
+
+    <!-- Left Gradient -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#fdf9f7] via-[#fdf9f7]/95 to-[#fdf9f7]/40"></div>
+
+    <!-- Soft Overlay -->
+    <div class="absolute inset-0 bg-white/20"></div>
+  </div>
+
+  <div
+    class="relative mx-auto flex min-h-[92vh] max-w-7xl items-center px-6 py-24 lg:px-12"
+  >
+    <div class="max-w-2xl">
+
+      <p class="mb-8 text-xs font-semibold tracking-[0.45em] text-[#bf2d1d] uppercase">
+        Established 2012
+      </p>
+
+      <h1
+        class="font-serif text-[60px] leading-[0.95] text-[#231815] lg:text-[88px]"
+      >
+        Building with
+        <br />
+        Purpose,
+      </h1>
+
+      <h2
+        class="mt-2 font-serif text-[58px] italic leading-none text-[#bf2d1d] lg:text-[82px]"
+      >
+        Driven by Trust.
+      </h2>
+
+      <p
+        class="mt-10 max-w-xl text-[20px] leading-9 text-[#574a47]"
+      >
+        At Udbhav Developers, we stand for excellence,
+        integrity, and innovation in the development of
+        premium residential apartments,
+        commercial spaces, and retail shops.
+      </p>
+
+      <div class="mt-14 flex flex-wrap gap-5">
+
+        <a
+          href="#vision"
+          class="bg-[#bf2d1d] px-10 py-5 text-xs font-semibold uppercase tracking-[0.25em] text-white transition hover:bg-[#9e2317]"
+        >
+          Our Vision
+        </a>
+
+        <a
+          href="/portfolio"
+          class="border border-[#b59f97] bg-white/70 px-10 py-5 text-xs font-semibold uppercase tracking-[0.25em] text-[#231815] backdrop-blur transition hover:bg-white"
+        >
+          View Projects
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</section>

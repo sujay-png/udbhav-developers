@@ -1,48 +1,159 @@
 ---
 import { Icon } from "@/components/Icon";
-import ArtPanel from "@/components/ArtPanel.astro";
 import { Button } from "@/components/ui/button";
-import { stats } from "@/lib/site-data";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+const slides = [
+  {
+    title: "Live moments away from",
+    highlight: "luxury.",
+    subtitle:
+      "Future-ready living in the heart of peaceful upscale residential enclaves designed for those who demand uncompromising quality.",
+    image: "/images/Udbhav-website.jpg",
+  },
+  {
+    title: "Crafted for",
+    highlight: "Generations.",
+    subtitle:
+      "Premium residences designed with timeless architecture.",
+    image: "/images/hero/hero2.jpg",
+  },
+  {
+    title: "Building",
+    highlight: "Trust.",
+    subtitle:
+      "Delivering premium homes since 2012.",
+    image: "/images/hero/hero3.jpg",
+  },
+];
 ---
 
-<section class="relative overflow-hidden bg-ink text-cream">
-  <ArtPanel seed={4} tone="ink" class="absolute inset-0" />
+<section class="hero-slider relative h-screen overflow-hidden">
 
-  <div class="relative mx-auto flex min-h-[86vh] max-w-[1400px] flex-col justify-end px-5 pb-16 pt-32 md:px-10 md:pb-20 md:pt-40">
-    <p class="animate-fade-up text-[11px] font-semibold uppercase tracking-[0.25em] text-clay">
-      Premium Architectural Developers · Est. 2012
-    </p>
+  <div class="swiper heroSwiper h-full">
 
-    <h1 class="animate-fade-up mt-5 max-w-3xl text-balance font-display text-[2.75rem] font-normal leading-[1.05] md:text-7xl" style="animation-delay:80ms">
-      Live moments away from <em class="font-normal italic text-clay">luxury.</em>
-    </h1>
+    <div class="swiper-wrapper">
 
-    <p class="animate-fade-up mt-6 max-w-lg text-[15px] leading-relaxed text-cream/70" style="animation-delay:160ms">
-      Future-ready living in the heart of Mangalore — upscale residential addresses designed for those who demand nothing less than quality.
-    </p>
-
-    <div class="animate-fade-up mt-9 flex flex-wrap items-center gap-4" style="animation-delay:240ms">
-      <Button asChild size="lg">
-        <a href="/portfolio">
-          View Projects <Icon name="arrow-right" className="h-4 w-4" />
-        </a>
-      </Button>
-      <Button asChild variant="outlineLight" size="lg">
-        <a href="#virtual-walk">
-          <Icon name="play" className="h-4 w-4" /> Take a Virtual Walk
-        </a>
-      </Button>
-    </div>
-
-    <div class="mt-16 grid grid-cols-2 gap-6 border-t border-cream/15 pt-8 sm:grid-cols-4">
       {
-        stats.map((s) => (
-          <div>
-            <p class="font-display text-3xl text-cream md:text-4xl">{s.value}</p>
-            <p class="mt-1 text-xs uppercase tracking-wide text-cream/50">{s.label}</p>
+        slides.map((slide) => (
+          <div class="swiper-slide relative">
+
+            <!-- Background -->
+
+            <img
+              src={slide.image}
+              alt={slide.highlight}
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+
+            <!-- Overlay -->
+
+            <div class="absolute inset-0 bg-black/55"></div>
+
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/40"></div>
+
+            <!-- Content -->
+
+            <div class="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-6 text-center">
+
+              <p class="mb-6 text-xs font-semibold uppercase tracking-[0.45em] text-white/80">
+                Premium Architectural Excellence
+              </p>
+
+              <h1 class="max-w-5xl font-display text-5xl leading-tight text-white md:text-8xl">
+
+                {slide.title}
+
+                <br />
+
+                <span class="italic">
+                  {slide.highlight}
+                </span>
+
+              </h1>
+
+              <p class="mt-8 max-w-2xl text-lg leading-8 text-white/80">
+                {slide.subtitle}
+              </p>
+
+      <div class="mt-12 flex flex-wrap items-center justify-center gap-6">
+
+  <!-- View Project -->
+  <a
+    href="/portfolio"
+    class="inline-flex h-14 items-center justify-center bg-white px-10 text-sm font-semibold uppercase tracking-[0.18em] text-[#111827] transition-all duration-300 hover:bg-[#D63232] hover:text-white">
+
+    View Project
+
+  </a>
+
+  <!-- Virtual Walk -->
+  <a
+    href="#virtual-tour"
+    class="group inline-flex items-center gap-4 text-sm font-semibold uppercase tracking-[0.18em] text-white">
+
+    <span
+      class="flex h-14 w-14 items-center justify-center rounded-full border border-white/40 bg-white/10 backdrop-blur-md transition-all duration-300 group-hover:border-white group-hover:bg-white group-hover:text-black">
+
+      <Icon
+        name="play"
+        className="h-4 w-4 ml-0.5"
+      />
+
+    </span>
+
+    <span class="transition group-hover:text-[#D63232]">
+      360° Virtual Walk
+    </span>
+
+  </a>
+
+</div>
+
+            </div>
+
           </div>
         ))
       }
+
     </div>
+
+    <div class="swiper-pagination"></div>
+
+    <div class="swiper-button-next text-white"></div>
+
+    <div class="swiper-button-prev text-white"></div>
+
   </div>
+
 </section>
+
+<script>
+  import Swiper from "swiper";
+  import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+  new Swiper(".heroSwiper", {
+    modules: [Navigation, Pagination, Autoplay],
+
+    loop: true,
+
+    speed: 1200,
+
+    autoplay: {
+      delay: 6000,
+    },
+
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+</script>
