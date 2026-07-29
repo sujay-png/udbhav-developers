@@ -1,6 +1,7 @@
 ---
 // JobPortalWithModal.astro
 // Ensure Tailwind CSS is configured in your Astro project.
+// Job content verified against https://udbhavdevelopers.com/careers/ (paraphrased, not copied verbatim)
 
 const jobs = [
   {
@@ -11,15 +12,17 @@ const jobs = [
     experience: "0-2 Years Experience",
     openings: "01 Opening",
     responsibilities: [
-      "Create high-end residential and commercial interior design concepts.",
-      "Select materials, finishes, lighting, and custom furniture pieces.",
-      "Collaborate closely with architects and execution teams.",
-      "Ensure designs meet client budgets and delivery schedules."
+      "Develop interior design concepts for residential and commercial projects.",
+      "Prepare layout plans, 3D concepts, and material selections.",
+      "Coordinate with architects, contractors, and project teams.",
+      "Visit project sites to monitor how designs are being implemented.",
+      "Keep designs aligned with project timelines and budgets."
     ],
     skills: [
-      "Degree or Diploma in Interior Design",
-      "Proficiency in AutoCAD, SketchUp, and V-Ray",
-      "Strong portfolio showcasing spatial planning expertise"
+      "Proficiency in AutoCAD, SketchUp, and 3D visualization tools",
+      "Good understanding of materials, finishes, and space planning",
+      "Strong creativity and attention to detail",
+      "Good communication and coordination skills"
     ]
   },
   {
@@ -30,15 +33,17 @@ const jobs = [
     experience: "2-5 Years Experience",
     openings: "02 Openings",
     responsibilities: [
-      "Lead architectural and interior design planning for upcoming projects.",
-      "Prepare complete architectural drawings, layouts, and schematic concepts.",
-      "Coordinate with structural consultants, MEP engineers, and site managers.",
-      "Ensure all project designs comply with regional zoning regulations."
+      "Lead architectural and interior design planning for projects.",
+      "Prepare architectural drawings, design layouts, and design concepts.",
+      "Coordinate with interior designers, consultants, and execution teams.",
+      "Ensure project designs comply with regulations and project requirements.",
+      "Review design quality and guide the team through project development."
     ],
     skills: [
-      "Degree in Architecture (B.Arch / M.Arch)",
-      "Strong command over AutoCAD, Revit, and Rhino",
-      "Excellent leadership, project coordination, and problem-solving skills"
+      "Degree in Architecture, with relevant experience",
+      "Strong knowledge of architectural planning and interior design",
+      "Proficiency in AutoCAD, SketchUp, and related design software",
+      "Strong leadership, project coordination, and design skills"
     ]
   },
   {
@@ -49,15 +54,16 @@ const jobs = [
     experience: "0-2 Years Experience",
     openings: "01 Opening",
     responsibilities: [
-      "Execute digital and offline marketing campaigns for real estate projects.",
-      "Manage social media channels, content calendars, and community engagement.",
-      "Coordinate with external PR agencies and creative vendors.",
-      "Track and analyze campaign performance metrics."
+      "Support marketing campaigns for real estate projects.",
+      "Coordinate with digital marketing and advertising teams.",
+      "Assist with event promotions, site visits, and lead-generation activities.",
+      "Monitor campaign performance and prepare marketing reports.",
+      "Support branding initiatives and marketing communications."
     ],
     skills: [
-      "Degree in Marketing, Communications, or Business Administration",
-      "Familiarity with digital marketing tools and Meta/Google ads",
-      "Exceptional verbal and written communication skills"
+      "Degree in Marketing, Business, or a related field",
+      "Basic understanding of digital marketing and social media platforms",
+      "Ability to work in a fast-paced environment"
     ]
   },
   {
@@ -68,14 +74,14 @@ const jobs = [
     experience: "0-2 Years Experience",
     openings: "01 Opening",
     responsibilities: [
-      "Design brochures, site hoarding visuals, and digital promotional assets.",
-      "Maintain brand consistency across all print and digital touchpoints.",
-      "Collaborate with marketing teams to translate project narratives into visuals."
+      "Design creatives for digital marketing campaigns and social media.",
+      "Create brochures, project presentations, advertisements, and branding materials.",
+      "Work closely with the marketing team on campaign visuals.",
+      "Keep brand identity consistent across all marketing materials."
     ],
     skills: [
-      "Proficiency in Adobe Creative Suite (Photoshop, Illustrator, InDesign)",
-      "Strong eye for typography, layout, and visual hierarchy",
-      "Portfolio demonstrating clean, modern design aesthetics"
+      "Proficiency in Adobe Photoshop, Illustrator, and InDesign",
+      "Strong design sense and creativity"
     ]
   },
   {
@@ -85,15 +91,17 @@ const jobs = [
     ref: "REF: UD-05",
     experience: "0-2 Years Experience",
     openings: "03 Openings",
+    intro: "Looking for someone motivated by hitting targets and energized by working with people — if that's you, this role is a good fit.",
     responsibilities: [
-      "Handle incoming client inquiries and schedule site visits.",
-      "Present project offerings, floor plans, and pricing structures to buyers.",
-      "Maintain CRM pipeline data and follow up consistently with leads."
+      "Achieve sales targets on schedule.",
+      "Attend to customer queries and guide them through the buying process.",
+      "Accompany clients on site visits.",
+      "Maintain customer feedback reports."
     ],
     skills: [
-      "Degree in Business, Communications, or related fields",
-      "Confident demeanor with stellar interpersonal and negotiation abilities",
-      "Prior real estate or high-ticket sales experience is a plus"
+      "Minimum qualification: a graduation degree",
+      "Prior experience in real estate is a plus",
+      "A good team player with excellent communication skills"
     ]
   },
   {
@@ -104,14 +112,17 @@ const jobs = [
     experience: "0-2 Years Experience",
     openings: "03 Openings",
     responsibilities: [
-      "Supervise daily site construction activities and ensure quality control.",
-      "Coordinate mechanical, electrical, and plumbing installations.",
-      "Monitor site safety protocols and manage contractor scheduling."
+      "Supervise daily civil construction work, ensuring structures follow architectural and structural drawings.",
+      "Coordinate and manage electrical and plumbing (MEP) subcontractors on-site during rough-ins and final installations.",
+      "Review Good-for-Construction (GFC) drawings to catch and resolve clashes between structural beams and MEP pipe or conduit routing.",
+      "Run quality checks on concrete casting, waterproofing, piping slopes, pressure testing, and electrical earthing.",
+      "Verify contractor bills, measure completed on-site work, and manage material inventory for civil and MEP components."
     ],
     skills: [
-      "Degree in Civil Engineering or Mechanical Engineering",
-      "Understanding of building codes, safety regulations, and site execution",
-      "Strong analytical and technical problem-solving skills"
+      "Strong technical grasp of residential civil construction methods alongside plumbing and electrical layouts",
+      "Able to read and cross-reference structural, architectural, electrical, and plumbing schematics",
+      "Hands-on experience with quality control processes — pressure testing, slab conduit inspection, concrete cube testing",
+      "Competent in AutoCAD for minor on-site drawing revisions and MS Excel for billing and progress tracking"
     ]
   }
 ];
@@ -228,7 +239,10 @@ const jobs = [
 
       <!-- Modal Body (Scrollable) -->
       <div class="p-8 overflow-y-auto space-y-8 flex-1">
-        
+
+        <!-- Optional intro paragraph (only some roles have one, e.g. Sales Executive) -->
+        <p id="modal-intro" class="hidden text-gray-600 text-sm sm:text-base font-light leading-relaxed"></p>
+
         <!-- Roles & Responsibilities Section -->
         <div>
           <h4 class="text-xs font-semibold tracking-widest text-[#9E3B29] uppercase mb-4">
@@ -283,6 +297,7 @@ const jobs = [
   const modalRef = document.getElementById('modal-ref');
   const modalExp = document.getElementById('modal-experience');
   const modalOpenings = document.getElementById('modal-openings');
+  const modalIntro = document.getElementById('modal-intro');
   const modalRespList = document.getElementById('modal-responsibilities');
   const modalSkillsList = document.getElementById('modal-skills');
 
@@ -295,6 +310,15 @@ const jobs = [
     modalRef.textContent = job.ref;
     modalExp.textContent = job.experience;
     modalOpenings.textContent = job.openings;
+
+    // Optional intro paragraph — only a few roles (e.g. Sales Executive) have one
+    if (job.intro) {
+      modalIntro.textContent = job.intro;
+      modalIntro.classList.remove('hidden');
+    } else {
+      modalIntro.textContent = '';
+      modalIntro.classList.add('hidden');
+    }
 
     // Populate responsibilities
     modalRespList.innerHTML = '';

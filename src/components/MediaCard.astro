@@ -1,0 +1,52 @@
+---
+// MediaCard.astro
+import { Icon } from "@/components/Icon";
+import { Badge } from "@/components/ui/badge";
+import type { Media } from "@/lib/site-data";
+
+interface Props {
+  media: Media;
+  size?: "default" | "large";
+}
+
+const { media, size = "default" } = Astro.props;
+---
+
+<a 
+  href={media.link} 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  class="group block font-sans"
+>
+  <!-- Image Container with rounded-3xl for the soft, modern curve -->
+  <div class:list={[
+    "relative overflow-hidden rounded-3xl bg-gray-100 shadow-sm transition-all duration-300 group-hover:shadow-xl", 
+    size === "large" ? "aspect-[16/11]" : "aspect-[4/3]"
+  ]}>
+    <img
+      src={`/images/${media.image}.jpg`}
+      alt={media.name}
+      class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+    />
+
+    <!-- Top-Right Hover Icon Circle -->
+    <div class="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white/90 text-gray-900 opacity-0 backdrop-blur-md transition-all duration-300 group-hover:opacity-100 shadow-md">
+      <Icon name="arrow-up-right" className="h-4 w-4" />
+    </div>
+  </div>
+
+  <!-- Content Section -->
+  <div class="mt-4 flex flex-col gap-1">
+    <!-- <span class="text-xs font-medium tracking-wide text-gray-500 uppercase">
+      &bull; {media.year} &bull; {media.location}
+    </span> -->
+
+    <h3 class="font-serif text-2xl font-normal text-[#1A1A1A] group-hover:text-amber-800 transition-colors leading-snug">
+      {media.name}
+    </h3>
+
+    <p class="text-sm leading-relaxed text-gray-600 line-clamp-2 mt-0.5">
+      {media.tagline}
+    </p>
+  </div>
+</a>

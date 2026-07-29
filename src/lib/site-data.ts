@@ -21,34 +21,32 @@ export type Project = {
   year: string;
   image: string;
 };
-
+export type Media = {
+  slug: string;
+  name: string;
+  src?: string;
+  tagline: string;
+  description: string;
+  location?: string;
+  units?: string;
+  year?: string;
+  image: string;
+  link?: string;
+};
 // 1. Projects must be defined FIRST so navLinks can reference them
 export const projects: Project[] = [
   {
-    slug: "udbhav-chinmaya",
-    name: "Udbhav Chinmaya",
-    category: "Residential",
-    status: "Completed",
-    tagline: "Modern 3 & 4 BHK residential apartments",
-    description:
-      "A landmark residential address built around light-filled interiors, private balconies, and landscaped courtyards for families who want room to breathe in the city.",
-    location: "Kadri, Mangalore",
-    units: "3 & 4 BHK",
-    year: "2019",
-    image: "chinmaya",
-  },
-  {
     slug: "udbhav-shanthi",
-    name: "Udbhav Shanthi",
+    name: "Udbhav Marcel’s Maison",
     category: "Residential",
     status: "Completed",
     tagline: "Premium living with integrated retail",
     description:
       "Shanthi pairs elevated apartment living with ground-floor retail, giving residents everyday conveniences without ever leaving the address.",
-    location: "Kankanady, Mangalore",
+    location: "Valencia, Mangaluru",
     units: "2 & 3 BHK",
-    year: "2020",
-    image: "shanthi",
+    year: "2025 (Completed)",
+    image:"shanthi",
   },
   {
     slug: "marcels-maison",
@@ -63,7 +61,19 @@ export const projects: Project[] = [
     year: "2025",
     image: "marcels",
   },
-  
+  {
+    slug: "udbhav-shanthi",
+    name: "udbhav-shanthi",
+    category: "Residential",
+    status: "Completed",
+    tagline: "Premium living with integrated retail",
+    description:
+      "Shanthi pairs elevated apartment living with ground-floor retail, giving residents everyday conveniences without ever leaving the address.",
+    location: "Valencia, Mangaluru",
+    units: "2 & 3 BHK",
+    year: "2025 (Completed)",
+    image: "udbhavshanthi",
+  },
   {
     slug: "krk-aayush",
     name: "K.R.K. Aayush",
@@ -78,8 +88,8 @@ export const projects: Project[] = [
     image: "aayush",
   },
   {
-    slug: "brostar-coconut-groves",
-    name: "Brostar Coconut Groves",
+    slug: "Udbhav Square",
+    name: "Udbhav Square",
     category: "Residential",
     status: "Completed",
     tagline: "Villas set within a working coconut grove",
@@ -90,11 +100,135 @@ export const projects: Project[] = [
     year: "2021",
     image: "groves",
   },
+  {
+    slug: "Bhaskar Coconut Groves",
+    name: "Bhaskar Coconut Groves",
+    category: "Residential",
+    status: "Completed",
+    tagline: "Villas set within a working coconut grove",
+    description:
+      "Independent villas arranged around a preserved coconut grove — a rare offering of land, greenery, and architecture in one gated address.",
+    location: "Kottara, Mangalore",
+    units: "Villas",
+    year: "2021",
+    image: "CoconutGroves",
+  },
 ];
-
+export const newsmedia: Media[] = [
+  {
+    slug: "udbhav-chinmaya",
+    name: "Marcel’s Maison",
+    tagline: "Marcel’s Maison inaugurated in Valencia - A new landmark for premium living, business ",
+    description: " Marcel’s Maison inaugurated in Valencia - A new landmark for premium living, business ",
+   
+    units: "3 & 4 BHK",
+ 
+    image: "chinmaya",
+    link: "https://www.daijiworld.com/news/newsDisplay?newsID=1265898",
+  },
+  {
+    slug: "udbhav-shanthi",
+    name: "Marcel’s Maison",
+    tagline: "Ground-breaking ceremony for Udbhav Developers’ 'Marcel's Maison' held",
+    description: "Shanthi pairs elevated apartment living with ground-floor retail...",
+  
+    units: "2 & 3 BHK",
+   
+    image: "shanthi",
+    link: "https://www.daijiworld.com/news/newsDisplay?newsID=1043758", 
+  },
+  {
+    slug: "marcels-maison",
+    name: "Marcels Maison",
+    tagline: "Udbhav Developers presents Marcel’s Maison at Valencia - Bookings open ",
+    description: "A boutique collection of low-density homes designed for privacy...",
+    
+    units: "4 BHK",
+ 
+    image: "marcels",
+    link: "https://www.daijiworld.com/news/newsDisplay?newsID=1042541", 
+  },
+  {
+    slug: "krk-aayush",
+    name: "K.R.K. Aayush",
+    tagline: "Compact, efficient family apartmentsUdbhav Developers’ ‘KRK Aayush’ residential building inaugurated ",
+    description: "Aayush was built for first-time homeowners...",
+    
+    units: "2 & 3 BHK",
+    
+    image: "aayush",
+    link: "https://www.daijiworld.com/news/newsDisplay?newsID=974722#.Yr8JRfBFhHE.whatsapp", 
+  },
+  {
+    slug: "Udbhav Shanthi",
+    name: "Udbhav Shanthi",
+    tagline: "Exclusive 3BHK residential apartments in Udbhav Shanthi at Kadri - Bookings open        ",
+    description: "Independent villas arranged around a preserved coconut grove...",
+  
+    units: "Villas",
+   
+    image: "udbhavshanthi",
+    link: "https://www.daijiworld.com/news/newsDisplay?newsID=940244, "
+  },
+   {
+    slug: "Udbhav Square",
+    name: "Udbhav Square ",
+    tagline: "Ready to occupy commercial space available at ‘Udbhav Square’ at Kottara ",
+    description: "Independent villas arranged around a preserved coconut grove...",
+    
+    units: "Villas",
+   
+    image: "groves",
+    link: "https://www.daijiworld.com/news/newsDisplay?newsID=735321", 
+  },
+   {
+    slug: "Udbhav Square",
+    name: "Udbhav Square",
+    tagline: "Mangaluru’s finest commercial complex ‘Udbhav Square’ inaugurated. ",
+    description: "Independent villas arranged around a preserved coconut grove...",
+    
+    units: "Villas",
+  
+    image: "Square",
+    link: "https://www.daijiworld.com/news/newsDisplay.aspx?newsID=678408", 
+  },
+   {
+    slug: "Udbhav Square",
+    name: "Udbhav Square",
+    tagline: "‘Udbhav Square’ in Kottara Chowki - Golden opportunity for investors ",
+    description: "Independent villas arranged around a preserved coconut grove...",
+   
+    units: "Villas",
+     image: "Square1",
+    link: "https://www.daijiworld.com/news/newsDisplay.aspx?newsID=511578", 
+  },
+   {
+    slug: "Udbhav Square",
+    name: "Bhaskar Coconut Groves",
+    tagline: "Bhaskar Coconut Groves' apartments inaugurated.",
+    description: "Bhaskar Coconut Groves' apartments inaugurated.",
+   
+    units: "Villas",
+   
+    image: "Bhaskar",
+    link: "https://www.daijiworld.com/news/newsDisplay?newsID=325279", 
+  },
+   {
+    slug: "Udbhav Square",
+    name: "Udbhav Chinmaya",
+    tagline: "New residential project ‘Udbhav Chinmaya’ launched in heart of Mangaluru ",
+    description: "Independent villas arranged around a preserved coconut grove...",
+   
+    units: "Villas",
+  
+    image: "udbhavchinmaya",
+    link: "https://daijiworld.com/news/newsDisplay?newsID=1295161", 
+  },
+   
+];
 // 2. navLinks can now safely filter through the projects array
 export const navLinks = [
-  { label: "AboutUs", href: "/Aboutus" },
+  { label: "About Us", href: "/Aboutus" },
   { 
     label: "Projects", 
     href: "/portfolio",
@@ -113,7 +247,9 @@ export const navLinks = [
       }
     ]
   },
-  { label: "Services", href: "/services" },
+  { label: "Buyers Guide", href: "/Buyers" },
+  { label: "Testimonials", href: "/Testimonials" },
+
   { label: "Carrers", href: "/Careers" },
   { label: "News Media", href: "/NewsMedia" },
   { label: "Blog", href: "/blog" },

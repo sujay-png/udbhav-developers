@@ -1,0 +1,119 @@
+---
+// ScrollableGallery.astro
+interface GalleryImage {
+  src: string;
+  alt: string;
+  title?: string;
+  subtitle?: string;
+}
+
+const images: GalleryImage[] = [
+  {
+    src: "/images/projects/chinmaya.jpg",
+    alt: "Udbhav Chinmaya Exterior",
+    title: "Udbhav Chinmaya",
+    subtitle: "Kadri, Mangalore",
+  },
+  {
+    src: "/images/projects/chinmaya.jpg",
+    alt: "Balcony and Façade View",
+    title: "Architectural Detail",
+    subtitle: "Modern Luxury Living",
+  },
+  {
+    src: "/images/projects/chinmaya.jpg",
+    alt: "Landscape and Greenery",
+    title: "Terrace Gardens",
+    subtitle: "Eco-Conscious Design",
+  },
+  {
+    src: "/images/projects/chinmaya.jpg",
+    alt: "Interior Living Space",
+    title: "Spacious Interiors",
+    subtitle: "Light-filled Rooms",
+  },
+];
+---
+
+<section class="py-20 px-6 font-sans overflow-hidden">
+  <div class="mx-auto max-w-[1440px] space-y-8">
+    
+    <!-- Section Header with Navigation Arrows -->
+    <div class="flex items-end justify-between">
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-widest text-[#C23B22] mb-2">Visual Showcase</h3>
+        <h2 class="font-serif text-3xl sm:text-4xl text-[#1A1A1A]">Project Gallery</h2>
+      </div>
+
+      <!-- Scroll Action Buttons -->
+      <div class="hidden sm:flex gap-3">
+        <button 
+          id="scroll-left" 
+          aria-label="Scroll left"
+          class="h-12 w-12 rounded-full border border-gray-200 bg-white hover:bg-gray-50 flex items-center justify-center transition-colors shadow-sm text-gray-700"
+        >
+          ←
+        </button>
+        <button 
+          id="scroll-right" 
+          aria-label="Scroll right"
+          class="h-12 w-12 rounded-full border border-gray-200 bg-white hover:bg-gray-50 flex items-center justify-center transition-colors shadow-sm text-gray-700"
+        >
+          →
+        </button>
+      </div>
+    </div>
+
+    <!-- Scrollable Container -->
+    <div 
+      id="gallery-container" 
+      class="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar pb-6 pt-2 -mx-6 px-6 sm:mx-0 sm:px-0"
+      style="scrollbar-width: none; -ms-overflow-style: none;"
+    >
+      {images.map((img) => (
+        <div class="min-w-[300px] sm:min-w-[420px] lg:min-w-[480px] flex-shrink-0 group">
+          <div class="relative overflow-hidden rounded-3xl aspect-[4/3] bg-gray-100 shadow-sm mb-4">
+            <img 
+              src={img.src} 
+              alt={img.alt} 
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          
+          {img.title && (
+            <div class="flex items-center justify-between px-1">
+              <h4 class="font-bold text-[#1A1A1A] text-base">{img.title}</h4>
+              {img.subtitle && (
+                <span class="text-xs font-medium tracking-wide text-gray-500 uppercase">{img.subtitle}</span>
+              )}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<!-- Client-side script for horizontal scrolling controls -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('gallery-container');
+    const btnLeft = document.getElementById('scroll-left');
+    const btnRight = document.getElementById('scroll-right');
+
+    if (!container || !btnLeft || !btnRight) return;
+
+    const scrollAmount = 500;
+
+    btnLeft.addEventListener('click', () => {
+      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    btnRight.addEventListener('click', () => {
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+  });
+</script>

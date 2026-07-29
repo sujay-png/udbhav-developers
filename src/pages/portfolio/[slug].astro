@@ -1,4 +1,5 @@
 ---
+// src/pages/portfolio/[slug].astro
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ArtPanel from "@/components/ArtPanel.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
@@ -6,6 +7,7 @@ import CtaBanner from "@/components/sections/CtaBanner.astro";
 import { Badge } from "@/components/ui/badge";
 import { Icon } from "@/components/Icon";
 import { projects } from "@/lib/site-data";
+import Gallery from "./gallery.astro";
 
 export function getStaticPaths() {
   return projects.map((project) => ({
@@ -17,6 +19,153 @@ export function getStaticPaths() {
 const { project } = Astro.props;
 const related = projects.filter((p) => p.slug !== project.slug).slice(0, 3);
 const seed = projects.findIndex((p) => p.slug === project.slug) + 2;
+
+
+const projectDetails = {
+  "udbhav-chinmaya": {
+    subtitle: "Kadri Sanctuary",
+    overview: "A landmark residential address built around light-filled interiors, private balconies, and landscaped courtyards for families who want room to breathe in the city. Located prominently in Kadri, it offers seamless connectivity to key city amenities while maintaining a tranquil home atmosphere.",
+    mapTitle: "Kadri",
+    mapDesc: "Kadri stands as one of Mangaluru's most cherished residential nodes, offering a fine balance of quiet green avenues and urban convenience.",
+    mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.15!2d74.85!3d12.87!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDUyJzEyLjAiTiA3NMKwNTEnMDAuMCJF!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin",
+    mapQueryName: "Kadri, Mangaluru",
+    galleryImages: [
+      { src: "/images/projects/chinmaya.jpg", alt: "Udbhav Chinmaya Exterior", title: "Udbhav Chinmaya", subtitle: "Kadri, Mangalore" },
+      { src: "/images/projects/chinmaya.jpg", alt: "Balcony and Façade View", title: "Architectural Detail", subtitle: "Modern Luxury" },
+    ]
+   
+  },
+  "udbhav-shanthi": {
+    subtitle: "Exclusive 3 BHK Residences",
+    overview: "Udbhav Developers invites you to experience Udbhav Shanthi, an exclusive collection of 8 residential apartments representing the pinnacle of modern-day living. Located in the prestigious neighbourhood of Kadri, in the vicinity of the famous Sri Manjunatha Swamy Temple, it offers divine serenity alongside an exclusive lifestyle, with retail and commercial space for outlets, supermarkets, and private offices on the ground floor — a new landmark for Kadri, backed by great build quality and premium amenities.",
+    mapTitle: "Kadri",
+    mapDesc: "Kadri stands as one of Mangaluru's most cherished residential nodes, prized for its temple-side calm and strong connectivity to the city's major hubs.",
+    mapSrc: "https://maps.google.com/maps?q=3-28-2326%2C%20Kadri%20Temple%20Rd%2C%20Mallikatte%2C%20Kadri%2C%20Mangaluru%2C%20Karnataka%20575003&t=m&z=16&output=embed&iwloc=near",
+    mapQueryName: "Kadri Temple Rd, Mallikatte, Mangaluru",
+       typology: "Exclusive 3 BHK Residential Apartments",
+    possession: "Project completed in 2023",
+    rera: "PRM/KA/RERA/1257/334/PR/0903222/004748",
+    size: "Ground + 4 Floors",
+    area: "18 Cents",
+    galleryImages: [
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/DSC_5349-min.jpg", alt: "Udbhav Shanthi Elevation", title: "Udbhav Shanthi", subtitle: "Kadri, Mangalore" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/DSC_5346-min.jpg", alt: "Udbhav Shanthi Facade", title: "Facade View", subtitle: "Kadri, Mangalore" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/DSC_5458-min.jpg", alt: "Udbhav Shanthi Interior", title: "Interior Finish", subtitle: "3 BHK Apartments" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/DSC_5471-min.jpg", alt: "Udbhav Shanthi Amenities", title: "Amenities", subtitle: "Ground-floor Retail" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/DSC_5483-min.jpg", alt: "Udbhav Shanthi Common Area", title: "Common Area", subtitle: "Kadri, Mangalore" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/DSC_5505-min.jpg", alt: "Udbhav Shanthi Detail", title: "Architectural Detail", subtitle: "Premium Finish" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/DSC_5510-min.jpg", alt: "Udbhav Shanthi View", title: "Building View", subtitle: "Kadri, Mangalore" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/udbhav-image.jpg", alt: "Udbhav Shanthi Exterior", title: "Exterior", subtitle: "Kadri, Mangalore" },
+    ]
+  
+  },
+  "marcels-maison": {
+    subtitle: "Contemporary Mixed-Use Living",
+    overview: "Udbhav Developers presents Marcel's Maison, a mixed-use project located in the premium address of Valencia, one of Mangaluru's most sought-after neighbourhoods. Sitting in the heart of the city with strong connectivity to places of worship, shopping, education, hospitals, and entertainment, the project pairs contemporary architecture with modern amenities. Whether commercial space or residential apartment, every unit carries the same premium finish.",
+    mapTitle: "Valencia",
+    mapDesc: "Valencia has grown into a premium part of Mangaluru over the last decade, offering residents and businesses an unmatched geographic advantage in the heart of the city.",
+    mapSrc: "https://maps.google.com/maps?q=Goveas%20Commercial%20Complex%2C%20opp.%20Roshni%20Nilaya%2C%20Valencia%2C%20Kankanady%2C%20Mangaluru%2C%20Karnataka%20575002%2C%20India&t=m&z=16&output=embed&iwloc=near",
+    mapQueryName: "Valencia, Kankanady, Mangaluru",
+     typology: "Commercial & Residential Apartments",
+    possession: "2025 (Completed)",
+    rera: "PRM/KA/RERA/1257/334/PR/120123/005618",
+    size: "Basement, Ground + 4 Floors",
+    area: "18 Cents",
+    galleryImages: [
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/NBP_5489.jpg", alt: "Udbhav Marcel's Maison Exterior", title: "Marcel's Maison", subtitle: "Valencia, Mangalore" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/NBP_5611.jpg", alt: "Marcel's Maison Facade Detail", title: "Facade Detail", subtitle: "Contemporary Architecture" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/NBP_5687.jpg", alt: "Marcel's Maison Entrance", title: "Entrance", subtitle: "Ground Floor Retail" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/NBP_5832.jpg", alt: "Marcel's Maison Interior", title: "Interior Finish", subtitle: "Residential Apartments" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/NBP_5876.jpg", alt: "Marcel's Maison Amenities", title: "Amenities", subtitle: "Modern Comfort" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/NBP_5877.jpg", alt: "Marcel's Maison Common Area", title: "Common Area", subtitle: "Community Living" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/NBP_5593.jpg", alt: "Marcel's Maison View", title: "Building View", subtitle: "Valencia, Mangalore" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/NBP_5602.jpg", alt: "Marcel's Maison Detail", title: "Architectural Detail", subtitle: "Premium Finish" }
+    ]
+   
+  },
+  "krk-aayush": {
+    subtitle: "Fine Living, Reimagined",
+    overview: "K.R.K. Aayush by Udbhav Developers is a residential project designed for those ready to upgrade to a new way of living. Located at Urwa Hoigebail, one of Mangalore's established residential hubs, it comprises 21 contemporary-styled apartments with modern amenities. Good road connectivity plus proximity to hospitals, educational institutes, religious centres, and entertainment zones puts residents in a strong geographic position — backed by dependable build quality throughout.",
+    mapTitle: "Urwa Hoigebail",
+    mapDesc: "Urwa Hoigebail offers exceptional connectivity and established residential comfort, making daily commuting and family life seamless.",
+    mapSrc: "https://maps.google.com/maps?q=KRK%20Aayush%2C%20Urva%2C%20Mangalore&t=m&z=16&output=embed&iwloc=near",
+    mapQueryName: "Urwa Hoigebail, Mangaluru",
+        typology: "1 and 2 BHK Residential Apartments",
+    possession: "Project completed in 2022",
+    rera: "PRM/KA/RERA/1257/334/PR/210219/003923",
+    size: "Ground + 3 Floors",
+    area: "18 Cents",
+    galleryImages: [
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/Picture3-1.jpg", alt: "K.R.K. Aayush Building", title: "K.R.K. Aayush", subtitle: "Urwa Hoigebail, Mangalore" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/Picture15-1.jpg", alt: "K.R.K. Aayush Exterior", title: "Exterior View", subtitle: "Urwa Hoigebail, Mangalore" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/Picture13-1.jpg", alt: "K.R.K. Aayush Facade", title: "Facade Detail", subtitle: "Contemporary Styling" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/Picture1-1.jpg", alt: "K.R.K. Aayush Interior", title: "Interior Finish", subtitle: "1 & 2 BHK Apartments" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/Picture5-1-1.jpg", alt: "K.R.K. Aayush Common Area", title: "Common Area", subtitle: "Urwa Hoigebail, Mangalore" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/Picture6-1.jpg", alt: "K.R.K. Aayush Amenities", title: "Amenities", subtitle: "Modern Living" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/Picture7-1.jpg", alt: "K.R.K. Aayush Detail", title: "Architectural Detail", subtitle: "Urwa Hoigebail, Mangalore" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/Picture8-1.jpg", alt: "K.R.K. Aayush View", title: "Building View", subtitle: "Urwa Hoigebail, Mangalore" },
+    ]
+
+  },
+  "udbhav-square": {
+    subtitle: "Commercial Landmark",
+    overview: "Udbhav Square is an elegantly designed 20,000 sq. ft. commercial space at Kottara Chowki, built with a contemporary touch and an eco-friendly footprint suited to a wide range of businesses — from banks, polyclinics, and individual clinics to offices, automobile showrooms, shipping offices, and supermarkets. Ample parking at road level and in the basement rounds out a dependable, business-ready address.",
+    mapTitle: "Kottara Chowki",
+    mapDesc: "Kottara Chowki is a well-connected commercial junction in Mangaluru, popular with retailers, clinics, and offices for its visibility and accessibility.",
+    mapSrc: "https://maps.google.com/maps?q=Udbhav%20Square%2C%20Kottara%20Chowki%2C%20Mangalore&t=m&z=16&output=embed&iwloc=near",
+    mapQueryName: "Kottara Chowki, Mangaluru",
+      typology: "Office & Retail Space",
+    possession: "Project completed in 2020",
+    rera: "PRM/KA/RERA/1257/334/PR/180222/002553",
+    size: "Basement + Ground + 3 Floors",
+    area: "25 Cents",
+    galleryImages: [
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/lrg25-1-1.jpg", alt: "Udbhav Square Exterior", title: "Udbhav Square", subtitle: "Kottara Chowki, Mangalore" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/Square-1.webp", alt: "Udbhav Square Facade", title: "Facade View", subtitle: "Commercial Space" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/Square-2.webp", alt: "Udbhav Square Retail Frontage", title: "Retail Frontage", subtitle: "Kottara Chowki, Mangalore" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/Square-3.webp", alt: "Udbhav Square Interior", title: "Interior Finish", subtitle: "Office & Retail Space" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/Square-4.webp", alt: "Udbhav Square Parking", title: "Parking & Access", subtitle: "Basement + Ground Level" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/lrg24-1.jpg", alt: "Udbhav Square Detail", title: "Architectural Detail", subtitle: "Kottara Chowki, Mangalore" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/lrg14-1.jpg", alt: "Udbhav Square View", title: "Building View", subtitle: "Kottara Chowki, Mangalore" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/lrg21-1.jpg", alt: "Udbhav Square Streetside", title: "Street View", subtitle: "Kottara Chowki, Mangalore" },
+    ]
+  
+  },
+  "bhaskar-coconut-groves": {
+    subtitle: "Green-Canopy Residences",
+    overview: "Bhaskar Coconut Groves is a five-storeyed premium apartment complex near Nantoor Junction, set in a calm, green neighbourhood and housing 28 homes including duplex units. Amenities include a children's play area, recreation room, gym, spacious lobby, reticulated gas connection, security, power backup, ample parking, and automatic lifts. Floor plans follow Vaastu principles, with spacious rooms designed for maximum ventilation and natural light.",
+    mapTitle: "Maroli",
+    mapDesc: "Maroli offers a calm, green residential setting near Nantoor Junction, combining natural surroundings with easy access to the rest of Mangaluru.",
+    mapSrc: "https://maps.google.com/maps?q=Bhaskar%20Coconut%20Groves%2C%20Tharethotta%20Road%2C%20Adu%2C%20Maroli%2C%20Mangaluru%2C%20Karnataka%20575002&t=m&z=16&output=embed&iwloc=near",
+    mapQueryName: "Tharethotta Road, Maroli, Mangaluru",
+     typology: "Residential Apartments",
+    possession: "Project completed in 2015",
+    rera: "—",
+    size: "Ground + 5 Floors",
+    area: "35 Cents",
+    galleryImages: [
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/lrg11.jpg", alt: "Bhaskar Coconut Groves Exterior", title: "Bhaskar Coconut Groves", subtitle: "Maroli, Mangalore" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/lrg8.jpg", alt: "Bhaskar Coconut Groves Facade", title: "Facade View", subtitle: "Maroli, Mangalore" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/lrg10.jpg", alt: "Bhaskar Coconut Groves Grounds", title: "Landscaped Grounds", subtitle: "Coconut Grove Setting" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/lrg9.jpg", alt: "Bhaskar Coconut Groves Interior", title: "Interior Finish", subtitle: "Duplex & Apartment Units" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/lrg6.jpg", alt: "Bhaskar Coconut Groves Amenities", title: "Amenities", subtitle: "Recreation & Play Area" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/lrg2.jpg", alt: "Bhaskar Coconut Groves Lobby", title: "Lobby", subtitle: "Maroli, Mangalore" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/lrg13.jpg", alt: "Bhaskar Coconut Groves Detail", title: "Architectural Detail", subtitle: "Maroli, Mangalore" },
+      { src: "https://udbhavdevelopers.com/wp-content/uploads/2025/07/lrg14.jpg", alt: "Bhaskar Coconut Groves View", title: "Building View", subtitle: "Maroli, Mangalore" },
+    ]
+   
+  }
+};
+
+const currentInfo = projectDetails[project.slug as keyof typeof projectDetails] || {
+  subtitle: project.tagline,
+  overview: project.description,
+  mapTitle: project.location,
+  mapDesc: "A prime location offering optimal accessibility and neighborhood amenities.",
+  mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.3564993883187!2d74.8485!3d12.8647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba35c0245645679%3A0x629c12345678abcd!2sMangaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin",
+  mapQueryName: project.location,
+  galleryImages: [{ src: "/images/projects/chinmaya.jpg", alt: project.name, title: project.name, subtitle: project.location }]
+};
 ---
 
 <BaseLayout title={project.name} description={`${project.tagline} — ${project.name} by Udbhav Developers in ${project.location}.`}>
@@ -36,10 +185,21 @@ const seed = projects.findIndex((p) => p.slug === project.slug) + 2;
   </section>
 
   <section class="mx-auto grid max-w-[1400px] gap-12 px-5 py-20 md:px-10 lg:grid-cols-[1fr_320px]">
-    <div>
-      <h2 class="font-display text-2xl">Overview</h2>
-      <p class="mt-4 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">{project.description}</p>
+    <div class="space-y-6">
+      <div>
+        <h2 class="font-display text-2xl font-normal text-[#1A1A1A]">Overview</h2>
+      </div>
+
+      <div class="bg-[#FCECE8] border border-[#F5D6CE]/40 rounded-3xl p-8 sm:p-10 shadow-sm space-y-4">
+        <h3 class="font-serif text-2xl sm:text-3xl font-normal text-[#1A1A1A]">
+          {currentInfo.subtitle}
+        </h3>
+        <p class="text-[15px] sm:text-base leading-relaxed text-gray-700 font-normal">
+          {currentInfo.overview}
+        </p>
+      </div>
     </div>
+
     <aside class="h-fit space-y-5 rounded-lg border border-border bg-white p-7">
       <div class="flex items-center justify-between border-b border-border pb-3">
         <span class="text-xs uppercase tracking-wide text-muted-foreground">Location</span>
@@ -59,10 +219,111 @@ const seed = projects.findIndex((p) => p.slug === project.slug) + 2;
         <span class="text-xs uppercase tracking-wide text-muted-foreground">Status</span>
         <span class="font-medium">{project.status}</span>
       </div>
+      
+      
       <a href="/contact" class="mt-2 flex items-center justify-center gap-2 rounded-sm bg-primary px-6 py-3 text-[13px] font-medium uppercase tracking-wide text-primary-foreground hover:bg-clay-hover">
-        Enquire About This Project
+        Project Area
       </a>
     </aside>
+  </section>
+
+  <section class="py-20 px-6 max-w-[1440px] mx-auto font-sans">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: Location & Neighborhood Details -->
+      <div class="lg:col-span-5 space-y-8">
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-widest text-[#C23B22] mb-2">The Address</h3>
+          <h2 class="font-serif text-4xl sm:text-5xl font-normal text-[#1A1A1A]">{currentInfo.mapTitle}</h2>
+        </div>
+
+        <p class="text-gray-600 text-base leading-relaxed">
+          {currentInfo.mapDesc}
+        </p>
+
+        <div class="flex items-center justify-between border-t border-gray-200 pt-6">
+          <span class="text-xs uppercase tracking-wide text-gray-400 font-semibold">Location</span>
+          <span class="font-bold text-[#1A1A1A] text-sm">{currentInfo.mapQueryName}</span>
+        </div>
+      </div>
+
+      <!-- Right Column: Embedded Google Map Card -->
+      <div class="lg:col-span-7">
+        <div class="bg-white border border-gray-200 rounded-3xl p-3 shadow-sm overflow-hidden relative">
+          <div class="w-full h-[450px] sm:h-[500px] rounded-2xl overflow-hidden bg-gray-100">
+            <iframe 
+              src={currentInfo.mapSrc} 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              class="w-full h-full grayscale-[20%] contrast-[105%]"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Scrollable Dynamic Gallery Section -->
+  <section class="py-20 px-6 font-sans overflow-hidden max-w-[1440px] mx-auto">
+    <div class="space-y-8">
+      <div class="flex items-end justify-between">
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-widest text-[#C23B22] mb-2">Visual Showcase</h3>
+          <h2 class="font-serif text-3xl sm:text-4xl text-[#1A1A1A]">Project Gallery</h2>
+        </div>
+
+        <div class="hidden sm:flex gap-3">
+          <button 
+            id="scroll-left" 
+            aria-label="Scroll left"
+            class="h-12 w-12 rounded-full border border-gray-200 bg-white hover:bg-gray-50 flex items-center justify-center transition-colors shadow-sm text-gray-700"
+          >
+            ←
+          </button>
+          <button 
+            id="scroll-right" 
+            aria-label="Scroll right"
+            class="h-12 w-12 rounded-full border border-gray-200 bg-white hover:bg-gray-50 flex items-center justify-center transition-colors shadow-sm text-gray-700"
+          >
+            →
+          </button>
+        </div>
+      </div>
+
+      <div 
+        id="gallery-container" 
+        class="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar pb-6 pt-2"
+        style="scrollbar-width: none; -ms-overflow-style: none;"
+      >
+        {currentInfo.galleryImages.map((img) => (
+          <div class="min-w-[300px] sm:min-w-[420px] lg:min-w-[480px] flex-shrink-0 group">
+            <div class="relative overflow-hidden rounded-3xl aspect-[4/3] bg-gray-100 shadow-sm mb-4">
+              <img 
+                src={img.src} 
+                alt={img.alt} 
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+            
+            {img.title && (
+              <div class="flex items-center justify-between px-1">
+                <h4 class="font-bold text-[#1A1A1A] text-base">{img.title}</h4>
+                {img.subtitle && (
+                  <span class="text-xs font-medium tracking-wide text-gray-500 uppercase">{img.subtitle}</span>
+                )}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
   </section>
 
   <section class="mx-auto max-w-[1400px] px-5 pb-24 md:px-10">
@@ -74,3 +335,23 @@ const seed = projects.findIndex((p) => p.slug === project.slug) + 2;
 
   <CtaBanner seed={seed + 3} />
 </BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('gallery-container');
+    const btnLeft = document.getElementById('scroll-left');
+    const btnRight = document.getElementById('scroll-right');
+
+    if (!container || !btnLeft || !btnRight) return;
+
+    const scrollAmount = 500;
+
+    btnLeft.addEventListener('click', () => {
+      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    btnRight.addEventListener('click', () => {
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+  });
+</script>

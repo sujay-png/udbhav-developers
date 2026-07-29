@@ -1,0 +1,575 @@
+---
+// src/pages/buyers-guide.astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ArtPanel from "@/components/ArtPanel.astro";
+import CtaBanner from "@/components/sections/CtaBanner.astro";
+import { Icon as IconBase } from "@/components/Icon";
+const Icon = IconBase as any;
+
+// Content paraphrased and restructured from udbhavdevelopers.com/buyers-guide/
+// into five tabbed sections: Booking Checklist, Loan Enquiry, NRI Corner,
+// EMI Calculator, General Guide.
+
+const tabs = [
+  { id: "checklist", label: "Booking Checklist" },
+  { id: "loan", label: "Loan Enquiry" },
+  { id: "nri", label: "NRI Corner" },
+  { id: "emi", label: "EMI Calculator" },
+  { id: "general", label: "General Guide" },
+];
+
+const bookingDocs = {
+  resident: [
+    "Self-attested copy of PAN card",
+    "Self-attested residence proof — Driver's Licence, Ration Card, Passport, Voter ID, or Aadhaar",
+    "Passport-size photographs, one set per applicant",
+    "A cheque book for the payment account",
+  ],
+  nri: [
+    "Copy of passport, or PIO card for Persons of Indian Origin",
+    "Two passport-size photographs per applicant",
+    "All cheque payments must be drawn on the applicant's NRE, NRO, or FCNR account, or sent via foreign remittance — third-party accounts cannot be accepted",
+  ],
+};
+
+const loanFaqs = [
+  {
+    q: "Who is eligible for a home loan?",
+    a: "In general, applicants must be at least 21 years old and show a regular income, whether salaried or self-employed.",
+  },
+  {
+    q: "When can I apply, and what are the stages?",
+    a: "You can apply before you've even chosen a property — an in-principle approval helps you set a budget in advance. From there, a loan moves through two stages: sanction, where the amount is approved, and disbursement, released in step with construction progress.",
+  },
+  {
+    q: "Who can be a co-applicant?",
+    a: "Every co-owner of the property must also be a co-applicant on the loan, though the reverse isn't true — a co-applicant doesn't need to hold ownership.",
+  },
+  {
+    q: "Can I take more than one home loan at a time?",
+    a: "Yes, provided you can demonstrate the repayment capacity — the loans can cover the same property (for repairs or extensions) or entirely separate ones.",
+  },
+  {
+    q: "What counts toward Net Monthly Income (NMI) for eligibility?",
+    a: "For a salaried applicant, NMI combines the applicant's salary, a co-applicant or spouse's salary, and any other income such as rent, agricultural earnings, or tuition fees. For self-employed or professional applicants, it's the annual post-tax income (per IT returns) divided by twelve, plus other income sources.",
+  },
+  {
+    q: "How much of the property value can a loan cover?",
+    a: "Lenders typically finance up to 80% of the agreement value.",
+  },
+  {
+    q: "What's the difference between EMI and Pre-EMI?",
+    a: "An EMI (Equated Monthly Installment) blends a principal and an interest component into one fixed monthly payment. Pre-EMI applies before the full loan is disbursed — you pay interest only on the portion released so far, on a monthly or quarterly basis, until regular EMIs begin.",
+  },
+  {
+    q: "Can my EMI be revised, and can I prepay?",
+    a: "A significant change in interest rates can trigger a reset of your EMI. Separately, you're free to prepay any extra amount at any time ahead of schedule to close the loan sooner.",
+  },
+  {
+    q: "What's the maximum loan tenure?",
+    a: "Up to 20 years, for both floating and fixed-rate loans — though the term generally can't extend past your retirement age, or 65, whichever comes first. Applicants nearing that threshold may need a life insurance policy to cover the remaining risk.",
+  },
+  {
+    q: "Floating rate or fixed rate — what's the difference?",
+    a: "A floating rate moves with a reference benchmark over the life of the loan. A fixed rate stays constant for the agreed tenure, or a set period within it.",
+  },
+  {
+    q: "What tax benefits apply to a home loan?",
+    a: "Interest paid can be deducted under Section 24, up to ₹1,50,000 a year, once you're in possession of the home. Principal repayment is deductible under Section 80C up to ₹1,00,000, within that section's overall cap. Your lender's annual statement will break down both components for filing.",
+  },
+];
+
+const whyInvest = [
+  { title: "Trust & Reliability", body: "Over a decade in Mangaluru real estate has built a reputation for quality, follow-through, and customer care." },
+  { title: "Premium Properties", body: "A portfolio of residential and commercial addresses in prime locations, designed to a consistently high standard." },
+  { title: "Hassle-Free Transactions", body: "Support across every stage — selection, documentation, financing, and after-sales — for a smoother purchase." },
+  { title: "Transparent Practices", body: "Every transaction is conducted openly, so buyers have what they need to decide with confidence." },
+];
+
+const investmentTypes = [
+  { title: "Residential Projects", body: "Homes designed for comfort and community, blending contemporary architecture with everyday convenience." },
+  { title: "Commercial Projects", body: "Strategically located spaces built for modern businesses, from retail counters to full offices." },
+];
+
+const nriGuidelines = [
+  { title: "Eligibility", body: "NRIs, OCIs, and PIOs can buy both residential and commercial property in India under current regulations." },
+  { title: "Repatriation of Funds", body: "Sale proceeds can generally be repatriated, subject to RBI conditions on amount, property type, and proof of the original overseas investment." },
+  { title: "Documentation", body: "Repatriation requires evidence that the original purchase was funded through proper banking channels from abroad, along with proof of the sale itself." },
+  { title: "Financing", body: "NRIs can access home loans from Indian lenders, subject to the same eligibility and documentation checks as any applicant." },
+];
+
+const howWeHelp = [
+  { title: "Property Selection", body: "Guidance matched to your goals, with detailed information and virtual tours so you can decide with confidence from anywhere." },
+  { title: "Legal & Financial Assistance", body: "Support navigating compliance and paperwork, so the transaction stays smooth end to end." },
+  { title: "Post-Purchase Support", body: "Help continues after handover — property management, rental assistance, and resale support when you need it." },
+];
+
+const nriFaqs = [
+  {
+    q: "Who counts as an NRI or PIO?",
+    a: "An NRI is an Indian citizen living abroad for work, business, or an uncertain-duration stay outside India. A PIO is a foreign citizen (excluding a few neighbouring countries) who once held an Indian passport, or whose parent or grandparent did.",
+  },
+  {
+    q: "Do I need RBI permission to buy property in India?",
+    a: "No — general permission already covers residential and commercial property purchases by NRIs and PIOs.",
+  },
+  {
+    q: "How should payments be made under this general permission?",
+    a: "Funds must come through normal banking channels as foreign remittance, or from an NRE/FCNR account held in India. A declaration (Form IPI 7) must reach the RBI's central office within 90 days of purchase, along with supporting transaction documents.",
+  },
+  {
+    q: "Can I sell the property without RBI approval?",
+    a: "Yes, general permission covers resale too — though if the buyer is another foreign citizen of Indian origin, their payment must follow the same remittance or NRE/FCNR route.",
+  },
+  {
+    q: "Can I repatriate the sale proceeds?",
+    a: "For property bought on or after 26 May 1993, the RBI will generally allow repatriation up to the original foreign-exchange investment, for up to two properties. Any remaining balance goes into an ordinary non-resident rupee account.",
+  },
+  {
+    q: "What's the process for repatriation?",
+    a: "File Form IPI 8 with the RBI's central office within 90 days of the sale. Approval typically requires that at least three years have passed since the purchase deed or final payment, whichever is later.",
+  },
+  {
+    q: "Can I gift the property to a relative or a trust?",
+    a: "Yes — general permission allows gifting up to two such properties to a relative, whether resident in India or not, provided applicable tax rules are followed.",
+  },
+  {
+    q: "Can I rent the property out?",
+    a: "Yes, letting out is permitted, and the rental income (or its reinvestment proceeds) is eligible for repatriation.",
+  },
+];
+
+const generalFaqs = [
+  {
+    q: "What should I verify before buying a property?",
+    a: "Check the approved layout and building plan, run a title search through a qualified advocate, and confirm ownership documents, environmental clearance, the intimation of disapproval, and the commencement certificate. An advocate's advice before signing is always worthwhile.",
+  },
+  {
+    q: "What's the difference between carpet, built-up, and super built-up area?",
+    a: "Carpet area excludes wall thickness. Built-up area includes it. Super built-up area adds a share of common spaces — lobbies, lifts, stairwells — and applies mainly to multi-unit developments.",
+  },
+  {
+    q: "Who pays stamp duty, and whose name goes on the stamps?",
+    a: "The buyer is liable unless the agreement states otherwise, and the stamps are purchased in the name of one of the parties to the document.",
+  },
+  {
+    q: "Is stamp duty based on the agreement value or market value?",
+    a: "Whichever is higher. Market value is what the property would fetch in an open-market sale on the date the document is executed.",
+  },
+  {
+    q: "Can I get a refund on unused stamps?",
+    a: "Yes, within six months of purchase, if bought in good faith and unsigned by either party. The application goes to the Collector with an affidavit explaining the original purpose, and a deduction applies before any refund.",
+  },
+  {
+    q: "Is stamp duty payable on a family settlement?",
+    a: "Yes — a deed transferring property among family members still attracts stamp duty.",
+  },
+  {
+    q: "Which documents attract stamp duty?",
+    a: "Agreements to sell, conveyance deeds, property exchanges, gift deeds, partition deeds, powers of attorney, settlements, and lease transfers are all assessed on the property's market value.",
+  },
+  {
+    q: "Who determines a property's market value?",
+    a: "The Sub-Registrar for the area where the property is located.",
+  },
+  {
+    q: "Can someone act on the owner's behalf in a transaction?",
+    a: "Yes, through a Power of Attorney — general or narrowly scoped to specific acts like registration, possession, or a sale agreement, depending on what the POA document grants.",
+  },
+  {
+    q: "What does 'freehold' mean?",
+    a: "A freehold property has one clear, unconditional owner, with no lessor-lessee relationship involved.",
+  },
+];
+
+--- 
+
+<BaseLayout title="Buyer's Guide" description="Everything you need before buying a home in Mangaluru — booking documents, loan eligibility, NRI investment rules, an EMI calculator, and general property FAQs from Udbhav Developers.">
+  <section class="relative overflow-hidden bg-ink text-cream">
+    <ArtPanel seed={11} tone="ink" class="absolute inset-0" />
+    <div class="relative mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
+      <span class="text-xs font-bold uppercase tracking-widest text-[#E8836A]">For Homebuyers</span>
+      <h1 class="mt-5 max-w-2xl text-balance font-display text-5xl leading-[1.05] md:text-6xl">Buyer's Guide</h1>
+      <p class="mt-4 max-w-lg text-[15px] text-cream/70">
+        Booking paperwork, loan eligibility, NRI investment rules, and the fine print on stamp duty —
+        laid out in one place so nothing catches you by surprise.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tab Navigation -->
+  <nav class="sticky top-0 z-30 border-b border-gray-200 bg-white/95 backdrop-blur">
+    <div class="mx-auto flex max-w-[1400px] gap-2 overflow-x-auto px-5 md:px-10" id="guide-tabs">
+      {tabs.map((tab, i) => (
+        <button
+          type="button"
+          data-tab={tab.id}
+          class:list={[
+            "guide-tab shrink-0 whitespace-nowrap border-b-2 px-4 py-5 text-sm font-semibold uppercase tracking-wide transition-colors",
+            i === 0 ? "border-[#C23B22] text-[#1A1A1A]" : "border-transparent text-gray-400 hover:text-gray-600"
+          ]}
+        >
+          {tab.label}
+        </button>
+      ))}
+    </div>
+  </nav>
+
+  <div class="mx-auto max-w-[1000px] px-5 py-16 md:px-10 md:py-20 font-sans">
+
+    <!-- Panel: Booking Checklist -->
+    <section data-panel="checklist" class="guide-panel space-y-8">
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-widest text-[#C23B22] mb-2">Before You Book</h3>
+        <h2 class="font-serif text-3xl sm:text-4xl text-[#1A1A1A]">Documents you'll need</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="bg-[#FCECE8] border border-[#F5D6CE]/40 rounded-3xl p-8 space-y-4">
+          <h4 class="font-serif text-xl text-[#1A1A1A]">Resident of India</h4>
+          <ul class="space-y-3">
+            {bookingDocs.resident.map((doc) => (
+              <li class="flex items-start gap-3 text-[15px] leading-relaxed text-gray-700">
+                <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-[#C23B22]" />
+                <span>{doc}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-3xl p-8 space-y-4">
+          <h4 class="font-serif text-xl text-[#1A1A1A]">NRI / Foreign National of Indian Origin</h4>
+          <ul class="space-y-3">
+            {bookingDocs.nri.map((doc) => (
+              <li class="flex items-start gap-3 text-[15px] leading-relaxed text-gray-700">
+                <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-[#C23B22]" />
+                <span>{doc}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Panel: Loan Enquiry -->
+    <section data-panel="loan" class="guide-panel hidden space-y-8">
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-widest text-[#C23B22] mb-2">Financing</h3>
+        <h2 class="font-serif text-3xl sm:text-4xl text-[#1A1A1A]">Loan enquiry</h2>
+      </div>
+      <div class="divide-y divide-gray-200 border-y border-gray-200">
+        {loanFaqs.map((item, i) => (
+          <div class="accordion-item">
+            <button type="button" class="accordion-trigger flex w-full items-center justify-between gap-4 py-5 text-left">
+              <span class="font-serif text-lg text-[#1A1A1A]">{item.q}</span>
+              <Icon name="plus" className="accordion-icon h-4 w-4 shrink-0 text-[#C23B22] transition-transform" />
+            </button>
+            <div class="accordion-content hidden pb-6 text-[15px] leading-relaxed text-gray-600">
+              {item.a}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Panel: NRI Corner -->
+    <section data-panel="nri" class="guide-panel hidden space-y-16">
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-widest text-[#C23B22] mb-2">NRI Corner</h3>
+          <h2 class="font-serif text-3xl sm:text-4xl text-[#1A1A1A]">Why invest with Udbhav</h2>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2">
+          {whyInvest.map((item) => (
+            <div class="bg-[#FCECE8] border border-[#F5D6CE]/40 rounded-3xl p-7 space-y-2">
+              <h4 class="font-serif text-lg text-[#1A1A1A]">{item.title}</h4>
+              <p class="text-[15px] leading-relaxed text-gray-700">{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="space-y-8">
+        <h3 class="font-serif text-2xl text-[#1A1A1A]">Investment opportunities</h3>
+        <div class="grid gap-6 sm:grid-cols-2">
+          {investmentTypes.map((item) => (
+            <div class="bg-white border border-gray-200 rounded-3xl p-7 space-y-2">
+              <h4 class="font-serif text-lg text-[#1A1A1A]">{item.title}</h4>
+              <p class="text-[15px] leading-relaxed text-gray-700">{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="space-y-8">
+        <h3 class="font-serif text-2xl text-[#1A1A1A]">NRI investment guidelines</h3>
+        <div class="space-y-4">
+          {nriGuidelines.map((item) => (
+            <div class="flex gap-4 border-b border-gray-200 pb-4">
+              <span class="font-serif text-lg text-[#C23B22] shrink-0 w-40">{item.title}</span>
+              <p class="text-[15px] leading-relaxed text-gray-700">{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="space-y-8">
+        <h3 class="font-serif text-2xl text-[#1A1A1A]">How we help</h3>
+        <div class="grid gap-6 sm:grid-cols-3">
+          {howWeHelp.map((item) => (
+            <div class="space-y-2">
+              <h4 class="font-serif text-lg text-[#1A1A1A]">{item.title}</h4>
+              <p class="text-[15px] leading-relaxed text-gray-700">{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="space-y-8">
+        <h3 class="font-serif text-2xl text-[#1A1A1A]">NRI FAQs</h3>
+        <div class="divide-y divide-gray-200 border-y border-gray-200">
+          {nriFaqs.map((item) => (
+            <div class="accordion-item">
+              <button type="button" class="accordion-trigger flex w-full items-center justify-between gap-4 py-5 text-left">
+                <span class="font-serif text-lg text-[#1A1A1A]">{item.q}</span>
+                <Icon name="plus" className="accordion-icon h-4 w-4 shrink-0 text-[#C23B22] transition-transform" />
+              </button>
+              <div class="accordion-content hidden pb-6 text-[15px] leading-relaxed text-gray-600">
+                {item.a}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Panel: EMI Calculator -->
+    <section data-panel="emi" class="guide-panel hidden space-y-8">
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-widest text-[#C23B22] mb-2">Plan Ahead</h3>
+        <h2 class="font-serif text-3xl sm:text-4xl text-[#1A1A1A]">EMI calculator</h2>
+        <p class="mt-3 text-[15px] text-gray-600 max-w-md">Adjust the figures to see your estimated monthly instalment and total interest.</p>
+      </div>
+
+      <div class="bg-[#FCECE8] border border-[#F5D6CE]/40 rounded-3xl p-8 sm:p-10 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
+        <div class="space-y-7">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label for="emi-amount" class="text-xs uppercase tracking-wide text-gray-500 font-semibold">Total Amount</label>
+              <span class="font-serif text-lg text-[#1A1A1A]" id="emi-amount-display">₹50,00,000</span>
+            </div>
+            <input id="emi-amount" type="range" min="500000" max="20000000" step="50000" value="5000000" class="emi-slider w-full" />
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label for="emi-down" class="text-xs uppercase tracking-wide text-gray-500 font-semibold">Down Payment</label>
+              <span class="font-serif text-lg text-[#1A1A1A]" id="emi-down-display">₹10,00,000</span>
+            </div>
+            <input id="emi-down" type="range" min="0" max="10000000" step="50000" value="1000000" class="emi-slider w-full" />
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label for="emi-rate" class="text-xs uppercase tracking-wide text-gray-500 font-semibold">Interest Rate</label>
+              <span class="font-serif text-lg text-[#1A1A1A]" id="emi-rate-display">8.5%</span>
+            </div>
+            <input id="emi-rate" type="range" min="6" max="15" step="0.1" value="8.5" class="emi-slider w-full" />
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label for="emi-years" class="text-xs uppercase tracking-wide text-gray-500 font-semibold">Mortgage Period</label>
+              <span class="font-serif text-lg text-[#1A1A1A]" id="emi-years-display">20 years</span>
+            </div>
+            <input id="emi-years" type="range" min="1" max="20" step="1" value="20" class="emi-slider w-full" />
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-7 space-y-6">
+          <div class="flex items-center justify-center">
+            <svg viewBox="0 0 200 200" class="w-40 h-40">
+              <circle cx="100" cy="100" r="80" fill="none" stroke="#F5D6CE" stroke-width="24" />
+              <circle id="emi-donut" cx="100" cy="100" r="80" fill="none" stroke="#C23B22" stroke-width="24"
+                stroke-dasharray="0 502" stroke-linecap="round" transform="rotate(-90 100 100)" />
+            </svg>
+          </div>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-center justify-between border-b border-gray-100 pb-3">
+              <span class="flex items-center gap-2 text-gray-500"><span class="h-2.5 w-2.5 rounded-full bg-[#C23B22] inline-block"></span>Principal</span>
+              <span class="font-semibold text-[#1A1A1A]" id="emi-principal">—</span>
+            </div>
+            <div class="flex items-center justify-between border-b border-gray-100 pb-3">
+              <span class="flex items-center gap-2 text-gray-500"><span class="h-2.5 w-2.5 rounded-full bg-[#F5D6CE] inline-block"></span>Total Interest</span>
+              <span class="font-semibold text-[#1A1A1A]" id="emi-interest">—</span>
+            </div>
+            <div class="flex items-center justify-between pt-1">
+              <span class="text-gray-500">Monthly EMI</span>
+              <span class="font-serif text-2xl text-[#C23B22]" id="emi-monthly">—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="text-xs text-gray-400">This calculator gives an estimate only; actual EMI depends on your lender's terms and processing charges.</p>
+    </section>
+
+    <!-- Panel: General Guide -->
+    <section data-panel="general" class="guide-panel hidden space-y-8">
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-widest text-[#C23B22] mb-2">The Fine Print</h3>
+        <h2 class="font-serif text-3xl sm:text-4xl text-[#1A1A1A]">General guide</h2>
+      </div>
+      <div class="divide-y divide-gray-200 border-y border-gray-200">
+        {generalFaqs.map((item) => (
+          <div class="accordion-item">
+            <button type="button" class="accordion-trigger flex w-full items-center justify-between gap-4 py-5 text-left">
+              <span class="font-serif text-lg text-[#1A1A1A]">{item.q}</span>
+              <Icon name="plus" className="accordion-icon h-4 w-4 shrink-0 text-[#C23B22] transition-transform" />
+            </button>
+            <div class="accordion-content hidden pb-6 text-[15px] leading-relaxed text-gray-600">
+              {item.a}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+  </div>
+
+  <CtaBanner seed={14} />
+
+
+<style>
+  .emi-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    border-radius: 999px;
+    background: #F5D6CE;
+    outline: none;
+  }
+  .emi-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #C23B22;
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 0 0 1px #C23B22;
+  }
+  .emi-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #C23B22;
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 0 0 1px #C23B22;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // --- Tab switching ---
+    const tabButtons = document.querySelectorAll<HTMLButtonElement>('.guide-tab');
+    const panels = document.querySelectorAll<HTMLElement>('.guide-panel');
+
+    tabButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+
+        tabButtons.forEach((b) => {
+          b.classList.remove('border-[#C23B22]', 'text-[#1A1A1A]');
+          b.classList.add('border-transparent', 'text-gray-400');
+        });
+        btn.classList.remove('border-transparent', 'text-gray-400');
+        btn.classList.add('border-[#C23B22]', 'text-[#1A1A1A]');
+
+        panels.forEach((panel) => {
+          panel.classList.toggle('hidden', panel.dataset.panel !== target);
+        });
+
+        window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+      });
+    });
+
+    // --- Accordions ---
+    document.querySelectorAll<HTMLElement>('.accordion-item').forEach((item) => {
+      const trigger = item.querySelector<HTMLElement>('.accordion-trigger');
+      const content = item.querySelector<HTMLElement>('.accordion-content');
+      const icon = item.querySelector<HTMLElement>('.accordion-icon');
+      if (!trigger || !content || !icon) return;
+
+      trigger.addEventListener('click', () => {
+        const isOpen = !content.classList.contains('hidden');
+        content.classList.toggle('hidden', isOpen);
+        icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(45deg)';
+      });
+    });
+
+    // --- EMI Calculator ---
+    const amountEl = document.getElementById('emi-amount') as HTMLInputElement | null;
+    const downEl = document.getElementById('emi-down') as HTMLInputElement | null;
+    const rateEl = document.getElementById('emi-rate') as HTMLInputElement | null;
+    const yearsEl = document.getElementById('emi-years') as HTMLInputElement | null;
+
+    const amountDisplay = document.getElementById('emi-amount-display');
+    const downDisplay = document.getElementById('emi-down-display');
+    const rateDisplay = document.getElementById('emi-rate-display');
+    const yearsDisplay = document.getElementById('emi-years-display');
+
+    const principalOut = document.getElementById('emi-principal');
+    const interestOut = document.getElementById('emi-interest');
+    const monthlyOut = document.getElementById('emi-monthly');
+    const donut = document.getElementById('emi-donut');
+
+    if (!amountEl || !downEl || !rateEl || !yearsEl) return;
+
+    const formatINR = (value: number) =>
+      '₹' + Math.round(value).toLocaleString('en-IN');
+
+    function calculate() {
+      const amount = parseFloat(amountEl!.value);
+      const down = Math.min(parseFloat(downEl!.value), amount);
+      const rate = parseFloat(rateEl!.value);
+      const years = parseFloat(yearsEl!.value);
+
+      const principal = Math.max(amount - down, 0);
+      const monthlyRate = rate / 12 / 100;
+      const months = years * 12;
+
+      let emi = 0;
+      if (monthlyRate > 0) {
+        const factor = Math.pow(1 + monthlyRate, months);
+        emi = (principal * monthlyRate * factor) / (factor - 1);
+      } else {
+        emi = principal / months;
+      }
+
+      const totalPaid = emi * months;
+      const totalInterest = Math.max(totalPaid - principal, 0);
+
+      if (amountDisplay) amountDisplay.textContent = formatINR(amount);
+      if (downDisplay) downDisplay.textContent = formatINR(down);
+      if (rateDisplay) rateDisplay.textContent = rate.toFixed(1) + '%';
+      if (yearsDisplay) yearsDisplay.textContent = years + (years === 1 ? ' year' : ' years');
+
+      if (principalOut) principalOut.textContent = formatINR(principal);
+      if (interestOut) interestOut.textContent = formatINR(totalInterest);
+      if (monthlyOut) monthlyOut.textContent = formatINR(emi) + '/mo';
+
+      if (donut) {
+        const circumference = 2 * Math.PI * 80;
+        const principalShare = totalPaid > 0 ? principal / totalPaid : 1;
+        const dash = circumference * principalShare;
+        donut.setAttribute('stroke-dasharray', `${dash} ${circumference}`);
+      }
+    }
+
+    [amountEl, downEl, rateEl, yearsEl].forEach((el) => {
+      el.addEventListener('input', calculate);
+    });
+
+    calculate();
+  });
+</script>
+   
+
+</BaseLayout>

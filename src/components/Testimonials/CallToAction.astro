@@ -1,0 +1,31 @@
+---
+// CallToAction.astro
+import { Icon } from "@/components/Icon";
+---
+
+<section class="bg-[#FAF9F5] py-28 px-6 font-sans text-center">
+  <div class="mx-auto max-w-4xl space-y-8">
+    
+    <!-- Heading -->
+    <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal text-[#1A1A1A] tracking-tight leading-tight">
+      Ready to start your own story?
+    </h2>
+
+    <!-- Subtitle -->
+    <p class="text-base sm:text-lg text-gray-600 max-w-xl mx-auto font-normal leading-relaxed">
+      Join our community of happy homeowners and experience the Udbhav difference. Let's build your legacy together.
+    </p>
+
+    <!-- Call to Action Button -->
+    <div class="pt-4">
+      <a 
+        href="/contact" 
+        class="inline-flex items-center gap-3 bg-[#8B0000] hover:bg-[#700000] text-white font-medium text-sm px-8 py-4 rounded-full transition-all duration-300 shadow-sm hover:shadow"
+      >
+        <span>Contact Us</span>
+        <Icon name="arrow-right" className="h-4 w-4" />
+      </a>
+    </div>
+
+  </div>
+</section>
