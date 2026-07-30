@@ -4,11 +4,11 @@ import Hero from "@/components/NewsMedia/Hero.astro";
 import Newsupdates from "@/components/NewsMedia/Newsupdates.astro";
 import PressMediaSection from "@/components/NewsMedia/PressMediaSection.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { newsmedia } from "@/lib/site-data"; // Make sure to import your newsmedia array
+import { newsmedia } from "@/lib/site-data";
 ---
 
 <BaseLayout title="Udbhav Developers" description="Premium architectural developers in Mangalore since 2012. Residential apartments, commercial spaces, and retail shops built with purpose, driven by trust.">
   <Hero />
-  <Newsupdates mediaList={newsmedia} /> <!-- Pass newsmedia here -->
+  <Newsupdates mediaList={newsmedia} /> 
   <PressMediaSection />
 </BaseLayout>

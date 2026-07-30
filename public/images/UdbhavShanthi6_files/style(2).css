@@ -1,0 +1,45 @@
+/*
+Theme Name: Builtup Child
+Template:   builtup
+Theme URI: https://themeforest.net/user/awaiken
+Description: Builtup Child Theme
+Author: Awaiken
+Author URI: https://awaiken.com/
+Version: 1.0.0
+Text Domain: builtup-child
+*/
+
+/* path[Attributes Style] {
+	fill: #D33032 !important;
+} */
+
+.preloader{background-color: #FDF8F4 !important;}
+.elementor-widget .elementor-icon-list-icon+.elementor-icon-list-text{align-self: top !important; height: 100%;}
+.awaiken-portfolio-grid-item__excerpt{display: none !important;}
+.awaiken-portfolio-grid .awaiken-portfolio-grid-item__wrapper .awaiken-portfolio-grid-item__content{transform: translateY(25%) !important; text-align: center !important;}
+/* .service-item .elementskit-box-body{transform: translateY(20%) !important; text-align: center !important;} */
+
+.partner-quote{color: #D33032 !important;}
+
+.page-header-box .trail-items li, .page-header-box .post-meta ul li{color: #D33032 !important;}
+
+.works-content{bottom: 35px !important; text-align: center !important;}
+.works-content p{display: none !important;}
+
+/* .post-entry a{display: none !important;} */
+.elementor-kit-7 input[type="submit"]{
+	background-color: #D33032 !important; 
+    font-family: var(--e-global-typography-accent-font-family), Sans-serif !important;
+    font-size: var(--e-global-typography-accent-font-size) !important;
+    font-weight: var(--e-global-typography-accent-font-weight) !important;
+    text-transform: var(--e-global-typography-accent-text-transform) !important;
+    line-height: var(--e-global-typography-accent-line-height) !important;
+    border-radius: 12px 12px 12px 12px !important;
+    padding: 16px 30px 16px 30px !important;
+    margin: 30px 0px 0px 0px !important;
+    color: #ffffff;
+	height: auto !important;
+}
+
+.partner-quote{border: 1px solid #ff0000; background-color: #E9F7FE; border-radius: 30px; padding: 15px;}
+.partner-quote strong{display: block;}
