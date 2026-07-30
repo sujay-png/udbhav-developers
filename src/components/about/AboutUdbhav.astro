@@ -1,151 +1,57 @@
 ---
 import building from "/public/images/udbhav-developers-logo.png";
 ---
+<section class="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-[#FDF9F7] py-28">
+    <div class="absolute -left-20 -top-20 h-96 w-96 rounded-full bg-[#B02317]/10 blur-[120px] pointer-events-none"></div>
 
-<section class="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-orange-50 py-28">
-
-    <!-- Background Blur -->
-    <div class="absolute left-0 top-0 h-96 w-96 rounded-full bg-red-100 blur-[120px] opacity-40"></div>
-
-    <div class="relative mx-auto max-w-7xl px-6">
-
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-12">
         <div class="grid items-center gap-20 lg:grid-cols-2">
-
-            <!-- Left -->
-
-            <div class="relative">
-
-                <img
-                    src={building.src}
-                    alt=""
-                    class="rounded-[40px] shadow-2xl"
-                />
+            
+            <!-- Left Visual -->
+            <div class="relative group">
+                <div class="overflow-hidden rounded-[32px] shadow-2xl transition-all duration-500 group-hover:shadow-3xl">
+                    <img
+                        src={building.src}
+                        alt="Udbhav Developers Building"
+                        class="w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                </div>
 
                 <!-- Floating Experience Card -->
-
-                <div
-                    class="absolute -right-8 top-10 rounded-3xl bg-white p-8 shadow-2xl">
-
-                    <h2 class="text-6xl font-bold text-[#0F2343]">
-
-                        13+
-
-                    </h2>
-
-                    <p class="mt-2 text-gray-500">
-
-                        Years of Excellence
-
-                    </p>
-
+                <div class="absolute -right-8 bottom-10 rounded-2xl bg-white p-8 shadow-xl transition-transform duration-500 hover:-translate-y-2">
+                    <h2 class="font-serif text-6xl font-bold text-[#B02317]">13+</h2>
+                    <p class="mt-2 font-sans font-medium text-[#88726F]">Years of Excellence</p>
                 </div>
-
             </div>
 
-            <!-- Right -->
-
+            <!-- Right Content -->
             <div>
-
-                <span
-                    class="font-semibold uppercase tracking-[0.35em] text-red-600">
-
+                <span class="font-sans text-sm font-semibold uppercase tracking-[0.35em] text-[#B02317]">
                     About Udbhav Developers
-
                 </span>
-
-                <h2
-                    class="mt-6 text-5xl font-bold leading-tight text-[#142543]">
-
-                    Building Trust.
-                    <br>
-
-                    Creating Landmarks.
-
+                <h2 class="mt-6 font-serif text-5xl font-medium leading-tight text-[#121417]">
+                    Building Trust.<br>Creating Landmarks.
                 </h2>
-
-                <p class="mt-8 text-lg leading-9 text-gray-600">
-
-                 Udbhav Developers is a founder-led boutique real estate firm committed to creating refined residential and commercial spaces that combine thoughtful design, structural integrity, and long-term value. Established with a clear vision and guided by disciplined execution, the company focuses on select developments in prime locations, ensuring that every project reflects clarity of purpose and uncompromising quality.
-
-
-
-
-                </p>
-
-                <p class="mt-6 text-lg leading-9 text-gray-600">
-
-                    Every project reflects thoughtful planning, functional
-                    design, and sustainable value, creating spaces that
-                    homeowners and investors can rely on for generations.
-
-                </p>
+                
+                <div class="mt-8 space-y-6 font-sans text-lg leading-relaxed text-[#88726F]">
+                    <p>
+                        Udbhav Developers is a founder-led boutique real estate firm committed to creating refined residential and commercial spaces that combine thoughtful design, structural integrity, and long-term value. Established with a clear vision and guided by disciplined execution, the company focuses on select developments in prime locations, ensuring that every project reflects clarity of purpose and uncompromising quality.
+                    </p>
+                    <p>
+                        Every project reflects thoughtful planning, functional design, and sustainable value, creating spaces that homeowners and investors can rely on for generations.
+                    </p>
+                </div>
 
                 <!-- Stats -->
-
-                <div class="mt-12 grid grid-cols-3 gap-6">
-
-                    <div>
-
-                        <h3 class="text-4xl font-bold text-red-600">
-
-                            13+
-
-                        </h3>
-
-                        <p class="mt-2 text-gray-500">
-
-                            Years
-
-                        </p>
-
-                    </div>
-
-                    <div>
-
-                        <h3 class="text-4xl font-bold text-red-600">
-
-                            50+
-
-                        </h3>
-
-                        <p class="mt-2 text-gray-500">
-
-                            Projects
-
-                        </p>
-
-                    </div>
-
-                    <div>
-
-                        <h3 class="text-4xl font-bold text-red-600">
-
-                            500+
-
-                        </h3>
-
-                        <p class="mt-2 text-gray-500">
-
-                            Families
-
-                        </p>
-
-                    </div>
-
+                <div class="mt-12 grid grid-cols-3 gap-6 border-t border-gray-100 pt-10">
+                    {[{num: "13+", label: "Years"}, {num: "50+", label: "Projects"}, {num: "500+", label: "Families"}].map(stat => (
+                        <div>
+                            <h3 class="font-serif text-4xl font-bold text-[#121417]">{stat.num}</h3>
+                            <p class="mt-2 font-sans text-sm font-medium uppercase tracking-wider text-[#88726F]">{stat.label}</p>
+                        </div>
+                    ))}
                 </div>
-
-                <a
-                    href="/portfolio"
-                    class="mt-12 inline-flex rounded-xl bg-red-600 px-8 py-4 font-semibold text-white transition hover:bg-red-700">
-
-                    Explore Projects →
-
-                </a>
-
             </div>
-
         </div>
-
     </div>
-
 </section>

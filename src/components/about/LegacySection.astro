@@ -1,45 +1,51 @@
-<section class="py-28">
+---
+// LegacySection.astro
+---
 
-    <div class="mx-auto grid max-w-7xl gap-20 px-6 lg:grid-cols-2 lg:px-12">
+<section class="bg-white py-28 relative overflow-hidden">
+    <!-- Subtle Background Glow -->
+    <div class="absolute right-0 top-0 h-96 w-96 rounded-full bg-[#B02317]/5 blur-[100px] pointer-events-none"></div>
 
-        <div>
+    <div class="relative mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2 lg:px-12">
 
-            <h2 class="text-5xl font-serif">
+        <!-- Left Content -->
+        <div class="z-10">
+            <span class="font-sans text-sm font-semibold uppercase tracking-[0.35em] text-[#B02317]">
+                Our Legacy
+            </span>
+
+            <h2 class="mt-6 font-serif text-5xl font-medium text-[#121417]">
                 Since 2012
             </h2>
 
-            <p class="mt-8 text-lg leading-8 text-neutral-600">
+            <p class="mt-8 font-sans text-lg leading-relaxed text-[#88726F]">
                 Since our inception in 2012, we have been committed to creating
                 future-ready structures that blend thoughtful design with
                 long-term value.
             </p>
 
-            <div class="mt-10 border-l-2 border-primary pl-6">
-
-                <p class="italic text-xl">
+            <div class="mt-10 border-l-4 border-[#B02317] bg-[#FDF9F7] py-6 pl-8 pr-6 rounded-r-2xl shadow-sm transition-all duration-300 hover:shadow-md">
+                <p class="font-serif text-2xl italic leading-relaxed text-[#121417]">
                     "We aim to create a benchmark in the real estate industry
                     with a long lasting reputation in quality, trust and
                     innovation."
                 </p>
-
             </div>
-
         </div>
 
-        <div>
+        <!-- Right Visual -->
+        <div class="relative group z-10">
+            <!-- Decorative Offset Frame (Optional, adds depth) -->
+            <div class="absolute -inset-4 rounded-[32px] border border-[#B02317]/10 bg-[#FDF9F7] opacity-0 transition-opacity duration-500 group-hover:opacity-100 -z-10 translate-y-4 group-hover:translate-y-2"></div>
 
-            <div class="overflow-hidden">
-
+            <div class="overflow-hidden rounded-[28px] shadow-xl transition-all duration-500 group-hover:shadow-2xl">
                 <img
                     src="/images/About-us.jpg"
-                    alt=""
-                    class="aspect-[4/5] w-full object-cover transition duration-700 hover:scale-110"
+                    alt="Udbhav Developers Legacy"
+                    class="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-
             </div>
-
         </div>
 
     </div>
-
 </section>

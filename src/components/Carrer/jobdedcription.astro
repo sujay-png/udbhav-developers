@@ -1,15 +1,12 @@
 ---
-// JobPortalWithModal.astro
-// Ensure Tailwind CSS is configured in your Astro project.
-// Job content verified against https://udbhavdevelopers.com/careers/ (paraphrased, not copied verbatim)
-
+// jobdedcription.astro
 const jobs = [
   {
     id: "ud-01",
     title: "Interior Designer",
     department: "DESIGN",
     ref: "REF: UD-01",
-    experience: "0-2 Years Experience",
+    experience: "0-2 Years",
     openings: "01 Opening",
     responsibilities: [
       "Develop interior design concepts for residential and commercial projects.",
@@ -30,7 +27,7 @@ const jobs = [
     title: "Architect",
     department: "ARCHITECTURE",
     ref: "REF: UD-02",
-    experience: "2-5 Years Experience",
+    experience: "2-5 Years",
     openings: "02 Openings",
     responsibilities: [
       "Lead architectural and interior design planning for projects.",
@@ -51,7 +48,7 @@ const jobs = [
     title: "Marketing Executive",
     department: "MARKETING",
     ref: "REF: UD-03",
-    experience: "0-2 Years Experience",
+    experience: "0-2 Years",
     openings: "01 Opening",
     responsibilities: [
       "Support marketing campaigns for real estate projects.",
@@ -71,7 +68,7 @@ const jobs = [
     title: "Graphic Designer",
     department: "CREATIVE",
     ref: "REF: UD-04",
-    experience: "0-2 Years Experience",
+    experience: "0-2 Years",
     openings: "01 Opening",
     responsibilities: [
       "Design creatives for digital marketing campaigns and social media.",
@@ -89,7 +86,7 @@ const jobs = [
     title: "Sales Executive",
     department: "SALES",
     ref: "REF: UD-05",
-    experience: "0-2 Years Experience",
+    experience: "0-2 Years",
     openings: "03 Openings",
     intro: "Looking for someone motivated by hitting targets and energized by working with people — if that's you, this role is a good fit.",
     responsibilities: [
@@ -106,10 +103,10 @@ const jobs = [
   },
   {
     id: "ud-06",
-    title: "Project Engineer (Civil & MEP)",
+    title: "Project Engineer",
     department: "ENGINEERING",
     ref: "REF: UD-06",
-    experience: "0-2 Years Experience",
+    experience: "0-2 Years",
     openings: "03 Openings",
     responsibilities: [
       "Supervise daily civil construction work, ensuring structures follow architectural and structural drawings.",
@@ -128,23 +125,27 @@ const jobs = [
 ];
 ---
 
-<section class="bg-[#FAF7F2] text-[#1A1A1A] py-16 px-6 md:px-12 lg:px-20 min-h-screen relative font-sans">
+<section id="openings" class="bg-white py-24 px-6 md:px-12 lg:px-20 min-h-screen relative font-sans">
   <div class="max-w-7xl mx-auto">
     
     <!-- Header Section -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-      <div>
-        <h2 class="text-4xl sm:text-5xl font-serif font-normal tracking-tight mb-3">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+      <div class="max-w-2xl">
+        <span class="font-sans text-xs font-bold uppercase tracking-[0.35em] text-[#B02317] mb-4 block">
+          Join Us
+        </span>
+        <h2 class="font-serif text-4xl sm:text-5xl font-medium text-[#121417] tracking-tight mb-4">
           Current Opportunities
         </h2>
-        <p class="text-gray-600 text-base sm:text-lg max-w-xl font-light">
+        <p class="font-sans text-lg leading-relaxed text-[#88726F]">
           Discover roles that challenge your skills and offer meaningful growth in the real estate industry.
         </p>
       </div>
 
       <!-- Badge -->
-      <div class="mt-6 md:mt-0">
-        <span class="inline-block bg-white border border-gray-200/80 text-gray-700 text-xs font-medium px-4 py-2 rounded-full shadow-sm">
+      <div>
+        <span class="inline-flex items-center gap-2 bg-[#FDF9F7] border border-[#B02317]/10 text-[#121417] text-xs font-bold uppercase tracking-widest px-5 py-3 rounded-full shadow-sm">
+          <span class="h-2 w-2 rounded-full bg-[#B02317] animate-pulse"></span>
           {jobs.length} Open Roles
         </span>
       </div>
@@ -153,53 +154,43 @@ const jobs = [
     <!-- Job Cards Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {jobs.map((job) => (
-        <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm flex flex-col justify-between transition-all duration-300 hover:shadow-md">
+        <div class="group bg-[#FDF9F7] rounded-[32px] p-8 border border-transparent shadow-sm flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:border-[#B02317]/20 hover:bg-white">
           
           <div>
-            <!-- Top Tag & Ref -->
             <div class="flex items-center justify-between mb-6">
-              <span class="bg-[#FBEBE8] text-[#9E3B29] text-[10px] font-bold tracking-wider px-3 py-1 rounded-md">
+              <span class="bg-[#B02317]/10 text-[#B02317] text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full transition-colors group-hover:bg-[#B02317] group-hover:text-white">
                 {job.department}
               </span>
-              <span class="text-xs text-gray-400 font-mono">
+              <span class="text-xs font-medium tracking-wider text-[#88726F]">
                 {job.ref}
               </span>
             </div>
 
-            <!-- Job Title -->
-            <h3 class="text-2xl sm:text-3xl font-serif font-normal text-[#1A1A1A] mb-6 leading-tight">
+            <h3 class="font-serif text-2xl sm:text-3xl font-medium text-[#121417] mb-6 leading-tight transition-colors group-hover:text-[#B02317]">
               {job.title}
             </h3>
 
-            <!-- Experience & Openings Meta -->
-            <div class="space-y-3 mb-8 text-gray-600 text-sm font-light">
+            <div class="space-y-3 mb-10 text-[#88726F] text-sm font-medium">
               <div class="flex items-center gap-3">
-                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"></path>
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"></path>
-                </svg>
-                <span>{job.experience}</span>
+                <svg class="w-4 h-4 text-[#B02317]/50" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                <span>{job.experience} Experience</span>
               </div>
-
               <div class="flex items-center gap-3">
-                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                </svg>
+                <svg class="w-4 h-4 text-[#B02317]/50" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                 <span>{job.openings}</span>
               </div>
             </div>
           </div>
 
-          <!-- Buttons -->
           <div class="space-y-3">
-            <button class="w-full bg-[#1A1A1A] text-white text-sm font-medium py-3.5 rounded-full transition-colors hover:bg-black cursor-pointer">
+            <button class="w-full bg-[#121417] text-white text-sm font-semibold uppercase tracking-wider py-4 rounded-xl transition-all duration-300 hover:bg-[#B02317] hover:shadow-lg shadow-[#B02317]/20">
               Apply Now
             </button>
             <button 
-              class="view-desc-btn w-full bg-transparent border border-gray-200 text-[#1A1A1A] text-sm font-medium py-3.5 rounded-full transition-colors hover:bg-gray-50 cursor-pointer"
+              class="view-desc-btn w-full bg-transparent border-2 border-gray-200 text-[#121417] text-sm font-semibold uppercase tracking-wider py-3.5 rounded-xl transition-colors hover:border-[#121417]"
               data-job-id={job.id}
             >
-              View Description
+              View Details
             </button>
           </div>
 
@@ -210,131 +201,104 @@ const jobs = [
   </div>
 
   <!-- Redesigned Modal Overlay -->
-  <div id="job-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+  <div id="job-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#121417]/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
     
-    <!-- Modal Content Box -->
-    <div id="modal-box" class="bg-white w-full max-w-2xl rounded-[2.5rem] shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300 max-h-[90vh] flex flex-col">
+    <div id="modal-box" class="bg-white w-full max-w-2xl rounded-[32px] shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300 max-h-[90vh] flex flex-col border border-gray-100">
       
       <!-- Modal Header -->
-      <div class="p-8 pb-6 border-b border-gray-100 flex items-start justify-between bg-[#FAF7F2]">
+      <div class="p-8 pb-6 border-b border-gray-100 bg-[#FDF9F7] flex items-start justify-between">
         <div>
-          <div class="flex items-center gap-3 mb-2">
-            <span id="modal-department" class="bg-[#FBEBE8] text-[#9E3B29] text-[10px] font-bold tracking-wider px-3 py-1 rounded-md"></span>
-            <span id="modal-ref" class="text-xs text-gray-400 font-mono"></span>
+          <div class="flex items-center gap-3 mb-3">
+            <span id="modal-department" class="bg-[#B02317]/10 text-[#B02317] text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full"></span>
+            <span id="modal-ref" class="text-xs font-medium tracking-wider text-[#88726F]"></span>
           </div>
-          <h3 id="modal-title" class="text-3xl font-serif text-[#1A1A1A]"></h3>
-          <div class="flex items-center gap-6 mt-3 text-xs text-gray-500 font-light">
-            <span id="modal-experience" class="flex items-center gap-1.5"></span>
-            <span id="modal-openings" class="flex items-center gap-1.5"></span>
+          <h3 id="modal-title" class="text-3xl font-serif font-medium text-[#121417]"></h3>
+          <div class="flex items-center gap-6 mt-4 text-sm font-medium text-[#88726F]">
+            <span id="modal-experience" class="flex items-center gap-2"></span>
+            <span id="modal-openings" class="flex items-center gap-2"></span>
           </div>
         </div>
 
-        <!-- Close Button -->
-        <button id="close-modal" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-100 transition-colors cursor-pointer">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
+        <button id="close-modal" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-[#B02317] hover:text-white hover:border-[#B02317] transition-all cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
       </div>
 
-      <!-- Modal Body (Scrollable) -->
-      <div class="p-8 overflow-y-auto space-y-8 flex-1">
+      <!-- Modal Body -->
+      <div class="p-8 overflow-y-auto space-y-10 flex-1 hide-scrollbar">
+        <p id="modal-intro" class="hidden font-sans text-base leading-relaxed text-[#88726F] italic border-l-4 border-[#B02317] pl-4"></p>
 
-        <!-- Optional intro paragraph (only some roles have one, e.g. Sales Executive) -->
-        <p id="modal-intro" class="hidden text-gray-600 text-sm sm:text-base font-light leading-relaxed"></p>
-
-        <!-- Roles & Responsibilities Section -->
         <div>
-          <h4 class="text-xs font-semibold tracking-widest text-[#9E3B29] uppercase mb-4">
+          <h4 class="font-sans text-xs font-bold tracking-widest text-[#B02317] uppercase mb-4">
             Roles & Responsibilities
           </h4>
-          <ul id="modal-responsibilities" class="space-y-3 text-gray-600 text-sm sm:text-base font-light list-disc pl-5">
+          <ul id="modal-responsibilities" class="space-y-3 font-sans text-base leading-relaxed text-[#88726F] list-disc pl-5 marker:text-[#B02317]">
             <!-- Injected via client script -->
           </ul>
         </div>
 
-        <!-- Skills Required Section -->
         <div>
-          <h4 class="text-xs font-semibold tracking-widest text-[#9E3B29] uppercase mb-4">
+          <h4 class="font-sans text-xs font-bold tracking-widest text-[#B02317] uppercase mb-4">
             Skills Required
           </h4>
-          <ul id="modal-skills" class="space-y-3 text-gray-600 text-sm sm:text-base font-light list-disc pl-5">
+          <ul id="modal-skills" class="space-y-3 font-sans text-base leading-relaxed text-[#88726F] list-disc pl-5 marker:text-[#B02317]">
             <!-- Injected via client script -->
           </ul>
         </div>
-
       </div>
 
       <!-- Modal Footer -->
-      <div class="p-6 px-8 border-t border-gray-100 bg-gray-50 flex items-center justify-end gap-4">
-        <button id="modal-close-footer" class="px-6 py-3 rounded-full border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer">
+      <div class="p-6 px-8 border-t border-gray-100 bg-white flex items-center justify-end gap-4">
+        <button id="modal-close-footer" class="px-6 py-3 rounded-xl border-2 border-gray-200 text-sm font-semibold uppercase tracking-wider text-[#121417] hover:border-[#121417] transition-colors cursor-pointer">
           Close
         </button>
-        <button class="px-8 py-3 rounded-full bg-[#9E3B29] text-white text-sm font-medium hover:bg-[#863021] transition-colors shadow-sm cursor-pointer">
+        <button class="px-8 py-3.5 rounded-xl bg-[#B02317] text-white text-sm font-semibold uppercase tracking-wider hover:bg-[#8e1c12] transition-colors shadow-lg shadow-[#B02317]/20 cursor-pointer">
           Apply For This Role
         </button>
       </div>
 
     </div>
   </div>
-
 </section>
 
-<!-- Embedded Job Data for Client-Side Scripting -->
 <script define:vars={{ jobs }}>
   const jobMap = {};
-  jobs.forEach(job => {
-    jobMap[job.id] = job;
-  });
+  jobs.forEach(job => { jobMap[job.id] = job; });
 
   const modal = document.getElementById('job-modal');
   const modalBox = document.getElementById('modal-box');
-  const closeBtn = document.getElementById('close-modal');
-  const closeFooterBtn = document.getElementById('modal-close-footer');
+  const closeBtns = [document.getElementById('close-modal'), document.getElementById('modal-close-footer')];
   
-  const modalTitle = document.getElementById('modal-title');
-  const modalDept = document.getElementById('modal-department');
-  const modalRef = document.getElementById('modal-ref');
-  const modalExp = document.getElementById('modal-experience');
-  const modalOpenings = document.getElementById('modal-openings');
-  const modalIntro = document.getElementById('modal-intro');
-  const modalRespList = document.getElementById('modal-responsibilities');
-  const modalSkillsList = document.getElementById('modal-skills');
-
   function openModal(jobId) {
     const job = jobMap[jobId];
     if (!job) return;
 
-    modalTitle.textContent = job.title;
-    modalDept.textContent = job.department;
-    modalRef.textContent = job.ref;
-    modalExp.textContent = job.experience;
-    modalOpenings.textContent = job.openings;
+    document.getElementById('modal-title').textContent = job.title;
+    document.getElementById('modal-department').textContent = job.department;
+    document.getElementById('modal-ref').textContent = job.ref;
+    document.getElementById('modal-experience').textContent = job.experience;
+    document.getElementById('modal-openings').textContent = job.openings;
 
-    // Optional intro paragraph — only a few roles (e.g. Sales Executive) have one
+    const modalIntro = document.getElementById('modal-intro');
     if (job.intro) {
       modalIntro.textContent = job.intro;
       modalIntro.classList.remove('hidden');
     } else {
-      modalIntro.textContent = '';
       modalIntro.classList.add('hidden');
     }
 
-    // Populate responsibilities
-    modalRespList.innerHTML = '';
-    job.responsibilities.forEach(resp => {
-      const li = document.createElement('li');
-      li.textContent = resp;
-      modalRespList.appendChild(li);
-    });
+    const populateList = (id, items) => {
+      const list = document.getElementById(id);
+      list.innerHTML = '';
+      items.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        list.appendChild(li);
+      });
+    };
 
-    // Populate skills
-    modalSkillsList.innerHTML = '';
-    job.skills.forEach(skill => {
-      const li = document.createElement('li');
-      li.textContent = skill;
-      modalSkillsList.appendChild(li);
-    });
+    populateList('modal-responsibilities', job.responsibilities);
+    populateList('modal-skills', job.skills);
 
     modal.classList.remove('opacity-0', 'pointer-events-none');
     modalBox.classList.remove('scale-95');
@@ -346,32 +310,18 @@ const jobs = [
     modal.classList.add('opacity-0', 'pointer-events-none');
     modalBox.classList.remove('scale-100');
     modalBox.classList.add('scale-95');
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = '';
   }
 
-  // Attach event listeners to all View Description buttons
   document.querySelectorAll('.view-desc-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const jobId = button.getAttribute('data-job-id');
-      openModal(jobId);
-    });
+    button.addEventListener('click', () => openModal(button.getAttribute('data-job-id')));
   });
 
-  closeBtn.addEventListener('click', closeModal);
-  closeFooterBtn.addEventListener('click', closeModal);
-  
-  // Close when clicking outside modal content
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeModal();
-    }
-  });
+  closeBtns.forEach(btn => btn?.addEventListener('click', closeModal));
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-
-  h2, h3 {
-    font-family: 'Playfair Display', Georgia, serif;
-  }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 </style>

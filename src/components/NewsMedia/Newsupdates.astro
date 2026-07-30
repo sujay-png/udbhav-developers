@@ -1,6 +1,6 @@
 ---
 // Newsupdates.astro
-import MediaCard from "@/components/MediaCard.astro"; // Adjust path if needed
+import MediaCard from "@/components/MediaCard.astro"; 
 import type { Media } from "@/lib/site-data";
 
 interface Props {
@@ -10,27 +10,53 @@ interface Props {
 const { mediaList } = Astro.props;
 ---
 
-<section class="bg-[#FAF9F5] py-24 px-6 font-sans">
-  <div class="mx-auto max-w-[1440px]">
+<section class="bg-[#FDF9F7] py-32 px-6 font-sans">
+  <div class="mx-auto max-w-7xl">
     
     <!-- Section Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
-      <div>
-        <span class="text-sm font-semibold tracking-wider text-amber-700 uppercase">Updates</span>
-        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1A1A1A] mt-2">
-          News & Corporate Updates
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+      <div class="max-w-2xl">
+        <span class="font-sans text-xs font-bold tracking-[0.35em] text-[#B02317] uppercase block mb-4">
+          Updates
+        </span>
+        <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-[#121417] leading-tight">
+          News & Corporate <br />
+          <span class="italic text-[#B02317]">Highlights</span>
         </h2>
       </div>
-      <p class="text-gray-600 max-w-md mt-4 md:mt-0 leading-relaxed">
-        Stay informed with our latest announcements, press coverage, and media highlights.
+      <p class="font-sans text-lg text-[#88726F] max-w-md leading-relaxed font-light">
+        Explore our latest architectural milestones, industry insights, and community impact initiatives.
       </p>
     </div>
 
-    <!-- Media Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {mediaList.map((media) => (
-        <MediaCard media={media} />
-      ))}
+    <!-- Editorial Asymmetrical Grid (Bento Style) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
+      {mediaList.map((media, index) => {
+        // Layout Logic: 
+        // 1st item is a large featured hero (spans 8 cols)
+        // 2nd item is a tall sidepiece (spans 4 cols)
+        // 3rd & 4th items split the bottom evenly (span 6 cols each)
+        // Remaining items fallback to standard 4-col masonry
+        let spanClasses = "col-span-1 md:col-span-1 lg:col-span-4";
+        let cardVariant = "standard";
+
+        if (index === 0) {
+          spanClasses = "col-span-1 md:col-span-2 lg:col-span-8";
+          cardVariant = "featured";
+        } else if (index === 1) {
+          spanClasses = "col-span-1 md:col-span-1 lg:col-span-4";
+          cardVariant = "tall";
+        } else if (index === 2 || index === 3) {
+          spanClasses = "col-span-1 md:col-span-1 lg:col-span-6";
+          cardVariant = "wide";
+        }
+
+        return (
+          <div class={spanClasses}>
+            <MediaCard media={media} variant={cardVariant as any} />
+          </div>
+        );
+      })}
     </div>
 
   </div>

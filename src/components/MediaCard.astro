@@ -1,51 +1,62 @@
 ---
 // MediaCard.astro
 import { Icon } from "@/components/Icon";
-import { Badge } from "@/components/ui/badge";
 import type { Media } from "@/lib/site-data";
 
 interface Props {
   media: Media;
-  size?: "default" | "large";
+  variant?: "featured" | "tall" | "wide" | "standard";
 }
 
-const { media, size = "default" } = Astro.props;
+const { media, variant = "standard" } = Astro.props;
+
+// Adjust aspect ratios based on grid placement
+const aspectMap = {
+  featured: "aspect-[16/9] lg:aspect-[2/1]", // Wide and dramatic
+  tall: "aspect-[4/5] lg:aspect-[3/4]", // Portrait
+  wide: "aspect-[16/9]", // Standard widescreen
+  standard: "aspect-[4/3]", // Default
+};
 ---
 
 <a 
   href={media.link} 
   target="_blank" 
   rel="noopener noreferrer" 
-  class="group block font-sans"
+  class="group flex flex-col h-full font-sans"
 >
-  <!-- Image Container with rounded-3xl for the soft, modern curve -->
+  <!-- Image Wrapper -->
   <div class:list={[
-    "relative overflow-hidden rounded-3xl bg-gray-100 shadow-sm transition-all duration-300 group-hover:shadow-xl", 
-    size === "large" ? "aspect-[16/11]" : "aspect-[4/3]"
+    "relative overflow-hidden rounded-[32px] bg-white shadow-sm transition-all duration-500 group-hover:shadow-xl border border-gray-100", 
+    aspectMap[variant]
   ]}>
     <img
       src={`/images/${media.image}.jpg`}
       alt={media.name}
-      class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+      class="absolute inset-0 h-full w-full object-cover transition-transform duration-[10s] group-hover:scale-110"
     />
 
-    <!-- Top-Right Hover Icon Circle -->
-    <div class="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white/90 text-gray-900 opacity-0 backdrop-blur-md transition-all duration-300 group-hover:opacity-100 shadow-md">
-      <Icon name="arrow-up-right" className="h-4 w-4" />
+    <!-- Gradient Overlay for Contrast -->
+    <div class="absolute inset-0 bg-gradient-to-t from-[#121417]/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+
+    <!-- Hover Arrow Indicator -->
+    <div class="absolute right-6 top-6 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-[#B02317] opacity-0 backdrop-blur-md transition-all duration-500 group-hover:opacity-100 group-hover:rotate-45 shadow-lg scale-75 group-hover:scale-100">
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
     </div>
   </div>
 
-  <!-- Content Section -->
-  <div class="mt-4 flex flex-col gap-1">
-    <!-- <span class="text-xs font-medium tracking-wide text-gray-500 uppercase">
-      &bull; {media.year} &bull; {media.location}
-    </span> -->
-
-    <h3 class="font-serif text-2xl font-normal text-[#1A1A1A] group-hover:text-amber-800 transition-colors leading-snug">
+  <!-- Text Content -->
+  <div class="mt-6 flex flex-col flex-1">
+    <h3 class:list={[
+      "font-serif font-medium text-[#121417] group-hover:text-[#B02317] transition-colors leading-snug",
+      variant === "featured" ? "text-3xl sm:text-4xl" : "text-2xl"
+    ]}>
       {media.name}
     </h3>
-
-    <p class="text-sm leading-relaxed text-gray-600 line-clamp-2 mt-0.5">
+    <p class:list={[
+      "text-[#88726F] leading-relaxed mt-3 font-light line-clamp-3",
+      variant === "featured" ? "text-lg" : "text-base"
+    ]}>
       {media.tagline}
     </p>
   </div>

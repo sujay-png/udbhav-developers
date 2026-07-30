@@ -6,10 +6,36 @@ import CallToAction from "@/components/Testimonials/CallToAction.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout>
-  <section class="bg-[#fee2de] py-20 px-6 font-sans text-center">
+<BaseLayout title="Testimonials" description="Hear from the visionaries and families who have chosen to build their legacy with Udbhav Developers.">
+  
+  <!-- 
+    Removed the loud pink wrapper section.
+    The page now flows beautifully from the clean white Hero, 
+    through the crisp white/off-white Grid, 
+    and drops into the striking Dark CTA footer. 
+  -->
+  <main class="w-full">
     <Hero />
     <TestimonialsGrid />
-    <CallToAction/>
-  </section>
+    <CallToAction />
+  </main>
+
 </BaseLayout>
+
+<style is:global>
+  @keyframes fadeInUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(30px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+</style>

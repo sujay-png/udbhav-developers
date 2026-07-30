@@ -3,27 +3,39 @@
 import { Icon } from "@/components/Icon";
 ---
 
-<section class="bg-[#FAF9F5] py-28 px-6 font-sans text-center">
-  <div class="mx-auto max-w-4xl space-y-8">
+<section class="relative bg-[#121417] py-32 px-6 font-sans text-center overflow-hidden">
+  
+  <!-- Abstract Design Elements -->
+  <div class="absolute inset-0 opacity-20 pointer-events-none">
+    <div class="absolute -top-40 -left-40 h-96 w-96 rounded-full bg-[#B02317] blur-[120px]"></div>
+    <div class="absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-blue-900 blur-[120px]"></div>
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-4xl space-y-8 animate-fade-in-up">
     
-    <!-- Heading -->
-    <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal text-[#1A1A1A] tracking-tight leading-tight">
-      Ready to start your own story?
+    <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white/80 backdrop-blur-sm">
+      <span class="h-2 w-2 rounded-full bg-[#B02317] animate-pulse"></span>
+      Start Your Journey
+    </span>
+
+    <h2 class="font-serif text-5xl sm:text-6xl lg:text-7xl font-medium text-white tracking-tight leading-[1.1]">
+      Ready to start your <br />
+      <span class="italic text-[#B02317]">own story?</span>
     </h2>
 
-    <!-- Subtitle -->
-    <p class="text-base sm:text-lg text-gray-600 max-w-xl mx-auto font-normal leading-relaxed">
+    <p class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
       Join our community of happy homeowners and experience the Udbhav difference. Let's build your legacy together.
     </p>
 
-    <!-- Call to Action Button -->
-    <div class="pt-4">
+    <div class="pt-8">
       <a 
         href="/contact" 
-        class="inline-flex items-center gap-3 bg-[#8B0000] hover:bg-[#700000] text-white font-medium text-sm px-8 py-4 rounded-full transition-all duration-300 shadow-sm hover:shadow"
+        class="group inline-flex items-center gap-4 bg-[#B02317] hover:bg-[#8e1c12] text-white font-sans font-semibold text-sm uppercase tracking-widest px-10 py-5 rounded-2xl transition-all duration-300 shadow-xl shadow-[#B02317]/20 hover:shadow-[#B02317]/40 hover:-translate-y-1"
       >
         <span>Contact Us</span>
-        <Icon name="arrow-right" className="h-4 w-4" />
+        <span class="flex h-8 w-8 items-center justify-center rounded-full border border-white/40 transition-transform duration-300 group-hover:translate-x-1">
+          →
+        </span>
       </a>
     </div>
 

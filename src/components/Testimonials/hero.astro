@@ -2,21 +2,24 @@
 // TestimonialsHeader.astro
 ---
 
-<section>
-  <div class="mx-auto max-w-3xl flex flex-col items-center">
+<section class="relative bg-white pt-28 pb-16 px-6 overflow-hidden">
+  <!-- Subtle Background Gradient Glow -->
+  <div class="absolute left-1/2 top-0 -translate-x-1/2 h-96 w-[800px] rounded-full bg-[#FDF9F7] blur-[120px] pointer-events-none -z-10"></div>
+
+  <div class="mx-auto max-w-3xl flex flex-col items-center text-center animate-fade-in-up">
     
     <!-- Subtitle / Eyebrow -->
-    <span class="text-xs font-bold tracking-[0.2em] text-[#C23B22] uppercase mb-4">
+    <span class="font-sans text-xs font-bold tracking-[0.35em] text-[#B02317] uppercase mb-6">
       Testimonials
     </span>
 
-    <!-- Main Heading matching the serif style -->
-    <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal text-[#1A1A1A] tracking-tight leading-tight">
-      Voices of Trust
+    <!-- Main Heading -->
+    <h2 class="font-serif text-5xl sm:text-6xl lg:text-7xl font-medium text-[#121417] tracking-tight leading-[1.1]">
+      Voices of <span class="italic text-[#B02317]">Trust</span>
     </h2>
 
     <!-- Description Paragraph -->
-    <p class="text-base sm:text-lg text-gray-600 mt-5 leading-relaxed max-w-xl">
+    <p class="font-sans text-lg sm:text-xl text-[#88726F] mt-8 leading-relaxed max-w-2xl font-light">
       We don't just build structures; we curate lifestyles. Hear from the visionaries and families who have chosen to build their legacy with Udbhav Developers.
     </p>
 

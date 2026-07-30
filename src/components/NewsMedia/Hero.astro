@@ -1,74 +1,77 @@
 ---
 // FeaturedStoryHero.astro
-// Ensure Tailwind CSS is configured in your Astro project.
 ---
 
-<section class="relative min-h-screen flex items-center justify-center px-6 md:px-16 lg:px-24 overflow-hidden font-sans">
+<section class="relative min-h-[90vh] flex items-center justify-center px-6 md:px-12 lg:px-24 overflow-hidden font-sans bg-[#121417]">
   
-  <!-- Background Image with Dark Overlay -->
-  <div class="absolute inset-0 z-0">
+  <!-- Background Image with Zoom Effect -->
+  <div class="absolute inset-0 z-0 overflow-hidden">
     <img 
       src="https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=2000&q=80" 
       alt="Udbhav Horizon architectural building" 
-      class="w-full h-full object-cover object-center"
+      class="w-full h-full object-cover object-center opacity-70 transition-transform duration-[20s] hover:scale-110"
     />
-    <!-- Gradient overlay for text legibility -->
-    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20"></div>
+    <!-- Premium Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#121417] via-[#121417]/60 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#121417] via-transparent to-transparent opacity-80"></div>
   </div>
 
   <!-- Content Container -->
-  <div class="relative z-10 max-w-7xl w-full py-20 flex flex-col justify-between min-h-screen">
+  <div class="relative z-10 max-w-7xl w-full py-20 flex flex-col justify-end min-h-[80vh] animate-fade-in-up">
     
-    <!-- Spacer top if needed, or flex alignment -->
-    <div></div>
-
-    <!-- Main Text Content -->
-    <div class="max-w-2xl text-white">
+    <div class="max-w-3xl text-white">
       
       <!-- Featured Story Badge -->
-      <span class="inline-block bg-[#E95D38] text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded mb-6">
-        FEATURED STORY
+      <span class="inline-flex items-center gap-2 bg-[#B02317] text-white text-[10px] font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-full mb-8 shadow-lg shadow-[#B02317]/20">
+        <span class="h-1.5 w-1.5 rounded-full bg-white animate-pulse"></span>
+        Featured Story
       </span>
 
       <!-- Headline -->
-      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif font-normal tracking-tight leading-[1.1] mb-6">
-      News And Media
+      <h1 class="text-5xl sm:text-6xl lg:text-8xl font-serif font-medium tracking-tight leading-[1.05] mb-8">
+        News And <span class="italic text-[#B02317]">Media</span>
       </h1>
 
-      <!-- Description -->
-    
+      <p class="font-sans text-lg md:text-xl font-light text-gray-300 max-w-xl mb-12 leading-relaxed">
+        Stay informed with our latest announcements, press coverage, and media highlights shaping the future of Mangalore's skyline.
+      </p>
 
       <!-- CTA Button -->
       <div>
         <a 
           href="#press-release" 
-          class="inline-flex items-center gap-3 bg-white hover:bg-gray-100 text-[#1A1A1A] font-medium text-sm px-8 py-4 rounded-full transition-all duration-300 shadow-lg group"
+          class="group inline-flex items-center gap-4 bg-white text-[#121417] font-sans font-semibold text-sm uppercase tracking-widest px-8 py-4 rounded-full transition-all duration-300 shadow-xl hover:bg-[#FDF9F7] hover:shadow-2xl hover:-translate-y-1"
         >
-          <span>Read Full Press Release</span>
-          <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-          </svg>
+          <span>Read Press Release</span>
+          <span class="flex h-8 w-8 items-center justify-center rounded-full border border-[#121417]/20 transition-transform duration-300 group-hover:translate-x-1">
+            →
+          </span>
         </a>
       </div>
 
     </div>
+  </div>
 
-    <!-- Bottom Scroll Indicator -->
-    <div class="flex flex-col items-center justify-center pb-6 text-white/70">
-      <span class="text-[10px] font-semibold tracking-[0.25em] uppercase mb-2">SCROLL</span>
-      <div class="w-[1px] h-8 bg-white/40 relative overflow-hidden">
-        <div class="absolute inset-0 bg-white animate-bounce"></div>
-      </div>
+  <!-- Bottom Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center text-white/50 z-10">
+    <span class="text-[9px] font-bold tracking-[0.35em] uppercase mb-3">Scroll</span>
+    <div class="w-[1px] h-12 bg-white/20 relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-1/2 bg-[#B02317] animate-[scrolldown_2s_ease-in-out_infinite]"></div>
     </div>
-
   </div>
 
 </section>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-
-  h1 {
-    font-family: 'Playfair Display', Georgia, serif;
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up { animation: fadeInUp 1s ease-out forwards; }
+  
+  @keyframes scrolldown {
+    0% { transform: translateY(-100%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(200%); opacity: 0; }
   }
 </style>

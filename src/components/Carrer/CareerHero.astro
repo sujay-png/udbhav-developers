@@ -1,69 +1,56 @@
 ---
-import { Icon } from "@/components/Icon";
+// CareerHero.astro
 ---
 
-<section class="relative h-[95vh] overflow-hidden">
+<section class="relative h-[95vh] overflow-hidden bg-[#121417]">
 
-  <!-- Background Image -->
+  <!-- Background Image with subtle continuous zoom -->
   <img
     src="/images/Udbhav-website.jpg"
     alt="Career Hero"
-    class="absolute inset-0 h-full w-full object-cover"
+    class="absolute inset-0 h-full w-full object-cover opacity-60 grayscale transition-transform duration-[20s] hover:scale-110"
   />
 
-  <!-- Dark Overlay -->
-  <div class="absolute inset-0 bg-black/55"></div>
-
-  <!-- Warm Gradient -->
-  <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/70"></div>
+  <!-- Dark & Brand Overlays -->
+  <div class="absolute inset-0 bg-gradient-to-b from-[#121417]/40 via-[#121417]/60 to-[#121417]"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#B02317]/10 to-transparent mix-blend-overlay"></div>
 
   <!-- Content -->
-  <div class="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-6 text-center">
+  <div class="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-6 text-center animate-fade-in-up">
 
-    <h1
-      class="max-w-5xl font-display text-5xl font-medium leading-none text-white md:text-8xl">
+    <span class="mb-6 font-sans text-xs font-bold uppercase tracking-[0.35em] text-[#B02317]">
+      Join Our Team
+    </span>
 
-      Be a part of our
-
-      <br />
-
-      <span class="font-normal italic text-white/95">
-
-        journey
-
-      </span>
-
+    <h1 class="max-w-5xl font-serif text-5xl font-medium leading-[1.1] text-white md:text-7xl lg:text-8xl">
+      Be a part of our <br />
+      <span class="font-light italic text-[#B02317]">journey</span>
     </h1>
 
-    <p
-      class="mt-10 max-w-3xl text-lg leading-9 text-white/85 md:text-xl">
-
+    <p class="mt-8 max-w-2xl font-sans text-lg font-light leading-relaxed text-gray-300 md:text-xl">
       At Udbhav, we believe great spaces are built by great people.
       Join a team shaping exceptional residential and commercial
       developments across Mangalore.
-
     </p>
 
     <!-- Button -->
-
     <a
       href="#openings"
-      class="group mt-14 inline-flex items-center gap-4 rounded-full bg-white px-10 py-5 text-sm font-semibold uppercase tracking-[0.25em] text-[#111827] shadow-2xl transition duration-300 hover:-translate-y-1 hover:bg-[#D63232] hover:text-white">
-
+      class="group mt-12 inline-flex items-center gap-4 rounded-full bg-[#B02317] px-10 py-5 font-sans text-sm font-semibold uppercase tracking-widest text-white shadow-xl shadow-[#B02317]/20 transition-all duration-300 hover:-translate-y-1 hover:bg-[#8e1c12] hover:shadow-[#B02317]/40">
       Explore Openings
-
-      <!-- <span
-        class="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 transition group-hover:border-white">
-
-        <Icon
-          name="arrow-down"
-          className="h-4 w-4 transition group-hover:translate-y-1"
-        />
-
-      </span> -->
-
+      <span class="transition-transform duration-300 group-hover:translate-y-1">↓</span>
     </a>
 
   </div>
 
 </section>
+
+<style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+  }
+</style>

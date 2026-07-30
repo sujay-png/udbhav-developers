@@ -3,24 +3,26 @@
 import { Icon } from "@/components/Icon";
 ---
 
-<section class="relative overflow-hidden bg-[#0F1318] px-6 py-24 text-white">
-  <!-- Subtle ambient background glow matching the dark theme -->
-  <div class="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-red-600/10 blur-3xl pointer-events-none"></div>
+<section class="relative overflow-hidden bg-[#121417] px-6 py-32 text-white font-sans" id="press-release">
+  <!-- Subtle ambient background glow -->
+  <div class="absolute top-0 right-0 h-[800px] w-[800px] rounded-full bg-[#B02317]/10 blur-[150px] pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
+  <div class="absolute bottom-0 left-0 h-[600px] w-[600px] rounded-full bg-blue-900/10 blur-[150px] pointer-events-none translate-y-1/2 -translate-x-1/4"></div>
 
-  <div class="mx-auto max-w-[1440px] grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+  <div class="relative z-10 mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
     
     <!-- Left Column: Titles, Description, and Asset Cards -->
-    <div class="lg:col-span-7 space-y-10">
+    <div class="lg:col-span-7 space-y-12">
       
       <!-- Section Header -->
-      <div class="space-y-4">
-        <span class="text-xs font-bold tracking-widest text-[#FF4D2D] uppercase">
-          JOURNALIST RESOURCES
+      <div class="space-y-6">
+        <span class="inline-block border border-white/20 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm text-xs font-bold tracking-widest text-white/80 uppercase">
+          Journalist Resources
         </span>
-        <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal leading-tight tracking-tight text-white">
-          Professional Media Assets
+        <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight text-white">
+          Professional <br />
+          <span class="italic text-[#B02317]">Media Assets</span>
         </h2>
-        <p class="text-base sm:text-lg text-gray-400 max-w-xl leading-relaxed">
+        <p class="text-lg text-gray-400 max-w-xl leading-relaxed font-light">
           Access high-resolution brand assets, executive biographies, and our comprehensive corporate profile. Designed for publishers and media partners requiring the highest standard of visual representation.
         </p>
       </div>
@@ -29,45 +31,45 @@ import { Icon } from "@/components/Icon";
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl">
         
         <!-- Logo Package Card -->
-        <div class="group relative bg-[#171C23] border border-white/5 rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 hover:border-white/15 hover:shadow-xl hover:shadow-black/40">
-          <div class="space-y-4">
-            <div class="h-10 w-10 rounded-xl bg-white/5 flex items-center justify-center text-[#FF4D2D]">
-              <Icon name="image" className="h-5 w-5" />
+        <div class="group bg-white/5 border border-white/10 rounded-[32px] p-8 flex flex-col justify-between transition-all duration-500 hover:border-[#B02317]/50 hover:bg-white/10 backdrop-blur-sm hover:-translate-y-2">
+          <div class="space-y-6">
+            <div class="h-14 w-14 rounded-2xl bg-[#B02317]/20 flex items-center justify-center text-[#B02317] transition-colors group-hover:bg-[#B02317] group-hover:text-white">
+              <Icon name={"image" as any} className="h-6 w-6" />
             </div>
             <div>
-              <h3 class="font-serif text-2xl font-normal text-white">Logo Package</h3>
-              <p class="text-xs text-gray-400 mt-2 leading-relaxed">
-                SVG, PNG, and AI formats in all brand variants.
+              <h3 class="font-serif text-2xl font-medium text-white">Logo Package</h3>
+              <p class="text-sm text-gray-400 mt-2 font-light leading-relaxed">
+                SVG, PNG, and AI formats in all primary and inverted brand variants.
               </p>
             </div>
           </div>
           
-          <div class="mt-8 pt-4 border-t border-white/5">
-            <a href="#download-logo" class="inline-flex items-center gap-2 text-xs font-bold tracking-wider text-[#FF4D2D] uppercase transition-transform group-hover:translate-x-1">
+          <div class="mt-8 pt-6 border-t border-white/10">
+            <a href="#download-logo" class="inline-flex items-center gap-3 text-xs font-bold tracking-widest text-white uppercase transition-colors group-hover:text-[#B02317]">
               <span>Download Kit</span>
-              <span>↓</span>
+              <span class="transition-transform group-hover:translate-y-1">↓</span>
             </a>
           </div>
         </div>
 
         <!-- Exec Profiles Card -->
-        <div class="group relative bg-[#171C23] border border-white/5 rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 hover:border-white/15 hover:shadow-xl hover:shadow-black/40">
-          <div class="space-y-4">
-            <div class="h-10 w-10 rounded-xl bg-white/5 flex items-center justify-center text-[#FF4D2D]">
-              <Icon name="user" className="h-5 w-5" />
+        <div class="group bg-white/5 border border-white/10 rounded-[32px] p-8 flex flex-col justify-between transition-all duration-500 hover:border-[#B02317]/50 hover:bg-white/10 backdrop-blur-sm hover:-translate-y-2">
+          <div class="space-y-6">
+            <div class="h-14 w-14 rounded-2xl bg-[#B02317]/20 flex items-center justify-center text-[#B02317] transition-colors group-hover:bg-[#B02317] group-hover:text-white">
+              <Icon name={"user" as any} className="h-6 w-6" />
             </div>
             <div>
-              <h3 class="font-serif text-2xl font-normal text-white">Exec Profiles</h3>
-              <p class="text-xs text-gray-400 mt-2 leading-relaxed">
-                Portraits and bios for the leadership team.
+              <h3 class="font-serif text-2xl font-medium text-white">Exec Profiles</h3>
+              <p class="text-sm text-gray-400 mt-2 font-light leading-relaxed">
+                High-resolution executive portraits and official biographical summaries.
               </p>
             </div>
           </div>
           
-          <div class="mt-8 pt-4 border-t border-white/5">
-            <a href="#download-exec" class="inline-flex items-center gap-2 text-xs font-bold tracking-wider text-[#FF4D2D] uppercase transition-transform group-hover:translate-x-1">
+          <div class="mt-8 pt-6 border-t border-white/10">
+            <a href="#download-exec" class="inline-flex items-center gap-3 text-xs font-bold tracking-widest text-white uppercase transition-colors group-hover:text-[#B02317]">
               <span>Download Kit</span>
-              <span>↓</span>
+              <span class="transition-transform group-hover:translate-y-1">↓</span>
             </a>
           </div>
         </div>
@@ -78,54 +80,51 @@ import { Icon } from "@/components/Icon";
 
     <!-- Right Column: Press Inquiry Form Card -->
     <div class="lg:col-span-5 flex justify-center lg:justify-end">
-      <div class="w-full max-w-lg bg-[#171C23] border border-white/5 rounded-3xl p-8 sm:p-10 shadow-2xl relative">
+      <div class="w-full max-w-md bg-white/5 border border-white/10 rounded-[40px] p-8 sm:p-12 shadow-2xl backdrop-blur-md relative">
         
-        <h3 class="font-serif text-2xl sm:text-3xl font-normal text-white mb-8">
+        <h3 class="font-serif text-3xl font-medium text-white mb-2">
           Press Inquiry
         </h3>
+        <p class="text-sm text-gray-400 mb-8 font-light">Directly contact our media relations team.</p>
 
         <form class="space-y-6">
           
-          <!-- Full Name Field -->
           <div class="space-y-2">
-            <label class="block text-[11px] font-bold tracking-wider text-gray-400 uppercase">
+            <label class="block text-xs font-semibold tracking-widest text-gray-400 uppercase">
               Full Name
             </label>
             <input 
               type="text" 
-              class="w-full bg-[#101419] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#FF4D2D] transition-colors"
-              placeholder=""
+              class="w-full bg-[#121417]/50 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:outline-none focus:border-[#B02317] focus:bg-white/5 transition-all"
+              placeholder="Jane Doe"
             />
           </div>
 
-          <!-- Media Outlet Field -->
           <div class="space-y-2">
-            <label class="block text-[11px] font-bold tracking-wider text-gray-400 uppercase">
+            <label class="block text-xs font-semibold tracking-widest text-gray-400 uppercase">
               Media Outlet
             </label>
             <input 
               type="text" 
-              class="w-full bg-[#101419] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#FF4D2D] transition-colors"
-              placeholder=""
+              class="w-full bg-[#121417]/50 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:outline-none focus:border-[#B02317] focus:bg-white/5 transition-all"
+              placeholder="e.g. Architectural Digest"
             />
           </div>
 
-          <!-- Message Field -->
           <div class="space-y-2">
-            <label class="block text-[11px] font-bold tracking-wider text-gray-400 uppercase">
+            <label class="block text-xs font-semibold tracking-widest text-gray-400 uppercase">
               Message
             </label>
             <textarea 
               rows="4" 
-              class="w-full bg-[#101419] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#FF4D2D] transition-colors resize-none"
-              placeholder=""
+              class="w-full bg-[#121417]/50 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:outline-none focus:border-[#B02317] focus:bg-white/5 transition-all resize-none"
+              placeholder="How can we assist you?"
             ></textarea>
           </div>
 
-          <!-- Submit Button -->
           <button 
             type="submit"
-            class="w-full py-4 rounded-xl bg-gradient-to-r from-[#C21818] to-[#990F0F] text-white font-bold text-xs tracking-widest uppercase shadow-lg shadow-red-950/50 hover:brightness-110 transition-all cursor-pointer"
+            class="w-full py-5 mt-2 rounded-xl bg-[#B02317] text-white font-semibold text-xs tracking-widest uppercase shadow-xl shadow-[#B02317]/20 hover:shadow-[#B02317]/40 hover:bg-[#8e1c12] hover:-translate-y-1 transition-all cursor-pointer"
           >
             Submit Request
           </button>
