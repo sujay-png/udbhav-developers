@@ -97,7 +97,7 @@ export const projects: Project[] = [
       { src: "/images/UdbhavShanthi_gallery1.jpg", alt: "Udbhav Shanthi Elevation", title: "Udbhav Shanthi", subtitle: "Kadri, Mangalore" },
       { src: "/images/UdbhavShanthi_gallery2.jpg", alt: "Udbhav Shanthi Facade", title: "Facade View", subtitle: "Kadri, Mangalore" },
       { src: "/images/UdbhavShanthi_gallery3.jpg", alt: "Udbhav Shanthi Interior", title: "Interior Finish", subtitle: "3 BHK Apartments" },
-      { src: "/images/UdbhavShanthi_gallery6.jpg", alt: "Udbhav Shanthi Amenities", title: "Amenities", subtitle: "Ground-floor Retail" },
+      { src: "/images/shanthi1.jpg", alt: "Udbhav Shanthi Amenities", title: "Amenities", subtitle: "Ground-floor Retail" },
     ],
   },
   {
