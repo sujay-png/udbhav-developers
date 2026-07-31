@@ -1,0 +1,150 @@
+---
+// src/pages/blog/[...page].astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ArtPanel from "@/components/ArtPanel.astro";
+import { Icon } from "@/components/Icon";
+import { getAllPosts, formatDate } from "@/lib/wordpress";
+
+export async function getStaticPaths({ paginate }: { paginate: any }) {
+  const allPosts = await getAllPosts();
+  // Generate pages with 15 items per page
+  return paginate(allPosts, { pageSize: 15 });
+}
+
+type Post = Awaited<ReturnType<typeof getAllPosts>>[number];
+const { page } = Astro.props as { page: any };
+const posts = page.data as Post[];
+
+// Only show the featured large post on the first page
+const featured = page.currentPage === 1 ? posts[0] : null;
+const rest = page.currentPage === 1 ? posts.slice(1) : posts;
+---
+
+<BaseLayout title={`Blog - Page ${page.currentPage}`} description="Architectural Chronicles — insights on luxury real estate, investment strategy, and the craft of development from Udbhav Developers.">
+  
+  <!-- Header -->
+  <section class="bg-[#FDF9F7] px-6 pb-16 pt-24 md:px-12 md:pb-24 md:pt-32 font-sans">
+    <div class="mx-auto max-w-7xl animate-fade-in-up">
+      <span class="inline-block text-xs font-bold uppercase tracking-[0.35em] text-[#B02317] mb-4">
+        Insights & Perspectives
+      </span>
+      <h1 class="max-w-3xl font-serif text-5xl sm:text-6xl lg:text-7xl font-medium leading-[1.05] text-[#121417]">
+        Architectural <br />
+        <span class="italic text-[#B02317]">Chronicles.</span>
+      </h1>
+      <p class="mt-6 max-w-lg text-lg leading-relaxed text-[#88726F] font-light">
+        Exploring the future of urban living, investment strategies, and the craft of luxury development.
+      </p>
+    </div>
+  </section>
+
+  <!-- Featured Post (Only on Page 1) -->
+  {featured && (
+    <section class="mx-auto max-w-7xl px-6 pb-16 md:px-12 -mt-8 relative z-10 font-sans">
+      <a href={`/blog/${featured.slug}`} class="group grid overflow-hidden rounded-[32px] bg-white shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-gray-100 lg:grid-cols-2">
+        <div class="relative aspect-[4/3] lg:aspect-auto overflow-hidden bg-gray-100">
+          {featured.featuredImage ? (
+            <img src={featured.featuredImage} alt={featured.title} class="h-full w-full object-cover transition-transform duration-[10s] group-hover:scale-110" />
+          ) : (
+            <ArtPanel seed={20} tone="clay" class="h-full w-full" />
+          )}
+        </div>
+        <div class="flex flex-col justify-center p-10 md:p-14">
+          {featured.categories[0] && (
+            <span class="inline-flex w-fit items-center rounded-full bg-[#B02317]/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#B02317]">
+              {featured.categories[0]}
+            </span>
+          )}
+          <p class="mt-6 text-xs font-semibold uppercase tracking-widest text-[#88726F]">
+            {formatDate(featured.date)}
+          </p>
+          <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-medium leading-tight text-[#121417] group-hover:text-[#B02317] transition-colors">
+            {featured.title}
+          </h2>
+          <p class="mt-4 text-base leading-relaxed text-[#88726F] line-clamp-3 font-light">
+            {featured.excerpt}
+          </p>
+          <div class="mt-8 flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-[#121417] group-hover:text-[#B02317] transition-colors">
+            Read Article <span class="transition-transform group-hover:translate-x-1">→</span>
+          </div>
+        </div>
+      </a>
+    </section>
+  )}
+
+  <!-- Standard Grid -->
+  <section class="mx-auto max-w-7xl px-6 pb-24 md:px-12 font-sans">
+    {rest.length === 0 && !featured ? (
+      <p class="py-20 text-center text-lg text-[#88726F] font-light">
+        No posts published yet — check back soon.
+      </p>
+    ) : (
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {rest.map((post, i) => (
+          <a href={`/blog/${post.slug}`} class="group flex flex-col h-full rounded-[24px] bg-white p-4 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl border border-gray-100 hover:border-[#B02317]/20">
+            <div class="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-gray-100">
+              {post.featuredImage ? (
+                <img src={post.featuredImage} alt={post.title} class="h-full w-full object-cover transition-transform duration-[10s] group-hover:scale-110" />
+              ) : (
+                <ArtPanel seed={i + 21} tone={i % 2 === 0 ? "sand" : "clay"} class="h-full w-full" />
+              )}
+              {post.categories[0] && (
+                <div class="absolute left-4 top-4 z-10">
+                  <span class="inline-flex rounded-full bg-white/90 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#121417] shadow-sm backdrop-blur-sm">
+                    {post.categories[0]}
+                  </span>
+                </div>
+              )}
+            </div>
+            
+            <div class="flex flex-col flex-1 px-2 py-6">
+              <p class="text-[11px] font-semibold uppercase tracking-widest text-[#88726F]">
+                {formatDate(post.date)}
+              </p>
+              <h3 class="mt-3 font-serif text-2xl font-medium leading-snug text-[#121417] group-hover:text-[#B02317] transition-colors">
+                {post.title}
+              </h3>
+              <p class="mt-3 text-sm leading-relaxed text-[#88726F] line-clamp-2 font-light">
+                {post.excerpt}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+
+    <!-- Pagination Controls -->
+    <div class="mt-20 flex items-center justify-between border-t border-gray-100 pt-8">
+      <div>
+        {page.url.prev ? (
+          <a href={page.url.prev} class="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-[#121417] hover:text-[#B02317] transition-colors">
+            <span class="text-lg">←</span> Previous
+          </a>
+        ) : <span class="text-sm font-semibold uppercase tracking-widest text-gray-300">← Previous</span>}
+      </div>
+      
+      <div class="text-xs font-semibold uppercase tracking-widest text-[#88726F]">
+        Page {page.currentPage} of {page.lastPage}
+      </div>
+      
+      <div>
+        {page.url.next ? (
+          <a href={page.url.next} class="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-[#121417] hover:text-[#B02317] transition-colors">
+            Next <span class="text-lg">→</span>
+          </a>
+        ) : <span class="text-sm font-semibold uppercase tracking-widest text-gray-300">Next →</span>}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+</style>

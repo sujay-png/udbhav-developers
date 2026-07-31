@@ -1,13 +1,12 @@
 ---
+// src/pages/blog/[slug].astro
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ArtPanel from "@/components/ArtPanel.astro";
-import Eyebrow from "@/components/Eyebrow.astro";
-import { Badge } from "@/components/ui/badge";
 import { Icon } from "@/components/Icon";
-import { getAllPosts } from "@/lib/wordpress";
+import { getAllPosts, formatDate, estimateReadTime } from "@/lib/wordpress";
 
 export async function getStaticPaths() {
-  const posts = await getAllPosts(100);
+  const posts = await getAllPosts(); // Fetches all posts recursively now
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
@@ -15,49 +14,87 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const resolved = post;
-
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" });
-}
 ---
 
-<BaseLayout title={resolved.title} description={resolved.excerpt}>
-  <article>
-    <section class="relative overflow-hidden">
+<BaseLayout title={post.title} description={post.excerpt}>
+  <article class="bg-white font-sans">
+    
+    <!-- Hero Header -->
+    <section class="relative overflow-hidden bg-[#121417]">
       {
-        resolved.featuredImage ? (
-          <img src={resolved.featuredImage} alt={resolved.title} class="h-[46vh] w-full object-cover md:h-[56vh]" />
+        post.featuredImage ? (
+          <img src={post.featuredImage} alt={post.title} class="h-[50vh] w-full object-cover md:h-[65vh] opacity-60" />
         ) : (
-          <ArtPanel seed={resolved.id.length + resolved.slug.length} tone="ink" class="h-[46vh] w-full md:h-[56vh]" />
+          <ArtPanel seed={post.id.length + post.slug.length} tone="ink" class="h-[50vh] w-full md:h-[65vh] opacity-60" />
         )
       }
-      <div class="absolute inset-0 flex items-end bg-gradient-to-t from-ink/80 via-ink/10 to-transparent">
-        <div class="mx-auto w-full max-w-3xl px-5 pb-10 text-cream md:px-10 md:pb-14">
-          {resolved.categories[0] && <Badge>{resolved.categories[0]}</Badge>}
-          <h1 class="mt-4 text-balance font-display text-3xl leading-[1.1] md:text-5xl">{resolved.title}</h1>
-          <div class="mt-4 flex flex-wrap items-center gap-4 text-xs uppercase tracking-wide text-cream/70">
-            <span class="flex items-center gap-1.5"><Icon name="calendar" size={14} /> {formatDate(resolved.date)}</span>
-            <span class="flex items-center gap-1.5"><Icon name="user" size={14} /> {resolved.author}</span>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#121417] via-[#121417]/40 to-transparent"></div>
+      
+      <div class="absolute inset-0 flex items-end">
+        <div class="mx-auto w-full max-w-4xl px-6 pb-12 md:px-12 md:pb-20">
+          
+          {post.categories[0] && (
+            <span class="inline-block rounded-full bg-[#B02317] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.25em] text-white shadow-sm mb-6">
+              {post.categories[0]}
+            </span>
+          )}
+          
+          <h1 class="text-balance font-serif text-4xl font-medium leading-[1.1] text-white sm:text-5xl md:text-6xl lg:text-7xl">
+            {post.title}
+          </h1>
+          
+          <div class="mt-8 flex flex-wrap items-center gap-6 text-xs font-semibold uppercase tracking-widest text-gray-300">
+            <span class="flex items-center gap-2">
+              <Icon name={"calendar" as any} className="h-4 w-4 text-[#B02317]" /> 
+              {formatDate(post.date)}
+            </span>
+            <span class="flex items-center gap-2">
+              <Icon name={"user" as any} className="h-4 w-4 text-[#B02317]" /> 
+              {post.author}
+            </span>
+            <span class="flex items-center gap-2">
+              <Icon name={"clock" as any} className="h-4 w-4 text-[#B02317]" /> 
+              {estimateReadTime(post.content)}
+            </span>
           </div>
+
         </div>
       </div>
     </section>
 
-    <section class="mx-auto max-w-3xl px-5 py-14 md:px-10 md:py-20">
+    <!-- Article Content -->
+    <section class="mx-auto max-w-3xl px-6 py-16 md:px-12 md:py-24">
+      
       <div
-        class="prose-content max-w-none text-[15px] leading-relaxed text-ink/80 [&_a]:text-clay [&_a]:underline [&_a]:underline-offset-2 [&_h2]:mt-10 [&_h2]:font-display [&_h2]:text-2xl [&_h2]:text-ink [&_h3]:mt-8 [&_h3]:font-display [&_h3]:text-xl [&_h3]:text-ink [&_img]:my-6 [&_img]:rounded-lg [&_p]:mt-4 [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:pl-5"
-        set:html={resolved.content}
+        class="prose-content max-w-none text-lg font-light leading-relaxed text-[#554946] 
+        [&_a]:text-[#B02317] [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-[#8e1c12]
+        [&_h2]:mt-14 [&_h2]:mb-6 [&_h2]:font-serif [&_h2]:text-3xl [&_h2]:font-medium [&_h2]:text-[#121417] 
+        [&_h3]:mt-10 [&_h3]:mb-4 [&_h3]:font-serif [&_h3]:text-2xl [&_h3]:font-medium [&_h3]:text-[#121417] 
+        [&_img]:my-10 [&_img]:rounded-3xl [&_img]:shadow-md [&_img]:border [&_img]:border-gray-100
+        [&_p]:mt-6 
+        [&_ul]:mt-6 [&_ul]:space-y-2 [&_ul]:list-none [&_ul]:pl-0 [&_li]:relative [&_li]:pl-6 [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-2.5 [&_li]:before:h-1.5 [&_li]:before:w-1.5 [&_li]:before:rounded-full [&_li]:before:bg-[#B02317]
+        [&_blockquote]:border-l-4 [&_blockquote]:border-[#B02317] [&_blockquote]:bg-[#FDF9F7] [&_blockquote]:p-6 [&_blockquote]:italic [&_blockquote]:text-[#121417] [&_blockquote]:rounded-r-2xl"
+        set:html={post.content}
       />
 
-      <div class="mt-14 flex items-center justify-between border-t border-border pt-8">
-        <a href="/blog" class="flex items-center gap-2 text-sm font-medium uppercase tracking-wide text-ink hover:text-clay">
-          <Icon name="arrow-left" size={16} /> Back to Blog
+      <div class="mt-20 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-gray-100 pt-10">
+        <a href="/blog" class="group flex items-center gap-3 text-sm font-semibold uppercase tracking-widest text-[#88726F] hover:text-[#B02317] transition-colors">
+          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#FDF9F7] transition-colors group-hover:bg-[#B02317]/10">←</span> 
+          Back to Blog
         </a>
-        <a href="/contact" class="flex items-center gap-2 text-sm font-medium uppercase tracking-wide text-clay hover:text-clay-hover">
-          Enquire About a Project <Icon name="arrow-right" size={16} />
+        <a href="/contact" class="group flex items-center gap-3 rounded-full bg-[#121417] px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all hover:bg-[#B02317] hover:shadow-lg hover:-translate-y-1">
+          Enquire Now 
+          <span class="transition-transform group-hover:translate-x-1">→</span>
         </a>
       </div>
+
     </section>
   </article>
 </BaseLayout>
+
+<style is:global>
+  /* Base styles for WP Gallery/Figures to fit the container seamlessly */
+  .prose-content figure { margin: 2.5rem 0; }
+  .prose-content figcaption { text-align: center; font-size: 0.875rem; color: #88726F; margin-top: 0.75rem; font-style: italic; }
+  .prose-content iframe { border-radius: 1.5rem; width: 100%; aspect-ratio: 16/9; margin: 2rem 0; }
+</style>
