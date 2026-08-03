@@ -6,6 +6,8 @@ import CtaBanner from "@/components/sections/CtaBanner.astro";
 import { Badge } from "@/components/ui/badge";
 import { Icon } from "@/components/Icon";
 import { projects, type Project } from "@/lib/site-data";
+import { Faq } from "@/components/Faq";
+import { EnquiryForm } from "@/components/EnquiryForm";
 
 export function getStaticPaths() {
   return projects.map((project) => ({
@@ -28,170 +30,523 @@ const mapTitle = project.mapTitle || project.location;
 const mapDesc = project.mapDesc || "A prime location offering optimal accessibility and neighborhood amenities.";
 const mapSrc = project.mapSrc || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.3564993883187!2d74.8485!3d12.8647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba35c0245645679%3A0x629c12345678abcd!2sMangaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin";
 const mapQueryName = project.mapQueryName || project.location;
-const galleryImages = project.galleryImages || [
-  { src: "/images/projects/chinmaya.jpg", alt: project.name, title: project.name, subtitle: project.location }
-];
+const galleryImages = project.galleryImages || [];
+
+// Determines if we should show the rich detailed view
+const isRich = !!project.reraNo;
 ---
 
 <BaseLayout title={project.name} description={`${project.tagline} — ${project.name} by Udbhav Developers in ${project.location}.`}>
-  <!-- Hero Section -->
-  <section class="relative overflow-hidden bg-ink text-cream">
-    <ArtPanel seed={seed} tone={project.category === "Commercial" ? "ink" : "clay"} class="absolute inset-0" />
-    <div class="relative mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
-      <a href="/portfolio" class="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-cream/60 hover:text-cream transition-colors">
-        <Icon name="arrow-left" className="h-3.5 w-3.5" /> Back to Portfolio
-      </a>
-      <div class="mt-6 flex flex-wrap items-center gap-3">
-        <Badge>{project.status}</Badge>
-        <Badge variant="outline" className="border-cream/30 text-cream">{project.category}</Badge>
-      </div>
-      <h1 class="mt-5 max-w-2xl text-balance font-display text-5xl leading-[1.05] md:text-6xl">{project.name}</h1>
-      <p class="mt-4 max-w-lg text-[15px] text-cream/70">{project.tagline}</p>
-    </div>
-  </section>
-
-  <!-- Details & Overview Section -->
-  <section class="mx-auto grid max-w-[1400px] gap-12 px-5 py-20 md:px-10 lg:grid-cols-[1fr_320px]">
-    <div class="space-y-6">
-      <h2 class="font-display text-2xl font-normal text-[#1A1A1A]">Overview</h2>
-      <div class="bg-[#FCECE8] border border-[#F5D6CE]/40 rounded-3xl p-8 sm:p-10 shadow-sm space-y-4">
-        <h3 class="font-serif text-2xl sm:text-3xl font-normal text-[#1A1A1A]">
-          {subtitle}
-        </h3>
-        <p class="text-[15px] sm:text-base leading-relaxed text-gray-700 font-normal">
-          {project.description}
-        </p>
-      </div>
-    </div>
-
-    <aside class="h-fit space-y-5 rounded-lg border border-border bg-white p-7 shadow-sm">
-      <div class="flex items-center justify-between border-b border-border pb-3">
-        <span class="text-xs uppercase tracking-wide text-muted-foreground">Location</span>
-        <span class="font-medium text-right">{project.location}</span>
-      </div>
-      {project.units && (
-        <div class="flex items-center justify-between border-b border-border pb-3">
-          <span class="text-xs uppercase tracking-wide text-muted-foreground">Configuration</span>
-          <span class="font-medium">{project.units}</span>
+  
+  {isRich ? (
+    <>
+      <!-- Rich Hero Section -->
+      <section class="relative bg-ink text-cream pt-24 pb-48 md:pt-32 md:pb-64">
+        <div class="absolute inset-0 overflow-hidden z-0">
+          {galleryImages.length > 0 ? (
+             <div class="absolute inset-0 opacity-40 mix-blend-overlay">
+               <img src={galleryImages[0].src} alt="" class="w-full h-full object-cover" />
+             </div>
+          ) : (
+             <ArtPanel seed={seed} tone="ink" class="absolute inset-0" />
+          )}
         </div>
-      )}
-      <div class="flex items-center justify-between border-b border-border pb-3">
-        <span class="text-xs uppercase tracking-wide text-muted-foreground">Year</span>
-        <span class="font-medium">{project.year}</span>
-      </div>
-      <div class="flex items-center justify-between">
-        <span class="text-xs uppercase tracking-wide text-muted-foreground">Status</span>
-        <span class="font-medium">{project.status}</span>
-      </div>
+        
+        <div class="relative mx-auto max-w-[1400px] px-5 flex flex-col items-center text-center z-10">
+          <h1 class="font-display text-5xl md:text-7xl leading-tight mb-2">{project.name}</h1>
+          <p class="text-xl md:text-3xl font-display mb-4 text-cream/90">{project.subtitle}</p>
+          
+          <div class="flex flex-wrap justify-center gap-2 text-sm font-medium tracking-wide text-cream/70 mb-8">
+             <a href="/" class="hover:text-cream transition-colors">Home</a>
+             <span>/</span>
+             <a href="/portfolio" class="hover:text-cream transition-colors">Project</a>
+             <span>/</span>
+             <span class="text-clay">{project.name}</span>
+          </div>
+          
+          <div class="flex flex-col sm:flex-row gap-4 mb-4">
+             <a href="#enquire" class="inline-flex h-12 items-center justify-center rounded bg-clay px-8 text-sm font-medium text-cream hover:bg-clay-hover transition-colors shadow-lg hover:-translate-y-0.5 duration-300">
+               Enquiry Now
+             </a>
+             <a href="#360" class="inline-flex h-12 items-center justify-center rounded bg-clay px-8 text-sm font-medium text-cream hover:bg-clay-hover transition-colors shadow-lg hover:-translate-y-0.5 duration-300">
+               View 360° Virtual Work
+             </a>
+          </div>
+          {project.brochureUrl && (
+             <a href={project.brochureUrl} target="_blank" class="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-sm bg-[#f2ebd9] border-l-4 border-yellow-500 px-12 text-sm font-medium text-ink transition-colors shadow-lg relative overflow-hidden group">
+               <span class="absolute inset-0 bg-yellow-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></span>
+               <span class="relative z-10 flex items-center">
+                 <Icon name="download" className="w-4 h-4 mr-2 text-ink/70 group-hover:text-ink transition-colors" /> Download Brochure
+               </span>
+             </a>
+          )}
+        </div>
+
+        <!-- 5 Floating Info Cards -->
+        <div class="absolute bottom-0 left-0 w-full translate-y-1/2 px-5 z-20">
+          <div class="mx-auto max-w-[1200px] grid grid-cols-2 md:grid-cols-5 gap-4">
+             <div class="bg-white rounded-xl shadow-lg border border-border p-6 text-center text-ink flex flex-col items-center gap-3 hover:-translate-y-1 transition-transform duration-500">
+                <Icon name="tag" className="w-8 h-8 text-yellow-500" />
+                <h4 class="font-display text-sm md:text-base leading-tight">Starting Price</h4>
+                <p class="text-[10px] md:text-xs text-muted-foreground leading-relaxed">Apartments start from {project.price}. This gives you a clear entry point.</p>
+             </div>
+             <div class="bg-white rounded-xl shadow-lg border border-border p-6 text-center text-ink flex flex-col items-center gap-3 hover:-translate-y-1 transition-transform duration-500">
+                <Icon name="calendar-check" className="w-8 h-8 text-blue-500" />
+                <h4 class="font-display text-sm md:text-base leading-tight">Easy Booking</h4>
+                <p class="text-[10px] md:text-xs text-muted-foreground leading-relaxed">Our easy booking process is designed to give you complete transparency.</p>
+             </div>
+             <div class="bg-white rounded-xl shadow-lg border border-border p-6 text-center text-ink flex flex-col items-center gap-3 hover:-translate-y-1 transition-transform duration-500">
+                <Icon name="file-text" className="w-8 h-8 text-green-500" />
+                <h4 class="font-display text-sm md:text-base leading-tight">Agreement Payment</h4>
+                <p class="text-[10px] md:text-xs text-muted-foreground leading-relaxed">25% payable at the time of agreement. This confirms your purchase legally.</p>
+             </div>
+             <div class="bg-white rounded-xl shadow-lg border border-border p-6 text-center text-ink flex flex-col items-center gap-3 hover:-translate-y-1 transition-transform duration-500">
+                <Icon name="bar-chart" className="w-8 h-8 text-orange-500" />
+                <h4 class="font-display text-sm md:text-base leading-tight">Flexible Payments</h4>
+                <p class="text-[10px] md:text-xs text-muted-foreground leading-relaxed">You pay in stages as the project develops, instead of a heavy upfront commitment.</p>
+             </div>
+             <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center border-t-4 border-yellow-500 hover:-translate-y-1 transition-transform duration-300">
+               <img src="/images/udbahv-chinmaya/home-loan.png" alt="Home Loan" class="w-10 h-10 object-contain mb-3" />
+               <h3 class="font-bold text-ink text-sm mb-2">Home Loan Assistance</h3>
+               <p class="text-[10px] text-muted-foreground leading-tight">Loan facility available from all major banks such as Karnataka Bank, Canara Bank & SBI Bank. Smooth loan processing. Competitive Interest rates and Easy EMIs.</p>
+             </div>
+          </div>
+        </div>
+      </section>
       
-      <a href="/contact" class="mt-2 flex items-center justify-center gap-2 rounded-sm bg-primary px-6 py-3 text-[13px] font-medium uppercase tracking-wide text-primary-foreground hover:bg-clay-hover transition-colors">
-        Enquire Now
-      </a>
-    </aside>
-  </section>
-
-  <!-- Location Section -->
-  <section class="py-20 px-6 max-w-[1440px] mx-auto font-sans">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      <div class="lg:col-span-5 space-y-8">
-        <div>
-          <h3 class="text-xs font-bold uppercase tracking-widest text-[#C23B22] mb-2">The Address</h3>
-          <h2 class="font-serif text-4xl sm:text-5xl font-normal text-[#1A1A1A]">{mapTitle}</h2>
+      <!-- Main Content Container -->
+      <section class="mx-auto max-w-[1300px] px-5 py-16 md:py-24 mt-8">
+        
+        <!-- Our Partners (Full Width) -->
+        <div class="mb-16">
+           <h3 class="font-display text-3xl text-ink mb-8 flex items-center">Our Partners <span class="w-1.5 h-1.5 rounded-full bg-yellow-500 ml-2 mt-2"></span></h3>
+           <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+              <img src="/images/udbahv-chinmaya/canara-bank.png" alt="Canara Bank" class="w-full h-auto max-h-24 object-contain mix-blend-darken" />
+              <img src="/images/udbahv-chinmaya/sb-bank.png" alt="State Bank of India" class="w-full h-auto max-h-24 object-contain mix-blend-darken" />
+              <img src="/images/udbahv-chinmaya/kbank.png" alt="Karnataka Bank" class="w-full h-auto max-h-24 object-contain mix-blend-darken" />
+           </div>
         </div>
 
-        <p class="text-gray-600 text-base leading-relaxed">
-          {mapDesc}
-        </p>
+        <!-- Two Column Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <!-- Left Column -->
+          <div class="lg:col-span-7 space-y-16">
+           
+           <!-- Video & Description -->
+           <div class="space-y-8">
+             <div class="aspect-video w-full rounded-2xl overflow-hidden bg-ink/5 border border-border relative group shadow-sm hover:shadow-md transition-all duration-500">
+               {project.videoUrl ? (
+                  <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src={project.videoUrl} 
+                    title="Project Video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen
+                    class="w-full h-full"
+                  ></iframe>
+               ) : galleryImages.length > 0 ? (
+                  <>
+                    <img src={galleryImages[0].src} alt="Project Video" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <div class="w-16 h-16 rounded-full bg-clay text-cream flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                         <Icon name="play" className="w-6 h-6 ml-1" />
+                      </div>
+                    </div>
+                  </>
+               ) : (
+                  <div class="w-full h-full flex items-center justify-center text-muted-foreground">No media</div>
+               )}
+             </div>
+             
+             <div class="prose prose-ink max-w-none text-muted-foreground leading-relaxed">
+               <p>{project.description}</p>
+               <p>With only {project.totalUnits} exclusive apartments, {project.name} ensures privacy, comfort, and a refined living experience in a prime urban location. <a href="#" class="text-clay font-bold hover:underline">View RERA Certificate Here.</a></p>
+             </div>
+           </div>
 
-        <div class="flex items-center justify-between border-t border-gray-200 pt-6">
-          <span class="text-xs uppercase tracking-wide text-gray-400 font-semibold">Location</span>
-          <span class="font-bold text-[#1A1A1A] text-sm">{mapQueryName}</span>
+           <!-- Why Choose Us -->
+           {project.whyChooseUs && (
+             <div class="space-y-6">
+               <h2 class="font-display text-3xl text-ink">Why Choose {project.name}?</h2>
+               <div class="prose prose-ink max-w-none text-muted-foreground leading-relaxed">
+                 <p>Finding a home in the city often means compromising — either on space, peace, or connectivity. {project.name} eliminates that compromise.</p>
+                 <p>{project.whyChooseUs}</p>
+                 <p>Thoughtfully planned layouts, premium fittings, advanced security systems, and lifestyle amenities come together to deliver a living experience that feels complete in every way.</p>
+               </div>
+             </div>
+           )}
+
+           <!-- How We Help -->
+           <div>
+             <h2 class="font-display text-3xl text-ink mb-8">How We Help</h2>
+             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-500">
+                   <Icon name="home" className="w-8 h-8 mx-auto text-ink/70 mb-4" />
+                   <h4 class="font-bold text-sm text-clay mb-2">Property Selection</h4>
+                   <p class="text-[11px] text-muted-foreground leading-relaxed">We assist you in identifying properties that perfectly align with your investment goals and personal preferences.</p>
+                </div>
+                <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-500">
+                   <Icon name="shield" className="w-8 h-8 mx-auto text-ink/70 mb-4" />
+                   <h4 class="font-bold text-sm text-clay mb-2">Legal and Financial Assistance</h4>
+                   <p class="text-[11px] text-muted-foreground leading-relaxed">Our experts provide comprehensive guidance on the legal and financial aspects of property investment.</p>
+                </div>
+                <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-500">
+                   <Icon name="heart" className="w-8 h-8 mx-auto text-ink/70 mb-4" />
+                   <h4 class="font-bold text-sm text-clay mb-2">Post-Purchase Support</h4>
+                   <p class="text-[11px] text-muted-foreground leading-relaxed">Our commitment to you goes beyond the purchase. We provide comprehensive post-purchase support.</p>
+                </div>
+             </div>
+           </div>
+
+           <!-- Apartment Configuration -->
+           <div>
+             <h2 class="font-display text-3xl text-ink mb-1 inline-block">Apartment Configuration</h2>
+             <div class="h-1 w-24 bg-yellow-400 mb-8 mt-2"></div>
+             
+             <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center gap-3 h-32">
+                   <Icon name="home" className="w-7 h-7 text-ink/60" />
+                   <h4 class="font-bold text-xs text-clay">{project.configurations}</h4>
+                </div>
+                <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center gap-3 h-32">
+                   <Icon name="users" className="w-7 h-7 text-ink/60" />
+                   <h4 class="font-bold text-xs text-clay">Total Units: {project.totalUnits}</h4>
+                </div>
+                <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center gap-3 h-32">
+                   <Icon name="building" className="w-7 h-7 text-ink/60" />
+                   <h4 class="font-bold text-xs text-clay">Structure: Ground + 5 Floors</h4>
+                </div>
+                <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center gap-3 h-32">
+                   <Icon name="map" className="w-7 h-7 text-ink/60" />
+                   <h4 class="font-bold text-xs text-clay">Project Area: {project.developmentSize}</h4>
+                </div>
+                <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center gap-3 h-32">
+                   <Icon name="key" className="w-7 h-7 text-ink/60" />
+                   <h4 class="font-bold text-xs text-clay">Possession: {project.completionDate}</h4>
+                </div>
+                <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center gap-3 h-32">
+                   <Icon name="tag" className="w-7 h-7 text-ink/60" />
+                   <h4 class="font-bold text-xs text-clay">Starts From {project.price}</h4>
+                </div>
+             </div>
+           </div>
+
+           <!-- Plans -->
+           {project.floorPlans && project.floorPlans.length > 0 && (
+             <div>
+               <h2 class="font-display text-3xl text-ink mb-6">Plans</h2>
+               
+               <div class="flex gap-3 mb-8">
+                  <button class="px-6 py-2 rounded bg-clay text-cream font-medium text-sm transition-colors">3 Bhk</button>
+                  <button class="px-6 py-2 rounded bg-ink/5 text-ink font-medium text-sm hover:bg-ink/10 transition-colors">4 Bhk</button>
+                  <button class="px-6 py-2 rounded bg-ink/5 text-ink font-medium text-sm hover:bg-ink/10 transition-colors">Master Plan</button>
+               </div>
+
+               <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                 {project.floorPlans.map(plan => (
+                   <div class="bg-white rounded-2xl border border-border overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-500">
+                     <div class="aspect-[4/3] bg-ink/5 overflow-hidden border-b border-border p-4">
+                       <img src={plan.image} alt={plan.title} class="w-full h-full object-contain transition-transform duration-700 hover:scale-105" />
+                     </div>
+                     <div class="p-4 text-center bg-white">
+                       <h4 class="font-display text-sm font-bold text-ink">{plan.title}</h4>
+                     </div>
+                   </div>
+                 ))}
+               </div>
+             </div>
+           )}
         </div>
-      </div>
+        
+        <!-- Right Column (Sticky Sidebar) -->
+        <div class="lg:col-span-5 pt-2">
+           <div class="space-y-6">
+             <!-- Quick Facts Card (Scrolls normally) -->
+             <div class="bg-white rounded-[2rem] shadow-sm border border-border p-8">
+                <ul class="space-y-6 divide-y divide-border">
+                   <li class="flex gap-4 items-start pt-6 first:pt-0">
+                     <Icon name="map-pin" className="w-5 h-5 text-clay shrink-0 mt-0.5" />
+                     <div>
+                        <p class="text-xs text-muted-foreground mb-1">Location</p>
+                        <p class="font-bold text-sm text-ink">{project.location}</p>
+                     </div>
+                   </li>
+                   <li class="flex gap-4 items-start pt-6">
+                     <Icon name="building" className="w-5 h-5 text-clay shrink-0 mt-0.5" />
+                     <div>
+                        <p class="text-xs text-muted-foreground mb-1">Typology</p>
+                        <p class="font-bold text-sm text-ink">{project.category} Apartments</p>
+                     </div>
+                   </li>
+                   {project.reraNo && (
+                   <li class="flex gap-4 items-start pt-6">
+                     <Icon name="file-text" className="w-5 h-5 text-clay shrink-0 mt-0.5" />
+                     <div>
+                        <p class="text-xs text-muted-foreground mb-1">RERA Certificate</p>
+                        <p class="font-bold text-xs text-ink break-all">{project.reraNo}</p>
+                     </div>
+                   </li>
+                   )}
+                   <li class="flex gap-4 items-start pt-6">
+                     <Icon name="calendar-check" className="w-5 h-5 text-clay shrink-0 mt-0.5" />
+                     <div>
+                        <p class="text-xs text-muted-foreground mb-1">Possession</p>
+                        <p class="font-bold text-sm text-ink">{project.completionDate}</p>
+                     </div>
+                   </li>
+                   <li class="flex gap-4 items-start pt-6">
+                     <Icon name="building" className="w-5 h-5 text-clay shrink-0 mt-0.5" />
+                     <div>
+                        <p class="text-xs text-muted-foreground mb-1">Project Size</p>
+                        <p class="font-bold text-sm text-ink">Ground + 5 Floors</p>
+                     </div>
+                   </li>
+                   <li class="flex gap-4 items-start pt-6">
+                     <Icon name="map" className="w-5 h-5 text-clay shrink-0 mt-0.5" />
+                     <div>
+                        <p class="text-xs text-muted-foreground mb-1">Project Area</p>
+                        <p class="font-bold text-sm text-ink">{project.developmentSize}</p>
+                     </div>
+                   </li>
+                </ul>
+             </div>
 
-      <div class="lg:col-span-7">
-        <div class="bg-white border border-gray-200 rounded-3xl p-3 shadow-sm overflow-hidden relative">
-          <div class="w-full h-[450px] sm:h-[500px] rounded-2xl overflow-hidden bg-gray-100">
-            <iframe 
-              src={mapSrc} 
-              width="100%" 
-              height="100%" 
-              style="border:0;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade"
-              class="w-full h-full grayscale-[20%] contrast-[105%]"
-            ></iframe>
+             <!-- Wrapper for Form & CTA that becomes sticky -->
+             <div class="sticky top-8 space-y-6">
+               <!-- Enquiry Form Card -->
+               <div class="bg-white rounded-[2rem] shadow-sm border border-border p-8" id="enquire">
+                  <EnquiryForm dark={false} client:idle />
+               </div>
+
+               <!-- CTA Buttons -->
+               <div class="space-y-4 pt-4">
+                  {project.brochureUrl && (
+                     <a href={project.brochureUrl} target="_blank" class="w-full inline-flex h-12 items-center justify-center rounded-sm bg-[#f2ebd9] border-l-4 border-yellow-500 px-4 text-sm font-medium text-ink transition-colors shadow-sm relative overflow-hidden group">
+                       <span class="absolute inset-0 bg-yellow-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></span>
+                       <span class="relative z-10 flex items-center">
+                         <Icon name="download" className="w-4 h-4 mr-2 text-ink/70 group-hover:text-ink transition-colors" /> Download Brochure
+                       </span>
+                     </a>
+                  )}
+                  <a href="#360" class="flex items-center justify-center w-full h-12 bg-clay text-cream font-medium text-sm rounded hover:bg-clay-hover transition-colors shadow-sm hover:shadow">
+                    View 360° Virtual Work
+                  </a>
+               </div>
+             </div>
+           </div>
+         </div>
+        </div>
+      </section>
+
+      <!-- Construction Updates / Visual Showcase -->
+      {project.constructionUpdates && project.constructionUpdates.length > 0 && (
+         <section class="bg-blush/30 border-y border-border py-20 px-5">
+           <div class="mx-auto max-w-[1200px]">
+             <div class="text-center mb-16">
+               <h3 class="text-xs font-bold uppercase tracking-widest text-clay mb-2">Gallery</h3>
+               <h2 class="font-display text-4xl text-ink">Latest Project Updates</h2>
+             </div>
+             
+             <div class="space-y-16">
+               {project.constructionUpdates.map(update => (
+                 <div>
+                   <div class="flex items-center justify-center mb-8">
+                      <h4 class="font-display text-2xl text-ink bg-blush/30 px-4 z-10">{update.month}</h4>
+                      <div class="absolute w-full max-w-[1200px] h-px bg-border -z-10 mt-1"></div>
+                   </div>
+                   <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                     {update.images.map(img => (
+                       <div class="aspect-[4/3] rounded-lg overflow-hidden bg-ink/5 border border-border shadow-sm group">
+                         <img src={img} alt={update.month} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+                       </div>
+                     ))}
+                   </div>
+                 </div>
+               ))}
+             </div>
+           </div>
+         </section>
+      )}
+
+      <!-- FAQs -->
+      {project.faqs && project.faqs.length > 0 && (
+         <section class="py-20 px-5 bg-white">
+           <div class="mx-auto max-w-[800px]">
+             <div class="text-center mb-8">
+               <h2 class="font-display text-4xl text-ink">Frequently Asked Questions</h2>
+             </div>
+             <Faq items={project.faqs.map(f => ({ q: f.question, a: f.answer }))} client:idle />
+           </div>
+         </section>
+      )}
+    </>
+  ) : (
+    <>
+      <!-- Original Hero Section (Fallback for non-rich projects) -->
+      <section class="relative overflow-hidden bg-ink text-cream">
+        <ArtPanel seed={seed} tone={project.category === "Commercial" ? "ink" : "clay"} class="absolute inset-0" />
+        <div class="relative mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
+          <a href="/portfolio" class="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-cream/60 hover:text-cream transition-colors">
+            <Icon name="arrow-left" className="h-3.5 w-3.5" /> Back to Portfolio
+          </a>
+          <div class="mt-6 flex flex-wrap items-center gap-3">
+            <Badge>{project.status}</Badge>
+            <Badge variant="outline" className="border-cream/30 text-cream">{project.category}</Badge>
+          </div>
+          <h1 class="mt-5 max-w-2xl text-balance font-display text-5xl leading-[1.05] md:text-6xl">{project.name}</h1>
+          <p class="mt-4 max-w-lg text-[15px] text-cream/70">{project.tagline}</p>
+        </div>
+      </section>
+
+      <!-- Details & Overview Section -->
+      <section class="mx-auto grid max-w-[1400px] gap-12 px-5 py-20 md:px-10 lg:grid-cols-[1fr_320px]">
+        <div class="space-y-6">
+          <h2 class="font-display text-2xl font-normal text-ink">Overview</h2>
+          <div class="bg-blush border border-border rounded-3xl p-8 sm:p-10 shadow-sm space-y-4">
+            <h3 class="font-display text-2xl sm:text-3xl font-normal text-ink">
+              {subtitle}
+            </h3>
+            <p class="text-[15px] sm:text-base leading-relaxed text-muted-foreground font-normal">
+              {project.description}
+            </p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
+        <aside class="h-fit space-y-5 rounded-lg border border-border bg-white p-7 shadow-sm">
+          <div class="flex items-center justify-between border-b border-border pb-3">
+            <span class="text-xs uppercase tracking-wide text-muted-foreground">Location</span>
+            <span class="font-medium text-right text-sm">{project.location}</span>
+          </div>
+          {project.units && (
+            <div class="flex items-center justify-between border-b border-border pb-3">
+              <span class="text-xs uppercase tracking-wide text-muted-foreground">Configuration</span>
+              <span class="font-medium text-sm">{project.units}</span>
+            </div>
+          )}
+          <div class="flex items-center justify-between border-b border-border pb-3">
+            <span class="text-xs uppercase tracking-wide text-muted-foreground">Year</span>
+            <span class="font-medium text-sm">{project.year}</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-xs uppercase tracking-wide text-muted-foreground">Status</span>
+            <span class="font-medium text-sm">{project.status}</span>
+          </div>
+          
+          <a href="/contact" class="mt-2 flex items-center justify-center gap-2 rounded-sm bg-clay px-6 py-3 text-[13px] font-medium uppercase tracking-wide text-cream hover:bg-clay-hover transition-colors">
+            Enquire Now
+          </a>
+        </aside>
+      </section>
 
-<!-- Visual Showcase Gallery -->
-  {galleryImages.length > 0 && (
-    <section class="py-20 px-6 font-sans overflow-hidden max-w-[1440px] mx-auto">
-      <div class="space-y-8">
-        <div class="flex items-end justify-between">
-          <div>
-            <h3 class="text-xs font-bold uppercase tracking-widest text-[#C23B22] mb-2">Visual Showcase</h3>
-            <h2 class="font-serif text-3xl sm:text-4xl text-[#1A1A1A]">Project Gallery</h2>
+      <!-- Location Section -->
+      <section class="py-20 px-6 max-w-[1440px] mx-auto font-sans">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5 space-y-8">
+            <div>
+              <h3 class="text-xs font-bold uppercase tracking-widest text-clay mb-2">The Address</h3>
+              <h2 class="font-display text-4xl sm:text-5xl font-normal text-ink">{mapTitle}</h2>
+            </div>
+
+            <p class="text-muted-foreground text-base leading-relaxed">
+              {mapDesc}
+            </p>
+
+            <div class="flex items-center justify-between border-t border-border pt-6">
+              <span class="text-xs uppercase tracking-wide text-muted-foreground font-semibold">Location</span>
+              <span class="font-medium text-ink text-sm">{mapQueryName}</span>
+            </div>
           </div>
 
-          <div class="hidden sm:flex gap-3">
-            <button 
-              id="scroll-left" 
-              aria-label="Scroll left"
-              class="h-10 w-10 rounded-full border border-gray-200 bg-white hover:bg-gray-50 flex items-center justify-center transition-colors shadow-sm text-gray-700"
-            >
-              ←
-            </button>
-            <button 
-              id="scroll-right" 
-              aria-label="Scroll right"
-              class="h-10 w-10 rounded-full border border-gray-200 bg-white hover:bg-gray-50 flex items-center justify-center transition-colors shadow-sm text-gray-700"
-            >
-              →
-            </button>
-          </div>
-        </div>
-
-        <div 
-          id="gallery-container" 
-          class="flex gap-5 overflow-x-auto scroll-smooth pb-6 pt-2 select-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-        >
-          {galleryImages.map((img) => (
-            // <!-- Adjusted column widths to make cards noticeably smaller -->
-            <div class="min-w-[220px] sm:min-w-[280px] lg:min-w-[320px] max-w-[320px] flex-shrink-0 group">
-              <div class="relative overflow-hidden rounded-2xl aspect-[4/3] bg-gray-100 shadow-sm mb-3">
-                <img 
-                  src={img.src} 
-                  alt={img.alt} 
-                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
+          <div class="lg:col-span-7">
+            <div class="bg-white border border-border rounded-3xl p-3 shadow-sm overflow-hidden relative">
+              <div class="w-full h-[450px] sm:h-[500px] rounded-2xl overflow-hidden bg-ink/5">
+                <iframe 
+                  src={mapSrc} 
+                  width="100%" 
+                  height="100%" 
+                  style="border:0;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade"
+                  class="w-full h-full grayscale-[20%] contrast-[105%]"
+                ></iframe>
               </div>
-              
-              {img.title && (
-                <div class="flex items-center justify-between px-1">
-                  <h4 class="font-bold text-[#1A1A1A] text-sm sm:text-base">{img.title}</h4>
-                  {img.subtitle && (
-                    <span class="text-[10px] sm:text-xs font-medium tracking-wide text-gray-500 uppercase">{img.subtitle}</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Visual Showcase Gallery -->
+      {galleryImages.length > 0 && (
+        <section class="py-20 px-6 font-sans overflow-hidden max-w-[1440px] mx-auto">
+          <div class="space-y-8">
+            <div class="flex items-end justify-between">
+              <div>
+                <h3 class="text-xs font-bold uppercase tracking-widest text-clay mb-2">Visual Showcase</h3>
+                <h2 class="font-display text-3xl sm:text-4xl text-ink">Project Gallery</h2>
+              </div>
+
+              <div class="hidden sm:flex gap-3">
+                <button 
+                  id="scroll-left" 
+                  aria-label="Scroll left"
+                  class="h-10 w-10 rounded-full border border-border bg-white hover:bg-muted flex items-center justify-center transition-colors shadow-sm text-ink"
+                >
+                  ←
+                </button>
+                <button 
+                  id="scroll-right" 
+                  aria-label="Scroll right"
+                  class="h-10 w-10 rounded-full border border-border bg-white hover:bg-muted flex items-center justify-center transition-colors shadow-sm text-ink"
+                >
+                  →
+                </button>
+              </div>
+            </div>
+
+            <div 
+              id="gallery-container" 
+              class="flex gap-5 overflow-x-auto scroll-smooth pb-6 pt-2 select-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {galleryImages.map((img) => (
+                <div class="min-w-[220px] sm:min-w-[280px] lg:min-w-[320px] max-w-[320px] flex-shrink-0 group">
+                  <div class="relative overflow-hidden rounded-2xl aspect-[4/3] bg-ink/5 shadow-sm mb-3 border border-border">
+                    <img 
+                      src={img.src} 
+                      alt={img.alt} 
+                      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                  
+                  {img.title && (
+                    <div class="flex items-center justify-between px-1">
+                      <h4 class="font-display text-ink text-sm sm:text-base">{img.title}</h4>
+                      {img.subtitle && (
+                        <span class="text-[10px] sm:text-xs font-medium tracking-wide text-muted-foreground uppercase">{img.subtitle}</span>
+                      )}
+                    </div>
                   )}
                 </div>
-              )}
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
+          </div>
+        </section>
+      )}
+    </>
   )}
 
   <!-- Related Projects Section -->
   <section class="mx-auto max-w-[1400px] px-5 pb-24 md:px-10">
-    <h2 class="font-display text-3xl">More Projects</h2>
-    <div class="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="text-center mb-12">
+       <h2 class="font-display text-3xl text-ink">More Projects</h2>
+       <p class="text-muted-foreground mt-2 max-w-lg mx-auto">Explore other signature addresses crafted by Udbhav Developers across the city.</p>
+    </div>
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {related.map((p, i) => <ProjectCard project={p} seed={i + 5} />)}
     </div>
   </section>

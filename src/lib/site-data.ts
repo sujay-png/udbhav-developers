@@ -34,6 +34,23 @@ export type Project = {
   mapSrc?: string;
   mapQueryName?: string;
   galleryImages?: GalleryItem[];
+  // Rich details for new layout
+  reraNo?: string;
+  developmentSize?: string;
+  totalUnits?: string;
+  configurations?: string;
+  price?: string;
+  emi?: string;
+  completionDate?: string;
+  brochureUrl?: string;
+  amenitiesBrochureUrl?: string;
+  videoUrl?: string;
+  features?: string[];
+  faqs?: { question: string; answer: string }[];
+  apartmentConfigurations?: { type: string; area: string; image: string }[];
+  floorPlans?: { title: string; image: string }[];
+  whyChooseUs?: string;
+  constructionUpdates?: { month: string; images: string[] }[];
 };
 
 export type Media = {
@@ -70,9 +87,49 @@ export const projects: Project[] = [
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.15!2d74.85!3d12.87!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDUyJzEyLjAiTiA3NMKwNTEnMDAuMCJF!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin",
     mapQueryName: "Kadri, Mangaluru",
     galleryImages: [
-      { src: "/images/projects/chinmaya.jpg", alt: "Udbhav Chinmaya Exterior", title: "Udbhav Chinmaya", subtitle: "Kadri, Mangalore" },
-      { src: "/images/projects/chinmaya.jpg", alt: "Balcony and Façade View", title: "Architectural Detail", subtitle: "Modern Luxury" },
+      { src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", alt: "Udbhav Chinmaya Exterior", title: "Udbhav Chinmaya", subtitle: "Kadri, Mangalore" },
+      { src: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80", alt: "Balcony and Façade View", title: "Architectural Detail", subtitle: "Modern Luxury" },
     ],
+    reraNo: "PRM/KA/RERA/1257/334/PR/210312/004018",
+    developmentSize: "1.10 Acres",
+    totalUnits: "84 Units",
+    configurations: "3, 4 & 5 BHK",
+    price: "₹ 98 Lacs onwards*",
+    emi: "Flexible EMI Options",
+    completionDate: "December 2025",
+    brochureUrl: "/brochure.pdf",
+    amenitiesBrochureUrl: "/amenities.pdf",
+    videoUrl: "https://www.youtube.com/embed/kknoLaXHTaQ?si=BOUy2U2QFMnVfPUd",
+    whyChooseUs: "A landmark residential address built around light-filled interiors, private balconies, and landscaped courtyards for families who want room to breathe in the city.",
+    features: [
+      "Vitrified flooring for living, dining, and bedrooms",
+      "Premium modular kitchen fittings",
+      "UPVC windows with mosquito mesh",
+      "Teak wood frame for main door",
+      "Branded sanitary ware and CP fittings",
+      "24/7 power backup for common areas",
+      "CCTV surveillance and round-the-clock security",
+      "Automatic high-speed elevators"
+    ],
+    faqs: [
+      { question: "What is the RERA approval status of Udbhav Chinmaya?", answer: "Yes, the project is RERA approved. The RERA number is PRM/KA/RERA/1257/334/PR/210312/004018." },
+      { question: "What is the development size of Udbhav Chinmaya?", answer: "The total development size is 1.10 Acres." },
+      { question: "What are the configuration options available?", answer: "We offer 3, 4 & 5 BHK premium apartments." },
+      { question: "Is there flexible EMI or home loan assistance?", answer: "Yes, we have tie-ups with leading banks for home loans and flexible EMI options." }
+    ],
+    apartmentConfigurations: [
+      { type: "3 BHK", area: "1400 - 1800 sq ft", image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80" },
+      { type: "4 BHK", area: "2200 - 2500 sq ft", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80" },
+      { type: "5 BHK Duplex", area: "3200+ sq ft", image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80" }
+    ],
+    floorPlans: [
+      { title: "Master Plan", image: "https://images.unsplash.com/photo-1593696140826-c58b021acf8b?w=800&q=80" },
+      { title: "Floor Plan - 3 BHK", image: "https://images.unsplash.com/photo-1598928506311-c55d43f12711?w=800&q=80" }
+    ],
+    constructionUpdates: [
+      { month: "Bhoomi Pooja", images: ["https://images.unsplash.com/photo-1541888086425-d81bb19240f5?w=800&q=80", "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80"] },
+      { month: "May 2023", images: ["https://images.unsplash.com/photo-1504307651254-35680f356f58?w=800&q=80", "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80"] }
+    ]
   },
   {
     slug: "udbhav-shanthi",
