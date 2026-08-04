@@ -389,6 +389,17 @@ const generalFaqs = [
       });
     });
 
+    // Check URL parameters for direct tab navigation
+    const params = new URLSearchParams(window.location.search);
+    const tabParam = params.get('tab');
+    if (tabParam) {
+      const activeBtn = Array.from(tabButtons).find(b => b.dataset.tab === tabParam);
+      if (activeBtn) {
+        // Prevent smooth scrolling on initial load
+        setTimeout(() => activeBtn.click(), 100);
+      }
+    }
+
     // --- Accordions ---
     document.querySelectorAll<HTMLElement>('.accordion-item').forEach((item) => {
       const trigger = item.querySelector<HTMLElement>('.accordion-trigger');

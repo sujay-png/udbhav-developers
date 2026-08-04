@@ -1,0 +1,78 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { projects, type Project } from "@/lib/site-data";
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const hasUpdates = project.updates && project.updates.length > 0;
+---
+
+<BaseLayout title={`${project.name} Gallery`} description={`Project updates and gallery for ${project.name}`}>
+  <!-- Hero Section -->
+  <section class="relative pt-32 pb-16 px-6 bg-ink text-white overflow-hidden">
+    <div class="absolute inset-0 z-0 opacity-20">
+      <img src={project.galleryImages?.[0]?.src || "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80"} alt="Background" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-ink/80 mix-blend-multiply"></div>
+    </div>
+    
+    <div class="relative z-10 max-w-[1440px] mx-auto text-center space-y-4">
+      <h1 class="font-display text-4xl sm:text-5xl md:text-6xl text-white">{project.name} Gallery</h1>
+      <p class="text-white/70 font-medium tracking-wide">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span class="mx-2">/</span>
+        <a href={`/portfolio/${project.slug}`} class="hover:text-white transition-colors">{project.name}</a>
+        <span class="mx-2">/</span>
+        <span class="text-clay">Gallery</span>
+      </p>
+    </div>
+  </section>
+
+  <div class="py-20 px-6">
+    {hasUpdates ? (
+      <div class="max-w-[1200px] mx-auto space-y-24">
+        {project.updates!.map((update) => (
+          <section class="space-y-8">
+            <div class="flex items-center justify-between border-b border-border pb-4">
+              <h2 class="font-display text-2xl sm:text-3xl text-ink">{update.title}</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {update.images.map((img) => (
+                <div class="relative overflow-hidden rounded-2xl aspect-[4/3] bg-ink/5 shadow-sm border border-border group">
+                  <img 
+                    src={img} 
+                    alt={update.title} 
+                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <!-- Hover Overlay -->
+                  <div class="absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                    <button class="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full font-medium tracking-wide border border-white/30 transition-colors pointer-events-auto">
+                      View
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    ) : (
+      <div class="max-w-[1440px] mx-auto text-center py-20">
+        <div class="bg-muted/30 rounded-3xl p-12 inline-block border border-border">
+          <p class="text-muted-foreground text-lg mb-6">No gallery updates available for this project yet.</p>
+          <a href={`/portfolio/${project.slug}`} class="inline-flex px-6 py-3 bg-clay text-white rounded-full hover:bg-[#b01e1e] transition-colors font-medium">Back to Project</a>
+        </div>
+      </div>
+    )}
+  </div>
+</BaseLayout>

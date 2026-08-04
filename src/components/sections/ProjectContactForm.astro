@@ -1,0 +1,71 @@
+---
+import { siteConfig } from "@/lib/site-data";
+---
+
+<section class="mx-auto max-w-[1200px] px-5 py-24 md:px-10">
+  <div class="flex flex-col lg:flex-row shadow-2xl rounded-3xl overflow-hidden bg-white max-w-[1000px] mx-auto border border-border/50">
+    <!-- Left Panel -->
+    <div class="bg-[#1B2436] text-white pt-10 px-10 pb-0 lg:w-[400px] flex flex-col items-center justify-between relative overflow-hidden">
+      <!-- Dot pattern overlay -->
+      <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 24px 24px;"></div>
+      
+      <div class="relative z-10 flex flex-col items-center text-center space-y-6 mt-8">
+        <div class="w-16 h-16 rounded-full bg-transparent border border-[#FDB813] flex items-center justify-center mb-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FDB813" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-medium tracking-wide">Write To Us</h3>
+        <p class="text-white/90">{siteConfig.email}</p>
+      </div>
+
+      <div class="relative z-10 mt-auto pt-8 lg:pt-12 w-full flex justify-center">
+        <img src="/images/udbahv-chinmaya/women.png" alt="Customer Support" class="h-48 lg:h-64 object-contain object-bottom" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80'" />
+      </div>
+    </div>
+
+    <!-- Right Panel (Form) -->
+    <div class="p-10 lg:p-14 flex-1 bg-white relative">
+      <div class="space-y-2 mb-10">
+        <h4 class="text-sm font-bold text-clay uppercase tracking-widest">CONTACT US</h4>
+        <h2 class="text-4xl font-display text-[#1B2436]">Get in touch with us</h2>
+      </div>
+
+      <form class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="space-y-2">
+            <label for="name" class="text-xs font-medium text-muted-foreground uppercase tracking-wider">Enter Your Name</label>
+            <input type="text" id="name" class="w-full border border-border/70 rounded-md p-3 focus:outline-none focus:border-clay focus:ring-1 focus:ring-clay transition-colors bg-white text-ink" />
+          </div>
+          <div class="space-y-2">
+            <label for="email" class="text-xs font-medium text-muted-foreground uppercase tracking-wider">Enter Your Email</label>
+            <input type="email" id="email" class="w-full border border-border/70 rounded-md p-3 focus:outline-none focus:border-clay focus:ring-1 focus:ring-clay transition-colors bg-white text-ink" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="space-y-2">
+            <label for="phone" class="text-xs font-medium text-muted-foreground uppercase tracking-wider">Phone Number</label>
+            <input type="tel" id="phone" class="w-full border border-border/70 rounded-md p-3 focus:outline-none focus:border-clay focus:ring-1 focus:ring-clay transition-colors bg-white text-ink" />
+          </div>
+          <div class="space-y-2">
+            <label for="subject" class="text-xs font-medium text-muted-foreground uppercase tracking-wider">Subject</label>
+            <input type="text" id="subject" class="w-full border border-border/70 rounded-md p-3 focus:outline-none focus:border-clay focus:ring-1 focus:ring-clay transition-colors bg-white text-ink" />
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label for="message" class="text-xs font-medium text-muted-foreground uppercase tracking-wider">Message</label>
+          <input type="text" id="message" class="w-full border border-border/70 rounded-md p-3 focus:outline-none focus:border-clay focus:ring-1 focus:ring-clay transition-colors bg-white text-ink" />
+        </div>
+
+
+
+        <button type="submit" class="bg-[#c32828] hover:bg-[#a02020] text-white px-8 py-3 rounded-md font-medium transition-colors shadow-sm">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

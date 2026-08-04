@@ -48,9 +48,16 @@ export type Project = {
   features?: string[];
   faqs?: { question: string; answer: string }[];
   apartmentConfigurations?: { type: string; area: string; image: string }[];
-  floorPlans?: { title: string; image: string }[];
+  floorPlans?: { title: string; image: string; category?: string }[];
+  amenities?: { title: string; image: string }[];
+  specifications?: string[];
+  advantages?: { title: string; distance: string }[];
   whyChooseUs?: string;
   constructionUpdates?: { month: string; images: string[] }[];
+  updates?: {
+    title: string;
+    images: string[];
+  }[];
 };
 
 export type Media = {
@@ -97,7 +104,7 @@ export const projects: Project[] = [
     price: "₹ 98 Lacs onwards*",
     emi: "Flexible EMI Options",
     completionDate: "December 2025",
-    brochureUrl: "/brochure.pdf",
+    brochureUrl: "/images/udbahv-chinmaya/CHINMAYA-BROCHURE.pdf",
     amenitiesBrochureUrl: "/amenities.pdf",
     videoUrl: "https://www.youtube.com/embed/kknoLaXHTaQ?si=BOUy2U2QFMnVfPUd",
     whyChooseUs: "A landmark residential address built around light-filled interiors, private balconies, and landscaped courtyards for families who want room to breathe in the city.",
@@ -112,10 +119,30 @@ export const projects: Project[] = [
       "Automatic high-speed elevators"
     ],
     faqs: [
-      { question: "What is the RERA approval status of Udbhav Chinmaya?", answer: "Yes, the project is RERA approved. The RERA number is PRM/KA/RERA/1257/334/PR/210312/004018." },
-      { question: "What is the development size of Udbhav Chinmaya?", answer: "The total development size is 1.10 Acres." },
-      { question: "What are the configuration options available?", answer: "We offer 3, 4 & 5 BHK premium apartments." },
-      { question: "Is there flexible EMI or home loan assistance?", answer: "Yes, we have tie-ups with leading banks for home loans and flexible EMI options." }
+      {
+        question: "1. What is the difference between Carpet Area, Built-up, and Super Built-up Area?",
+        answer: "Carpet Area is the actual usable floor space inside your apartment — the area where you can lay a carpet. Built-up Area includes the carpet area plus the thickness of the walls. Super Built-up Area includes the built-up area along with your proportionate share of common spaces such as lobbies, staircases, and lift areas.\n\nAt Udbhav Chinmaya, the apartment sizes ranging from 1715 to 2255 sq.ft are quoted in Super Built-up Area. For exact carpet area details of your preferred unit, our team will walk you through the floor plan in detail during your site visit."
+      },
+      {
+        question: "2. How much loan can I avail for Udbhav Chinmaya?",
+        answer: "You can avail a home loan of up to 80% of the agreement value of your apartment. For example, on a ₹1.55 Crore* apartment, you may be eligible for a loan of up to ₹1.16 Crore, with the remaining amount payable as down payment.\n\nUdbhav Chinmaya is loan-approved by Karnataka Bank, Canara Bank & SBI — ensuring smooth processing and competitive interest rates. Our team provides end-to-end home loan assistance at no extra cost."
+      },
+      {
+        question: "3. What is Pre-EMI and how does it apply to Udbhav Chinmaya?",
+        answer: "Since Udbhav Chinmaya follows a construction-linked payment plan, your bank disburses the loan in stages as construction progresses. During this period, you only pay interest on the amount disbursed so far — this is called Pre-EMI. Your full EMI begins only after the complete loan amount is disbursed, typically closer to possession.\n\nThis means your financial outgo remains lower during the construction phase, giving you better control over your monthly budget until you take possession in December 2027."
+      },
+      {
+        question: "4. What tax benefits can I claim by taking a home loan for Udbhav Chinmaya?",
+        answer: "Taking a home loan for Udbhav Chinmaya makes you eligible for two significant tax deductions every financial year. Under Section 24, you can claim a deduction of up to ₹1.5* Lakhs on the interest component of your EMI. Under Section 80C, you can claim up to ₹1 Lakh on the principal repayment, within the overall 80C limit.\n\nThese deductions apply once you are in possession of your apartment. Over the loan tenure, this can result in substantial savings — effectively reducing the real cost of owning your home at Chinmaya."
+      },
+      {
+        question: "5. What documents should I verify before purchasing at Udbhav Chinmaya?",
+        answer: "Udbhav Chinmaya is a fully transparent and legally clear project. Key documents you should verify — and which are available on request — include the RERA Registration Certificate (PRM/KA/RERA/1257/334/PR/311225/008371), the approved building plan and layout, title documents, environmental clearance, and the commencement certificate.\n\nWe strongly encourage every buyer to review these documents before booking. Our team is available to walk you through each document and we recommend consulting your advocate for independent legal verification. Transparency is non-negotiable at Udbhav."
+      },
+      {
+        question: "6. Over how many years can I repay my home loan for this apartment?",
+        answer: "You can repay your home loan over a maximum period of 20 years, subject to your age and income eligibility as assessed by the bank. The repayment tenure will not ordinarily extend beyond your retirement age or 65 years, whichever is earlier.\n\nSince EMI varies based on your loan amount, tenure, and the bank's current interest rate, we recommend using our <a href='/Buyers?tab=emi' class='text-[#c32828] hover:underline underline-offset-4 decoration-1 decoration-[#c32828]'>EMI Calculator</a> on the <a href='/Buyers' class='text-[#c32828] hover:underline underline-offset-4 decoration-1 decoration-[#c32828]'>Buyers Guide</a> page to get an instant personalised estimate — or simply speak to our team and we will work out the numbers for you."
+      }
     ],
     apartmentConfigurations: [
       { type: "3 BHK", area: "1400 - 1800 sq ft", image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80" },
@@ -123,12 +150,119 @@ export const projects: Project[] = [
       { type: "5 BHK Duplex", area: "3200+ sq ft", image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80" }
     ],
     floorPlans: [
-      { title: "Master Plan", image: "https://images.unsplash.com/photo-1593696140826-c58b021acf8b?w=800&q=80" },
-      { title: "Floor Plan - 3 BHK", image: "https://images.unsplash.com/photo-1598928506311-c55d43f12711?w=800&q=80" }
+      { title: "Master Plan", image: "/images/udbahv-chinmaya/imgi_34_UDBHAV_CHINMAYA_TOP-View-with-Dimention.jpg-1-scaled.jpg", category: "Master Plan" },
+      { title: "Series No. 5 4BHK 2255 Sft", image: "/images/udbahv-chinmaya/imgi_32_Screenshot-2026-06-17-102315.png", category: "4BHK" },
+      { title: "Series No. 5 4BHK 2255 Sft (Top View)", image:"/images/udbahv-chinmaya/imgi_33_05_UDBHAV_CHINMAYA-scaled.jpg" , category: "4BHK" },
+      { title: "Series No. 1 3BHK 1730 Sft", image: "/images/udbahv-chinmaya/s1-1730.png", category: "3BHK" },
+      { title: "Series No. 1 3BHK 1730 Sft (Top View)", image: "/images/udbahv-chinmaya/s1-1730-top-view.jpg", category: "3BHK" },
+      { title: "Series No. 2 3BHK 1715 Sft", image: "/images/udbahv-chinmaya/s2-1715.png", category: "3BHK" },
+      { title: "Series No. 2 3BHK 1715 Sft (Top View)", image: "/images/udbahv-chinmaya/s2-1715-top-view.jpg", category: "3BHK" },
+      { title: "Series No. 3 3BHK 1795 Sft", image: "/images/udbahv-chinmaya/s3-1795.png", category: "3BHK" },
+      { title: "Series No. 3 3BHK 1795 Sft (Top View)", image: "/images/udbahv-chinmaya/s3-1795-top-view.jpg", category: "3BHK" },
+      { title: "Series No. 4 3BHK 1820 Sft", image: "/images/udbahv-chinmaya/s4-1820.png", category: "3BHK" },
+      { title: "Series No. 4 3BHK 1820 Sft (Top View)", image: "/images/udbahv-chinmaya/s4-1820-top-view.jpg", category: "3BHK" },
+      { title: "Series No. 6 3BHK 1810 Sft", image: "/images/udbahv-chinmaya/s6-1810.png", category: "3BHK" },
+      { title: "Series No. 6 3BHK 1810 Sft (Top View)", image: "/images/udbahv-chinmaya/s4-1810-top-view.jpg", category: "3BHK" },
+      { title: "Series No. 7 3BHK 1765 Sft", image: "/images/udbahv-chinmaya/s7-1765.jpg", category: "3BHK" },
+      { title: "Series No. 7 3BHK 1765 Sft (Top View)", image: "/images/udbahv-chinmaya/s7-1765-top-view.jpg", category: "3BHK" },
+      { title: "Series No. 8 3BHK 1880 Sft", image: "/images/udbahv-chinmaya/s8-1880.png", category: "3BHK" },
+      { title: "Series No. 8 3BHK 1880 Sft (Top View)", image: "/images/udbahv-chinmaya/s8-top-view.jpg", category: "3BHK" }
+    ],
+    amenities: [
+      { title: "Exclusive Clubhouse", image: "/images/udbahv-chinmaya/amenities/exclusiveclubhouse1.jpg" },
+      { title: "Children's Play Area", image: "/images/udbahv-chinmaya/amenities/childrensplayarea2.jpg" },
+      { title: "Fully Equipped Gym", image: "/images/udbahv-chinmaya/amenities/fullyequippedgym3.jpg" },
+      { title: "Yoga & Meditation Room", image: "/images/udbahv-chinmaya/amenities/yoga&meditationroom4.jpg" },
+      { title: "Terrace Party Hall", image: "/images/udbahv-chinmaya/amenities/Terracepartyhall5.jpg" },
+      { title: "Rooftop Swimming Pool", image: "/images/udbahv-chinmaya/amenities/rooftopswimmingpool6.jpg" }
+    ],
+    specifications: [
+      "2 Automatic Elevators (15 & 10 passenger capacity – Kone / Schindler or equivalent)",
+      "100% Power Backup for all apartments & common areas (Mahindra / Kirloskar or equivalent)",
+      "CP Plumbing Fittings – Kohler / Jaguar or equivalent",
+      "CCTV Surveillance at all entry points",
+      "Biometric Access Control for common areas",
+      "Remote-Controlled Main Gate",
+      "Main Door Digital Lock & Video Door Phone",
+      "Premium Electrical Fittings for common areas, balconies & parking",
+      "Wheelchair-Friendly Lobby",
+      "Estate Manager & 24/7 Security",
+      "Built with trusted construction standards and meticulous attention",
+      "Main Door Digital Lock + Multi-apartment video door phone",
+      "Rainwater Harvesting System",
+      "Green Solar-Powered Lighting for common areas",
+      "EV Charging Provision for every car park",
+      "Well Water + Corporation Water Connection",
+      "Provision for Modular Kitchen",
+      "Granite Counter for Dining Wash Basin",
+      "Rooftop swimming pool"
+    ],
+    advantages: [
+      { title: "KSRTC Mangalore Bus Stand", distance: "1.4 kms (4 min)" },
+      { title: "Bunts Hostel", distance: "1.2 kms (3 min)" },
+      { title: "M.G. Road", distance: "1.3 kms (4 min)" },
+      { title: "Karangalpady Market", distance: "1.1 kms (3 min)" },
+      { title: "Bejai Church Road / Jail Road", distance: "500 mtrs (2 min)" },
+      { title: "Kadri Manjunatha Temple", distance: "1.5 kms (4 min)" },
+      { title: "CBSE School", distance: "0.8 kms (3 min)" },
+      { title: "National Highway at KPT Junction", distance: "1.7 kms (5 min)" },
+      { title: "Kadri Park", distance: "2 kms (6 min)" },
+      { title: "Renowned Super Market", distance: "0.4 kms (2 min)" },
+      { title: "Renowned Medical College Hospital", distance: "1.6 kms (7 min)" }
     ],
     constructionUpdates: [
       { month: "Bhoomi Pooja", images: ["https://images.unsplash.com/photo-1541888086425-d81bb19240f5?w=800&q=80", "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80"] },
       { month: "May 2023", images: ["https://images.unsplash.com/photo-1504307651254-35680f356f58?w=800&q=80", "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80"] }
+    ],
+    updates: [
+      {
+        title: "Bhoomi Pooja Chinmaya ( October 15th 2025 )",
+        images: [
+          "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?w=800&q=80",
+          "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80",
+          "https://images.unsplash.com/photo-1504307651254-35680f356f58?w=800&q=80"
+        ]
+      },
+      {
+        title: "Project Updates ( December 12th 2025 )",
+        images: [
+          "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80",
+          "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?w=800&q=80",
+          "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80"
+        ]
+      },
+      {
+        title: "Project Updates ( February 06th 2026 )",
+        images: [
+          "https://images.unsplash.com/photo-1504307651254-35680f356f58?w=800&q=80",
+          "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80",
+          "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?w=800&q=80"
+        ]
+      },
+      {
+        title: "Project Updates ( March 11th 2026 )",
+        images: [
+          "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80",
+          "https://images.unsplash.com/photo-1504307651254-35680f356f58?w=800&q=80",
+          "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80"
+        ]
+      },
+      {
+        title: "Project Updates ( April 01st 2026 )",
+        images: [
+          "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?w=800&q=80",
+          "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80",
+          "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80"
+        ]
+      },
+      {
+        title: "Project Updates ( May 01st 2026 )",
+        images: [
+          "https://images.unsplash.com/photo-1504307651254-35680f356f58?w=800&q=80",
+          "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?w=800&q=80",
+          "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80"
+        ]
+      }
     ]
   },
   {
