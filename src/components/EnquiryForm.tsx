@@ -24,16 +24,25 @@ export function EnquiryForm({ dark = true }: { dark?: boolean }) {
     const data = Object.fromEntries(new FormData(form).entries());
     const payload = { ...data, unitType, intent };
 
-    // Wire this up to your own endpoint — e.g. a WordPress REST route,
-    // Formspree, or a serverless function. Left as a console log so the
-    // form is fully functional out of the box during development.
-    console.log("Enquiry submitted:", payload);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
 
-    await new Promise((r) => setTimeout(r, 700));
-    setStatus("success");
-    form.reset();
-    setUnitType(null);
-    setIntent(null);
+      if (!response.ok) {
+        throw new Error('Failed to submit enquiry');
+      }
+
+      setStatus("success");
+      form.reset();
+      setUnitType(null);
+      setIntent(null);
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    }
   }
 
   const toggleClass = (active: boolean) =>
