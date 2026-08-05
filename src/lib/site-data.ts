@@ -27,14 +27,12 @@ export type Project = {
   units?: string;
   year: string;
   image: string;
-  // Extended Details
   subtitle?: string;
   mapTitle?: string;
   mapDesc?: string;
   mapSrc?: string;
   mapQueryName?: string;
   galleryImages?: GalleryItem[];
-  // Rich details for new layout
   reraNo?: string;
   developmentSize?: string;
   totalUnits?: string;
@@ -94,8 +92,10 @@ export const projects: Project[] = [
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.15!2d74.85!3d12.87!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDUyJzEyLjAiTiA3NMKwNTEnMDAuMCJF!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin",
     mapQueryName: "Kadri, Mangaluru",
     galleryImages: [
-      { src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", alt: "Udbhav Chinmaya Exterior", title: "Udbhav Chinmaya", subtitle: "Kadri, Mangalore" },
-      { src: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80", alt: "Balcony and Façade View", title: "Architectural Detail", subtitle: "Modern Luxury" },
+      { src: "/images/udbahv-chinmaya/gallery/udbhav-chinmaya-1.jpg", alt: "Udbhav Chinmaya Exterior", title: "Udbhav Chinmaya", subtitle: "Kadri, Mangalore" },
+      { src: "/images/udbahv-chinmaya/gallery/udbhav-chinmaya-2.jpg", alt: "Architectural Detail", title: "Architectural Detail", subtitle: "Modern Luxury" },
+      { src: "/images/udbahv-chinmaya/gallery/udbhav-chinmaya-3.jpg", alt: "Udbhav Chinmaya", title: "Udbhav Chinmaya", subtitle: "Kadri, Mangalore" },
+      { src: "/images/udbahv-chinmaya/gallery/udbhav-chinmaya-4.jpg", alt: "Udbhav Chinmaya", title: "Udbhav Chinmaya", subtitle: "Kadri, Mangalore" },
     ],
     reraNo: "PRM/KA/RERA/1257/334/PR/210312/004018",
     developmentSize: "1.10 Acres",
@@ -145,9 +145,8 @@ export const projects: Project[] = [
       }
     ],
     apartmentConfigurations: [
-      { type: "3 BHK", area: "1400 - 1800 sq ft", image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80" },
-      { type: "4 BHK", area: "2200 - 2500 sq ft", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80" },
-      { type: "5 BHK Duplex", area: "3200+ sq ft", image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80" }
+      { type: "3 BHK", area: "1715 - 1880 sq ft", image: "/images/udbahv-chinmaya/gallery/udbhav-chinmaya-2.jpg" },
+      { type: "4 BHK", area: "2255 sq ft", image: "/images/udbahv-chinmaya/gallery/udbhav-chinmaya-3.jpg" }
     ],
     floorPlans: [
       { title: "Master Plan", image: "/images/udbahv-chinmaya/imgi_34_UDBHAV_CHINMAYA_TOP-View-with-Dimention.jpg-1-scaled.jpg", category: "Master Plan" },
@@ -210,60 +209,99 @@ export const projects: Project[] = [
       { title: "Renowned Super Market", distance: "0.4 kms (2 min)" },
       { title: "Renowned Medical College Hospital", distance: "1.6 kms (7 min)" }
     ],
-    constructionUpdates: [
-      { month: "Bhoomi Pooja", images: ["https://images.unsplash.com/photo-1541888086425-d81bb19240f5?w=800&q=80", "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80"] },
-      { month: "May 2023", images: ["https://images.unsplash.com/photo-1504307651254-35680f356f58?w=800&q=80", "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80"] }
-    ],
     updates: [
       {
         title: "Bhoomi Pooja Chinmaya ( October 15th 2025 )",
         images: [
-          "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?w=800&q=80",
-          "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80",
-          "https://images.unsplash.com/photo-1504307651254-35680f356f58?w=800&q=80"
+          "/images/udbahv-chinmaya/projects/bhoomipooja1.jpg",
+          "/images/udbahv-chinmaya/projects/bhoomipooja2.jpg",
+          "/images/udbahv-chinmaya/projects/bhoomipooja3.jpg",
         ]
       },
       {
         title: "Project Updates ( December 12th 2025 )",
         images: [
-          "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80",
-          "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?w=800&q=80",
-          "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80"
+          "/images/udbahv-chinmaya/projects/projectupdates1.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates2.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates3.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates4.jpg",
+         "/images/udbahv-chinmaya/projects/projectupdates5.jpg",
+         "/images/udbahv-chinmaya/projects/projectupdates6.jpg",
+         "/images/udbahv-chinmaya/projects/projectupdates7.jpg",
+         "/images/udbahv-chinmaya/projects/projectupdates8.jpg",
+         "/images/udbahv-chinmaya/projects/projectupdates9.jpg",
+         "/images/udbahv-chinmaya/projects/projectupdates10.jpg",
+
         ]
       },
-      {
-        title: "Project Updates ( February 06th 2026 )",
-        images: [
-          "https://images.unsplash.com/photo-1504307651254-35680f356f58?w=800&q=80",
-          "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80",
-          "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?w=800&q=80"
-        ]
-      },
-      {
-        title: "Project Updates ( March 11th 2026 )",
-        images: [
-          "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80",
-          "https://images.unsplash.com/photo-1504307651254-35680f356f58?w=800&q=80",
-          "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80"
-        ]
-      },
-      {
-        title: "Project Updates ( April 01st 2026 )",
-        images: [
-          "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?w=800&q=80",
-          "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80",
-          "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80"
-        ]
-      },
-      {
-        title: "Project Updates ( May 01st 2026 )",
-        images: [
-          "https://images.unsplash.com/photo-1504307651254-35680f356f58?w=800&q=80",
-          "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?w=800&q=80",
-          "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80"
-        ]
-      }
+    
+ 
+ {
+    title: "Project Updates ( February 06th 2026 )",
+    images: [
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260206093144.jpg-scaled.jpeg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260206091825.jpg-scaled.jpeg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260205095534.jpg-scaled.jpeg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260204091030.jpg-scaled.jpeg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260204092754.jpg-scaled.jpeg"
     ]
+  },
+  {
+    title: "Project Updates ( March 11th 2026 )",
+    images: [
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/1.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/12.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/11.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/9-1.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/8-1.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/7-1.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/6.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/5-1.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/4-1.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/3-1.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/2-1.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/1-1.jpg"
+    ]
+  },
+
+  {
+    title: "Project Updates ( April 01st 2026 )",
+    images: [
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/3.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/2.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/1.jpg"
+    ]
+  },
+  {
+    title: "Project Updates ( May 01st 2026 )",
+    images: [
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/SAI_3186-scaled.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/SAI_3134-scaled.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/SAI_3156-scaled.jpg"
+    ]
+  },
+  {
+    title: "Project Updates ( June 02nd 2026 )",
+    images: [
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0887-scaled.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0930-scaled.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0941-scaled.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0899-scaled.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0906-scaled.jpg"
+    ]
+  },
+  {
+    title: "Project Updates ( July 04th 2026 )",
+    images: [
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1320.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1254.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1263.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1266.jpg",
+      "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1277.jpg"
+    ]
+  }
+
+]
   },
   {
     slug: "udbhav-shanthi",
@@ -318,8 +356,6 @@ export const projects: Project[] = [
       { src: "/images/udbhavmarcels5.jpg", alt: "Udbhav Marcel's Maison Exterior", title: "Marcel's Maison", subtitle: "Valencia, Mangalore" },
       { src: "/images/udbhavmarcels6.jpg", alt: "Marcel's Maison Facade Detail", title: "Facade Detail", subtitle: "Contemporary Architecture" },
       { src: "/images/udbhavmarcels7.jpg", alt: "Marcel's Maison Facade Detail", title: "Facade Detail", subtitle: "Contemporary Architecture" },
-
-  
     ],
   },
   {
@@ -378,8 +414,6 @@ export const projects: Project[] = [
       { src: "/images/udbhavsquare6.webp", alt: "Udbhav Square Exterior", title: "Udbhav Square", subtitle: "Kottara Chowki, Mangalore" },
       { src: "/images/udbhavsquare7.webp", alt: "Udbhav Square Exterior", title: "Udbhav Square", subtitle: "Kottara Chowki, Mangalore" },
       { src: "/images/udbhavsquare8.webp", alt: "Udbhav Square Exterior", title: "Udbhav Square", subtitle: "Kottara Chowki, Mangalore" },
-
-
     ],
   },
   {
@@ -412,9 +446,6 @@ export const projects: Project[] = [
       { src: "/images/bhaskar_gallery6.jpg", alt: "Bhaskar Coconut Groves Exterior", title: "Bhaskar Coconut Groves", subtitle: "Maroli, Mangalore" },
       { src: "/images/bhaskar_gallery7.jpg", alt: "Bhaskar Coconut Groves Exterior", title: "Bhaskar Coconut Groves", subtitle: "Maroli, Mangalore" },
       { src: "/images/bhaskar_gallery8.jpg", alt: "Bhaskar Coconut Groves Exterior", title: "Bhaskar Coconut Groves", subtitle: "Maroli, Mangalore" },
-
-
-      
     ],
   },
 ];
