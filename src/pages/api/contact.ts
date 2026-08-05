@@ -24,15 +24,16 @@ export const POST: APIRoute = async ({ request }) => {
 
     const payload = validation.payload;
 
-    // 2. Run both operations in parallel
-    const [emailResult, sheetResult] = await Promise.all([
-      sendContactEmail(payload),
+    // 2. Run Google Sheet operation
+    // Resend email integration commented out for now as requested
+    const [sheetResult] = await Promise.all([
+      // sendContactEmail(payload),
       appendToGoogleSheet(payload)
     ]);
 
-    // If both failed, return an error
-    if (!emailResult.success && !sheetResult.success) {
-       console.error("Both email and sheet integration failed.");
+    // If Google Sheets failed, return an error
+    if (!sheetResult.success) {
+       console.error("Google sheet integration failed.");
        return new Response(JSON.stringify({
          success: false,
          error: "Failed to process enquiry. Please try again later."
