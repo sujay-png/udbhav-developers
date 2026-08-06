@@ -30,41 +30,129 @@ const bookingDocs = {
 };
 
 const loanFaqs = [
-  { q: "Who is eligible for a home loan?", a: "In general, applicants must be at least 21 years old and show a regular income, whether salaried or self-employed." },
-  { q: "When can I apply, and what are the stages?", a: "You can apply before you've even chosen a property — an in-principle approval helps you set a budget in advance. From there, a loan moves through two stages: sanction, where the amount is approved, and disbursement, released in step with construction progress." },
-  { q: "Who can be a co-applicant?", a: "Every co-owner of the property must also be a co-applicant on the loan, though the reverse isn't true — a co-applicant doesn't need to hold ownership." },
-  { q: "What's the difference between EMI and Pre-EMI?", a: "An EMI (Equated Monthly Installment) blends a principal and an interest component into one fixed monthly payment. Pre-EMI applies before the full loan is disbursed — you pay interest only on the portion released so far." },
+  {
+    q: "What is the eligibility criteria for a housing loan?",
+    a: "Generally, the following conditions must be fulfilled: the applicant must be a minimum of 21 years of age, and must be salaried or self-employed with a regular income.",
+  },
+  {
+    q: "When can I apply for a home loan, and what are the steps involved in the process?",
+    a: "You can apply for the home loan even before you have selected your property or before the start of construction. You will get in-principle approval for the loan amount, which will help you decide your budget and plan the purchase of the house or flat. There are two stages in the housing loan process: sanction of the loan, and disbursement of the loan as per the progress of construction of the property.",
+  },
+  {
+    q: "Who can be a co-applicant for the loan?",
+    a: "Generally, all co-owners need to be co-applicants, but all co-applicants need not be co-owners.",
+  },
+  {
+    q: "Can I get more than one housing loan?",
+    a: "Yes. Housing loans can be given to an individual provided they have the capacity to repay. The loans can be for the same property (repairs, extension, etc.) or for different properties.",
+  },
+  {
+    q: "What are the general components of Net Monthly Income used to calculate loan eligibility?",
+    a: "For a salaried individual, Net Monthly Income (NMI) includes income from all sources: the NMI from the applicant's salary, the NMI from the co-applicant's or spouse's salary, and income from other sources such as rent from an existing or proposed flat, agricultural income, tuition income, or other business income. For a self-employed professional, NMI is the annual income after deduction of income tax, divided by 12 (as per the IT return), plus other income as above.",
+  },
+  {
+    q: "What percentage of the property value can be availed as a loan?",
+    a: "Up to 80% of the agreement value only.",
+  },
+  {
+    q: "What is the difference between EMI and Pre-EMI, and how is Pre-EMI calculated?",
+    a: "EMI stands for Equated Monthly Installment — the amount paid monthly by a borrower to the bank or lender, made up of a principal portion and an interest portion for that month. Pre-EMI is the interest paid on the portion of the loan already disbursed, prior to final disbursement of the housing loan. It's payable monthly or quarterly until the date EMI commences.",
+  },
+  {
+    q: "Can the EMI be reset during the tenure of the loan? Can I make a prepayment towards loan closure?",
+    a: "Yes. If there is a substantial revision in the interest rate, the facility of refixing the EMI can be granted on a housing loan account. You can also pay extra money — any amount, at any time — ahead of the repayment schedule to prepay the loan.",
+  },
+  {
+    q: "Over how many years can I repay the loan?",
+    a: "You can repay the loan over a maximum period of 20 years, for both floating-rate and fixed-rate loans. The term will not ordinarily extend beyond your retirement age (if employed) or age 65, whichever is earlier. If the applicant is close to retirement age, a suitable life insurance policy may be required to cover the risk over the repayment period. The bank will help determine a repayment period suited to your convenience and financial ability.",
+  },
+  {
+    q: "What is a floating-rate versus a fixed-rate housing loan?",
+    a: "A floating-rate loan is one where the interest rate isn't fixed — also called a variable or adjustable rate loan — and is linked to a specific index or margin, such as above or below the Medium Term Prime Lending Rate (MTPLR). A fixed-rate loan is one where the interest rate stays fixed for the life, or a certain tenure, of the loan.",
+  },
+  {
+    q: "What tax benefits are available on a housing loan?",
+    a: "You can claim both the interest and principal components of your repayment during the year. Interest can be claimed as a deduction under Section 24, up to ₹1,50,000 or the actual interest repaid, whichever is lower (only while you're in possession of the house). Principal repayment can be claimed up to a maximum of ₹1,00,000 under Section 80C, subject to the overall ₹1,00,000 cap across all 80C investments. You'll need the lender's statement showing the year's repayment, split into interest and principal components.",
+  },
 ];
 
 const whyInvest = [
-  { title: "Trust & Reliability", body: "Over a decade in Mangaluru real estate has built a reputation for quality, follow-through, and customer care." },
-  { title: "Premium Properties", body: "A portfolio of residential and commercial addresses in prime locations, designed to a consistently high standard." },
-  { title: "Hassle-Free Transactions", body: "Support across every stage — selection, documentation, financing, and after-sales — for a smoother purchase." },
-  { title: "Transparent Practices", body: "Every transaction is conducted openly, so buyers have what they need to decide with confidence." },
+  { title: "Trust & Reliability", body: "With over a decade of experience in the real estate industry, Udbhav Developers has become a name synonymous with trust, elegance, and sophistication. We are proud to be recognized for our steadfast commitment to quality, excellence, and delivering exceptional customer experiences." },
+  { title: "Premium Properties", body: "We offer an extensive portfolio of premium residential and commercial properties, each thoughtfully designed to meet the highest standards of quality and luxury. Our developments are strategically located in prime areas, ensuring seamless connectivity and access to world-class infrastructure." },
+  { title: "Hassle-Free Transactions", body: "Our team is committed to making your property purchase experience smooth and hassle-free. From property selection and documentation to financing and after-sales support, we guide you through every step of the process, ensuring a seamless and stress-free investment journey." },
+  { title: "Transparent Practices", body: "Transparency lies at the heart of our business philosophy. We conduct every transaction with honesty and integrity, ensuring you have all the information you need to make confident, well-informed decisions." },
 ];
 
-const investmentTypes = [
-  { title: "Residential Projects", body: "Homes designed for comfort and community, blending contemporary architecture with everyday convenience." },
-  { title: "Commercial Projects", body: "Strategically located spaces built for modern businesses, from retail counters to full offices." },
-];
+
 
 const nriGuidelines = [
-  { title: "Eligibility", body: "NRIs, OCIs, and PIOs can buy both residential and commercial property in India under current regulations." },
-  { title: "Repatriation of Funds", body: "Sale proceeds can generally be repatriated, subject to RBI conditions on amount, property type, and proof of the original overseas investment." },
-  { title: "Documentation", body: "Repatriation requires evidence that the original purchase was funded through proper banking channels from abroad, along with proof of the sale itself." },
+  { title: "Eligibility", body: "NRIs (Non-Resident Indians), OCIs (Overseas Citizens of India), and PIOs (Persons of Indian Origin) are eligible to purchase both residential and commercial properties in India, as per current government regulations." },
+  { title: "Repatriation of Funds", body: "NRIs can repatriate the proceeds from the sale of property in India, subject to compliance with certain conditions and guidelines set by the Reserve Bank of India (RBI). These typically include limits on the amount, type of property sold, and proof of original investment through foreign funds." },
+  { title: "Documentation", body: "NRIs can repatriate the proceeds from the sale of property in India, subject to specific conditions outlined by the Reserve Bank of India (RBI). These conditions typically include the type of property sold, the number of properties eligible for repatriation, and proof that the original purchase was made using funds from overseas through proper banking channels." },
+  { title: "Financing", body: "NRIs are eligible to avail home loans from Indian financial institutions, subject to meeting the respective eligibility criteria and providing the necessary documentation." },
+
 ];
 
+const InvstOpportunities = [
+  { title: "Residential Projects", body: "Explore our collection of residential projects offering luxurious living spaces thoughtfully designed for comfort, convenience, and a strong sense of community. Each home reflects a perfect blend of contemporary architecture and carefully curated amenities, delivering a lifestyle of elegance and ease for you and your family." },
+  { title: " Commercial Projects", body: "Invest in our premium commercial properties and take advantage of strategic locations, cutting-edge infrastructure, and strong growth potential. Designed to meet the diverse needs of modern businesses, our commercial spaces provide the ideal environment for innovation, expansion, and long-term success." },
+ 
+];
 const howWeHelp = [
-  { title: "Property Selection", body: "Guidance matched to your goals, with detailed information and virtual tours so you can decide with confidence from anywhere." },
-  { title: "Legal & Financial", body: "Support navigating compliance and paperwork, so the transaction stays smooth end to end." },
-  { title: "Post-Purchase Support", body: "Help continues after handover — property management, rental assistance, and resale support when you need it." },
-];
+  { title: "Who Is Non- Resident Indian (NRI) and Person of Indian Origin (PIO)?", body: "An Indian Citizen who stays abroad for employment/carrying on business or vacation outside India or stays abroad under circumstances indicating an intention for an uncertain duration of stay abroad is a non-resident. (Persons posted in U. N. Organizations and officials deputed abroad by Central/state Government and Public Sector undertakings on temporary assignments are also treated as non-residents). Non-resident foreign citizen of Indian Origin are treated on par with non-residential Indian Citizen (NRIs) for the purpose of certain facilities. A foreign citizen (other than a citizen of Pakistan, Bangladesh, Afghanistan, Bhutan, Sri Lanka or Nepal), is deemed to be of the Indian Origin if he held and Indian Passport at any time, or he or his father or parental grand-father was a citizen of India by virtue of the (Constitution of India or the Citizenship Act, 1955(57 of 1955)." },
+  { title: "Is permission required from RBI to acquire/purchase immovable property in India?", body: "No. General Permission is available to purchase only a residential/commercial property in India to a person resident outside India who is a citizen of India (NRI) and who is a Person of Indian Origin (PIO)." },
+  { title: "What is the manner and formalities required towards the payments to be done under general permission guidelines?", body: "The purchase consideration should be met either out of inward remittances in foreign exchange through normal banking channels or out of funds from NRE / FCNR accounts maintained with banks in India. They are required to file a declaration in form IPI 7 with the Central Office of Reserve Bank at Mumbai within a period of 90 days from the date of purchase of immovable property or final payment of purchase consideration along with a certified copy of the document evidencing the transactions and bank certificate regarding the consideration paid." },
+  { title: "Can such property be sold without permission of Reserve Bank?", body: "Yes, Reserve Bank has granted general permission for sale of such property. However whether the property is purchased by another foreign citizen of Indian Origin, funds towards the purchase consideration should either be remitted to India or paid out of balance in NRE / FCNR accounts." },
+  { title: "Can sale proceeds of such property be remitted out of India?", body: "With respect to residential properties purchased on or after 26th May 1993, Reserve Bank considers applications for repatriation of sale proceeds up to the consideration amount remitted in foreign exchange for the acquisition of the property for two such properties. The balance amount of sale proceeds if any or sale proceeds in respect of properties purchased prior to 26th May 1993 will have to be credited to the ordinary non-resident rupee account of the owner of the property." },
+  { title: "What is the procedure for seeking repatriation and conditions required towards the sale proceeds?", body: "Applications for necessary permission for remittance of sale proceeds should be made inform IPI 8 to the Central Office of Reserve Bank at Mumbai within 90 days of the sale of the property. Applications for repatriation of sale proceeds are considered provided the sale takes place after three years from the date of final purchase deed from the date of payment of final installment of consideration amount, whichever is later." },
+  { title: "Can foreign citizen of Indian Origin acquire or dispose of such property by way of gift to relatives/registered charitable trust/ organizations in India or abroad?", body: "Yes. Reserve Bank has granted general permission to foreign citizen of Indian Origin to acquire or dispose of properties up to two houses by way of gift from or to a relative who may be an Indian Citizen or a person of Indian origin whether resident in India or not, subject to compliance with applicable tax laws." },
+  { title: "Can the properties be given on rent if not required for immediate use?", body: "Yes. Reserve Bank has granted general permission for letting out any immovable property in India. The rental income or proceeds of any investment of such income are eligible for repatriation." },
 
+
+
+
+];
 const generalFaqs = [
-  { q: "What should I verify before buying a property?", a: "Check the approved layout and building plan, run a title search through a qualified advocate, and confirm ownership documents, environmental clearance, and the commencement certificate." },
-  { q: "What's the difference between carpet, built-up, and super built-up area?", a: "Carpet area excludes wall thickness. Built-up area includes it. Super built-up area adds a share of common spaces — lobbies, lifts, stairwells — and applies mainly to multi-unit developments." },
-  { q: "Who pays stamp duty, and whose name goes on the stamps?", a: "The buyer is liable unless the agreement states otherwise, and the stamps are purchased in the name of one of the parties to the document." },
-  { q: "Is stamp duty based on the agreement value or market value?", a: "Whichever is higher. Market value is what the property would fetch in an open-market sale on the date the document is executed." },
+  {
+    q: "Which documents are to be checked and verified before purchase of a property?",
+    a: "Before you purchase a flat, look at the approved layout and building plan, get a title search conducted by a competent advocate, and verify ownership documents, environmental clearance, intimation of disapproval, and the commencement certificate. It's advisable to consult an advocate before purchasing a property for detailed advice.",
+  },
+  {
+    q: "What is the difference between built-up, super built-up, and carpet area?",
+    a: "Carpet area is the area of an apartment that doesn't include the area of the walls. Built-up area includes the area of the walls. Super built-up area includes the built-up area along with common spaces such as the lobby, lifts, and stairs — this term applies to multi-dwelling units.",
+  },
+  {
+    q: "Who is liable to pay stamp duty, and in whose name are the stamps required to be purchased?",
+    a: "The liability of paying stamp duty is that of the buyer, unless there is an agreement to the contrary. The stamps are required to be purchased in the name of any one of the executors to the instrument.",
+  },
+  {
+    q: "What is meant by the market value of property, and is stamp duty payable on the market value or on the consideration stated in the agreement?",
+    a: "Market value means the price at which a property could be bought in the open market on the date of execution of the instrument. Stamp duty is payable on the agreement value of the property or the market value, whichever is higher.",
+  },
+  {
+    q: "Can one obtain a refund if the agreement has not been signed between both parties but stamp duty has been paid?",
+    a: "When one person possessing stamp or stamps which have been spoiled or rendered unfit or useless for the parties intended or the person does not require immediate use of the said stamps then such person should deliver the above said stamps to the Collector. The person has to make an application under Sec. 52 of the Bombay Stamp Act and the person should also submit the affidavit mentioning the reasons for which the stamps had been purchased and the reasons why the refund application is being made.\n \nIf the applicant can convince the Collector then refund of the stamps could be obtained only if: The application is made within six months from the date of the purchase of stamps. The Stamps should have been purchased by such person with a bonafide intention. None of the parties should have signed the paper on which the stamps have been fixed. On receipt of such application, the Collector is empowered to refund to the said person the value of said stamp deducing there from said amount as prescribed by the competent authorities.",
+  },
+  {
+    q: "Will stamp duty have to be paid if a flat is settled through a deed and transferred among family members?",
+    a: "Yes — stamp duty is payable on a deed of family settlement as well.",
+  },
+  {
+    q: "What are the instruments that attract the payment of stamp duty?",
+    a: "The instruments like Agreement to sell, Conveyance Deed, Exchange of Property, Gift Deed, Partition Deed, and Power of Attorney, Settlement and Deed and Transfer of Lease attract Stamp Duty on market value of the property.",
+  },
+  {
+    q: "Who is the appropriate authority for knowing the market value of a property?",
+    a: "The Sub-Registrar of the area in whose jurisdiction the property is located is the appropriate authority for knowing the market value of the property.",
+  },
+  {
+    q: "Can a property transaction be done by someone on the owner's behalf?",
+    a: "Yes, through a Power of Attorney, subject to the eligibility of the POA holder and the content of the POA. You can give a specific power of attorney to someone so that in your absence things like registration, possession, execution of the agreement for sale, or a leave-and-license agreement can be taken care of — the rights granted can be as narrow or broad as you choose.",
+  },
+  {
+    q: "What is meant by freehold land?",
+    a: "A freehold property (a plot or a flat) is one where the owner(s) hold full and unconditional ownership, within the provisions of the laws of the land, with no lessor or lessee involved.",
+  },
 ];
 --- 
 
@@ -191,6 +279,17 @@ const generalFaqs = [
           ))}
         </div>
       </div>
+       <div class="space-y-10">
+          <h3 class="font-serif text-3xl font-medium text-[#121417]">Investment Guidelines</h3>
+          <div class="space-y-8">
+            {InvstOpportunities.map((item) => (
+              <div class="border-l-2 border-[#B02317]/20 pl-6 transition-colors hover:border-[#B02317]">
+                <h4 class="font-serif text-xl font-medium text-[#B02317] mb-2">{item.title}</h4>
+                <p class="text-base leading-relaxed text-[#88726F]">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
 
       <!-- Guidelines -->
       <div class="grid lg:grid-cols-2 gap-16 items-start">

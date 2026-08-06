@@ -1,0 +1,93 @@
+---
+import type { Project } from "@/lib/site-data";
+
+interface Props {
+  project?: Project;
+}
+
+const { project } = Astro.props;
+
+const reversedUpdates = project?.updates ? [...project.updates].reverse() : [];
+---
+
+{reversedUpdates.length > 0 ? (
+  <div class="space-y-12">
+    {reversedUpdates.map((update, index) => (
+      <div class="space-y-4">
+        {/* Month Title */}
+        <h3 class="font-display text-xl sm:text-2xl text-ink border-l-4 border-clay pl-3">
+          {update.title}
+        </h3>
+
+        {/* Carousel for this Month */}
+        <div class="relative group/gallery" data-gallery-id={`updates-carousel-${index}`}>
+          <div
+            id={`updates-carousel-${index}`}
+            class="flex gap-6 overflow-x-auto scroll-smooth pb-6 pt-2 select-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {update.images.map((imgSrc, imgIdx) => (
+              <div class="min-w-[220px] sm:min-w-[280px] lg:min-w-[320px] max-w-[320px] flex-shrink-0 group">
+                <div class="relative overflow-hidden rounded-2xl aspect-[4/3] bg-ink/5 shadow-sm mb-3 border border-border">
+                  <img
+                    src={imgSrc}
+                    alt={`${update.title} - Photo ${imgIdx + 1}`}
+                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="flex items-center justify-between px-1">
+                  <h4 class="font-display text-ink text-sm sm:text-base line-clamp-1">{update.title}</h4>
+                  <span class="text-[10px] sm:text-xs font-medium tracking-wide text-muted-foreground uppercase flex-shrink-0 ml-2">
+                    Photo {imgIdx + 1}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Navigation Buttons for this carousel -->
+          <div class="hidden sm:flex gap-3 justify-end mt-2">
+            <button data-action="prev" aria-label="Previous" class="h-10 w-10 rounded-full border border-border bg-white hover:bg-muted flex items-center justify-center transition-colors shadow-sm text-ink cursor-pointer">
+              ←
+            </button>
+            <button data-action="next" aria-label="Next" class="h-10 w-10 rounded-full border border-border bg-white hover:bg-muted flex items-center justify-center transition-colors shadow-sm text-ink cursor-pointer">
+              →
+            </button>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+) : (
+  <p class="text-muted-foreground">No gallery updates available.</p>
+)}
+
+<script>
+  function setupAllGalleries() {
+    const galleries = document.querySelectorAll('[data-gallery-id]');
+
+    galleries.forEach((gallery) => {
+      const containerId = gallery.getAttribute('data-gallery-id');
+      if (!containerId) return;
+
+      const container = gallery.querySelector(`#${containerId}`);
+      const btnPrev = gallery.querySelector('[data-action="prev"]');
+      const btnNext = gallery.querySelector('[data-action="next"]');
+
+      if (!container || !btnPrev || !btnNext) return;
+
+      const scrollAmount = 340;
+
+      (btnPrev as HTMLButtonElement).onclick = () => {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      };
+
+      (btnNext as HTMLButtonElement).onclick = () => {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      };
+    });
+  }
+
+  setupAllGalleries();
+  document.addEventListener('astro:page-load', setupAllGalleries);
+</script>

@@ -53,6 +53,7 @@ export type Project = {
   whyChooseUs?: string;
   constructionUpdates?: { month: string; images: string[] }[];
   updates?: {
+[x: string]: any;
     title: string;
     images: string[];
   }[];
@@ -79,11 +80,11 @@ export const projects: Project[] = [
     status: "Ongoing",
     tagline: "Sophisticated low-density residences",
     description:
-      "A landmark residential address built around light-filled interiors, private balconies, and landscaped courtyards for families who want room to breathe in the city. Located prominently in Kadri, it offers seamless connectivity to key city amenities while maintaining a tranquil home atmosphere.",
-    location: "Bejai, Mangalore",
+      "Udbhav Chinmaya is an upcoming premium residential apartment project located in the peaceful and upscale surroundings of Chandrika Layout, Swami Vivekanand Road, Kadri, one of Mangaluru’s most sought-after residential neighborhoods. Designed for modern families, working professionals, first-time home buyers, and retirees, this project combines spacious Vaastu-compliant homes, premium amenities, and unmatched city connectivity.",
+    location: "Kadri, Mangaluru",
     units: "4 BHK",
     year: "2025",
-    image: "chinmaya",
+    image: "Udbhav-website",
     subtitle: "Kadri Sanctuary",
     mapTitle: "Kadri",
     mapDesc:
@@ -97,13 +98,13 @@ export const projects: Project[] = [
       { src: "/images/udbahv-chinmaya/gallery/udbhav-chinmaya-3.jpg", alt: "Udbhav Chinmaya", title: "Udbhav Chinmaya", subtitle: "Kadri, Mangalore" },
       { src: "/images/udbahv-chinmaya/gallery/udbhav-chinmaya-4.jpg", alt: "Udbhav Chinmaya", title: "Udbhav Chinmaya", subtitle: "Kadri, Mangalore" },
     ],
-    reraNo: "PRM/KA/RERA/1257/334/PR/210312/004018",
-    developmentSize: "1.10 Acres",
-    totalUnits: "84 Units",
+    reraNo: "PRM/KA/RERA/1257/334/PR/311225/008371",
+    developmentSize: "64 Cents",
+    totalUnits: "40 exclusive",
     configurations: "3, 4 & 5 BHK",
-    price: "₹ 98 Lacs onwards*",
+    price: "₹ 1.60 Crore*",
     emi: "Flexible EMI Options",
-    completionDate: "December 2025",
+    completionDate: "December 2027",
     brochureUrl: "/images/udbahv-chinmaya/CHINMAYA-BROCHURE.pdf",
     amenitiesBrochureUrl: "/amenities.pdf",
     videoUrl: "https://www.youtube.com/embed/kknoLaXHTaQ?si=BOUy2U2QFMnVfPUd",
@@ -369,7 +370,7 @@ export const projects: Project[] = [
     location: "Urwa Hoigebail, Mangalore",
     units: "1 & 2 BHK",
     year: "2022",
-    image: "aayush",
+    image: "chinmaya",
     subtitle: "Fine Living, Reimagined",
     mapTitle: "Urwa Hoigebail",
     mapDesc:
@@ -581,24 +582,24 @@ export const testimonials = [
   },
   {
     quote:
-      "I liked the projects completed by Udbhav Developers equal to quality and standards to international buildings. The amenities, structure and engineering behind the Udbhav Developer buildings are world class.",
-    name: "Rohit Damodar",
-    location: "International Resident",
+      "Udbhav is customer friendly, honest, quality focused and very professional in their interaction. Never seen a developer who delivers more than what has been promised. This is my first hand experience from Udbhav's last project. I think Kiran's experience with MNCs has helped him be more focused on quality, ethics and customer satisfaction.",
+    name: "	Ravi S",
+    location: "Mangalore",
     rating: 5,
     featured: true,
   },
   {
     quote:
-      "Kiran has been spot on with all the work of the property. Grooves Inc was one of the properties that I was out of India, I dealt transparently by the staff, land documentation and rent were verified.",
-    name: "Rayan Cornelio",
+      "ONE HAPPY CUSTOMER 🙂 Quality in construction is not just what you see from outside once completed, but mainly what lays underneath the ground (i,e foundation) too. Ask Udbhav developer about it and they will explain you every stage of construction, from FOUNDATION to finishing. What I noticed with this energetic team of Mr Kiran is they are mainly focused on quality and customer satisfaction. In challenging period of Covid-19, they completed the `KRK Aayush´ project within time frame. This shows their commitment towards business and customer satisfaction.",
+    name: "Praveen D",
     location: "Mangalore",
     rating: 5,
   },
   {
     quote:
-      "Never seen a developer who delivers more than what was promised. Customer friendly, honest, and very professional in interaction.",
-    name: "Kris",
-    location: "Mr Pai Road",
+      "I have brought a flat in the first project of Udbhav developers at Mangalore, Nantoor during the construction stage. This is the 5th year of residence after project completion. There have not been any structural issues or seepage issues. The quality of workmanship and dedication shown from Kiran and Udbhav developers in completion of project, delivery in time and quality is excellent. I could see the same quality, workmanship & dedication in their upcoming projects. HAPPY CUSTOMER!!!!!!!!!",
+    name: "Krishnam Raju",
+    location: "Mangalore",
     rating: 5,
   },
 ];

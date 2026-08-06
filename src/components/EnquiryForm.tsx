@@ -11,7 +11,9 @@ const intents = ["Self Use", "Investment"] as const;
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-export function EnquiryForm({ dark = true }: { dark?: boolean }) {
+export function 
+
+EnquiryForm({ dark = true }: { dark?: boolean }) {
   const [unitType, setUnitType] = React.useState<string | null>(null);
   const [intent, setIntent] = React.useState<string | null>(null);
   const [status, setStatus] = React.useState<Status>("idle");
