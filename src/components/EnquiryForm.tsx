@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/Icon";
 import { cn } from "@/lib/utils";
 
-const unitTypes = ["2 BHK", "3 BHK", "4 BHK", "Commercial"] as const;
+const unitTypes = ["3 BHK", "4 BHK",] as const;
 const intents = ["Self Use", "Investment"] as const;
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -107,16 +107,7 @@ EnquiryForm({ dark = true }: { dark?: boolean }) {
             ))}
           </div>
         </div>
-        <div className="space-y-2">
-          <Label className={labelTone}>Intended Use</Label>
-          <div className="flex flex-wrap gap-2">
-            {intents.map((i) => (
-              <button type="button" key={i} onClick={() => setIntent(i)} className={toggleClass(intent === i)}>
-                {i}
-              </button>
-            ))}
-          </div>
-        </div>
+      
       </div>
 
       <div className="space-y-2">
