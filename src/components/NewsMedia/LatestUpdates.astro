@@ -1,0 +1,217 @@
+---
+import type { updates } from "@/lib/updates";
+
+interface Props {
+  updatelist: updates[];
+}
+
+const { updatelist } = Astro.props;
+---
+
+<section class="bg-[#FDF9F7] py-10 px-6 font-sans">
+  <h2 class="text-xl font-bold text-[#B02317] uppercase block mb-4 text-center">Latest Updates</h2>
+
+  <div class="updates-list">
+    {updatelist.map((update, index) => (
+      <a
+        href={update.src}
+        class:list={["update-item", { active: index === 0 }]}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <!-- Icon -->
+        <div class="update-icon">
+          {index === 0 && (
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M4 9v6m16-6v6M7 10l10-5m-10 9 10 5M5 7h2v10H5a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1Zm12 0h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2V7Z"
+              />
+            </svg>
+          )}
+
+          {index === 1 && (
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4" y="5" width="16" height="15" rx="1" />
+              <path d="M8 3v4M16 3v4M4 9h16" />
+            </svg>
+          )}
+
+          {index === 2 && (
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="7" cy="12" r="3" />
+              <path d="M10 12h10M16 12l2-2M16 12l2 2" />
+            </svg>
+          )}
+
+          {index === 3 && (
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 20V8h5v12M9 20V4h6v16M15 20v-9h5v9" />
+              <path d="M6 11h1M6 14h1M11 7h1M11 10h1M11 13h1M17 14h1M17 17h1" />
+            </svg>
+          )}
+
+          {index >= 4 && (
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 10h16M5 10v9M9 10v9M15 10v9M19 10v9M3 19h18M4 10l2-5h12l2 5" />
+            </svg>
+          )}
+        </div>
+
+        <!-- Content -->
+        <div class="update-content">
+          <h3>{update.title}</h3>
+
+         
+        </div>
+
+        <!-- Arrow -->
+        <div class="update-arrow">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .latest-updates {
+    width: 100%;
+    padding: 30px 10px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .latest-updates h2 {
+   
+  }
+
+ .updates-list {
+ max-width: 1151px;
+  margin: 5 auto;
+  border: 1px solid #d6d9df;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+  .update-item {
+    min-height: 105px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 20px;
+    text-decoration: none;
+    color: #111;
+    border-bottom: 1px solid #d6d9df;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .update-item:last-child {
+    border-bottom: none;
+  }
+
+  .update-item:hover {
+    background: #f7f9fc;
+  }
+
+  /* First / highlighted item */
+  .update-item.active {
+  
+  }
+
+  .update-item.active:hover {
+    background: #e8efff;
+  }
+
+  .update-icon {
+    width: 36px;
+    min-width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .update-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: #b45b00;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .update-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .update-content h3 {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 500;
+    color: #111;
+  }
+
+  .update-item.active .update-content h3 {
+    color: #b45b00;
+  }
+
+  .status {
+    display: inline-block;
+    margin-top: 7px;
+    padding: 3px 8px;
+    background: #dcecff;
+    color: #1459a6;
+    font-family: monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-radius: 1px;
+  }
+
+  .update-arrow {
+    width: 25px;
+    min-width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .update-arrow svg {
+    width: 21px;
+    height: 21px;
+    fill: none;
+    stroke: #1d2939;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  @media (max-width: 600px) {
+    .update-item {
+      min-height: 90px;
+      gap: 12px;
+      padding: 16px 14px;
+    }
+
+    .update-icon {
+      width: 28px;
+      min-width: 28px;
+    }
+
+    .update-content h3 {
+      font-size: 14px;
+    }
+
+    .update-arrow svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+</style>

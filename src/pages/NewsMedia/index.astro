@@ -5,10 +5,14 @@ import Newsupdates from "@/components/NewsMedia/Newsupdates.astro";
 import PressMediaSection from "@/components/NewsMedia/PressMediaSection.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { newsmedia } from "@/lib/site-data";
+import { updates } from "@/lib/updates";
+import LatestUpdates from "@/components/NewsMedia/LatestUpdates.astro";
 ---
 
 <BaseLayout title="Udbhav Developers" description="Premium architectural developers in Mangalore since 2012. Residential apartments, commercial spaces, and retail shops built with purpose, driven by trust.">
   <Hero />
+  <LatestUpdates updatelist={updates} />
+
   <Newsupdates mediaList={newsmedia} /> 
-  <PressMediaSection />
+  
 </BaseLayout>
