@@ -3,9 +3,9 @@ export const siteConfig = {
   tagline: "Future-Ready Living.",
   founded: 2012,
   phone: "+91 77604 71269",
-  phoneAlt: "+91 (824) 4282324",
+  phoneAlt1: "+91 (824) 4282324",
   email: "info@udbhavdevelopers.com",
-  address: "C6, 1st Floor, City Gate Building, Kadri Shivabhag, Mangalore – 575 002",
+  address: "C6, 1st Floor, City Gate Building, Above Jimmy’s Super Market, Kadri Shivabhag, Mangalore – 575 002",
   location: "Mangalore, Karnataka",
 };
 

@@ -1,0 +1,98 @@
+---
+const philosophies = [
+  {
+    title: "Boutique Real Estate Philosophy",
+    paragraphs: [
+      "As a boutique real estate firm, Udbhav Developers operates with a deliberate philosophy: build fewer projects, but build them exceptionally well. This approach enables deeper attention to detail, stronger construction control, and a more personalized relationship with customers and stakeholders.",
+      "Each project is treated as a distinct creation rather than a standardized product. Architectural planning, structural systems, layouts, and materials choices are customized to suit the site context, surrounding environment, and end-user requirements.",
+    ],
+  },
+  {
+    title: "Residential Developments",
+    paragraphs: [
+      "In residential developments, Udbhav Developers places strong emphasis on livability, comfort, and longevity. Homes are designed with efficient layouts, ample natural light, cross-ventilation, and a balance between private and shared spaces. Attention is given to circulation, storage, privacy, and adaptability to evolving family needs.",
+      "Design choices are guided by timeless aesthetics rather than short-lived trends, ensuring that residences remain relevant and elegant over time. The objective is to create calm, secure, and functional living environments that support modern lifestyles while retaining long-term value.",
+    ],
+  },
+  {
+    title: "Commercial Developments",
+    paragraphs: [
+      "Udbhav Developers brings the same level of discipline and foresight to its commercial developments. These projects are designed to support business efficiency, operational functionality, and asset performance. Key considerations include location visibility, accessibility, floor plate efficiency, services planning, and statutory compliance.",
+      "Commercial projects are planned with a long-term outlook, allowing adaptability to changing business needs and market conditions.",
+    ],
+  },
+  {
+    title: "Prime Locations With Purpose",
+    paragraphs: [
+      "Location selection is a critical pillar of Udbhav Developers' strategy. Projects are undertaken only in carefully chosen prime locations with strong connectivity, established infrastructure, and long-term appreciation potential.",
+      "Rather than expanding into speculative or unfamiliar zones, the company prioritizes areas that align with its long-term vision and the expectations of discerning buyers and investors. This disciplined approach minimizes risk and enhances overall project value.",
+    ],
+  },
+  {
+    title: "Quality And Execution Standards",
+    paragraphs: [
+      "Quality is a non-negotiable standard at Udbhav Developers. From structural design and construction practices to finishes and services, every element is governed by clearly defined benchmarks. Engineering precision, regulatory compliance, and safety standards are integral to the execution process.",
+      "Project timelines are approached with realism and accountability, balancing efficiency with attention to detail. This ensures timely delivery without compromising durability or performance.",
+    ],
+  },
+  {
+    title: "Long-Term Commitment And Future Vision",
+    paragraphs: [
+      "Udbhav Developers builds with a long-term perspective, understanding that real estate must remain functional, valuable, and relevant for decades. Decisions related to planning, materials, and systems are made with lifecycle performance in mind.",
+      "Looking ahead, the firm will continue to grow selectively, staying true to its boutique philosophy and commitment to excellence. Udbhav Developers is for those who value quality over quantity, and confidence over hype.",
+    ],
+  },
+];
+---
+
+<section class="relative overflow-hidden bg-[#FDF9F7] py-28">
+  <!-- Ambient glow, consistent with other sections on the page -->
+  <div class="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-[#B02317]/5 blur-[120px]"></div>
+
+  <div class="relative mx-auto max-w-7xl px-6 lg:px-12">
+
+    <!-- Section Header -->
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="font-sans text-sm font-semibold uppercase tracking-[0.35em] text-[#B02317]">
+        How We Build
+      </span>
+      <h2 class="mt-6 font-serif text-4xl font-medium leading-tight text-[#121417] lg:text-5xl">
+        Our Philosophy in Practice
+      </h2>
+      <p class="mt-6 font-sans text-lg leading-relaxed text-[#88726F]">
+        Six principles that shape every decision, from the first site visit to the final handover.
+      </p>
+    </div>
+
+    <!-- Philosophy Grid -->
+    <div class="mt-20 grid grid-cols-1 gap-8 lg:grid-cols-2">
+      {philosophies.map((item, index) => (
+        <article class="group relative rounded-[28px] border border-transparent bg-white p-10 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-[#B02317]/20 hover:shadow-xl">
+
+          <!-- Index + Title -->
+          <div class="flex items-start gap-5">
+            <span class="font-serif text-3xl font-medium leading-none text-[#B02317]/25 transition-colors duration-500 group-hover:text-[#B02317]/50">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <h3 class="mt-1 font-serif text-2xl font-medium leading-snug text-[#121417]">
+              {item.title}
+            </h3>
+          </div>
+
+          <!-- Divider -->
+          <div class="my-6 h-px w-full bg-gradient-to-r from-[#B02317]/15 to-transparent"></div>
+
+          <!-- Body -->
+          <div class="space-y-4 pl-[52px]">
+            {item.paragraphs.map((paragraph) => (
+              <p class="font-sans text-[15px] leading-relaxed text-[#88726F]">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>

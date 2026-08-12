@@ -38,11 +38,11 @@ const year = new Date().getFullYear();
     <div>
       <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-clay">Quick Links</p>
       <ul class="mt-4 space-y-2.5 text-sm text-cream/70">
-        <li><a href="/company" class="hover:text-cream">About Us</a></li>
-        <li><a href="/process" class="hover:text-cream">Buyers Guide</a></li>
+        <li><a href="/Aboutus" class="hover:text-cream">About Us</a></li>
+        <li><a href="/Buyers" class="hover:text-cream">Buyers Guide</a></li>
         <li><a href="/blog" class="hover:text-cream">Blog</a></li>
-        <li><a href="/media" class="hover:text-cream">Media & Press</a></li>
-        <li><a href="/contact" class="hover:text-cream">Careers</a></li>
+        <li><a href="/NewsMedia" class="hover:text-cream">Media & Press</a></li>
+        <li><a href="/Careers" class="hover:text-cream">Careers</a></li>
       </ul>
     </div>
 
@@ -50,7 +50,7 @@ const year = new Date().getFullYear();
       <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-clay">Contact</p>
       <ul class="mt-4 space-y-3 text-sm text-cream/70">
         <li class="flex gap-2.5"><Icon name="map-pin" className="mt-0.5 h-4 w-4 shrink-0 text-clay" /><span>{siteConfig.address}</span></li>
-        <li class="flex gap-2.5"><Icon name="phone" className="h-4 w-4 shrink-0 text-clay" /><a href={`tel:${siteConfig.phone}`} class="hover:text-cream">{siteConfig.phone}</a></li>
+        <li class="flex gap-2.5"><Icon name="phone" className="h-4 w-4 shrink-0 text-clay" /><a href={`tel:${siteConfig.phoneAlt1}`} class="hover:text-cream">{siteConfig.phone}</a></li>
         <li class="flex gap-2.5"><Icon name="mail" className="h-4 w-4 shrink-0 text-clay" /><a href={`mailto:${siteConfig.email}`} class="hover:text-cream">{siteConfig.email}</a></li>
       </ul>
     </div>
