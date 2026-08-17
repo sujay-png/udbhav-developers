@@ -1,5 +1,20 @@
 ---
 import type { Project } from "@/lib/site-data";
+// 1. IMPORT YOUR PROJECTS DATA HERE
+import { projects } from "@/lib/site-data";
+
+// 2. EXPORT getStaticPaths SO ASTRO KNOWS WHICH SLUGS TO BUILD
+export async function getStaticPaths() {
+  
+    return projects.map((project) => ({
+      params: { slug: project.slug }, // The URL slug
+      props: { project },             // Passes the project data to Astro.props below
+    }));
+  
+
+  // Placeholder to prevent build crashes until you link your data
+  return []; 
+}
 
 interface Props {
   project?: Project;
@@ -62,7 +77,8 @@ const reversedUpdates = project?.updates ? [...project.updates].reverse() : [];
   <p class="text-muted-foreground">No gallery updates available.</p>
 )}
 
-<script>
+<!-- Added lang="ts" here so your type assertions don't cause a build error -->
+<script lang="ts">
   function setupAllGalleries() {
     const galleries = document.querySelectorAll('[data-gallery-id]');
 
@@ -78,13 +94,13 @@ const reversedUpdates = project?.updates ? [...project.updates].reverse() : [];
 
       const scrollAmount = 340;
 
-      (btnPrev as HTMLButtonElement).onclick = () => {
+      btnPrev?.addEventListener('click', () => {
         container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      };
+      });
 
-      (btnNext as HTMLButtonElement).onclick = () => {
+      btnNext?.addEventListener('click', () => {
         container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      };
+      });
     });
   }
 
