@@ -1,152 +1,100 @@
 ---
+// src/pages/blog/[slug].astro
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ArtPanel from "@/components/ArtPanel.astro";
 import { Icon } from "@/components/Icon";
-import { getAllPosts, formatDate } from "@/lib/wordpress";
+import { getAllPosts, formatDate, estimateReadTime } from "@/lib/wordpress";
 
-// 1. Tell Astro to prerender this dynamic route statically at build time
-export const prerender = true;
-
-export async function getStaticPaths({ paginate }: { paginate: any }) {
-  const allPosts = await getAllPosts();
-  // Generate pages with 15 items per page
-  return paginate(allPosts, { pageSize: 15 });
+export async function getStaticPaths() {
+  const posts = await getAllPosts(); // Fetches all posts recursively now
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
 }
 
-type Post = Awaited<ReturnType<typeof getAllPosts>>[number];
-const { page } = Astro.props as { page: any };
-const posts = page.data as Post[];
-
-// Only show the featured large post on the first page
-const featured = page.currentPage === 1 ? posts[0] : null;
-const rest = page.currentPage === 1 ? posts.slice(1) : posts;
+const { post } = Astro.props;
 ---
 
-<BaseLayout title={`Blog - Page ${page.currentPage}`} description="Architectural Chronicles — insights on luxury real estate, investment strategy, and the craft of development from Udbhav Developers.">
-  
-  <!-- Header -->
-  <section class="bg-[#FDF9F7] px-6 pb-16 pt-24 md:px-12 md:pb-24 md:pt-32 font-sans">
-    <div class="mx-auto max-w-7xl animate-fade-in-up">
-      <span class="inline-block text-xs font-bold uppercase tracking-[0.35em] text-[#B02317] mb-4">
-        Insights & Perspectives
-      </span>
-      <h1 class="max-w-3xl font-serif text-5xl sm:text-6xl lg:text-7xl font-medium leading-[1.05] text-[#121417]">
-        Architectural <br />
-        <span class="italic text-[#B02317]">Chronicles.</span>
-      </h1>
-      <p class="mt-6 max-w-lg text-lg leading-relaxed text-[#88726F] font-light">
-        Exploring the future of urban living, investment strategies, and the craft of luxury development.
-      </p>
-    </div>
-  </section>
-
-  <!-- Featured Post (Only on Page 1) -->
-  {featured && (
-    <section class="mx-auto max-w-7xl px-6 pb-16 md:px-12 -mt-8 relative z-10 font-sans">
-      <a href={`/blog/${featured.slug}`} class="group grid overflow-hidden rounded-[32px] bg-white shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-gray-100 lg:grid-cols-2">
-        <div class="relative aspect-[4/3] lg:aspect-auto overflow-hidden bg-gray-100">
-          {featured.featuredImage ? (
-            <img src={featured.featuredImage} alt={featured.title} class="h-full w-full object-cover transition-transform duration-[10s] group-hover:scale-110" />
-          ) : (
-            <ArtPanel seed={20} tone="clay" class="h-full w-full" />
-          )}
-        </div>
-        <div class="flex flex-col justify-center p-10 md:p-14">
-          {featured.categories[0] && (
-            <span class="inline-flex w-fit items-center rounded-full bg-[#B02317]/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#B02317]">
-              {featured.categories[0]}
+<BaseLayout title={post.title} description={post.excerpt}>
+  <article class="bg-white font-sans">
+    
+    <!-- Hero Header -->
+    <section class="relative overflow-hidden bg-[#121417]">
+      {
+        post.featuredImage ? (
+          <img src={post.featuredImage} alt={post.title} class="h-[50vh] w-full object-cover md:h-[65vh] opacity-60" />
+        ) : (
+          <ArtPanel seed={post.id.length + post.slug.length} tone="ink" class="h-[50vh] w-full md:h-[65vh] opacity-60" />
+        )
+      }
+      <div class="absolute inset-0 bg-gradient-to-t from-[#121417] via-[#121417]/40 to-transparent"></div>
+      
+      <div class="absolute inset-0 flex items-end">
+        <div class="mx-auto w-full max-w-4xl px-6 pb-12 md:px-12 md:pb-20">
+          
+          {post.categories[0] && (
+            <span class="inline-block rounded-full bg-[#B02317] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.25em] text-white shadow-sm mb-6">
+              {post.categories[0]}
             </span>
           )}
-          <p class="mt-6 text-xs font-semibold uppercase tracking-widest text-[#88726F]">
-            {formatDate(featured.date)}
-          </p>
-          <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-medium leading-tight text-[#121417] group-hover:text-[#B02317] transition-colors">
-            {featured.title}
-          </h2>
-          <p class="mt-4 text-base leading-relaxed text-[#88726F] line-clamp-3 font-light">
-            {featured.excerpt}
-          </p>
-          <div class="mt-8 flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-[#121417] group-hover:text-[#B02317] transition-colors">
-            Read Article <span class="transition-transform group-hover:translate-x-1">→</span>
+          
+          <h1 class="text-balance font-serif text-4xl font-medium leading-[1.1] text-white sm:text-5xl md:text-6xl lg:text-7xl">
+            {post.title}
+          </h1>
+          
+          <div class="mt-8 flex flex-wrap items-center gap-6 text-xs font-semibold uppercase tracking-widest text-gray-300">
+            <span class="flex items-center gap-2">
+              <Icon name={"calendar" as any} className="h-4 w-4 text-[#B02317]" /> 
+              {formatDate(post.date)}
+            </span>
+            <span class="flex items-center gap-2">
+              <Icon name={"user" as any} className="h-4 w-4 text-[#B02317]" /> 
+              {post.author}
+            </span>
+            <span class="flex items-center gap-2">
+              <Icon name={"clock" as any} className="h-4 w-4 text-[#B02317]" /> 
+              {estimateReadTime(post.content)}
+            </span>
           </div>
+
         </div>
-      </a>
+      </div>
     </section>
-  )}
 
-  <!-- Standard Grid -->
-  <section class="mx-auto max-w-7xl px-6 pb-24 md:px-12 font-sans">
-    {rest.length === 0 && !featured ? (
-      <p class="py-20 text-center text-lg text-[#88726F] font-light">
-        No posts published yet — check back soon.
-      </p>
-    ) : (
-      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {rest.map((post, i) => (
-          <a href={`/blog/${post.slug}`} class="group flex flex-col h-full rounded-[24px] bg-white p-4 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl border border-gray-100 hover:border-[#B02317]/20">
-            <div class="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-gray-100">
-              {post.featuredImage ? (
-                <img src={post.featuredImage} alt={post.title} class="h-full w-full object-cover transition-transform duration-[10s] group-hover:scale-110" />
-              ) : (
-                <ArtPanel seed={i + 21} tone={i % 2 === 0 ? "sand" : "clay"} class="h-full w-full" />
-              )}
-              {post.categories[0] && (
-                <div class="absolute left-4 top-4 z-10">
-                  <span class="inline-flex rounded-full bg-white/90 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#121417] shadow-sm backdrop-blur-sm">
-                    {post.categories[0]}
-                  </span>
-                </div>
-              )}
-            </div>
-            
-            <div class="flex flex-col flex-1 px-2 py-6">
-              <p class="text-[11px] font-semibold uppercase tracking-widest text-[#88726F]">
-                {formatDate(post.date)}
-              </p>
-              <h3 class="mt-3 font-serif text-2xl font-medium leading-snug text-[#121417] group-hover:text-[#B02317] transition-colors">
-                {post.title}
-              </h3>
-              <p class="mt-3 text-sm leading-relaxed text-[#88726F] line-clamp-2 font-light">
-                {post.excerpt}
-              </p>
-            </div>
-          </a>
-        ))}
-      </div>
-    )}
-
-    <!-- Pagination Controls -->
-    <div class="mt-20 flex items-center justify-between border-t border-gray-100 pt-8">
-      <div>
-        {page.url.prev ? (
-          <a href={page.url.prev} class="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-[#121417] hover:text-[#B02317] transition-colors">
-            <span class="text-lg">←</span> Previous
-          </a>
-        ) : <span class="text-sm font-semibold uppercase tracking-widest text-gray-300">← Previous</span>}
-      </div>
+    <!-- Article Content -->
+    <section class="mx-auto max-w-3xl px-6 py-16 md:px-12 md:py-24">
       
-      <div class="text-xs font-semibold uppercase tracking-widest text-[#88726F]">
-        Page {page.currentPage} of {page.lastPage}
-      </div>
-      
-      <div>
-        {page.url.next ? (
-          <a href={page.url.next} class="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-[#121417] hover:text-[#B02317] transition-colors">
-            Next <span class="text-lg">→</span>
-          </a>
-        ) : <span class="text-sm font-semibold uppercase tracking-widest text-gray-300">Next →</span>}
-      </div>
-    </div>
-  </section>
+      <div
+        class="prose-content max-w-none text-lg font-light leading-relaxed text-[#554946] 
+        [&_a]:text-[#B02317] [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-[#8e1c12]
+        [&_h2]:mt-14 [&_h2]:mb-6 [&_h2]:font-serif [&_h2]:text-3xl [&_h2]:font-medium [&_h2]:text-[#121417] 
+        [&_h3]:mt-10 [&_h3]:mb-4 [&_h3]:font-serif [&_h3]:text-2xl [&_h3]:font-medium [&_h3]:text-[#121417] 
+        [&_img]:my-10 [&_img]:rounded-3xl [&_img]:shadow-md [&_img]:border [&_img]:border-gray-100
+        [&_p]:mt-6 
+        [&_ul]:mt-6 [&_ul]:space-y-2 [&_ul]:list-none [&_ul]:pl-0 [&_li]:relative [&_li]:pl-6 [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-2.5 [&_li]:before:h-1.5 [&_li]:before:w-1.5 [&_li]:before:rounded-full [&_li]:before:bg-[#B02317]
+        [&_blockquote]:border-l-4 [&_blockquote]:border-[#B02317] [&_blockquote]:bg-[#FDF9F7] [&_blockquote]:p-6 [&_blockquote]:italic [&_blockquote]:text-[#121417] [&_blockquote]:rounded-r-2xl"
+        set:html={post.content}
+      />
 
+      <div class="mt-20 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-gray-100 pt-10">
+        <a href="/blog" class="group flex items-center gap-3 text-sm font-semibold uppercase tracking-widest text-[#88726F] hover:text-[#B02317] transition-colors">
+          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#FDF9F7] transition-colors group-hover:bg-[#B02317]/10">←</span> 
+          Back to Blog
+        </a>
+        <a href="/contact" class="group flex items-center gap-3 rounded-full bg-[#121417] px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all hover:bg-[#B02317] hover:shadow-lg hover:-translate-y-1">
+          Enquire Now 
+          <span class="transition-transform group-hover:translate-x-1">→</span>
+        </a>
+      </div>
+
+    </section>
+  </article>
 </BaseLayout>
 
-<style>
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
+<style is:global>
+  /* Base styles for WP Gallery/Figures to fit the container seamlessly */
+  .prose-content figure { margin: 2.5rem 0; }
+  .prose-content figcaption { text-align: center; font-size: 0.875rem; color: #88726F; margin-top: 0.75rem; font-style: italic; }
+  .prose-content iframe { border-radius: 1.5rem; width: 100%; aspect-ratio: 16/9; margin: 2rem 0; }
 </style>
