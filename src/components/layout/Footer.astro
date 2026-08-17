@@ -7,61 +7,115 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="border-t border-ink/10 bg-[#0F1D36] text-cream">
-  <div class="mx-auto grid max-w-[1400px] gap-12 px-5 py-16 md:grid-cols-2 md:px-10 lg:grid-cols-4">
+  <div
+    class="mx-auto grid max-w-[1400px] gap-12 px-5 py-16 md:grid-cols-2 md:px-10 lg:grid-cols-4"
+  >
     <div>
       <p class="font-display text-2xl">Udbhav</p>
       <p class="mt-3 max-w-xs text-sm leading-relaxed text-cream/60">
-        Building with purpose, driven by trust. Creating future-ready structures in Mangalore since {siteConfig.founded}.
+        Building with purpose, driven by trust. Creating future-ready structures
+        in Mangalore since {siteConfig.founded}.
       </p>
       <div class="mt-5 flex gap-3">
-        <a href="#" aria-label="Facebook" class="grid h-9 w-9 place-items-center rounded-full border border-cream/20 hover:border-clay hover:text-clay">
+        <a
+          href="#"
+          aria-label="Facebook"
+          class="grid h-9 w-9 place-items-center rounded-full border border-cream/20 hover:border-clay hover:text-clay"
+        >
           <Icon name="facebook" className="h-4 w-4" />
         </a>
-        <a href="#" aria-label="Instagram" class="grid h-9 w-9 place-items-center rounded-full border border-cream/20 hover:border-clay hover:text-clay">
+        <a
+          href="#"
+          aria-label="Instagram"
+          class="grid h-9 w-9 place-items-center rounded-full border border-cream/20 hover:border-clay hover:text-clay"
+        >
           <Icon name="instagram" className="h-4 w-4" />
         </a>
-        <a href="#" aria-label="LinkedIn" class="grid h-9 w-9 place-items-center rounded-full border border-cream/20 hover:border-clay hover:text-clay">
+        <a
+          href="#"
+          aria-label="LinkedIn"
+          class="grid h-9 w-9 place-items-center rounded-full border border-cream/20 hover:border-clay hover:text-clay"
+        >
           <Icon name="linkedin" className="h-4 w-4" />
         </a>
       </div>
     </div>
 
     <div>
-      <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-clay">Featured Projects</p>
+      <p
+        class="text-[11px] font-semibold uppercase tracking-[0.14em] text-clay"
+      >
+        Featured Projects
+      </p>
       <ul class="mt-4 space-y-2.5 text-sm text-cream/70">
-        {featured.map((p) => (
-          <li><a href={`/portfolio/${p.slug}`} class="hover:text-cream">{p.name}</a></li>
-        ))}
+        {
+          featured.map((p) => (
+            <li>
+              <a href={`/portfolio/${p.slug}`} class="hover:text-cream">
+                {p.name}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
 
     <div>
-      <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-clay">Quick Links</p>
+      <p
+        class="text-[11px] font-semibold uppercase tracking-[0.14em] text-clay"
+      >
+        Quick Links
+      </p>
       <ul class="mt-4 space-y-2.5 text-sm text-cream/70">
         <li><a href="/Aboutus" class="hover:text-cream">About Us</a></li>
         <li><a href="/Buyers" class="hover:text-cream">Buyers Guide</a></li>
         <li><a href="/blog" class="hover:text-cream">Blog</a></li>
         <li><a href="/NewsMedia" class="hover:text-cream">Media & Press</a></li>
         <li><a href="/Careers" class="hover:text-cream">Careers</a></li>
+        <li><a href="/terms" class="hover:text-cream/80">Privacy Policy</a></li>
+        <li>
+          <a href="/terms" class="hover:text-cream/80">Terms & Conditions</a>
+        </li>
       </ul>
     </div>
 
     <div>
-      <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-clay">Contact</p>
+      <p
+        class="text-[11px] font-semibold uppercase tracking-[0.14em] text-clay"
+      >
+        Contact
+      </p>
       <ul class="mt-4 space-y-3 text-sm text-cream/70">
-        <li class="flex gap-2.5"><Icon name="map-pin" className="mt-0.5 h-4 w-4 shrink-0 text-clay" /><span>{siteConfig.address}</span></li>
-        <li class="flex gap-2.5"><Icon name="phone" className="h-4 w-4 shrink-0 text-clay" /><a href={`tel:${siteConfig.phoneAlt1}`} class="hover:text-cream">{siteConfig.phone}</a></li>
-        <li class="flex gap-2.5"><Icon name="mail" className="h-4 w-4 shrink-0 text-clay" /><a href={`mailto:${siteConfig.email}`} class="hover:text-cream">{siteConfig.email}</a></li>
+        <li class="flex gap-2.5">
+          <Icon
+            name="map-pin"
+            className="mt-0.5 h-4 w-4 shrink-0 text-clay"
+          /><span>{siteConfig.address}</span>
+        </li>
+        <li class="flex gap-2.5">
+          <Icon name="phone" className="h-4 w-4 shrink-0 text-clay" /><a
+            href={`tel:${siteConfig.phoneAlt1}`}
+            class="hover:text-cream">{siteConfig.phone}</a
+          >
+        </li>
+        <li class="flex gap-2.5">
+          <Icon name="mail" className="h-4 w-4 shrink-0 text-clay" /><a
+            href={`mailto:${siteConfig.email}`}
+            class="hover:text-cream">{siteConfig.email}</a
+          >
+        </li>
       </ul>
     </div>
   </div>
 
   <div class="border-t border-cream/10">
-    <div class="mx-auto flex max-w-[1400px] flex-col-reverse items-center justify-between gap-3 px-5 py-6 text-xs text-cream/45 md:flex-row md:px-10">
+    <div
+      class="mx-auto flex max-w-[1400px] flex-col-reverse items-center justify-between gap-3 px-5 py-6 text-xs text-cream/45 md:flex-row md:px-10"
+    >
       <p>&copy; {year} Udbhav Developers. Future-Ready Living.</p>
       <div class="flex gap-5">
-        <a href="/privacy" class="hover:text-cream/80">Privacy Policy</a>
-        <a href="/terms" class="hover:text-cream/80">Terms of Service</a>
+        <a href="/terms" class="hover:text-cream/80">Privacy Policy</a>
+        <a href="/terms" class="hover:text-cream/80">Terms & Conditions</a>
       </div>
     </div>
   </div>
