@@ -613,44 +613,72 @@ const isRich = !!project.reraNo;
       </section>
 
       <!-- Details & Overview Section -->
-      <section class="mx-auto grid max-w-[1400px] gap-12 px-5 py-20 md:px-10 lg:grid-cols-[1fr_320px]">
-        <div class="space-y-6">
-          <h2 class="font-display text-2xl font-normal text-ink">Overview</h2>
-          <div class="bg-blush border border-border rounded-3xl p-8 sm:p-10 shadow-sm space-y-4">
-            <h3 class="font-display text-2xl sm:text-3xl font-normal text-ink">
-              {subtitle}
-            </h3>
-            <p class="text-[15px] sm:text-base leading-relaxed text-muted-foreground font-normal">
-              {project.description}
-            </p>
-          </div>
-        </div>
+   <section class="mx-auto grid max-w-[1400px] gap-12 px-5 py-20 md:px-10 lg:grid-cols-[1fr_320px]">
+  <div class="space-y-6">
+    <h2 class="font-display text-2xl font-normal text-ink">Overview</h2>
+    <div class="rounded-3xl border border-border bg-blush p-8 shadow-sm space-y-4 sm:p-10">
+      {subtitle && (
+        <h3 class="font-display text-2xl font-normal text-ink sm:text-3xl">
+          {subtitle}
+        </h3>
+      )}
+      <p class="text-[15px] font-normal leading-relaxed text-muted-foreground sm:text-base">
+        {project.description}
+      </p>
+    </div>
+  </div>
 
-        <aside class="h-fit space-y-5 rounded-lg border border-border bg-white p-7 shadow-sm">
-          <div class="flex items-center justify-between border-b border-border pb-3">
-            <span class="text-xs uppercase tracking-wide text-muted-foreground">Location</span>
-            <span class="font-medium text-right text-sm">{project.location}</span>
-          </div>
-          {project.units && (
-            <div class="flex items-center justify-between border-b border-border pb-3">
-              <span class="text-xs uppercase tracking-wide text-muted-foreground">Configuration</span>
-              <span class="font-medium text-sm">{project.units}</span>
-            </div>
-          )}
-          <div class="flex items-center justify-between border-b border-border pb-3">
-            <span class="text-xs uppercase tracking-wide text-muted-foreground">Year</span>
-            <span class="font-medium text-sm">{project.year}</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="text-xs uppercase tracking-wide text-muted-foreground">Status</span>
-            <span class="font-medium text-sm">{project.status}</span>
-          </div>
-          
-          <a href="/contact" class="mt-2 flex items-center justify-center gap-2 rounded-sm bg-clay px-6 py-3 text-[13px] font-medium uppercase tracking-wide text-cream hover:bg-clay-hover transition-colors">
-            Enquire Now
-          </a>
-        </aside>
-      </section>
+  <aside class="h-fit space-y-5 rounded-lg border border-border bg-white p-7 shadow-sm">
+    {project.location && (
+      <div class="flex items-center justify-between border-b border-border pb-3">
+        <span class="text-xs uppercase tracking-wide text-muted-foreground">Location</span>
+        <span class="text-right text-sm font-medium">{project.location}</span>
+      </div>
+    )}
+
+    {project.Typology && (
+      <div class="flex items-center justify-between border-b border-border pb-3">
+        <span class="text-xs uppercase tracking-wide text-muted-foreground">Typology</span>
+        <span class="text-sm font-medium">{project.Typology}</span>
+      </div>
+    )}
+
+    {project.Possession && (
+      <div class="flex items-center justify-between border-b border-border pb-3">
+        <span class="text-xs uppercase tracking-wide text-muted-foreground">Possession</span>
+        <span class="text-sm font-medium">{project.Possession}</span>
+      </div>
+    )}
+
+    {project.reraNo && (
+      <div class="flex items-center justify-between border-b border-border pb-3">
+        <span class="text-xs uppercase tracking-wide text-muted-foreground">RERA Number</span>
+        <span class="text-sm font-medium">{project.reraNo}</span>
+      </div>
+    )}
+
+    {project.projectsize && (
+      <div class="flex items-center justify-between border-b border-border pb-3">
+        <span class="text-xs uppercase tracking-wide text-muted-foreground">Project Size</span>
+        <span class="text-sm font-medium">{project.projectsize}</span>
+      </div>
+    )}
+
+    {project.projectarea && (
+      <div class="flex items-center justify-between pb-3">
+        <span class="text-xs uppercase tracking-wide text-muted-foreground">Project Area</span>
+        <span class="text-sm font-medium">{project.projectarea}</span>
+      </div>
+    )}
+
+    <a
+      href="/contact"
+      class="mt-2 flex items-center justify-center gap-2 rounded-sm bg-clay px-6 py-3 text-[13px] font-medium uppercase tracking-wide text-cream transition-colors hover:bg-clay-hover"
+    >
+      Enquire Now
+    </a>
+  </aside>
+</section>
 
       <!-- Location Section -->
       <section class="py-20 px-6 max-w-[1440px] mx-auto font-sans">

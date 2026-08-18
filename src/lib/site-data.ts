@@ -24,8 +24,7 @@ export type Project = {
   tagline: string;
   description: string;
   location: string;
-  units?: string;
-  year: string;
+  units?: string; 
   image: string;
   subtitle?: string;
   mapTitle?: string;
@@ -44,6 +43,10 @@ export type Project = {
   amenitiesBrochureUrl?: string;
   videoUrl?: string;
   features?: string[];
+  Typology?:String;
+Possession:string;
+projectsize:string;
+  projectarea:string;
   faqs?: { question: string; answer: string }[];
   apartmentConfigurations?: { type: string; area: string; image: string }[];
   floorPlans?: { title: string; image: string; category?: string }[];
@@ -83,7 +86,10 @@ export const projects: Project[] = [
       "Udbhav Chinmaya is an upcoming premium residential apartment project located in the peaceful and upscale surroundings of Chandrika Layout, Swami Vivekanand Road, Kadri, one of Mangaluru’s most sought-after residential neighborhoods. Designed for modern families, working professionals, first-time home buyers, and retirees, this project combines spacious Vaastu-compliant homes, premium amenities, and unmatched city connectivity.",
     location: "Kadri, Mangaluru",
     units: "4 BHK",
-    year: "2025",
+    Possession: "2025",
+    Typology:"Commercial & Residential Apartments",
+    projectarea:'18 Cents',
+    projectsize:'Basement, Ground + 4 Floors',
     image: "Udbhav-website",
     subtitle: "Kadri Sanctuary",
     mapTitle: "Kadri",
@@ -314,10 +320,14 @@ export const projects: Project[] = [
       "Udbhav Developers invites you to experience Udbhav Shanthi, an exclusive 8 residential apartments which is the pinnacle for modern day living. Located in the prestigious neighbourhood of Kadri, in the vicinity of the famous Sri Manjunatha Swamy Temple, experience divine serenity along with an exclusive lifestyle. The location also provides good connectivity to major hubs of Mangalore. With retail & commercial space for Exclusive Outlets, Supermarkets, & Private Offces on the ground foor, this apartment complex is going to be a new landmark in Kadri. One can also be rest assured with our promise of a great build quality & premium amenities that will make you lead a life for the discerning few.",
     location: "Kadri, Mangaluru",
     units: "3 BHK",
-    year: "2023",
+    Possession: "Project completed in 2023",
+    Typology: "Exclusive 3 BHK Residential Apartments",
+    projectarea:'18 Cents',
+    projectsize:'Ground + 4 Floors',
     image: "udbhavshanthi",
     subtitle: "Exclusive 3 BHK Residences",
     mapTitle: "Kadri",
+    reraNo:'',
     mapDesc:
       "Kadri stands as one of Mangaluru's most cherished residential nodes, prized for its temple-side calm and strong connectivity to the city's major hubs.",
     mapSrc:
@@ -340,10 +350,12 @@ export const projects: Project[] = [
       "Udbhav Developers presents Marcel’s Maison, a mix use project which is located in the premium location of Valencia, which is one of the most sought after addresses in Mangaluru. The smart city is at the cusp of development & has many development activities that are making a mark in its skyline. Valencia has grown into a premium part of Mangaluru since the last decade. Being in the heart of the city with great connectivity to all important places of worship, shopping, education, hospitals & entertainment, one is geographically at an advantage. Marcel’s Maison boasts of contemporary architecture, coupled with modern amenities to make your life comfortable. Be it commercial space or residential apartment, one can be rest assured of a premium touch in both sphere’s.",
     location: "Valencia, Mangaluru",
     units: "2 & 3 BHK",
-    year: "2025",
+    Possession: "2025",
     image: "marcels",
     subtitle: "Contemporary Mixed-Use Living",
     mapTitle: "Valencia",
+    projectarea:'18 Cents',
+    projectsize:'Basement, Ground + 4 Floors',
     mapDesc:
       "Valencia has grown into a premium part of Mangaluru over the last decade, offering residents and businesses an unmatched geographic advantage.",
     mapSrc:
@@ -369,7 +381,9 @@ export const projects: Project[] = [
       "There comes a time in everyone’s life where one gets to walk a different path. A path that leads to a new way of life, an opportunity to upgrade to a newer lifestyle, to be the epitome of fine living. K.R.K. AAYUSH, by Udbhav Developers is one such residential project in Mangalore which can escalate you to a new way of living. It is located in the one of the residential hubs of Mangalore at Urwa Hoigebail, with 21 contemporary styled apartments and modern amenities. With good road connectivity to major hubs of the city and being in the vicinity of all major hospitals, educational institutes, religious centres, entertainment zones and areas of business interests, one is in a good place geographically. More than that, with the build quality & all the amenities on board, one can be rest assured of truly moving towards fine living.",
     location: "Urwa Hoigebail, Mangalore",
     units: "1 & 2 BHK",
-    year: "2022",
+    projectarea:'18 Cents',
+    projectsize:'Basement, Ground + 4 Floors',
+    Possession: "2022",
     image: "chinmaya",
     subtitle: "Fine Living, Reimagined",
     mapTitle: "Urwa Hoigebail",
@@ -397,7 +411,9 @@ export const projects: Project[] = [
       "Udbhav Square, an elegantly designed 20,000 sq.ft. commercial space located at Kottara Chowki, built with the contemporary touch & eco-friendly footprint to give the best experience for all types of businesses & retailers. This awesome location is best suited for banks, polyclinics, individual clinics, offices, automobile showrooms, shipping offices & supermarkets. With ample parking space at the road level & basement, you can rest assured that your dream of great office space is well cared for.",
     location: "Kottara Chowki, Mangalore",
     units: "Office & Retail",
-    year: "2020",
+    projectarea:'18 Cents',
+    projectsize:'Basement, Ground + 4 Floors',
+    Possession: "2020",
     image: "groves",
     subtitle: "Commercial Landmark",
     mapTitle: "Kottara Chowki",
@@ -426,8 +442,10 @@ export const projects: Project[] = [
     description:
       "Bhaskar Coconut Groves built in the calm and serene neighborhood near Nantoor Junction, Mangalore surrounded by abundant greenery, is an five storied premium apartment which houses a total of 28 homes including duplex. Replete with all modern amenities like children’s play area, recreation room, Gym, spacious lobby, reticulated gas connection, security, power-backup, ample parking space and Automatic lift, this apartment will be the perfect place to unwind and lead a comfortable life. With Vaastu in mind while laying down the floor plan, these apartments incorporate spacious rooms that are designed in a manner that permits maximum ventilation and light.",
     location: "Maroli, Mangalore",
+    projectarea:'18 Cents',
+    projectsize:'Basement, Ground + 4 Floors',
     units: "Residential Units",
-    year: "2015",
+    Possession: "2015",
     image: "CoconutGroves",
     subtitle: "Green-Canopy Residences",
     mapTitle: "Maroli",
