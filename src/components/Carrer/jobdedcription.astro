@@ -183,9 +183,9 @@ const jobs = [
           </div>
 
           <div class="space-y-3">
-            <button class="w-full bg-[#121417] text-white text-sm font-semibold uppercase tracking-wider py-4 rounded-xl transition-all duration-300 hover:bg-[#B02317] hover:shadow-lg shadow-[#B02317]/20">
+            <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=info@udbhavdevelopers.com&su=Job Application: ${job.title} (${job.ref})`} target="_blank" rel="noopener noreferrer" class="block text-center w-full bg-[#121417] text-white text-sm font-semibold uppercase tracking-wider py-4 rounded-xl transition-all duration-300 hover:bg-[#B02317] hover:shadow-lg shadow-[#B02317]/20">
               Apply Now
-            </button>
+            </a>
             <button 
               class="view-desc-btn w-full bg-transparent border-2 border-gray-200 text-[#121417] text-sm font-semibold uppercase tracking-wider py-3.5 rounded-xl transition-colors hover:border-[#121417]"
               data-job-id={job.id}
@@ -252,9 +252,9 @@ const jobs = [
         <button id="modal-close-footer" class="px-6 py-3 rounded-xl border-2 border-gray-200 text-sm font-semibold uppercase tracking-wider text-[#121417] hover:border-[#121417] transition-colors cursor-pointer">
           Close
         </button>
-        <button class="px-8 py-3.5 rounded-xl bg-[#B02317] text-white text-sm font-semibold uppercase tracking-wider hover:bg-[#8e1c12] transition-colors shadow-lg shadow-[#B02317]/20 cursor-pointer">
+        <a id="modal-apply-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=info@udbhavdevelopers.com" target="_blank" rel="noopener noreferrer" class="block text-center px-8 py-3.5 rounded-xl bg-[#B02317] text-white text-sm font-semibold uppercase tracking-wider hover:bg-[#8e1c12] transition-colors shadow-lg shadow-[#B02317]/20 cursor-pointer">
           Apply For This Role
-        </button>
+        </a>
       </div>
 
     </div>
@@ -278,6 +278,7 @@ const jobs = [
     document.getElementById('modal-ref').textContent = job.ref;
     document.getElementById('modal-experience').textContent = job.experience;
     document.getElementById('modal-openings').textContent = job.openings;
+    document.getElementById('modal-apply-btn').href = `https://mail.google.com/mail/?view=cm&fs=1&to=info@udbhavdevelopers.com&su=Job Application: ${job.title} (${job.ref})`;
 
     const modalIntro = document.getElementById('modal-intro');
     if (job.intro) {

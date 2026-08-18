@@ -24,7 +24,7 @@ export type Project = {
   tagline: string;
   description: string;
   location: string;
-  units?: string; 
+  units?: string;
   image: string;
   subtitle?: string;
   mapTitle?: string;
@@ -33,6 +33,8 @@ export type Project = {
   mapQueryName?: string;
   galleryImages?: GalleryItem[];
   reraNo?: string;
+  reraNoproj?: string;
+
   developmentSize?: string;
   totalUnits?: string;
   configurations?: string;
@@ -43,10 +45,10 @@ export type Project = {
   amenitiesBrochureUrl?: string;
   videoUrl?: string;
   features?: string[];
-  Typology?:String;
-Possession:string;
-projectsize:string;
-  projectarea:string;
+  Typology?: String;
+  Possession: string;
+  projectsize: string;
+  projectarea: string;
   faqs?: { question: string; answer: string }[];
   apartmentConfigurations?: { type: string; area: string; image: string }[];
   floorPlans?: { title: string; image: string; category?: string }[];
@@ -56,7 +58,7 @@ projectsize:string;
   whyChooseUs?: string;
   constructionUpdates?: { month: string; images: string[] }[];
   updates?: {
-[x: string]: any;
+    [x: string]: any;
     title: string;
     images: string[];
   }[];
@@ -87,9 +89,9 @@ export const projects: Project[] = [
     location: "Kadri, Mangaluru",
     units: "4 BHK",
     Possession: "2025",
-    Typology:"Commercial & Residential Apartments",
-    projectarea:'18 Cents',
-    projectsize:'Basement, Ground + 4 Floors',
+    Typology: "Commercial & Residential Apartments",
+    projectarea: '18 Cents',
+    projectsize: 'Basement, Ground + 4 Floors',
     image: "Udbhav-website",
     subtitle: "Kadri Sanctuary",
     mapTitle: "Kadri",
@@ -158,7 +160,7 @@ export const projects: Project[] = [
     floorPlans: [
       { title: "Master Plan", image: "/images/udbahv-chinmaya/imgi_34_UDBHAV_CHINMAYA_TOP-View-with-Dimention.jpg-1-scaled.jpg", category: "Master Plan" },
       { title: "Series No. 5 4BHK 2255 Sft", image: "/images/udbahv-chinmaya/imgi_32_Screenshot-2026-06-17-102315.png", category: "4BHK" },
-      { title: "Series No. 5 4BHK 2255 Sft (Top View)", image:"/images/udbahv-chinmaya/imgi_33_05_UDBHAV_CHINMAYA-scaled.jpg" , category: "4BHK" },
+      { title: "Series No. 5 4BHK 2255 Sft (Top View)", image: "/images/udbahv-chinmaya/imgi_33_05_UDBHAV_CHINMAYA-scaled.jpg", category: "4BHK" },
       { title: "Series No. 1 3BHK 1730 Sft", image: "/images/udbahv-chinmaya/s1-1730.png", category: "3BHK" },
       { title: "Series No. 1 3BHK 1730 Sft (Top View)", image: "/images/udbahv-chinmaya/s1-1730-top-view.jpg", category: "3BHK" },
       { title: "Series No. 2 3BHK 1715 Sft", image: "/images/udbahv-chinmaya/s2-1715.png", category: "3BHK" },
@@ -232,83 +234,83 @@ export const projects: Project[] = [
           "/images/udbahv-chinmaya/projects/projectupdates2.jpg",
           "/images/udbahv-chinmaya/projects/projectupdates3.jpg",
           "/images/udbahv-chinmaya/projects/projectupdates4.jpg",
-         "/images/udbahv-chinmaya/projects/projectupdates5.jpg",
-         "/images/udbahv-chinmaya/projects/projectupdates6.jpg",
-         "/images/udbahv-chinmaya/projects/projectupdates7.jpg",
-         "/images/udbahv-chinmaya/projects/projectupdates8.jpg",
-         "/images/udbahv-chinmaya/projects/projectupdates9.jpg",
-         "/images/udbahv-chinmaya/projects/projectupdates10.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates5.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates6.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates7.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates8.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates9.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates10.jpg",
 
         ]
       },
-    
- 
- {
-    title: "Project Updates ( February 06th 2026 )",
-    images: [
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260206093144.jpg-scaled.jpeg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260206091825.jpg-scaled.jpeg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260205095534.jpg-scaled.jpeg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260204091030.jpg-scaled.jpeg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260204092754.jpg-scaled.jpeg"
-    ]
-  },
-  {
-    title: "Project Updates ( March 11th 2026 )",
-    images: [
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/1.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/12.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/11.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/9-1.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/8-1.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/7-1.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/6.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/5-1.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/4-1.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/3-1.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/2-1.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/1-1.jpg"
-    ]
-  },
 
-  {
-    title: "Project Updates ( April 01st 2026 )",
-    images: [
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/3.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/2.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/1.jpg"
-    ]
-  },
-  {
-    title: "Project Updates ( May 01st 2026 )",
-    images: [
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/SAI_3186-scaled.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/SAI_3134-scaled.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/05/SAI_3156-scaled.jpg"
-    ]
-  },
-  {
-    title: "Project Updates ( June 02nd 2026 )",
-    images: [
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0887-scaled.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0930-scaled.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0941-scaled.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0899-scaled.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0906-scaled.jpg"
-    ]
-  },
-  {
-    title: "Project Updates ( July 04th 2026 )",
-    images: [
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1320.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1254.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1263.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1266.jpg",
-      "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1277.jpg"
-    ]
-  }
 
-]
+      {
+        title: "Project Updates ( February 06th 2026 )",
+        images: [
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260206093144.jpg-scaled.jpeg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260206091825.jpg-scaled.jpeg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260205095534.jpg-scaled.jpeg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260204091030.jpg-scaled.jpeg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260204092754.jpg-scaled.jpeg"
+        ]
+      },
+      {
+        title: "Project Updates ( March 11th 2026 )",
+        images: [
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/1.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/12.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/11.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/9-1.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/8-1.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/7-1.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/6.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/5-1.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/4-1.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/3-1.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/2-1.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/1-1.jpg"
+        ]
+      },
+
+      {
+        title: "Project Updates ( April 01st 2026 )",
+        images: [
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/3.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/2.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/1.jpg"
+        ]
+      },
+      {
+        title: "Project Updates ( May 01st 2026 )",
+        images: [
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/SAI_3186-scaled.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/SAI_3134-scaled.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/SAI_3156-scaled.jpg"
+        ]
+      },
+      {
+        title: "Project Updates ( June 02nd 2026 )",
+        images: [
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0887-scaled.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0930-scaled.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0941-scaled.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0899-scaled.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0906-scaled.jpg"
+        ]
+      },
+      {
+        title: "Project Updates ( July 04th 2026 )",
+        images: [
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1320.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1254.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1263.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1266.jpg",
+          "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1277.jpg"
+        ]
+      }
+
+    ]
   },
   {
     slug: "udbhav-shanthi",
@@ -322,12 +324,12 @@ export const projects: Project[] = [
     units: "3 BHK",
     Possession: "Project completed in 2023",
     Typology: "Exclusive 3 BHK Residential Apartments",
-    projectarea:'18 Cents',
-    projectsize:'Ground + 4 Floors',
+    projectarea: '18 Cents',
+    projectsize: 'Ground + 4 Floors',
     image: "udbhavshanthi",
     subtitle: "Exclusive 3 BHK Residences",
     mapTitle: "Kadri",
-    reraNo:'',
+    reraNoproj: '',
     mapDesc:
       "Kadri stands as one of Mangaluru's most cherished residential nodes, prized for its temple-side calm and strong connectivity to the city's major hubs.",
     mapSrc:
@@ -350,12 +352,14 @@ export const projects: Project[] = [
       "Udbhav Developers presents Marcel’s Maison, a mix use project which is located in the premium location of Valencia, which is one of the most sought after addresses in Mangaluru. The smart city is at the cusp of development & has many development activities that are making a mark in its skyline. Valencia has grown into a premium part of Mangaluru since the last decade. Being in the heart of the city with great connectivity to all important places of worship, shopping, education, hospitals & entertainment, one is geographically at an advantage. Marcel’s Maison boasts of contemporary architecture, coupled with modern amenities to make your life comfortable. Be it commercial space or residential apartment, one can be rest assured of a premium touch in both sphere’s.",
     location: "Valencia, Mangaluru",
     units: "2 & 3 BHK",
-    Possession: "2025",
+    Possession: "2025 (Completed)",
     image: "marcels",
     subtitle: "Contemporary Mixed-Use Living",
     mapTitle: "Valencia",
-    projectarea:'18 Cents',
-    projectsize:'Basement, Ground + 4 Floors',
+    Typology: "Commercial & Residential Apartments",
+    projectarea: '18 Cents',
+    projectsize: 'Basement, Ground + 4 Floors',
+    reraNoproj: "PRM/KA/RERA/1257/334/PR/120123/005618",
     mapDesc:
       "Valencia has grown into a premium part of Mangaluru over the last decade, offering residents and businesses an unmatched geographic advantage.",
     mapSrc:
@@ -381,9 +385,11 @@ export const projects: Project[] = [
       "There comes a time in everyone’s life where one gets to walk a different path. A path that leads to a new way of life, an opportunity to upgrade to a newer lifestyle, to be the epitome of fine living. K.R.K. AAYUSH, by Udbhav Developers is one such residential project in Mangalore which can escalate you to a new way of living. It is located in the one of the residential hubs of Mangalore at Urwa Hoigebail, with 21 contemporary styled apartments and modern amenities. With good road connectivity to major hubs of the city and being in the vicinity of all major hospitals, educational institutes, religious centres, entertainment zones and areas of business interests, one is in a good place geographically. More than that, with the build quality & all the amenities on board, one can be rest assured of truly moving towards fine living.",
     location: "Urwa Hoigebail, Mangalore",
     units: "1 & 2 BHK",
-    projectarea:'18 Cents',
-    projectsize:'Basement, Ground + 4 Floors',
-    Possession: "2022",
+    Typology: "1 and 2 BHK Residential Apartments",
+    projectarea: '18 Cents',
+    projectsize: 'Ground + 3 Floors',
+    reraNoproj: "PRM/KA/RERA/1257/334/PR/210219/003923",
+    Possession: "",
     image: "chinmaya",
     subtitle: "Fine Living, Reimagined",
     mapTitle: "Urwa Hoigebail",
@@ -411,9 +417,11 @@ export const projects: Project[] = [
       "Udbhav Square, an elegantly designed 20,000 sq.ft. commercial space located at Kottara Chowki, built with the contemporary touch & eco-friendly footprint to give the best experience for all types of businesses & retailers. This awesome location is best suited for banks, polyclinics, individual clinics, offices, automobile showrooms, shipping offices & supermarkets. With ample parking space at the road level & basement, you can rest assured that your dream of great office space is well cared for.",
     location: "Kottara Chowki, Mangalore",
     units: "Office & Retail",
-    projectarea:'18 Cents',
-    projectsize:'Basement, Ground + 4 Floors',
-    Possession: "2020",
+    Typology: 'Office & Retail Space',
+    reraNo: 'PRM/KA/RERA/1257/334/PR/180222/002553',
+    projectarea: '25 Cents',
+    projectsize: 'Basement + Ground + 3 Floors',
+    Possession: "Project completed in 2020",
     image: "groves",
     subtitle: "Commercial Landmark",
     mapTitle: "Kottara Chowki",
@@ -442,10 +450,11 @@ export const projects: Project[] = [
     description:
       "Bhaskar Coconut Groves built in the calm and serene neighborhood near Nantoor Junction, Mangalore surrounded by abundant greenery, is an five storied premium apartment which houses a total of 28 homes including duplex. Replete with all modern amenities like children’s play area, recreation room, Gym, spacious lobby, reticulated gas connection, security, power-backup, ample parking space and Automatic lift, this apartment will be the perfect place to unwind and lead a comfortable life. With Vaastu in mind while laying down the floor plan, these apartments incorporate spacious rooms that are designed in a manner that permits maximum ventilation and light.",
     location: "Maroli, Mangalore",
-    projectarea:'18 Cents',
-    projectsize:'Basement, Ground + 4 Floors',
+    projectarea: '35 Cents',
+    reraNoproj: '-',
+    projectsize: 'Ground + 5 Floors',
     units: "Residential Units",
-    Possession: "2015",
+    Possession: "Project completed in 2015",
     image: "CoconutGroves",
     subtitle: "Green-Canopy Residences",
     mapTitle: "Maroli",
@@ -488,7 +497,7 @@ export const newsmedia: Media[] = [
     image: "Maison2",
     link: "https://www.daijiworld.com/news/newsDisplay?newsID=1043758",
   },
-   {
+  {
     slug: "marcels-maison-groundbreaking",
     name: "Marcel’s Maison",
     tagline: "Udbhav Developers presents Marcel’s Maison at Valencia - Bookings open",
@@ -497,7 +506,7 @@ export const newsmedia: Media[] = [
     image: "Maison3",
     link: "https://www.daijiworld.com/news/newsDisplay?newsID=1042541",
   },
-   
+
   {
     slug: "marcels-maison-groundbreaking",
     name: "Udbhav Developers’ ‘KRK Aayush",
@@ -507,7 +516,7 @@ export const newsmedia: Media[] = [
     image: "KRKAayush",
     link: "https://www.daijiworld.com/news/newsDisplay?newsID=974722#.Yr8JRfBFhHE.whatsapp",
   },
-   {
+  {
     slug: "marcels-maison-groundbreaking",
     name: "Udbhav shanthi",
     tagline: "Udbhav Developers’ ‘KRK Aayush’ residential building inaugurated",
@@ -516,7 +525,7 @@ export const newsmedia: Media[] = [
     image: "shanthi1",
     link: "https://www.daijiworld.com/news/newsDisplay?newsID=940244",
   },
-   {
+  {
     slug: "marcels-maison-groundbreaking",
     name: "Udbhav Square",
     tagline: "Ready to occupy commercial space available at ‘Udbhav Square’ at Kottara",
@@ -543,7 +552,7 @@ export const newsmedia: Media[] = [
     image: "square3",
     link: "https://www.daijiworld.com/news/newsDisplay.aspx?newsID=511578",
   },
-   {
+  {
     slug: "marcels-maison-groundbreaking",
     name: "Bhaskar Coconut Groves",
     tagline: "Bhaskar Coconut Groves' apartments inaugurated. ",
@@ -552,7 +561,7 @@ export const newsmedia: Media[] = [
     image: "Coconut",
     link: "https://www.daijiworld.com/news/newsDisplay?newsID=325279",
   },
-   {
+  {
     slug: "marcels-maison-groundbreaking",
     name: "Udbhav Chinmaya",
     tagline: " New residential project ‘Udbhav Chinmaya’ launched in heart of Mangaluru                  ",
