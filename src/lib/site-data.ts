@@ -418,7 +418,7 @@ export const projects: Project[] = [
     location: "Kottara Chowki, Mangalore",
     units: "Office & Retail",
     Typology: 'Office & Retail Space',
-    reraNo: 'PRM/KA/RERA/1257/334/PR/180222/002553',
+    reraNoproj: 'PRM/KA/RERA/1257/334/PR/180222/002553',
     projectarea: '25 Cents',
     projectsize: 'Basement + Ground + 3 Floors',
     Possession: "Project completed in 2020",
