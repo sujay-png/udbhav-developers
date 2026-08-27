@@ -17,19 +17,59 @@ const { title = "What people are saying", subtitle = "Voices of our proud home-o
     <p class="mt-4 text-sm text-muted-foreground">{subtitle}</p>
   </div>
 
-  <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-    {
-      testimonials.map((t) => (
-        <TestimonialCard quote={t.quote} name={t.name} location={t.location} rating={t.rating} featured={t.featured} />
-      ))
-    }
+  <div class="relative mt-14 group">
+    <button id="prevTestimonial" aria-label="Previous testimonials" class="absolute left-0 top-1/2 z-10 hidden h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#B02317] shadow-xl border border-gray-100 transition-all hover:bg-[#B02317] hover:text-white lg:flex lg:opacity-0 lg:group-hover:opacity-100">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <div id="testimonialContainer" class="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 hide-scrollbar scroll-smooth">
+      {
+        testimonials.map((t) => (
+          <div class="w-[85vw] md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-center md:snap-start">
+            <TestimonialCard quote={t.quote} name={t.name} location={t.location} rating={t.rating} featured={t.featured} />
+          </div>
+        ))
+      }
+    </div>
+    <button id="nextTestimonial" aria-label="Next testimonials" class="absolute right-0 top-1/2 z-10 hidden h-12 w-12 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#B02317] shadow-xl border border-gray-100 transition-all hover:bg-[#B02317] hover:text-white lg:flex lg:opacity-0 lg:group-hover:opacity-100">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
   </div>
   <div class="mt-12 text-center">
     <a
-      href={"/Testimonials"}
+      href={"/testimonials"}
       class="inline-flex items-center justify-center rounded-md border border-input  bg-background px-6 py-3 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       View all testimonials
     </a>
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('testimonialContainer');
+    const prevBtn = document.getElementById('prevTestimonial');
+    const nextBtn = document.getElementById('nextTestimonial');
+
+    if (!container || !prevBtn || !nextBtn) return;
+
+    const scrollAmount = container.offsetWidth * 0.8;
+
+    prevBtn.addEventListener('click', () => {
+      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+  });
+</script>
+
+<style>
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

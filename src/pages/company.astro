@@ -77,7 +77,7 @@ import { pillars, siteConfig } from "@/lib/site-data";
           <p class="flex items-center gap-3"><Icon name="mail" className="h-4 w-4 text-clay" /> {siteConfig.email}</p>
         </div>
       </div>
-      <EnquiryForm client:load dark={true} />
+      <EnquiryForm client:load dark={true} redirectUrl="/thank-you" />
     </div>
   </section>
 </BaseLayout>

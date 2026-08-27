@@ -571,7 +571,7 @@ const isRich = !!project.reraNo;
              <div class="sticky top-28 space-y-6">
                <!-- Enquiry Form Card -->
                <div class="bg-white rounded-[2rem] shadow-sm border border-border p-8" id="enquire">
-                  <EnquiryForm dark={false} client:idle />
+                  <EnquiryForm dark={false} redirectUrl={project.slug === 'udbhav-chinmaya' ? '/chinmaya-thank-you' : '/thank-you'} client:idle />
                </div>
 
                <!-- CTA Buttons -->

@@ -1,0 +1,87 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Icon } from "@/components/Icon";
+---
+
+<BaseLayout title="Thank You — Udbhav Chinmaya" description="Thank you for your interest in Udbhav Chinmaya.">
+  <section class="relative flex min-h-[80vh] flex-col items-center justify-center px-6 py-24 text-center">
+    <!-- Background with Overlay -->
+    <div class="absolute inset-0 z-0 overflow-hidden">
+      <img src="/images/udbahv-chinmaya/gallery/udbhav-chinmaya-1.jpg" alt="Udbhav Chinmaya" class="h-full w-full object-cover opacity-60" />
+      <div class="absolute inset-0 bg-cream/80 backdrop-blur-[2px]"></div>
+    </div>
+    
+    <!-- Content -->
+    <div class="relative z-10 flex w-full flex-col items-center">
+      <div class="animate-in fade-in zoom-in-95 duration-1000 grid h-24 w-24 place-items-center rounded-full bg-clay/10 ring-8 ring-clay/5 backdrop-blur-sm">
+        <Icon name="mail" className="h-10 w-10 text-clay" />
+      </div>
+      
+      <h1 class="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200 fill-mode-both mt-10 font-sans font-medium text-3xl text-ink sm:text-4xl text-balance drop-shadow-sm">
+      Thank You! Your message has been received.
+    </h1>
+    
+    <p class="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 fill-mode-both mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed text-balance">
+      Thank you for reaching out to Udbhav Developers regarding <span class="italic text-clay font-medium">Udbhav Chinmaya</span>. Our team has received your enquiry and will get back to you within 24–48 working hours with all the details you need.
+    </p>
+
+    <div class="animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500 fill-mode-both mt-12 w-full max-w-3xl rounded-2xl bg-white/50 backdrop-blur-md p-8 sm:p-12 text-left shadow-lg border border-white/40">
+      <h2 class="font-display text-2xl text-ink mb-6">What Happens Next?</h2>
+      
+      <ul class="space-y-4 mb-8">
+        <li class="flex items-start gap-3">
+          <div class="mt-1 h-2 w-2 rounded-full bg-clay shrink-0"></div>
+          <span class="text-muted-foreground">Our team manager will contact you shortly.</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <div class="mt-1 h-2 w-2 rounded-full bg-clay shrink-0"></div>
+          <span class="text-muted-foreground">If you requested a site visit or virtual tour, we will schedule it at your convenience.</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <div class="mt-1 h-2 w-2 rounded-full bg-clay shrink-0"></div>
+          <span class="text-muted-foreground">We are excited to help you find your dream home in Udbhav Chinmaya.</span>
+        </li>
+      </ul>
+
+      <div class="border-t border-border pt-8 mb-8">
+        <p class="font-medium text-ink mb-2">Need immediate assistance?</p>
+        <p class="text-muted-foreground">Call or WhatsApp us at: <a href="tel:+919843088899" class="font-bold text-clay hover:underline">+91 98430 88899</a></p>
+      </div>
+
+      <div class="space-y-4 text-muted-foreground">
+        <p>Thank you once again for trusting Udbhav Developers.<br/>We look forward to welcoming you to your new home.</p>
+        <p>Warm regards,<br/><span class="font-medium text-ink">Team Udbhav Developers</span></p>
+      </div>
+    </div>
+
+    <div class="animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-700 fill-mode-both mt-16 flex flex-col items-center">
+      <p class="font-display text-xl text-ink mb-6">Follow us for updates and new developments</p>
+      <div class="flex items-center gap-4">
+        <a href="https://www.instagram.com/udbhavdevelopers/" target="_blank" rel="noopener noreferrer" class="grid h-12 w-12 place-items-center rounded-full bg-white border border-border text-ink transition-colors hover:border-clay hover:bg-clay hover:text-white" aria-label="Instagram">
+          <Icon name="instagram" className="h-5 w-5" />
+        </a>
+        <a href="https://www.facebook.com/udbhavdevelopers/" target="_blank" rel="noopener noreferrer" class="grid h-12 w-12 place-items-center rounded-full bg-white border border-border text-ink transition-colors hover:border-clay hover:bg-clay hover:text-white" aria-label="Facebook">
+          <Icon name="facebook" className="h-5 w-5" />
+        </a>
+      </div>
+    </div>
+    
+    <div class="animate-in fade-in zoom-in-95 duration-1000 delay-1000 fill-mode-both mt-16 flex flex-wrap justify-center gap-4">
+      <a 
+        href="/portfolio/udbhav-chinmaya" 
+        class="inline-flex items-center gap-3 border border-ink/20 bg-white/50 backdrop-blur-sm px-8 py-4 font-sans text-sm font-semibold uppercase tracking-wider text-ink transition-all duration-300 hover:border-clay hover:bg-clay hover:text-white"
+      >
+        <Icon name="arrow-left" className="h-4 w-4" />
+        <span>Back to Project</span>
+      </a>
+      <a 
+        href="/" 
+        class="inline-flex items-center gap-3 bg-clay px-8 py-4 font-sans text-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:bg-[#8e1c12]"
+      >
+        <span>Explore More</span>
+        <Icon name="arrow-right" className="h-4 w-4" />
+      </a>
+    </div>
+    </div>
+  </section>
+</BaseLayout>
