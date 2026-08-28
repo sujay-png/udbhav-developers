@@ -12,7 +12,7 @@ const { quote, name, location, rating = 5, featured = false } = Astro.props;
 ---
 <div
   class:list={[
-    "group flex h-full flex-col justify-between rounded-lg p-7 transition-colors duration-300",
+    "group flex h-full flex-col justify-between rounded-lg p-5 md:p-6 transition-colors duration-300",
     featured
       ? "bg-ink text-cream hover:bg-cream hover:text-ink"
       : "bg-white text-ink hover:bg-ink hover:text-cream",
@@ -28,16 +28,17 @@ const { quote, name, location, rating = 5, featured = false } = Astro.props;
       <Icon
         name="quote"
         className={[
-          "h-6 w-6 transition-colors duration-300",
+          "h-5 w-5 transition-colors duration-300",
           featured ? "text-cream/20 group-hover:text-ink/10" : "text-ink/10 group-hover:text-cream/20",
         ].join(" ")}
       />
     </div>
     <p
       class:list={[
-        "mt-5 text-[15px] leading-relaxed transition-colors duration-300",
+        "mt-4 text-sm leading-relaxed transition-colors duration-300 line-clamp-4",
         featured ? "text-cream/85 group-hover:text-ink/75" : "text-ink/75 group-hover:text-cream/85",
       ]}
+      title={quote}
     >
       "{quote}"
     </p>

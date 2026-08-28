@@ -24,21 +24,26 @@ export const POST: APIRoute = async ({ request }) => {
 
     const payload = validation.payload;
 
-    // 2. Run Google Sheet operation
-    // Resend email integration commented out for now as requested
-    const [sheetResult] = await Promise.all([
-      // sendContactEmail(payload),
-      appendToGoogleSheet(payload)
-    ]);
+    // 2. Run Google Sheet operation and Resend email integration
+    // const emailResult = await sendContactEmail(payload); // Resend commented out as requested
+    const sheetResult = await appendToGoogleSheet(payload);
 
     // If Google Sheets failed, return an error
     if (!sheetResult.success) {
        console.error("Google sheet integration failed.");
        return new Response(JSON.stringify({
          success: false,
-         error: "Failed to process enquiry. Please try again later."
+         error: "Failed to save enquiry. Please try again later."
        }), { status: 500, headers: { 'Content-Type': 'application/json' } });
     }
+
+    // if (!emailResult.success) {
+    //    console.error("Email sending failed:", emailResult.error);
+    //    return new Response(JSON.stringify({
+    //      success: false,
+    //      error: "Failed to send email. Ensure RESEND_API_KEY and CONTACT_EMAIL_TO are set in .env.local"
+    //    }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+    // }
 
     // 3. Return JSON success response
     return new Response(JSON.stringify({

@@ -1,0 +1,207 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/lib/site-data';
+---
+
+<BaseLayout title={`Privacy Policy & Terms | ${siteConfig.name}`} description="Privacy Policy, Terms & Conditions, Refund Policy, and Cookie Policy for Udbhav Developers.">
+  <!-- Banner Section with Glassmorphism -->
+  <div class="relative min-h-[30vh] sm:min-h-[35vh] flex items-center justify-center overflow-hidden pt-16">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="/images/Udbhav-website.jpg"
+        alt="Udbhav Developers Legal Policies"
+        class="h-full w-full object-cover object-center animate-in fade-in zoom-in-105 duration-1000"
+      />
+      <!-- Overlays -->
+      <div class="absolute inset-0 bg-ink/20"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent to-cream/80"></div>
+    </div>
+    
+    <!-- Glassmorphism Title Card -->
+    <div class="relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200 mt-8 group cursor-default">
+      <div class="rounded-2xl bg-white/30 backdrop-blur-md px-10 py-6 sm:px-14 sm:py-8 border border-white/50 shadow-xl transition-all duration-500 group-hover:bg-white/40 group-hover:scale-105">
+        <h1 class="font-display italic font-medium text-4xl sm:text-5xl text-ink text-center transition-colors duration-300 group-hover:text-clay">
+          Legal Policies
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-grow pb-20 sm:pb-32 bg-cream/30 pt-16 relative z-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      
+      <div class="flex flex-col lg:flex-row gap-12">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="lg:w-1/4">
+          <div class="sticky top-28 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200 bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border border-white/60 p-6">
+            <h3 class="font-sans font-bold text-xl text-ink mb-4 border-b border-border/50 pb-3">Quick Links</h3>
+            <nav class="flex flex-col space-y-3 font-medium">
+              <a href="#terms" class="text-ink/70 hover:text-clay hover:translate-x-1 transition-all duration-300 ease-out">Terms & Conditions</a>
+              <a href="#privacy" class="text-ink/70 hover:text-clay hover:translate-x-1 transition-all duration-300 ease-out">Privacy Policy</a>
+              <a href="#cancellation" class="text-ink/70 hover:text-clay hover:translate-x-1 transition-all duration-300 ease-out">Cancellation & Refund Policy</a>
+              <a href="#cookie" class="text-ink/70 hover:text-clay hover:translate-x-1 transition-all duration-300 ease-out">Cookie Policy</a>
+              <a href="#data-rights" class="text-ink/70 hover:text-clay hover:translate-x-1 transition-all duration-300 ease-out">Data & Privacy Rights</a>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- Content Area -->
+        <div class="lg:w-3/4 bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border border-white/60 p-8 sm:p-12 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-400">
+          
+          <!-- Terms & Conditions -->
+          <section id="terms" class="mb-16 scroll-mt-28">
+            <h2 class="text-3xl font-sans font-bold text-ink mb-2">Terms & Conditions</h2>
+            <p class="text-muted-foreground font-medium mb-6">Effective Date: 05 January 2026</p>
+            <p class="text-ink/80 leading-relaxed mb-6">Welcome to <strong>Udbhav Developers</strong>. By accessing or using our website, submitting an enquiry, or interacting with our projects, you agree to comply with the following Terms & Conditions. Please read them carefully.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">1. General Information</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">All information provided on this website is for general informational purposes only. While we strive to keep content accurate and up to date, Udbhav Developers makes no warranties regarding completeness, accuracy, or reliability.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">2. Project Information</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">Project details such as layouts, amenities, specifications, prices, timelines, and images are indicative and subject to change without prior notice. Visuals used on the website may be artistic impressions.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">3. User Responsibility</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">By submitting your contact details, you confirm that the information provided is accurate and that you consent to being contacted by Udbhav Developers via phone, email, WhatsApp, or SMS.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">4. Intellectual Property</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">All content, logos, images, text, and designs on this website are the property of Udbhav Developers and may not be copied, reproduced, or distributed without written permission.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">5. Limitation of Liability</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">Udbhav Developers shall not be liable for any direct or indirect damages arising from the use of this website or reliance on its content.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">6. Governing Law</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">These terms are governed by the laws of India. Any disputes shall be subject to the jurisdiction of courts in <strong>Mangaluru, Karnataka</strong>.</p>
+          </section>
+
+          <hr class="border-border/50 my-12" />
+
+          <!-- Privacy Policy -->
+          <section id="privacy" class="mb-16 scroll-mt-28">
+            <h2 class="text-3xl font-sans font-bold text-ink mb-2">Privacy Policy</h2>
+            <p class="text-muted-foreground font-medium mb-6">Effective Date: 05 January 2026</p>
+            <p class="text-ink/80 leading-relaxed mb-6">Udbhav Developers respects your privacy and is committed to protecting your personal information.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">1. Information We Collect</h3>
+            <p class="text-ink/80 leading-relaxed mb-3">We may collect personal information including:</p>
+            <ul class="list-disc pl-6 mb-6 space-y-2 text-ink/80">
+              <li>Name</li>
+              <li>Phone number</li>
+              <li>Email address</li>
+              <li>Location</li>
+              <li>Property preferences</li>
+            </ul>
+            <p class="text-ink/80 leading-relaxed mb-6">This information is collected when you submit enquiry forms or contact us.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">2. How We Use Your Information</h3>
+            <p class="text-ink/80 leading-relaxed mb-3">Your data may be used to:</p>
+            <ul class="list-disc pl-6 mb-6 space-y-2 text-ink/80">
+              <li>Respond to enquiries</li>
+              <li>Provide project updates</li>
+              <li>Share offers and important information</li>
+              <li>Improve our services</li>
+            </ul>
+            <p class="text-ink/80 leading-relaxed mb-6">We do <strong>not sell or share</strong> your personal data with third parties for marketing purposes.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">3. Data Security</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">We implement reasonable security measures to protect your information from unauthorized access, misuse, or disclosure.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">4. Third-Party Links</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">Our website may contain links to external websites. We are not responsible for the privacy practices of those sites.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">5. Consent</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">By using our website or submitting your information, you consent to this Privacy Policy.</p>
+          </section>
+
+          <hr class="border-border/50 my-12" />
+
+          <!-- Cancellation & Refund Policy -->
+          <section id="cancellation" class="mb-16 scroll-mt-28">
+            <h2 class="text-3xl font-sans font-bold text-ink mb-2">Cancellation & Refund Policy</h2>
+            <p class="text-muted-foreground font-medium mb-6">Effective Date: 05 January 2026</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">1. Booking Amount</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">Any booking amount paid is subject to the terms agreed upon in the application or booking form.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">2. Cancellation</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">Cancellation requests must be submitted in writing to Udbhav Developers. Cancellation terms, deductions, and timelines will be governed by the agreement signed between the buyer and the developer.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">3. Refunds</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">Refunds, if applicable, will be processed after deducting applicable charges as per the agreement. Refund timelines may vary based on project stage and banking processes.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">4. Non-Refundable Charges</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">Statutory charges, taxes, registration fees, and administrative costs may be non-refundable.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">5. Discretion</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">Udbhav Developers reserves the right to assess cancellation requests on a case-by-case basis as per contractual obligations.</p>
+          </section>
+
+          <hr class="border-border/50 my-12" />
+
+          <!-- Cookie Policy -->
+          <section id="cookie" class="mb-16 scroll-mt-28">
+            <h2 class="text-3xl font-sans font-bold text-ink mb-2">Cookie Policy</h2>
+            <p class="text-muted-foreground font-medium mb-6">Effective Date: 05 January 2026</p>
+            <p class="text-ink/80 leading-relaxed mb-6">This website uses cookies to enhance user experience and improve performance.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">1. What Are Cookies?</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">Cookies are small data files stored on your device that help websites remember user preferences and analyze traffic.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">2. How We Use Cookies</h3>
+            <p class="text-ink/80 leading-relaxed mb-3">We use cookies to:</p>
+            <ul class="list-disc pl-6 mb-6 space-y-2 text-ink/80">
+              <li>Understand user behavior</li>
+              <li>Improve website functionality</li>
+              <li>Track performance and analytics</li>
+            </ul>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">3. Managing Cookies</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">You can choose to disable cookies through your browser settings. However, some features of the website may not function properly if cookies are disabled.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">4. Third-Party Cookies</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">Analytics tools (such as Google Analytics or Meta Pixel) may place cookies to help us understand website usage.</p>
+          </section>
+
+          <hr class="border-border/50 my-12" />
+
+          <!-- Data & Privacy Rights -->
+          <section id="data-rights" class="mb-16 scroll-mt-28">
+            <h2 class="text-3xl font-sans font-bold text-ink mb-6">Data & Privacy Rights</h2>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">Comments</h3>
+            <p class="text-ink/80 leading-relaxed mb-4">When visitors leave comments on the site we collect the data shown in the comments form, and also the visitor's IP address and browser user agent string to help spam detection.</p>
+            <p class="text-ink/80 leading-relaxed mb-6">An anonymized string created from your email address (also called a hash) may be provided to the Gravatar service to see if you are using it. The Gravatar service privacy policy is available here: https://automattic.com/privacy/. After approval of your comment, your profile picture is visible to the public in the context of your comment.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">Media</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">If you upload images to the website, you should avoid uploading images with embedded location data (EXIF GPS) included. Visitors to the website can download and extract any location data from images on the website.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">Cookies (User Preferences)</h3>
+            <p class="text-ink/80 leading-relaxed mb-4">If you leave a comment on our site you may opt-in to saving your name, email address and website in cookies. These are for your convenience so that you do not have to fill in your details again when you leave another comment. These cookies will last for one year.</p>
+            <p class="text-ink/80 leading-relaxed mb-4">If you visit our login page, we will set a temporary cookie to determine if your browser accepts cookies. This cookie contains no personal data and is discarded when you close your browser.</p>
+            <p class="text-ink/80 leading-relaxed mb-4">When you log in, we will also set up several cookies to save your login information and your screen display choices. Login cookies last for two days, and screen options cookies last for a year. If you select "Remember Me", your login will persist for two weeks. If you log out of your account, the login cookies will be removed.</p>
+            <p class="text-ink/80 leading-relaxed mb-6">If you edit or publish an article, an additional cookie will be saved in your browser. This cookie includes no personal data and simply indicates the post ID of the article you just edited. It expires after 1 day.</p>
+
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">Embedded content from other websites</h3>
+            <p class="text-ink/80 leading-relaxed mb-4">Articles on this site may include embedded content (e.g. videos, images, articles, etc.). Embedded content from other websites behaves in the exact same way as if the visitor has visited the other website.</p>
+            <p class="text-ink/80 leading-relaxed mb-6">These websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracking your interaction with the embedded content if you have an account and are logged in to that website.</p>
+
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">Who we share your data with</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">If you request a password reset, your IP address will be included in the reset email.</p>
+            
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">How long we retain your data</h3>
+            <p class="text-ink/80 leading-relaxed mb-4">If you leave a comment, the comment and its metadata are retained indefinitely. This is so we can recognize and approve any follow-up comments automatically instead of holding them in a moderation queue.</p>
+            <p class="text-ink/80 leading-relaxed mb-6">For users that register on our website (if any), we also store the personal information they provide in their user profile. All users can see, edit, or delete their personal information at any time (except they cannot change their username). Website administrators can also see and edit that information.</p>
+
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">What rights you have over your data</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">If you have an account on this site, or have left comments, you can request to receive an exported file of the personal data we hold about you, including any data you have provided to us. You can also request that we erase any personal data we hold about you. This does not include any data we are obliged to keep for administrative, legal, or security purposes.</p>
+
+            <h3 class="text-xl font-semibold text-ink mt-8 mb-3">Where your data is sent</h3>
+            <p class="text-ink/80 leading-relaxed mb-6">Visitor comments may be checked through an automated spam detection service.</p>
+
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

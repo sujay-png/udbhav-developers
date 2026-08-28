@@ -87,11 +87,11 @@ export const projects: Project[] = [
     description:
       "Udbhav Chinmaya is an upcoming premium residential apartment project located in the peaceful and upscale surroundings of Chandrika Layout, Swami Vivekanand Road, Kadri, one of Mangaluru’s most sought-after residential neighborhoods. Designed for modern families, working professionals, first-time home buyers, and retirees, this project combines spacious Vaastu-compliant homes, premium amenities, and unmatched city connectivity.",
     location: "Kadri, Mangaluru",
-    units: "4 BHK",
-    Possession: "2025",
-    Typology: "Commercial & Residential Apartments",
-    projectarea: '18 Cents',
-    projectsize: 'Basement, Ground + 4 Floors',
+    units: "3 BHK & 4 BHK only",
+    Possession: "December 2027",
+    Typology: "Residential Apartments",
+    projectarea: '64 Cents',
+    projectsize: 'Ground + 5 Floors',
     image: "Udbhav-website",
     subtitle: "Kadri Sanctuary",
     mapTitle: "Kadri",
@@ -108,8 +108,8 @@ export const projects: Project[] = [
     ],
     reraNo: "PRM/KA/RERA/1257/334/PR/311225/008371",
     developmentSize: "64 Cents",
-    totalUnits: "40 exclusive",
-    configurations: "3, 4 & 5 BHK",
+    totalUnits: "40 exclusive homes",
+    configurations: "3 BHK & 4 BHK only",
     price: "₹ 1.60 Crore*",
     emi: "Flexible EMI Options",
     completionDate: "December 2027",
@@ -573,7 +573,7 @@ export const newsmedia: Media[] = [
 ];
 
 export const navLinks = [
-  { label: "About Us", href: "/Aboutus" },
+  { label: "About Us", href: "/about-us" },
   {
     label: "Projects",
     href: "/portfolio",
@@ -592,43 +592,75 @@ export const navLinks = [
       },
     ],
   },
-  { label: "Buyers Guide", href: "/Buyers" },
-  { label: "Testimonials", href: "/Testimonials" },
-  { label: "Careers", href: "/Careers" },
-  { label: "News Media", href: "/NewsMedia" },
+  { label: "Buyers Guide", href: "/buyers" },
+  { label: "Testimonials", href: "/testimonials" },
+  { label: "Careers", href: "/careers" },
+  { label: "News Media", href: "/newsmedia" },
   { label: "Blog", href: "/blog" },
 ];
 
 export const testimonials = [
   {
-    quote:
-      "We are the proud owners of one of the apartments built by Udbhav Developers in their first venture. The build quality is good and they have used branded fittings. They are very approachable and easy to work with, and have always answered our questions patiently.",
-    name: "Anuroop Vijaya Kumar",
+    quote: "We are the proud owners of one of the apartments build by Udbhav Developers in their first venture. The build quality is good and they have used branded fittings in plumbing and electricals. They are very approachable and easy to work with and have always answered our questions patiently and positively. We would highly recommend them.",
+    name: "Mr. Anuroop Vijaya Kumar & Mrs. Karthika Mohan",
     location: "Mangalore",
     rating: 5,
   },
   {
-    quote:
-      "Udbhav is customer friendly, honest, quality focused and very professional in their interaction. Never seen a developer who delivers more than what has been promised. This is my first hand experience from Udbhav's last project. I think Kiran's experience with MNCs has helped him be more focused on quality, ethics and customer satisfaction.",
-    name: "	Ravi S",
+    quote: "I was referred to Udbhav Developers and Kiran, by one of my friends and have never regretted the decision. Kiran has been spot on with all the work w.r.t the flat and has always made quality a priority. This is what sets Udbhav Developers apart from other builders that I have dealt with. Being abroad most of the time, he has made dealing with him very simple and also provided any timely guidance whenever required (in my case when the registration costs were going to increase the next month, he suggested me to get it done within the same month). All the construction work has been on time and he has gone beyond his actual work to help me find tenants for my current apartment and also suggested lawyers for the khata and rental agreement. All in all, it has been great dealing with Udbhav Developers and Kiran and am sure all flat owners of Bhaskar Coconut groves would feel the same. My best wishes for all your future ventures.",
+    name: "Rayan Cornelio",
     location: "Mangalore",
+    rating: 5,
+  },
+  {
+    quote: "I had invested in one of the apartments at Bhaskar Coconut Grooves as this was recommended by one of my friends. As I was out of India, I did not get a chance to look at the site location nor check on the progress of the apartment by myself. However, I was up to date on the progress – this was only because of complete transparency by the staff at BCG, and detailed updates on the project on their website and emails. They helped with all the paper works, including back coordination’s etc. I returned to India and this matched with project completion. The schedules were met; the architect, design and specifications were as explained during my purchase – with the best amenities and unmatched Quality. The geographic location was perfect for a peaceful residential complex and also close to NH and city. Mr. Kiran B.K. from BCG and his team were very professional in their approach towards project and always had “customer first” attitude. They are very passionate, reliable and committed - this makes me recommend Udbhav Developers Mangalore properties. Best wishes and thank you for the wonderful job.",
+    name: "Mr. Varadaraj Shanbhag",
+    location: "Mangalore",
+    rating: 5,
+  },
+  {
+    quote: "ONE HAPPY CUSTOMER 🙂 Quality in construction is not just what you see from outside once completed, but mainly what lays underneath the ground (i,e foundation) too. Ask Udbhav developer about it and they will explain you every stage of construction, from FOUNDATION to finishing. What I noticed with this energetic team of Mr Kiran is they are mainly focused on quality and customer satisfaction. In challenging period of Covid-19, they completed the `KRK Aayush´ project within time frame. This shows their commitment towards business and customer satisfaction.",
+    name: "Praveen D",
+    location: "",
+    rating: 5,
+  },
+  {
+    quote: "Udbhav is customer friendly, honest, quality focused and very professional in their interaction. Never seen a developer who delivers more than what has been promised. This is my first hand experience from Udbhav's last project. I think Kiran's experience with MNCs has helped him be more focused on quality, ethics and customer satisfaction.",
+    name: "Ravi S",
+    location: "",
     rating: 5,
     featured: true,
   },
   {
-    quote:
-      "ONE HAPPY CUSTOMER 🙂 Quality in construction is not just what you see from outside once completed, but mainly what lays underneath the ground (i,e foundation) too. Ask Udbhav developer about it and they will explain you every stage of construction, from FOUNDATION to finishing. What I noticed with this energetic team of Mr Kiran is they are mainly focused on quality and customer satisfaction. In challenging period of Covid-19, they completed the `KRK Aayush´ project within time frame. This shows their commitment towards business and customer satisfaction.",
-    name: "Praveen D",
-    location: "Mangalore",
+    quote: "I have brought a flat in the first project of Udbhav developers at Mangalore, Nantoor during the construction stage. This is the 5th year of residence after project completion. There have not been any structural issues or seepage issues. The quality of workmanship and dedication shown from Kiran and Udbhav developers in completion of project, delivery in time and quality is excellent. I could see the same quality, workmanship & dedication in their upcoming projects. HAPPY CUSTOMER!!!!!!!!!",
+    name: "Krishnam Raju",
+    location: "",
     rating: 5,
   },
   {
-    quote:
-      "I have brought a flat in the first project of Udbhav developers at Mangalore, Nantoor during the construction stage. This is the 5th year of residence after project completion. There have not been any structural issues or seepage issues. The quality of workmanship and dedication shown from Kiran and Udbhav developers in completion of project, delivery in time and quality is excellent. I could see the same quality, workmanship & dedication in their upcoming projects. HAPPY CUSTOMER!!!!!!!!!",
-    name: "Krishnam Raju",
-    location: "Mangalore",
+    quote: "I have known Mr.Kiran B.K from the time he was in Oman, the U.A.E, then in U.K followed by returning to Mangalore to being a developer. I had no doubt in his abilities, he proved himself first in his residential projects and now in the commercial project. Having travelled around the world and being resident of a few countries such as U.A.E and Canada, I find the projects completed by Udbhav Developers equal in quality and standards to international buildings. The amenities, structure and engineering behind Udbhav developed buildings are world class. I wish Kiran B.K and team all the very best in their future endeavours, Mangalore needs more such quality buildings, Keep up the good work!",
+    name: "Rohit Damodar",
+    location: "",
     rating: 5,
   },
+  {
+    quote: "Udbhav Square in Kottara,Mangalore is one of a kind projects in Mangalore with excellent qualityand impressive design  Best wishes to Mr.Kiran and his team. Looking forward for more such projects from Udbhav Builders.",
+    name: "Sachin Kasaragod",
+    location: "",
+    rating: 5,
+  },
+  {
+    quote: "I have purchased a comemrcial unit at Udhbhav Square and find the project has been built very tastefully with attention to detail, quality &value for investment, I would definitely consider Udhbhav Developers for future purchases if any.",
+    name: "Arshad Shek",
+    location: "",
+    rating: 5,
+  },
+  {
+    quote: "My wife and I own and reside in one of Udbhav Developer’s recent projects. We are very happy with our decision, and all guests and visitors to our home have commended the quality and look of the property. Kiran the owner of the firm, and his dedicated and highly capable staff, notably Vignesh, are friendly, approachable, and responsive even post-handover of property. Here are our specific technical points: A) Timely execution of construction work B) Prompt and hassle free hand over of property and smooth formalities. C) Premium materials used and so is build quality. No sign of unskilled labour/technicians. D) Good floor plan, good use of available space without making common areas feel cramped. D) Good amenities as promised upfront, with a touch of something extra, for example the thoughtfully planned greenery on terrace and flower gardens.",
+    name: "Mr. Nagaraj Panyam",
+    location: "",
+    rating: 5,
+  }
 ];
 
 export const services = [

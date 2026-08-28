@@ -11,9 +11,7 @@ const intents = ["Self Use", "Investment"] as const;
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-export function 
-
-EnquiryForm({ dark = true }: { dark?: boolean }) {
+export function EnquiryForm({ dark = true, redirectUrl }: { dark?: boolean; redirectUrl?: string }) {
   const [unitType, setUnitType] = React.useState<string | null>(null);
   const [intent, setIntent] = React.useState<string | null>(null);
   const [status, setStatus] = React.useState<Status>("idle");
@@ -35,6 +33,11 @@ EnquiryForm({ dark = true }: { dark?: boolean }) {
 
       if (!response.ok) {
         throw new Error('Failed to submit enquiry');
+      }
+
+      if (redirectUrl) {
+        window.location.href = redirectUrl;
+        return;
       }
 
       setStatus("success");
@@ -107,7 +110,7 @@ EnquiryForm({ dark = true }: { dark?: boolean }) {
             ))}
           </div>
         </div>
-      
+
       </div>
 
       <div className="space-y-2">
@@ -126,6 +129,12 @@ EnquiryForm({ dark = true }: { dark?: boolean }) {
           I agree to receive project details and updates via WhatsApp.
         </span>
       </label>
+
+      {status === "error" && (
+        <div className="rounded-md bg-red-500/10 p-3 text-sm text-red-500">
+          Failed to send message. Please ensure email API keys are configured correctly or try again later.
+        </div>
+      )}
 
       <Button type="submit" variant="accent" size="lg" className="w-full" disabled={status === "submitting"}>
         {status === "submitting" ? "Sending…" : "Send Message"}
