@@ -98,7 +98,7 @@ export const projects: Project[] = [
     mapDesc:
       "Kadri stands as one of Mangaluru's most cherished residential nodes, offering a fine balance of quiet green avenues and urban convenience.",
     mapSrc:
-      "https://maps.google.com/maps?q=Swami+Vivekananda+Rd,+Mallikatte,+Kadri&t=&z=15&ie=UTF8&iwloc=&output=embed",
+      "https://maps.google.com/maps?q=UDBHAV+CHINMAYA,+Mangaluru&t=&z=15&ie=UTF8&iwloc=&output=embed",
     mapQueryName: "Kadri, Mangaluru",
     galleryImages: [
       { src: "/images/udbahv-chinmaya/gallery/udbhav-chinmaya-1.jpg", alt: "Udbhav Chinmaya Exterior", title: "Udbhav Chinmaya", subtitle: "Kadri, Mangalore" },
