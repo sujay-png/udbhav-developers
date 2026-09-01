@@ -10,7 +10,7 @@ interface Props {
 const { title = "What people are saying", subtitle = "Voices of our proud home-owners and commercial partners." } = Astro.props;
 ---
 
-<section class="mx-auto max-w-[1400px] px-5 py-24 md:px-10">
+<section class="mx-auto max-w-[1400px] px-5 pt-24 pb-40 md:px-10">
   <div class="mx-auto max-w-xl text-center">
     <Eyebrow class="justify-center">Voices of Trust</Eyebrow>
     <h2 class="mt-3 text-balance font-display text-4xl leading-[1.1] md:text-[2.75rem]">{title}</h2>
@@ -18,58 +18,94 @@ const { title = "What people are saying", subtitle = "Voices of our proud home-o
   </div>
 
   <div class="relative mt-14 group">
-    <button id="prevTestimonial" aria-label="Previous testimonials" class="absolute left-0 top-1/2 z-10 hidden h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#B02317] shadow-xl border border-gray-100 transition-all hover:bg-[#B02317] hover:text-white lg:flex lg:opacity-0 lg:group-hover:opacity-100">
+    <div class="swiper testimonialSwiper sm:mt-20 " >
+      <div class="swiper-wrapper">
+        {
+          testimonials.map((t) => (
+            <div class="swiper-slide">
+              <div class="h-full px-2">
+                <TestimonialCard quote={t.quote} name={t.name} location={t.location} rating={t.rating} featured={t.featured} />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+    
+    <button class="swiper-button-prev-testi absolute left-0 top-1/2 z-10 hidden h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#B02317] shadow-xl border border-gray-100 transition-all hover:bg-[#B02317] hover:text-white lg:flex lg:opacity-0 lg:group-hover:opacity-100">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
     </button>
-    <div id="testimonialContainer" class="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 hide-scrollbar scroll-smooth">
-      {
-        testimonials.map((t) => (
-          <div class="w-[85vw] md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-center md:snap-start">
-            <TestimonialCard quote={t.quote} name={t.name} location={t.location} rating={t.rating} featured={t.featured} />
-          </div>
-        ))
-      }
-    </div>
-    <button id="nextTestimonial" aria-label="Next testimonials" class="absolute right-0 top-1/2 z-10 hidden h-12 w-12 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#B02317] shadow-xl border border-gray-100 transition-all hover:bg-[#B02317] hover:text-white lg:flex lg:opacity-0 lg:group-hover:opacity-100">
+    <button class="swiper-button-next-testi absolute right-0 top-1/2 z-10 hidden h-12 w-12 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#B02317] shadow-xl border border-gray-100 transition-all hover:bg-[#B02317] hover:text-white lg:flex lg:opacity-0 lg:group-hover:opacity-100">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
     </button>
   </div>
-  <div class="mt-12 text-center">
+
+  <div class="mt-4 text-center">
     <a
-      href={"/testimonials"}
-      class="inline-flex items-center justify-center rounded-md border border-input  bg-background px-6 py-3 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      href="/testimonials"
+      class="inline-flex h-12 items-center justify-center rounded-md bg-[#c32828] px-8 text-sm font-bold text-white shadow hover:bg-[#a02020] transition-colors gap-2"
     >
-      View all testimonials
+      View All Testimonials 
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="m12 16 4-4-4-4"/></svg>
     </a>
   </div>
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('testimonialContainer');
-    const prevBtn = document.getElementById('prevTestimonial');
-    const nextBtn = document.getElementById('nextTestimonial');
+  import Swiper from "swiper";
+  import { Navigation, Pagination, Autoplay } from "swiper/modules";
+  import "swiper/css";
+  import "swiper/css/navigation";
+  import "swiper/css/pagination";
 
-    if (!container || !prevBtn || !nextBtn) return;
-
-    const scrollAmount = container.offsetWidth * 0.8;
-
-    prevBtn.addEventListener('click', () => {
-      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    });
-
-    nextBtn.addEventListener('click', () => {
-      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    });
+  new Swiper(".testimonialSwiper", {
+    modules: [Navigation, Pagination, Autoplay],
+    slidesPerView: 1,
+    spaceBetween: 24,
+    loop: true,
+    speed: 800,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next-testi",
+      prevEl: ".swiper-button-prev-testi",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+        spaceBetween: 24,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 32,
+      },
+      1280: {
+        slidesPerView: 4,
+        spaceBetween: 32,
+      },
+    },
   });
 </script>
 
-<style>
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
+<style is:global>
+  .testimonialSwiper .swiper-pagination {
+    position: relative !important;
+    bottom: auto !important;
+    margin-top: 3rem !important;
   }
-  .hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  .testimonialSwiper .swiper-pagination-bullet {
+    background-color: var(--color-clay) !important;
+    opacity: 1;
+  }
+  .testimonialSwiper .swiper-pagination-bullet-active {
+    background-color: var(--color-ink) !important;
+    opacity: 1;
   }
 </style>

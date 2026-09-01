@@ -518,7 +518,7 @@ const isRich = !!project.reraNo;
         <div class="lg:col-span-5 pt-2">
            <div class="space-y-6 h-full">
              <!-- Quick Facts Card (Scrolls normally) -->
-             <div class="bg-white rounded-[2rem] shadow-sm border border-border p-8">
+             <div class="bg-white rounded-[2rem] shadow-sm border border-border p-5 sm:p-8">
                 <ul class="space-y-6 divide-y divide-border">
                    <li class="flex gap-4 items-start pt-6 first:pt-0">
                      <Icon name="map-pin" className="w-5 h-5 text-clay shrink-0 mt-0.5" />
@@ -570,7 +570,7 @@ const isRich = !!project.reraNo;
              <!-- Wrapper for Form & CTA that becomes sticky -->
              <div class="sticky top-28 space-y-6">
                <!-- Enquiry Form Card -->
-               <div class="bg-white rounded-[2rem] shadow-sm border border-border p-8" id="enquire">
+               <div class="bg-white rounded-[2rem] shadow-sm border border-border p-5 sm:p-8" id="enquire">
                   <EnquiryForm dark={false} redirectUrl={project.slug === 'udbhav-chinmaya' ? '/chinmaya-thank-you' : '/thank-you'} client:idle />
                </div>
 
