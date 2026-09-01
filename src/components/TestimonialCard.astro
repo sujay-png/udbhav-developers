@@ -10,53 +10,69 @@ interface Props {
 }
 const { quote, name, location, rating = 5, featured = false } = Astro.props;
 ---
+
 <div
   class:list={[
-    "group flex h-full flex-col justify-between rounded-lg p-5 md:p-6 transition-colors duration-300",
-    featured
-      ? "bg-ink text-cream hover:bg-cream hover:text-ink"
-      : "bg-white text-ink hover:bg-ink hover:text-cream",
+    "testimonial-card flex h-full flex-col justify-between rounded-md p-5 md:p-6 bg-[#1F1F1F] text-white"
   ]}
 >
   <div>
     <div class="flex items-center justify-between">
       <div class="flex gap-0.5">
-        {Array.from({ length: rating }).map(() => (
-          <Icon name="star" className="h-3.5 w-3.5 text-clay" />
-        ))}
+        {
+          Array.from({ length: rating }).map(() => (
+            <Icon name="star" className="h-3.5 w-3.5 text-[#c32828]" />
+          ))
+        }
       </div>
       <Icon
         name="quote"
-        className={[
-          "h-5 w-5 transition-colors duration-300",
-          featured ? "text-cream/20 group-hover:text-ink/10" : "text-ink/10 group-hover:text-cream/20",
-        ].join(" ")}
+        className="h-5 w-5 text-white/20"
       />
     </div>
     <p
       class:list={[
-        "mt-4 text-sm leading-relaxed transition-colors duration-300 line-clamp-4",
-        featured ? "text-cream/85 group-hover:text-ink/75" : "text-ink/75 group-hover:text-cream/85",
+        "mt-4 text-sm leading-relaxed transition-all duration-300 line-clamp-4 quote-text text-white/90"
       ]}
       title={quote}
     >
       "{quote}"
     </p>
-  </div>
-  <div
-    class:list={[
-      "mt-6 border-t pt-4 transition-colors duration-300",
-      featured ? "border-cream/15 group-hover:border-ink/10" : "border-border group-hover:border-cream/15",
-    ]}
-  >
-    <p class="font-display text-base">{name}</p>
-    <p
+    <button
       class:list={[
-        "mt-0.5 text-xs uppercase tracking-wide transition-colors duration-300",
-        featured ? "text-clay group-hover:text-clay" : "text-muted-foreground group-hover:text-clay",
+        "read-more-btn mt-2 text-xs font-semibold hover:underline text-left text-[#c32828]"
       ]}
+      aria-expanded="false"
     >
+      Read more
+    </button>
+  </div>
+  <div class="mt-6 border-t pt-4 border-white/15">
+    <p class="font-display text-base text-white">{name}</p>
+    <p class="mt-0.5 text-xs uppercase tracking-wide text-[#c32828]">
       {location}
     </p>
   </div>
 </div>
+
+<script>
+  if (!document.body.dataset.readMoreInit) {
+    document.body.dataset.readMoreInit = 'true';
+    
+    // Use event delegation so it works for Swiper's cloned slides
+    document.addEventListener('click', (e) => {
+      const target = (e.target as HTMLElement).closest('.read-more-btn') as HTMLButtonElement | null;
+      if (!target) return;
+      
+      const container = target.closest('.testimonial-card');
+      const quote = container?.querySelector('.quote-text') as HTMLElement;
+      
+      if (quote) {
+        quote.classList.toggle('line-clamp-4');
+        const isExpanded = !quote.classList.contains('line-clamp-4');
+        target.textContent = isExpanded ? 'Read less' : 'Read more';
+        target.setAttribute('aria-expanded', isExpanded.toString());
+      }
+    });
+  }
+</script>

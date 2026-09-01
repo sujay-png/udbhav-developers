@@ -20,3 +20,10 @@ Consult these guides before working on related tasks:
 - [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
 - [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
 - [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+
+## Deployment & Git Workflow
+
+Before pushing to GitHub, the agent MUST ALWAYS:
+1. Run `npm run check` (TypeScript and Astro syntax validation).
+2. Run `npm run build` (Static site compilation check).
+3. If any step fails, do NOT push. Fix the errors first.

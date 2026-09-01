@@ -77,9 +77,18 @@ const variantClasses: Record<string, string> = {
                   <svg class={t.compact ? "h-4 w-4" : "h-5 w-5"} fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 ))}
               </div>
-              <p class:list={["font-serif font-medium italic leading-relaxed", t.textSize, bodyColor]}>
+              <p class:list={["font-serif font-medium italic leading-relaxed transition-all duration-300 line-clamp-4 quote-text", t.textSize, bodyColor]}>
                 "{t.quote}"
               </p>
+              <button
+                class:list={[
+                  "grid-read-more-btn mt-4 text-sm font-semibold hover:underline text-left inline-block",
+                  isInk ? "text-white/80 hover:text-white" : "text-[#B02317]"
+                ]}
+                aria-expanded="false"
+              >
+                Read more
+              </button>
             </div>
 
             <div class="relative z-10 flex items-center gap-4 mt-10 pt-8 border-t border-current/10">
@@ -98,3 +107,24 @@ const variantClasses: Record<string, string> = {
 
   </div>
 </section>
+
+<script>
+  if (!document.body.dataset.gridReadMoreInit) {
+    document.body.dataset.gridReadMoreInit = 'true';
+    
+    document.addEventListener('click', (e) => {
+      const target = (e.target as HTMLElement).closest('.grid-read-more-btn') as HTMLButtonElement | null;
+      if (!target) return;
+      
+      const container = target.closest('.group');
+      const quote = container?.querySelector('.quote-text') as HTMLElement;
+      
+      if (quote) {
+        quote.classList.toggle('line-clamp-4');
+        const isExpanded = !quote.classList.contains('line-clamp-4');
+        target.textContent = isExpanded ? 'Read less' : 'Read more';
+        target.setAttribute('aria-expanded', isExpanded.toString());
+      }
+    });
+  }
+</script>

@@ -599,7 +599,15 @@ export const navLinks = [
   { label: "Blog", href: "/blog" },
 ];
 
-export const testimonials = [
+export type Testimonial = {
+  quote: string;
+  name: string;
+  location: string;
+  rating: number;
+  featured?: boolean;
+};
+
+export const testimonials: Testimonial[] = [
   {
     quote: "We are the proud owners of one of the apartments build by Udbhav Developers in their first venture. The build quality is good and they have used branded fittings in plumbing and electricals. They are very approachable and easy to work with and have always answered our questions patiently and positively. We would highly recommend them.",
     name: "Mr. Anuroop Vijaya Kumar & Mrs. Karthika Mohan",
@@ -621,32 +629,31 @@ export const testimonials = [
   {
     quote: "ONE HAPPY CUSTOMER 🙂 Quality in construction is not just what you see from outside once completed, but mainly what lays underneath the ground (i,e foundation) too. Ask Udbhav developer about it and they will explain you every stage of construction, from FOUNDATION to finishing. What I noticed with this energetic team of Mr Kiran is they are mainly focused on quality and customer satisfaction. In challenging period of Covid-19, they completed the `KRK Aayush´ project within time frame. This shows their commitment towards business and customer satisfaction.",
     name: "Praveen D",
-    location: "",
+    location: "MANGALORE",
     rating: 5,
   },
   {
     quote: "Udbhav is customer friendly, honest, quality focused and very professional in their interaction. Never seen a developer who delivers more than what has been promised. This is my first hand experience from Udbhav's last project. I think Kiran's experience with MNCs has helped him be more focused on quality, ethics and customer satisfaction.",
     name: "Ravi S",
-    location: "",
+    location: "MANGALORE",
     rating: 5,
-    featured: true,
   },
   {
     quote: "I have brought a flat in the first project of Udbhav developers at Mangalore, Nantoor during the construction stage. This is the 5th year of residence after project completion. There have not been any structural issues or seepage issues. The quality of workmanship and dedication shown from Kiran and Udbhav developers in completion of project, delivery in time and quality is excellent. I could see the same quality, workmanship & dedication in their upcoming projects. HAPPY CUSTOMER!!!!!!!!!",
     name: "Krishnam Raju",
-    location: "",
+    location: "MANGALORE",
     rating: 5,
   },
   {
     quote: "I have known Mr.Kiran B.K from the time he was in Oman, the U.A.E, then in U.K followed by returning to Mangalore to being a developer. I had no doubt in his abilities, he proved himself first in his residential projects and now in the commercial project. Having travelled around the world and being resident of a few countries such as U.A.E and Canada, I find the projects completed by Udbhav Developers equal in quality and standards to international buildings. The amenities, structure and engineering behind Udbhav developed buildings are world class. I wish Kiran B.K and team all the very best in their future endeavours, Mangalore needs more such quality buildings, Keep up the good work!",
     name: "Rohit Damodar",
-    location: "",
+    location: "MANGALORE",
     rating: 5,
   },
   {
     quote: "Udbhav Square in Kottara,Mangalore is one of a kind projects in Mangalore with excellent qualityand impressive design  Best wishes to Mr.Kiran and his team. Looking forward for more such projects from Udbhav Builders.",
     name: "Sachin Kasaragod",
-    location: "",
+    location: "MANGALORE",
     rating: 5,
   },
   {

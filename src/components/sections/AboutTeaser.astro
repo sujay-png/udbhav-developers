@@ -7,8 +7,8 @@ import { pillars, siteConfig } from "@/lib/site-data";
 ---
 
 <section class="bg-blush">
-  <div class="mx-auto grid max-w-[1400px] gap-12 px-5 py-24 md:px-10 lg:grid-cols-2 lg:items-center lg:gap-20">
-    <div>
+  <div class="mx-auto grid max-w-[1400px] gap-12 px-5 py-24 md:px-10 lg:grid-cols-12 lg:items-start">
+    <div class="lg:col-span-5 lg:pr-19 xl:pr-16">
       <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-clay">Since {siteConfig.founded}</p>
       <h2 class="mt-4 text-balance font-display text-4xl leading-[1.1] md:text-[2.75rem]">
         Building with <em class="italic text-clay">Purpose</em>, Driven by <em class="italic text-clay">Trust.</em>
@@ -33,14 +33,26 @@ Since our inception in 2012, we have been committed to creating future-ready str
       </div>
     </div>
 
-    <div class="relative aspect-[4/5] overflow-hidden rounded-lg lg:aspect-[3/4]">
-    <img
-        src="/images/shanthi1.jpg"
-        alt="Udbhav Developers Team"
-        class="h-full w-full object-cover"/>
-      <div class="absolute bottom-6 left-6 rounded-md bg-clay px-6 py-5 text-cream">
-        <p class="font-display text-4xl">13+</p>
-        <p class="text-[11px] uppercase tracking-wide text-cream/80">Years of Excellence</p>
+    <div class="relative lg:col-span-5 lg:col-start-8">
+      <img
+        src="/images/udbhav-developers-logo.png"
+        alt="Udbhav Developers Logo"
+        class="w-full h-auto object-contain px-8 pb-16"/>
+      <svg width="0" height="0" class="absolute">
+        <defs>
+          <clipPath id="u-badge-shape" clipPathUnits="objectBoundingBox">
+            <path d="M 0 0.2 Q 0.5 0.35 1 0 L 1 0.6 C 1 0.82 0.776 1 0.5 1 C 0.224 1 0 0.82 0 0.6 Z" />
+          </clipPath>
+        </defs>
+      </svg>
+      <div 
+        class="absolute -bottom-10 left-9 bg-clay text-center text-cream flex flex-col items-center justify-center w-[100px] aspect-[4/5]"
+        style="clip-path: url(#u-badge-shape);"
+      >
+        <div class="translate-x-1 translate-y-1.5 flex flex-col items-center">
+          <p class="font-display text-3xl leading-none">13+</p>
+          <p class="mt-1 text-[8px] uppercase tracking-wider text-cream/90 max-w-[60px]">Years of Excellence</p>
+        </div>
       </div>
     </div>
   </div>
