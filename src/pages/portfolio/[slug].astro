@@ -140,25 +140,10 @@ const isRich = !!project.reraNo;
     <span class="w-1.5 h-1.5 rounded-full bg-yellow-500 ml-2 mt-2"></span>
   </h3>
 
-  <div class="relative overflow-hidden group">
-    <!-- Fade edges -->
-    <div class="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent z-10"></div>
-    <div class="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent z-10"></div>
-
-    <div class="flex w-max animate-marquee group-hover:[animation-play-state:paused]">
-      <!-- Set 1 -->
-      <div class="flex items-center shrink-0">
-        <img src="/images/udbahv-chinmaya/canara-bank.png" alt="Canara Bank" class="h-20 w-auto object-contain mix-blend-darken mx-12" />
-        <img src="/images/udbahv-chinmaya/sb-bank.png" alt="State Bank of India" class="h-20 w-auto object-contain mix-blend-darken mx-12" />
-        <img src="/images/udbahv-chinmaya/kbank.png" alt="Karnataka Bank" class="h-20 w-auto object-contain mix-blend-darken mx-12" />
-      </div>
-      <!-- Set 2 (duplicate, aria-hidden for a11y) -->
-      <div class="flex items-center shrink-0" aria-hidden="true">
-        <img src="/images/udbahv-chinmaya/canara-bank.png" alt="" class="h-20 w-auto object-contain mix-blend-darken mx-12" />
-        <img src="/images/udbahv-chinmaya/sb-bank.png" alt="" class="h-20 w-auto object-contain mix-blend-darken mx-12" />
-        <img src="/images/udbahv-chinmaya/kbank.png" alt="" class="h-20 w-auto object-contain mix-blend-darken mx-12" />
-      </div>
-    </div>
+  <div class="flex flex-wrap items-center justify-start gap-8 md:gap-12 lg:gap-16">
+    <img src="/images/udbahv-chinmaya/canara-bank.png" alt="Canara Bank" class="h-12 sm:h-14 md:h-16 w-auto object-contain mix-blend-darken" />
+    <img src="/images/udbahv-chinmaya/sb-bank.png" alt="State Bank of India" class="h-12 sm:h-14 md:h-16 w-auto object-contain mix-blend-darken" />
+    <img src="/images/udbahv-chinmaya/kbank.png" alt="Karnataka Bank" class="h-12 sm:h-14 md:h-16 w-auto object-contain mix-blend-darken" />
   </div>
 </div>
 
