@@ -5,6 +5,7 @@ import ArtPanel from "@/components/ArtPanel.astro";
 import { Icon } from "@/components/Icon";
 import { getAllPosts, formatDate, estimateReadTime } from "@/lib/wordpress";
 
+export const prerender = true;
 export async function getStaticPaths() {
   const posts = await getAllPosts(); // Fetches all posts recursively now
   return posts.map((post) => ({

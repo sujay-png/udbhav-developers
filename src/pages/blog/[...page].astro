@@ -5,6 +5,7 @@ import ArtPanel from "@/components/ArtPanel.astro";
 import { Icon } from "@/components/Icon";
 import { getAllPosts, formatDate } from "@/lib/wordpress";
 
+export const prerender = true;
 export async function getStaticPaths({ paginate }: { paginate: any }) {
   const allPosts = await getAllPosts();
   // Generate pages with 15 items per page

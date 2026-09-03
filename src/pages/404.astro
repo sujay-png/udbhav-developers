@@ -1,0 +1,77 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Icon } from "@/components/Icon";
+---
+
+<BaseLayout title="Page Not Found - 404" description="The page you are looking for does not exist.">
+  <section class="relative flex min-h-[80vh] flex-col items-center justify-center px-6 py-24 text-center">
+    <!-- Background with Overlay -->
+    <div class="absolute inset-0 z-0 overflow-hidden bg-[#FDF9F7]">
+      <img src="/images/udbhavmarcels1.jpg" alt="Background" class="h-full w-full object-cover opacity-[0.15]" />
+      <div class="absolute inset-0 bg-cream/80 backdrop-blur-sm"></div>
+    </div>
+    
+    <!-- Content -->
+    <div class="relative z-10 flex w-full flex-col items-center">
+      <div class="animate-in fade-in zoom-in-95 duration-1000 grid h-24 w-24 place-items-center rounded-full bg-[#B02317]/10 ring-8 ring-[#B02317]/5 backdrop-blur-sm">
+        <Icon name="search" className="h-10 w-10 text-[#B02317]" />
+      </div>
+      
+      <span class="inline-block text-xs font-bold uppercase tracking-[0.35em] text-[#B02317] mt-8 mb-4">
+        404 Error
+      </span>
+
+      <h1 class="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200 fill-mode-both font-serif text-5xl sm:text-6xl lg:text-7xl font-medium leading-[1.05] text-[#121417] text-balance drop-shadow-sm">
+        Page Not Found
+      </h1>
+    
+      <p class="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 fill-mode-both mt-6 max-w-2xl text-lg text-[#88726F] font-light leading-relaxed text-balance">
+        We can't seem to find the page you're looking for. It might have been moved, renamed, or perhaps it never existed.
+      </p>
+
+      <div class="animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500 fill-mode-both mt-12 w-full max-w-2xl rounded-[32px] bg-white/70 backdrop-blur-md p-8 sm:p-12 text-left shadow-xl border border-gray-100">
+        <h2 class="font-serif text-2xl text-[#121417] mb-6">Let's get you back on track</h2>
+        
+        <ul class="space-y-4 mb-8">
+          <li class="flex items-start gap-3">
+            <div class="mt-2 h-1.5 w-1.5 rounded-full bg-[#B02317] shrink-0"></div>
+            <a href="/" class="text-[#88726F] hover:text-[#B02317] transition-colors">Return to our Homepage</a>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="mt-2 h-1.5 w-1.5 rounded-full bg-[#B02317] shrink-0"></div>
+            <a href="/portfolio" class="text-[#88726F] hover:text-[#B02317] transition-colors">View our latest Projects</a>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="mt-2 h-1.5 w-1.5 rounded-full bg-[#B02317] shrink-0"></div>
+            <a href="/contact" class="text-[#88726F] hover:text-[#B02317] transition-colors">Get in touch with our team</a>
+          </li>
+        </ul>
+
+        <div class="border-t border-gray-100 pt-8">
+          <p class="font-medium text-[#121417] mb-2">Need immediate assistance?</p>
+          <p class="text-[#88726F]">Call or WhatsApp us at: <a href="tel:+917760471269" class="font-bold text-[#B02317] hover:underline">+91 77604 71269</a></p>
+        </div>
+      </div>
+      
+      <div class="animate-in fade-in zoom-in-95 duration-1000 delay-700 fill-mode-both mt-16">
+        <button 
+          onclick="history.back()"
+          class="inline-flex items-center gap-3 border border-[#121417]/20 bg-white/50 backdrop-blur-sm px-8 py-4 font-sans text-sm font-semibold uppercase tracking-wider text-[#121417] transition-all duration-300 hover:border-[#B02317] hover:bg-[#B02317] hover:text-white rounded-sm cursor-pointer"
+        >
+          <Icon name="arrow-left" className="h-4 w-4" />
+          <span>Go Back to Previous Page</span>
+        </button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+</style>
