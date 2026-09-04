@@ -6,14 +6,11 @@ import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/Icon";
 import { cn } from "@/lib/utils";
 
-const unitTypes = ["3 BHK", "4 BHK",] as const;
-const intents = ["Self Use", "Investment"] as const;
+// Form field options have been simplified.
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 export function EnquiryForm({ dark = true, redirectUrl }: { dark?: boolean; redirectUrl?: string }) {
-  const [unitType, setUnitType] = React.useState<string | null>(null);
-  const [intent, setIntent] = React.useState<string | null>(null);
   const [status, setStatus] = React.useState<Status>("idle");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -22,13 +19,13 @@ export function EnquiryForm({ dark = true, redirectUrl }: { dark?: boolean; redi
 
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
-    const payload = { ...data, unitType, intent };
-
+    
+    // We can pass the standard fields straight to the API
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(data),
       });
 
       if (!response.ok) {
@@ -42,25 +39,11 @@ export function EnquiryForm({ dark = true, redirectUrl }: { dark?: boolean; redi
 
       setStatus("success");
       form.reset();
-      setUnitType(null);
-      setIntent(null);
     } catch (error) {
       console.error(error);
       setStatus("error");
     }
   }
-
-  const toggleClass = (active: boolean) =>
-    cn(
-      "rounded-sm border px-4 py-2 text-sm font-medium transition-colors",
-      dark
-        ? active
-          ? "border-clay bg-clay text-cream"
-          : "border-cream/25 text-cream/70 hover:border-cream/50"
-        : active
-          ? "border-clay bg-clay text-cream"
-          : "border-ink/20 text-ink/70 hover:border-ink/40"
-    );
 
   const labelTone = dark ? "text-cream/60" : "text-muted-foreground";
 
@@ -85,50 +68,34 @@ export function EnquiryForm({ dark = true, redirectUrl }: { dark?: boolean; redi
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid gap-6 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="name" className={labelTone}>Full Name</Label>
-          <Input id="name" name="name" placeholder="Enter your name" required className={dark ? "border-cream/25 text-cream placeholder:text-cream/35" : ""} />
+          <Label htmlFor="name" className={labelTone}>Enter Your Name</Label>
+          <Input id="name" name="name" required className={dark ? "border-cream/25 text-cream placeholder:text-cream/35" : ""} />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="phone" className={labelTone}>Phone Number</Label>
-          <Input id="phone" name="phone" type="tel" placeholder="+91 00000 00000" required className={dark ? "border-cream/25 text-cream placeholder:text-cream/35" : ""} />
+          <Label htmlFor="email" className={labelTone}>Enter Your Email</Label>
+          <Input id="email" name="email" type="email" required className={dark ? "border-cream/25 text-cream placeholder:text-cream/35" : ""} />
         </div>
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="email" className={labelTone}>Email Address</Label>
-        <Input id="email" name="email" type="email" placeholder="you@example.com" required className={dark ? "border-cream/25 text-cream placeholder:text-cream/35" : ""} />
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label className={labelTone}>Preferred Unit Type</Label>
-          <div className="flex flex-wrap gap-2">
-            {unitTypes.map((u) => (
-              <button type="button" key={u} onClick={() => setUnitType(u)} className={toggleClass(unitType === u)}>
-                {u}
-              </button>
-            ))}
-          </div>
+          <Label htmlFor="phone" className={labelTone}>Phone Number</Label>
+          <Input id="phone" name="phone" type="tel" required className={dark ? "border-cream/25 text-cream placeholder:text-cream/35" : ""} />
         </div>
-
+        <div className="space-y-2">
+          <Label htmlFor="subject" className={labelTone}>Subject</Label>
+          <Input id="subject" name="subject" required className={dark ? "border-cream/25 text-cream placeholder:text-cream/35" : ""} />
+        </div>
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="message" className={labelTone}>Your Message</Label>
+        <Label htmlFor="message" className={labelTone}>Message</Label>
         <Textarea
           id="message"
           name="message"
-          placeholder="Tell us more about your requirements"
           className={dark ? "border-cream/25 text-cream placeholder:text-cream/35" : ""}
         />
       </div>
-
-      <label className="flex items-start gap-2.5 text-xs leading-relaxed">
-        <input type="checkbox" name="whatsappOptIn" className="mt-0.5 h-4 w-4 accent-clay" />
-        <span className={dark ? "text-cream/55" : "text-muted-foreground"}>
-          I agree to receive project details and updates via WhatsApp.
-        </span>
-      </label>
 
       {status === "error" && (
         <div className="rounded-md bg-red-500/10 p-3 text-sm text-red-500">
