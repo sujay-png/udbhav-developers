@@ -53,45 +53,53 @@ const { title = "What people are saying", subtitle = "Voices of our proud home-o
 </section>
 
 <script>
-  import Swiper from "swiper";
-  import { Navigation, Pagination, Autoplay } from "swiper/modules";
-  import "swiper/css";
-  import "swiper/css/navigation";
-  import "swiper/css/pagination";
+  import Swiper from "swiper/bundle";
+  import "swiper/css/bundle";
 
-  new Swiper(".testimonialSwiper", {
-    modules: [Navigation, Pagination, Autoplay],
-    slidesPerView: 1,
-    spaceBetween: 24,
-    loop: true,
-    speed: 800,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next-testi",
-      prevEl: ".swiper-button-prev-testi",
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    breakpoints: {
-      640: {
-        slidesPerView: 2,
-        spaceBetween: 24,
+  function initTestimonialSwiper() {
+    const el = document.querySelector(".testimonialSwiper") as HTMLElement;
+    if (!el || el.dataset.swiperInit === "true") return;
+    el.dataset.swiperInit = "true";
+
+    new Swiper(el, {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      loop: true,
+      speed: 800,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
       },
-      1024: {
-        slidesPerView: 3,
-        spaceBetween: 32,
+      navigation: {
+        nextEl: ".swiper-button-next-testi",
+        prevEl: ".swiper-button-prev-testi",
       },
-      1280: {
-        slidesPerView: 4,
-        spaceBetween: 32,
+      pagination: {
+        el: ".testimonialSwiper .swiper-pagination",
+        clickable: true,
       },
-    },
-  });
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 24,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 32,
+        },
+        1280: {
+          slidesPerView: 4,
+          spaceBetween: 32,
+        },
+      },
+    });
+  }
+
+  // Init on first load and on Astro page transitions
+  document.addEventListener("DOMContentLoaded", initTestimonialSwiper);
+  document.addEventListener("astro:page-load", initTestimonialSwiper);
+  // Also try immediately in case DOM is already loaded
+  if (document.readyState !== "loading") initTestimonialSwiper();
 </script>
 
 <style is:global>

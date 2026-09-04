@@ -19,6 +19,8 @@ export type GalleryItem = {
 export type Project = {
   slug: string;
   name: string;
+  seoTitle?: string;
+  seoDescription?: string;
   category: "Residential" | "Commercial";
   status: "Ongoing" | "Completed";
   tagline: string;
@@ -81,6 +83,8 @@ export const projects: Project[] = [
   {
     slug: "udbhav-chinmaya",
     name: "Udbhav Chinmaya",
+    seoTitle: "3 & 4 BHK Mangalore Apartment | From 1.60 Cr* | Kadri",
+    seoDescription: "With only 40 exclusive 3 & 4 BHK apartments, Udbhav Chinmaya ensures privacy, comfort, and a refined living experience in a prime urban location. 1715 to 2255 sq.ft.",
     category: "Residential",
     status: "Ongoing",
     tagline: "Sophisticated low-density residences",

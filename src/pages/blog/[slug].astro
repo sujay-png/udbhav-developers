@@ -139,8 +139,8 @@ const { post } = Astro.props;
           if (headings.length > 0) {
             const rootOl = document.createElement('ol');
             rootOl.className = 'elementor-toc__list';
-            let currentUl = null;
-            let lastLi = null;
+            let currentUl: HTMLUListElement | null = null;
+            let lastLi: HTMLLIElement | null = null;
 
             headings.forEach((heading, index) => {
               if (!heading.id) heading.id = 'heading-' + index;
@@ -188,8 +188,8 @@ const { post } = Astro.props;
       accordions.forEach(acc => {
         const items = acc.querySelectorAll('.elementor-accordion-item, .elementor-toggle-item');
         items.forEach(item => {
-          const titleWrap = item.querySelector('.elementor-tab-title');
-          const content = item.querySelector('.elementor-tab-content');
+          const titleWrap = item.querySelector('.elementor-tab-title') as HTMLElement;
+          const content = item.querySelector('.elementor-tab-content') as HTMLElement;
           if (titleWrap && content) {
             titleWrap.style.cursor = 'pointer';
             titleWrap.style.display = 'flex';
@@ -201,9 +201,9 @@ const { post } = Astro.props;
             
             const a = titleWrap.querySelector('a');
             if (a) {
-              a.style.color = '#121417';
-              a.style.textDecoration = 'none';
-              a.style.fontSize = '1.125rem';
+              (a as HTMLElement).style.color = '#121417';
+              (a as HTMLElement).style.textDecoration = 'none';
+              (a as HTMLElement).style.fontSize = '1.125rem';
             }
 
             const arrow = document.createElement('span');
@@ -212,16 +212,16 @@ const { post } = Astro.props;
             titleWrap.appendChild(arrow);
 
             // Hide content initially
-            content.style.padding = '1.5rem 0';
-            content.style.display = 'none';
-            content.style.color = '#554946';
+            (content as HTMLElement).style.padding = '1.5rem 0';
+            (content as HTMLElement).style.display = 'none';
+            (content as HTMLElement).style.color = '#554946';
 
             titleWrap.addEventListener('click', (e) => {
               e.preventDefault();
-              const isOpen = content.style.display === 'block';
-              content.style.display = isOpen ? 'none' : 'block';
+              const isOpen = (content as HTMLElement).style.display === 'block';
+              (content as HTMLElement).style.display = isOpen ? 'none' : 'block';
               arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
-              if (a) a.style.color = isOpen ? '#121417' : '#B02317';
+              if (a) (a as HTMLElement).style.color = isOpen ? '#121417' : '#B02317';
             });
           }
         });
@@ -232,9 +232,9 @@ const { post } = Astro.props;
       ekitAccordions.forEach(acc => {
         const items = acc.querySelectorAll('.elementskit-card');
         items.forEach(item => {
-          const header = item.querySelector('.elementskit-card-header');
-          const content = item.querySelector('.elementskit-card-body');
-          const a = item.querySelector('.ekit-accordion--toggler');
+          const header = item.querySelector('.elementskit-card-header') as HTMLElement;
+          const content = item.querySelector('.elementskit-card-body') as HTMLElement;
+          const a = item.querySelector('.ekit-accordion--toggler') as HTMLElement;
           
           if (header && content && a) {
             header.style.cursor = 'pointer';
@@ -260,7 +260,7 @@ const { post } = Astro.props;
             a.appendChild(arrow);
             
             // Fix collapse container
-            const collapseDiv = content.closest('.collapse') || content;
+            const collapseDiv = (content as HTMLElement).closest('.collapse') as HTMLElement || (content as HTMLElement);
             collapseDiv.style.display = 'none'; // ensure it's hidden properly initially
             collapseDiv.style.visibility = 'visible'; 
             collapseDiv.style.opacity = '1';
@@ -269,12 +269,12 @@ const { post } = Astro.props;
             content.style.padding = '1.5rem 0';
             content.style.color = '#554946';
             
-            header.addEventListener('click', (e) => {
+            (header as HTMLElement).addEventListener('click', (e) => {
               e.preventDefault();
               const isOpen = collapseDiv.style.display === 'block';
               collapseDiv.style.display = isOpen ? 'none' : 'block';
               arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
-              a.style.color = isOpen ? '#121417' : '#B02317';
+              (a as HTMLElement).style.color = isOpen ? '#121417' : '#B02317';
             });
           }
         });

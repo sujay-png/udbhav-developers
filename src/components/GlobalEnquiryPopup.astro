@@ -12,18 +12,18 @@ import { Icon } from "@/components/Icon";
     </div>
     
     <div class="p-6 sm:p-8 overflow-y-auto scrollbar-thin">
-      <form class="space-y-6" id="global-enquiry-form" onsubmit="event.preventDefault(); alert('Form submitted successfully!'); document.getElementById('global-enquiry-modal').close();">
+      <form class="space-y-6" id="global-enquiry-form">
         
         <!-- Name -->
         <div class="space-y-2">
           <label class="text-sm font-medium text-ink">Name <span class="text-clay">(Required)</span></label>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <input type="text" required class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
+              <input type="text" name="firstName" required placeholder="First name" class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
               <p class="text-xs text-gray-500 mt-1">First</p>
             </div>
             <div>
-              <input type="text" required class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
+              <input type="text" name="lastName" required placeholder="Last name" class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
               <p class="text-xs text-gray-500 mt-1">Last</p>
             </div>
           </div>
@@ -32,32 +32,38 @@ import { Icon } from "@/components/Icon";
         <!-- Phone -->
         <div class="space-y-2">
           <label class="text-sm font-medium text-ink">Phone <span class="text-clay">(Required)</span></label>
-          <input type="tel" required class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
+          <input type="tel" name="phone" required placeholder="+91 98765 43210" class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
         </div>
 
-        <!-- Email & City -->
+        <!-- Email & Budget -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="space-y-2">
             <label class="text-sm font-medium text-ink">Email <span class="text-clay">(Required)</span></label>
-            <input type="email" required class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
+            <input type="email" name="email" required placeholder="you@example.com" class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
           </div>
           <div class="space-y-2">
-            <label class="text-sm font-medium text-ink">Current City <span class="text-clay">(Required)</span></label>
-            <input type="text" placeholder="Type Your City" required class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
+            <label class="text-sm font-medium text-ink">Budget <span class="text-clay">(Required)</span></label>
+            <select name="budget" required class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors bg-white">
+              <option value="">Select budget range</option>
+              <option value="Under 1.5 Cr">Under ₹1.5 Cr</option>
+              <option value="1.5 - 2 Cr">₹1.5 – 2 Cr</option>
+              <option value="2 - 2.5 Cr">₹2 – 2.5 Cr</option>
+              <option value="Above 2.5 Cr">Above ₹2.5 Cr</option>
+            </select>
           </div>
         </div>
 
-        <!-- Preferred Unit Type -->
+        <!-- Preferred Unit Type (BHK) -->
         <div class="space-y-3 pt-2">
           <label class="text-sm font-medium text-ink">Preferred Unit Type <span class="text-clay">(Required)</span></label>
           <div class="space-y-2">
             <label class="flex items-center space-x-3 cursor-pointer group">
-              <input type="radio" name="unitType" value="3BHK" required class="w-5 h-5 border-gray-300 text-clay focus:ring-clay" />
-              <span class="text-sm text-ink group-hover:text-ink">3BHK</span>
+              <input type="radio" name="bhk" value="3 BHK" required class="w-5 h-5 border-gray-300 accent-[#B02317]" />
+              <span class="text-sm text-ink">3 BHK</span>
             </label>
             <label class="flex items-center space-x-3 cursor-pointer group">
-              <input type="radio" name="unitType" value="4BHK" required class="w-5 h-5 border-gray-300 text-clay focus:ring-clay" />
-              <span class="text-sm text-ink group-hover:text-ink">4BHK</span>
+              <input type="radio" name="bhk" value="4 BHK" class="w-5 h-5 border-gray-300 accent-[#B02317]" />
+              <span class="text-sm text-ink">4 BHK</span>
             </label>
           </div>
         </div>
@@ -66,13 +72,13 @@ import { Icon } from "@/components/Icon";
         <div class="space-y-3 pt-2">
           <label class="text-sm font-medium text-ink">Intended Use <span class="text-clay">(Required)</span></label>
           <div class="space-y-2">
-            <label class="flex items-center space-x-3 cursor-pointer group">
-              <input type="radio" name="intendedUse" value="Self Use" required class="w-5 h-5 border-gray-300 text-clay focus:ring-clay" />
-              <span class="text-sm text-ink group-hover:text-ink">Self Use</span>
+            <label class="flex items-center space-x-3 cursor-pointer">
+              <input type="radio" name="intendedUse" value="Self Use" required class="w-5 h-5 border-gray-300 accent-[#B02317]" />
+              <span class="text-sm text-ink">Self Use</span>
             </label>
-            <label class="flex items-center space-x-3 cursor-pointer group">
-              <input type="radio" name="intendedUse" value="Investment" required class="w-5 h-5 border-gray-300 text-clay focus:ring-clay" />
-              <span class="text-sm text-ink group-hover:text-ink">Investment</span>
+            <label class="flex items-center space-x-3 cursor-pointer">
+              <input type="radio" name="intendedUse" value="Investment" class="w-5 h-5 border-gray-300 accent-[#B02317]" />
+              <span class="text-sm text-ink">Investment</span>
             </label>
           </div>
         </div>
@@ -81,21 +87,21 @@ import { Icon } from "@/components/Icon";
         <div class="space-y-3 pt-2">
           <label class="text-sm font-medium text-ink">Bank / Loan Preference <span class="text-clay">(Required)</span></label>
           <div class="space-y-2">
-            <label class="flex items-center space-x-3 cursor-pointer group">
-              <input type="radio" name="loanPref" value="Need Home Loan Assistance" required class="w-5 h-5 border-gray-300 text-clay focus:ring-clay" />
-              <span class="text-sm text-ink group-hover:text-ink">Need Home Loan Assistance</span>
+            <label class="flex items-center space-x-3 cursor-pointer">
+              <input type="radio" name="loanPref" value="Need Home Loan Assistance" required class="w-5 h-5 border-gray-300 accent-[#B02317]" />
+              <span class="text-sm text-ink">Need Home Loan Assistance</span>
             </label>
-            <label class="flex items-center space-x-3 cursor-pointer group">
-              <input type="radio" name="loanPref" value="Already Pre-Approved" required class="w-5 h-5 border-gray-300 text-clay focus:ring-clay" />
-              <span class="text-sm text-ink group-hover:text-ink">Already Pre-Approved</span>
+            <label class="flex items-center space-x-3 cursor-pointer">
+              <input type="radio" name="loanPref" value="Already Pre-Approved" class="w-5 h-5 border-gray-300 accent-[#B02317]" />
+              <span class="text-sm text-ink">Already Pre-Approved</span>
             </label>
-            <label class="flex items-center space-x-3 cursor-pointer group">
-              <input type="radio" name="loanPref" value="Planning to Apply" required class="w-5 h-5 border-gray-300 text-clay focus:ring-clay" />
-              <span class="text-sm text-ink group-hover:text-ink">Planning to Apply</span>
+            <label class="flex items-center space-x-3 cursor-pointer">
+              <input type="radio" name="loanPref" value="Planning to Apply" class="w-5 h-5 border-gray-300 accent-[#B02317]" />
+              <span class="text-sm text-ink">Planning to Apply</span>
             </label>
-            <label class="flex items-center space-x-3 cursor-pointer group">
-              <input type="radio" name="loanPref" value="Self-Funded" required class="w-5 h-5 border-gray-300 text-clay focus:ring-clay" />
-              <span class="text-sm text-ink group-hover:text-ink">Self-Funded</span>
+            <label class="flex items-center space-x-3 cursor-pointer">
+              <input type="radio" name="loanPref" value="Self-Funded" class="w-5 h-5 border-gray-300 accent-[#B02317]" />
+              <span class="text-sm text-ink">Self-Funded</span>
             </label>
           </div>
         </div>
@@ -104,15 +110,19 @@ import { Icon } from "@/components/Icon";
         <div class="space-y-3 pt-2 pb-4">
           <label class="text-sm font-medium text-ink">WhatsApp Consent <span class="text-clay">(Required)</span></label>
           <div class="space-y-2">
-            <label class="flex items-center space-x-3 cursor-pointer group">
-              <input type="checkbox" name="whatsapp" required class="w-5 h-5 border-gray-300 rounded text-clay focus:ring-clay" />
-              <span class="text-sm text-ink group-hover:text-ink">I agree to receive project details and updates via WhatsApp.</span>
+            <label class="flex items-center space-x-3 cursor-pointer">
+              <input type="checkbox" name="whatsapp" required class="w-5 h-5 border-gray-300 rounded accent-[#B02317]" />
+              <span class="text-sm text-ink">I agree to receive project details and updates via WhatsApp.</span>
             </label>
           </div>
         </div>
 
+        <div id="popup-form-error" class="hidden rounded-md bg-red-500/10 p-3 text-sm text-red-500">
+          Submission failed. Please try again.
+        </div>
+
         <div class="pt-4 flex justify-center">
-          <button type="submit" class="w-48 h-12 bg-clay hover:bg-clay-hover text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5 duration-300">
+          <button type="submit" id="popup-submit-btn" class="w-48 h-12 bg-clay hover:bg-clay-hover text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5 duration-300 disabled:opacity-60">
             Submit
           </button>
         </div>
@@ -159,6 +169,45 @@ import { Icon } from "@/components/Icon";
     dialog.addEventListener('close', () => {
         document.body.classList.remove('overflow-hidden');
         document.documentElement.classList.remove('overflow-hidden');
+    });
+
+    // Form submission → Gravity Forms
+    const form = document.getElementById('global-enquiry-form') as HTMLFormElement;
+    const submitBtn = document.getElementById('popup-submit-btn') as HTMLButtonElement;
+    const errorEl = document.getElementById('popup-form-error') as HTMLElement;
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Submitting…'; }
+      if (errorEl) errorEl.classList.add('hidden');
+
+      const fd = new FormData(form);
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            formId: 2,
+            firstName: fd.get('firstName'),
+            lastName: fd.get('lastName'),
+            phone: fd.get('phone'),
+            email: fd.get('email'),
+            budget: fd.get('budget'),
+            bhk: fd.get('bhk'),
+            intendedUse: fd.get('intendedUse'),
+            loanPref: fd.get('loanPref'),
+            whatsapp: !!fd.get('whatsapp'),
+          }),
+        });
+
+        if (!res.ok) throw new Error('Failed');
+        dialog.close();
+        form.reset();
+        window.location.href = '/thank-you';
+      } catch {
+        if (errorEl) errorEl.classList.remove('hidden');
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit'; }
+      }
     });
   };
 

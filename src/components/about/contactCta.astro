@@ -77,6 +77,8 @@
                     </div>
 
 
+                    <!-- Google reCAPTCHA -->
+                    <div id="home-recaptcha-container" class="my-2" style="min-height:78px;"></div>
 
                     <div class="pt-2 flex justify-center md:justify-start">
                         <button type="submit" class="bg-[#c32828] hover:bg-[#a02020] text-white px-10 py-3 rounded-md font-medium transition-colors shadow-sm disabled:opacity-70 disabled:cursor-not-allowed">
@@ -97,64 +99,115 @@
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  const RECAPTCHA_SITE_KEY = '6LecgFcsAAAAAHJLmH8O7RCs8JnHHJcE3ADP23mN';
+  let homeWidgetId: number | null = null;
+
+  function initHomeForm() {
     const form = document.getElementById('home-contact-form') as HTMLFormElement;
     const successMsg = document.getElementById('form-success-msg');
     const errorMsg = document.getElementById('form-error-msg');
+    const recaptchaEl = document.getElementById('home-recaptcha-container');
 
-    if (form) {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        successMsg?.classList.add('hidden');
-        errorMsg?.classList.add('hidden');
+    if (!form || form.dataset.init === 'true') return;
+    form.dataset.init = 'true';
 
-        const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Sending...';
-        submitBtn.disabled = true;
+    // Load reCAPTCHA script
+    if (!document.getElementById('recaptcha-script')) {
+      const script = document.createElement('script');
+      script.id = 'recaptcha-script';
+      script.src = 'https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit';
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
 
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-        
-        if (data.subject && data.message) {
-          data.message = `Subject: ${data.subject}\n\n${data.message}`;
-        } else if (data.subject) {
-          data.message = `Subject: ${data.subject}`;
-        }
-
-        try {
-          const response = await fetch('/api/contact', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-          });
-
-          if (response.ok) {
-            successMsg?.classList.remove('hidden');
-            form.reset();
-            setTimeout(() => {
-              successMsg?.classList.add('hidden');
-            }, 3000);
-          } else {
-            const err = await response.json();
-            if (errorMsg) {
-              errorMsg.textContent = 'Error: ' + (err.error || 'Failed to send message. Please try again.');
-              errorMsg.classList.remove('hidden');
+    // Render reCAPTCHA widget
+    const waitAndRender = () => {
+      if ((window as any).grecaptcha?.ready) {
+        (window as any).grecaptcha.ready(() => {
+          if (recaptchaEl && homeWidgetId === null) {
+            try {
+              homeWidgetId = (window as any).grecaptcha.render(recaptchaEl, {
+                sitekey: RECAPTCHA_SITE_KEY,
+              });
+            } catch (e) {
+              console.warn('reCAPTCHA render error:', e);
             }
           }
-        } catch (error) {
+        });
+      } else {
+        setTimeout(waitAndRender, 200);
+      }
+    };
+    waitAndRender();
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      successMsg?.classList.add('hidden');
+      errorMsg?.classList.add('hidden');
+
+      // Validate reCAPTCHA
+      let recaptchaToken = '';
+      if ((window as any).grecaptcha && homeWidgetId !== null) {
+        recaptchaToken = (window as any).grecaptcha.getResponse(homeWidgetId);
+        if (!recaptchaToken) {
+          alert('Please complete the reCAPTCHA verification.');
+          return;
+        }
+      }
+
+      const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            formId: 1,
+            name: formData.get('name'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            subject: formData.get('subject'),
+            message: formData.get('message'),
+            recaptchaToken,
+          }),
+        });
+
+        if (response.ok) {
+          successMsg?.classList.remove('hidden');
+          form.reset();
+          if ((window as any).grecaptcha && homeWidgetId !== null) {
+            (window as any).grecaptcha.reset(homeWidgetId);
+          }
+          setTimeout(() => {
+            successMsg?.classList.add('hidden');
+          }, 3000);
+        } else {
+          const err = await response.json();
           if (errorMsg) {
-            errorMsg.textContent = 'A network error occurred. Please try again.';
+            errorMsg.textContent = 'Error: ' + (err.error || 'Failed to send message. Please try again.');
             errorMsg.classList.remove('hidden');
           }
-        } finally {
-          submitBtn.textContent = originalText;
-          submitBtn.disabled = false;
         }
-      });
-    }
-  });
+      } catch (error) {
+        if (errorMsg) {
+          errorMsg.textContent = 'A network error occurred. Please try again.';
+          errorMsg.classList.remove('hidden');
+        }
+      } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initHomeForm);
+  document.addEventListener('astro:page-load', initHomeForm);
+  if (document.readyState !== 'loading') initHomeForm();
 </script>

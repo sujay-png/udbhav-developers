@@ -66,7 +66,7 @@ import { siteConfig } from "@/lib/site-data";
       <h2 class="font-display text-3xl">Submit Enquiry</h2>
       <p class="mt-2 text-sm text-cream/60">Tell us what you're looking for and we'll be in touch shortly.</p>
       <div class="mt-8">
-        <EnquiryForm client:load dark={true} redirectUrl="/thank-you" />
+        <EnquiryForm client:load dark={true} redirectUrl="/thank-you" showCaptcha={true} />
       </div>
     </div>
   </section>
