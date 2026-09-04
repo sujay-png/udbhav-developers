@@ -31,7 +31,7 @@ const hasUpdates = project.updates && project.updates.length > 0;
       <p class="text-white/70 font-medium tracking-wide">
         <a href="/" class="hover:text-white transition-colors">Home</a>
         <span class="mx-2">/</span>
-        <a href={`/portfolio/${project.slug}`} class="hover:text-white transition-colors">{project.name}</a>
+        <a href={`/projects/${project.slug}`} class="hover:text-white transition-colors">{project.name}</a>
         <span class="mx-2">/</span>
         <span class="text-clay">Gallery</span>
       </p>
@@ -71,7 +71,7 @@ const hasUpdates = project.updates && project.updates.length > 0;
       <div class="max-w-[1440px] mx-auto text-center py-20">
         <div class="bg-muted/30 rounded-3xl p-12 inline-block border border-border">
           <p class="text-muted-foreground text-lg mb-6">No gallery updates available for this project yet.</p>
-          <a href={`/portfolio/${project.slug}`} class="inline-flex px-6 py-3 bg-clay text-white rounded-full hover:bg-[#b01e1e] transition-colors font-medium">Back to Project</a>
+          <a href={`/projects/${project.slug}`} class="inline-flex px-6 py-3 bg-clay text-white rounded-full hover:bg-[#b01e1e] transition-colors font-medium">Back to Project</a>
         </div>
       </div>
     )}

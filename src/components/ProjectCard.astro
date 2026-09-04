@@ -13,7 +13,7 @@ const { project, seed = 1, size = "default" } = Astro.props;
 const tone = project.category === "Commercial" ? "ink" : seed % 2 === 0 ? "sand" : "clay";
 ---
 
-<a href={`/portfolio/${project.slug}`} class="group block">
+<a href={`/projects/${project.slug}`} class="group block">
   <div class:list={["relative overflow-hidden rounded-lg", size === "large" ? "aspect-[16/11]" : "aspect-[4/3]"]}>
     <!-- <ArtPanel seed={seed} tone={tone} class="h-full w-full transition-transform duration-700 group-hover:scale-[1.04]" /> -->
      <img src={`/images/${project.image}.jpg`} alt={project.name} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />

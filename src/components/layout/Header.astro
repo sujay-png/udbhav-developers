@@ -52,7 +52,7 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
                         {group.items.length > 0 ? (
                           group.items.map((project) => (
                             <a
-                              href={`/portfolio/${project.slug}`}
+                              href={`/projects/${project.slug}`}
                               class="block rounded-sm px-3 py-2 text-xs font-medium text-ink/75 hover:bg-muted hover:text-clay transition-colors truncate"
                             >
                               {project.name}
@@ -121,7 +121,7 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
                       <span class="px-2 py-1 text-xs font-semibold uppercase text-clay">{group.label}</span>
                       {group.items.map((project) => (
                         <a
-                          href={`/portfolio/${project.slug}`}
+                          href={`/projects/${project.slug}`}
                           class="flex items-center justify-between rounded-sm px-2 py-2 text-xs font-medium text-ink/70 hover:bg-muted hover:text-clay"
                         >
                           {project.name}
