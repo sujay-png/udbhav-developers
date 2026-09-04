@@ -1,0 +1,186 @@
+---
+import { Icon } from "@/components/Icon";
+---
+
+<dialog id="global-enquiry-modal" class="backdrop:bg-black/70 p-0 rounded-2xl shadow-2xl bg-cream w-[95%] max-w-2xl max-h-[90vh] m-auto overflow-hidden">
+  <div class="flex flex-col h-full max-h-[90vh]">
+    <div class="flex justify-center items-center p-6 border-b border-border relative shrink-0">
+      <h2 class="font-display text-3xl sm:text-4xl text-ink">Get In Touch</h2>
+      <button type="button" class="close-modal absolute right-6 text-gray-400 hover:text-gray-800 transition-colors p-2 rounded-full hover:bg-gray-100">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    
+    <div class="p-6 sm:p-8 overflow-y-auto scrollbar-thin">
+      <form class="space-y-6" id="global-enquiry-form" onsubmit="event.preventDefault(); alert('Form submitted successfully!'); document.getElementById('global-enquiry-modal').close();">
+        
+        <!-- Name -->
+        <div class="space-y-2">
+          <label class="text-sm font-medium text-ink">Name <span class="text-clay">(Required)</span></label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <input type="text" required class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
+              <p class="text-xs text-gray-500 mt-1">First</p>
+            </div>
+            <div>
+              <input type="text" required class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
+              <p class="text-xs text-gray-500 mt-1">Last</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="space-y-2">
+          <label class="text-sm font-medium text-ink">Phone <span class="text-clay">(Required)</span></label>
+          <input type="tel" required class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
+        </div>
+
+        <!-- Email & City -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-ink">Email <span class="text-clay">(Required)</span></label>
+            <input type="email" required class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
+          </div>
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-ink">Current City <span class="text-clay">(Required)</span></label>
+            <input type="text" placeholder="Type Your City" required class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
+          </div>
+        </div>
+
+        <!-- Preferred Unit Type -->
+        <div class="space-y-3 pt-2">
+          <label class="text-sm font-medium text-ink">Preferred Unit Type <span class="text-clay">(Required)</span></label>
+          <div class="space-y-2">
+            <label class="flex items-center space-x-3 cursor-pointer group">
+              <input type="radio" name="unitType" value="3BHK" required class="w-5 h-5 border-gray-300 text-clay focus:ring-clay" />
+              <span class="text-sm text-ink group-hover:text-ink">3BHK</span>
+            </label>
+            <label class="flex items-center space-x-3 cursor-pointer group">
+              <input type="radio" name="unitType" value="4BHK" required class="w-5 h-5 border-gray-300 text-clay focus:ring-clay" />
+              <span class="text-sm text-ink group-hover:text-ink">4BHK</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Intended Use -->
+        <div class="space-y-3 pt-2">
+          <label class="text-sm font-medium text-ink">Intended Use <span class="text-clay">(Required)</span></label>
+          <div class="space-y-2">
+            <label class="flex items-center space-x-3 cursor-pointer group">
+              <input type="radio" name="intendedUse" value="Self Use" required class="w-5 h-5 border-gray-300 text-clay focus:ring-clay" />
+              <span class="text-sm text-ink group-hover:text-ink">Self Use</span>
+            </label>
+            <label class="flex items-center space-x-3 cursor-pointer group">
+              <input type="radio" name="intendedUse" value="Investment" required class="w-5 h-5 border-gray-300 text-clay focus:ring-clay" />
+              <span class="text-sm text-ink group-hover:text-ink">Investment</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Bank / Loan Preference -->
+        <div class="space-y-3 pt-2">
+          <label class="text-sm font-medium text-ink">Bank / Loan Preference <span class="text-clay">(Required)</span></label>
+          <div class="space-y-2">
+            <label class="flex items-center space-x-3 cursor-pointer group">
+              <input type="radio" name="loanPref" value="Need Home Loan Assistance" required class="w-5 h-5 border-gray-300 text-clay focus:ring-clay" />
+              <span class="text-sm text-ink group-hover:text-ink">Need Home Loan Assistance</span>
+            </label>
+            <label class="flex items-center space-x-3 cursor-pointer group">
+              <input type="radio" name="loanPref" value="Already Pre-Approved" required class="w-5 h-5 border-gray-300 text-clay focus:ring-clay" />
+              <span class="text-sm text-ink group-hover:text-ink">Already Pre-Approved</span>
+            </label>
+            <label class="flex items-center space-x-3 cursor-pointer group">
+              <input type="radio" name="loanPref" value="Planning to Apply" required class="w-5 h-5 border-gray-300 text-clay focus:ring-clay" />
+              <span class="text-sm text-ink group-hover:text-ink">Planning to Apply</span>
+            </label>
+            <label class="flex items-center space-x-3 cursor-pointer group">
+              <input type="radio" name="loanPref" value="Self-Funded" required class="w-5 h-5 border-gray-300 text-clay focus:ring-clay" />
+              <span class="text-sm text-ink group-hover:text-ink">Self-Funded</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- WhatsApp Consent -->
+        <div class="space-y-3 pt-2 pb-4">
+          <label class="text-sm font-medium text-ink">WhatsApp Consent <span class="text-clay">(Required)</span></label>
+          <div class="space-y-2">
+            <label class="flex items-center space-x-3 cursor-pointer group">
+              <input type="checkbox" name="whatsapp" required class="w-5 h-5 border-gray-300 rounded text-clay focus:ring-clay" />
+              <span class="text-sm text-ink group-hover:text-ink">I agree to receive project details and updates via WhatsApp.</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="pt-4 flex justify-center">
+          <button type="submit" class="w-48 h-12 bg-clay hover:bg-clay-hover text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5 duration-300">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const setupModal = () => {
+    const dialog = document.getElementById('global-enquiry-modal') as HTMLDialogElement;
+    if (!dialog) return;
+
+    const closeBtns = document.querySelectorAll('.close-modal');
+    
+    // Open dialog when any matching trigger is clicked
+    document.addEventListener('click', (e) => {
+      const trigger = (e.target as Element).closest('[data-open-enquiry]');
+      if (trigger) {
+        e.preventDefault();
+        dialog.showModal();
+        document.body.classList.add('overflow-hidden');
+        document.documentElement.classList.add('overflow-hidden');
+      }
+    });
+
+    // Close dialog on close button click
+    closeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        dialog.close();
+      });
+    });
+
+    // Close dialog when clicking backdrop
+    dialog.addEventListener('click', (e) => {
+      const rect = dialog.getBoundingClientRect();
+      const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
+      if (!isInDialog) {
+        dialog.close();
+      }
+    });
+
+    dialog.addEventListener('close', () => {
+        document.body.classList.remove('overflow-hidden');
+        document.documentElement.classList.remove('overflow-hidden');
+    });
+  };
+
+  setupModal();
+  document.addEventListener('astro:page-load', setupModal);
+</script>
+
+<style>
+  dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    animation: fade-in 0.3s ease-out;
+  }
+  dialog[open] {
+    animation: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+</style>

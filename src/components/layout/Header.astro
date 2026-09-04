@@ -86,7 +86,7 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
 
     <div class="hidden lg:block">
       <Button asChild size="default">
-        <a href="/contact">Enquiry</a>
+        <a href="#" data-open-enquiry="true">Enquiry</a>
       </Button>
     </div>
 
@@ -147,11 +147,9 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
         })
       }
       <a
-        href="/contact"
+        href="#" data-open-enquiry="true"
         class="mt-2 flex items-center justify-center rounded-sm bg-primary px-6 py-3 text-[13px] font-medium uppercase tracking-wide text-primary-foreground"
-      >
-        Enquiry
-      </a>
+      >Enquiry</a>
       <div class="mt-3 border-t border-border pt-3 text-sm text-muted-foreground">
         <a href={`tel:${siteConfig.phone}`} class="block py-1">{siteConfig.phone}</a>
         <a href={`mailto:${siteConfig.email}`} class="block py-1">{siteConfig.email}</a>
