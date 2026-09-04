@@ -1,5 +1,5 @@
 // src/lib/wordpress.ts
-const WP_BASE_URL = import.meta.env.PUBLIC_WP_BASE_URL || "https://udbhavdevelopers.com";
+const WP_BASE_URL = import.meta.env.PUBLIC_WP_BASE_URL || "https://dashboard.udbhavdevelopers.com";
 const WP_GRAPHQL_URL = `${WP_BASE_URL}/graphql`;
 
 export interface Post {
