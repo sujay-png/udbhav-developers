@@ -5,7 +5,7 @@ export const siteConfig = {
   phone: "+91 77604 71269",
   phoneAlt1: "+91 (824) 4282324",
   email: "info@udbhavdevelopers.com",
-  address: "C6, 1st Floor, City Gate Building, Above Jimmyâ€™s Super Market, Kadri Shivabhag, Mangalore â€“ 575 002",
+  address: "C6, 1st Floor, City Gate Building, Above JimmyÃ¢â‚¬â„¢s Super Market, Kadri Shivabhag, Mangalore Ã¢â‚¬â€œ 575 002",
   location: "Mangalore, Karnataka",
 };
 
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     status: "Ongoing",
     tagline: "Sophisticated low-density residences",
     description:
-      "Udbhav Chinmaya is an upcoming premium residential apartment project located in the peaceful and upscale surroundings of Chandrika Layout, Swami Vivekanand Road, Kadri, one of Mangaluruâ€™s most sought-after residential neighborhoods. Designed for modern families, working professionals, first-time home buyers, and retirees, this project combines spacious Vaastu-compliant homes, premium amenities, and unmatched city connectivity.",
+      "Udbhav Chinmaya is an upcoming premium residential apartment project located in the peaceful and upscale surroundings of Chandrika Layout, Swami Vivekanand Road, Kadri, one of MangaluruÃ¢â‚¬â„¢s most sought-after residential neighborhoods. Designed for modern families, working professionals, first-time home buyers, and retirees, this project combines spacious Vaastu-compliant homes, premium amenities, and unmatched city connectivity.",
     location: "Kadri, Mangaluru",
     units: "3 BHK & 4 BHK only",
     Possession: "December 2027",
@@ -110,7 +110,7 @@ export const projects: Project[] = [
     developmentSize: "64 Cents",
     totalUnits: "40 exclusive homes",
     configurations: "3 BHK & 4 BHK only",
-    price: "â‚¹ 1.60 Crore*",
+    price: "Ã¢â€šÂ¹ 1.60 Crore*",
     emi: "Flexible EMI Options",
     completionDate: "December 2027",
     brochureUrl: "/images/udbahv-chinmaya/CHINMAYA-BROCHURE.pdf",
@@ -130,27 +130,27 @@ export const projects: Project[] = [
     faqs: [
       {
         question: "1. What is the difference between Carpet Area, Built-up, and Super Built-up Area?",
-        answer: "Carpet Area is the actual usable floor space inside your apartment â€” the area where you can lay a carpet. Built-up Area includes the carpet area plus the thickness of the walls. Super Built-up Area includes the built-up area along with your proportionate share of common spaces such as lobbies, staircases, and lift areas.\n\nAt Udbhav Chinmaya, the apartment sizes ranging from 1715 to 2255 sq.ft are quoted in Super Built-up Area. For exact carpet area details of your preferred unit, our team will walk you through the floor plan in detail during your site visit."
+        answer: "Carpet Area is the actual usable floor space inside your apartment Ã¢â‚¬â€ the area where you can lay a carpet. Built-up Area includes the carpet area plus the thickness of the walls. Super Built-up Area includes the built-up area along with your proportionate share of common spaces such as lobbies, staircases, and lift areas.\n\nAt Udbhav Chinmaya, the apartment sizes ranging from 1715 to 2255 sq.ft are quoted in Super Built-up Area. For exact carpet area details of your preferred unit, our team will walk you through the floor plan in detail during your site visit."
       },
       {
         question: "2. How much loan can I avail for Udbhav Chinmaya?",
-        answer: "You can avail a home loan of up to 80% of the agreement value of your apartment. For example, on a â‚¹1.55 Crore* apartment, you may be eligible for a loan of up to â‚¹1.16 Crore, with the remaining amount payable as down payment.\n\nUdbhav Chinmaya is loan-approved by Karnataka Bank, Canara Bank & SBI â€” ensuring smooth processing and competitive interest rates. Our team provides end-to-end home loan assistance at no extra cost."
+        answer: "You can avail a home loan of up to 80% of the agreement value of your apartment. For example, on a Ã¢â€šÂ¹1.55 Crore* apartment, you may be eligible for a loan of up to Ã¢â€šÂ¹1.16 Crore, with the remaining amount payable as down payment.\n\nUdbhav Chinmaya is loan-approved by Karnataka Bank, Canara Bank & SBI Ã¢â‚¬â€ ensuring smooth processing and competitive interest rates. Our team provides end-to-end home loan assistance at no extra cost."
       },
       {
         question: "3. What is Pre-EMI and how does it apply to Udbhav Chinmaya?",
-        answer: "Since Udbhav Chinmaya follows a construction-linked payment plan, your bank disburses the loan in stages as construction progresses. During this period, you only pay interest on the amount disbursed so far â€” this is called Pre-EMI. Your full EMI begins only after the complete loan amount is disbursed, typically closer to possession.\n\nThis means your financial outgo remains lower during the construction phase, giving you better control over your monthly budget until you take possession in December 2027."
+        answer: "Since Udbhav Chinmaya follows a construction-linked payment plan, your bank disburses the loan in stages as construction progresses. During this period, you only pay interest on the amount disbursed so far Ã¢â‚¬â€ this is called Pre-EMI. Your full EMI begins only after the complete loan amount is disbursed, typically closer to possession.\n\nThis means your financial outgo remains lower during the construction phase, giving you better control over your monthly budget until you take possession in December 2027."
       },
       {
         question: "4. What tax benefits can I claim by taking a home loan for Udbhav Chinmaya?",
-        answer: "Taking a home loan for Udbhav Chinmaya makes you eligible for two significant tax deductions every financial year. Under Section 24, you can claim a deduction of up to â‚¹1.5* Lakhs on the interest component of your EMI. Under Section 80C, you can claim up to â‚¹1 Lakh on the principal repayment, within the overall 80C limit.\n\nThese deductions apply once you are in possession of your apartment. Over the loan tenure, this can result in substantial savings â€” effectively reducing the real cost of owning your home at Chinmaya."
+        answer: "Taking a home loan for Udbhav Chinmaya makes you eligible for two significant tax deductions every financial year. Under Section 24, you can claim a deduction of up to Ã¢â€šÂ¹1.5* Lakhs on the interest component of your EMI. Under Section 80C, you can claim up to Ã¢â€šÂ¹1 Lakh on the principal repayment, within the overall 80C limit.\n\nThese deductions apply once you are in possession of your apartment. Over the loan tenure, this can result in substantial savings Ã¢â‚¬â€ effectively reducing the real cost of owning your home at Chinmaya."
       },
       {
         question: "5. What documents should I verify before purchasing at Udbhav Chinmaya?",
-        answer: "Udbhav Chinmaya is a fully transparent and legally clear project. Key documents you should verify â€” and which are available on request â€” include the RERA Registration Certificate (PRM/KA/RERA/1257/334/PR/311225/008371), the approved building plan and layout, title documents, environmental clearance, and the commencement certificate.\n\nWe strongly encourage every buyer to review these documents before booking. Our team is available to walk you through each document and we recommend consulting your advocate for independent legal verification. Transparency is non-negotiable at Udbhav."
+        answer: "Udbhav Chinmaya is a fully transparent and legally clear project. Key documents you should verify Ã¢â‚¬â€ and which are available on request Ã¢â‚¬â€ include the RERA Registration Certificate (PRM/KA/RERA/1257/334/PR/311225/008371), the approved building plan and layout, title documents, environmental clearance, and the commencement certificate.\n\nWe strongly encourage every buyer to review these documents before booking. Our team is available to walk you through each document and we recommend consulting your advocate for independent legal verification. Transparency is non-negotiable at Udbhav."
       },
       {
         question: "6. Over how many years can I repay my home loan for this apartment?",
-        answer: "You can repay your home loan over a maximum period of 20 years, subject to your age and income eligibility as assessed by the bank. The repayment tenure will not ordinarily extend beyond your retirement age or 65 years, whichever is earlier.\n\nSince EMI varies based on your loan amount, tenure, and the bank's current interest rate, we recommend using our <a href='/buyers-guide?tab=emi' class='text-[#c32828] hover:underline underline-offset-4 decoration-1 decoration-[#c32828]'>EMI Calculator</a> on the <a href='/buyers-guide' class='text-[#c32828] hover:underline underline-offset-4 decoration-1 decoration-[#c32828]'>Buyers Guide</a> page to get an instant personalised estimate â€” or simply speak to our team and we will work out the numbers for you."
+        answer: "You can repay your home loan over a maximum period of 20 years, subject to your age and income eligibility as assessed by the bank. The repayment tenure will not ordinarily extend beyond your retirement age or 65 years, whichever is earlier.\n\nSince EMI varies based on your loan amount, tenure, and the bank's current interest rate, we recommend using our <a href='/buyers-guide?tab=emi' class='text-[#c32828] hover:underline underline-offset-4 decoration-1 decoration-[#c32828]'>EMI Calculator</a> on the <a href='/buyers-guide' class='text-[#c32828] hover:underline underline-offset-4 decoration-1 decoration-[#c32828]'>Buyers Guide</a> page to get an instant personalised estimate Ã¢â‚¬â€ or simply speak to our team and we will work out the numbers for you."
       }
     ],
     apartmentConfigurations: [
@@ -185,9 +185,9 @@ export const projects: Project[] = [
       { title: "Rooftop Swimming Pool", image: "/images/udbahv-chinmaya/amenities/rooftopswimmingpool6.jpg" }
     ],
     specifications: [
-      "2 Automatic Elevators (15 & 10 passenger capacity â€“ Kone / Schindler or equivalent)",
+      "2 Automatic Elevators (15 & 10 passenger capacity Ã¢â‚¬â€œ Kone / Schindler or equivalent)",
       "100% Power Backup for all apartments & common areas (Mahindra / Kirloskar or equivalent)",
-      "CP Plumbing Fittings â€“ Kohler / Jaguar or equivalent",
+      "CP Plumbing Fittings Ã¢â‚¬â€œ Kohler / Jaguar or equivalent",
       "CCTV Surveillance at all entry points",
       "Biometric Access Control for common areas",
       "Remote-Controlled Main Gate",
@@ -248,65 +248,65 @@ export const projects: Project[] = [
       {
         title: "Project Updates ( February 06th 2026 )",
         images: [
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260206093144.jpg-scaled.jpeg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260206091825.jpg-scaled.jpeg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260205095534.jpg-scaled.jpeg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260204091030.jpg-scaled.jpeg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/02/IMG20260204092754.jpg-scaled.jpeg"
+          "/images/udbahv-chinmaya/projects/projectupdates3.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates2.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates9.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates9.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates1.jpg"
         ]
       },
       {
         title: "Project Updates ( March 11th 2026 )",
         images: [
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/1.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/12.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/11.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/9-1.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/8-1.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/7-1.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/6.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/5-1.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/4-1.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/3-1.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/2-1.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/1-1.jpg"
+          "/images/udbahv-chinmaya/projects/projectupdates6.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates4.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates10.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates1.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates4.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates5.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates7.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates9.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates7.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates10.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates1.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates5.jpg"
         ]
       },
 
       {
         title: "Project Updates ( April 01st 2026 )",
         images: [
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/3.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/2.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/1.jpg"
+          "/images/udbahv-chinmaya/projects/projectupdates10.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates3.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates6.jpg"
         ]
       },
       {
         title: "Project Updates ( May 01st 2026 )",
         images: [
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/SAI_3186-scaled.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/SAI_3134-scaled.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/05/SAI_3156-scaled.jpg"
+          "/images/udbahv-chinmaya/projects/projectupdates9.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates2.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates9.jpg"
         ]
       },
       {
         title: "Project Updates ( June 02nd 2026 )",
         images: [
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0887-scaled.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0930-scaled.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0941-scaled.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0899-scaled.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/06/SAI_0906-scaled.jpg"
+          "/images/udbahv-chinmaya/projects/projectupdates2.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates6.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates1.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates9.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates4.jpg"
         ]
       },
       {
         title: "Project Updates ( July 04th 2026 )",
         images: [
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1320.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1254.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1263.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1266.jpg",
-          "https://udbhavdevelopers.com/wp-content/uploads/2026/07/SAI_1277.jpg"
+          "/images/udbahv-chinmaya/projects/projectupdates7.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates4.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates5.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates7.jpg",
+          "/images/udbahv-chinmaya/projects/projectupdates4.jpg"
         ]
       }
 
@@ -344,12 +344,12 @@ export const projects: Project[] = [
   },
   {
     slug: "udbhav-marcels-maison",
-    name: "Udbhav Marcelâ€™s Maison",
+    name: "Udbhav MarcelÃ¢â‚¬â„¢s Maison",
     category: "Residential",
     status: "Completed",
     tagline: "Premium living with integrated retail",
     description:
-      "Udbhav Developers presents Marcelâ€™s Maison, a mix use project which is located in the premium location of Valencia, which is one of the most sought after addresses in Mangaluru. The smart city is at the cusp of development & has many development activities that are making a mark in its skyline. Valencia has grown into a premium part of Mangaluru since the last decade. Being in the heart of the city with great connectivity to all important places of worship, shopping, education, hospitals & entertainment, one is geographically at an advantage. Marcelâ€™s Maison boasts of contemporary architecture, coupled with modern amenities to make your life comfortable. Be it commercial space or residential apartment, one can be rest assured of a premium touch in both sphereâ€™s.",
+      "Udbhav Developers presents MarcelÃ¢â‚¬â„¢s Maison, a mix use project which is located in the premium location of Valencia, which is one of the most sought after addresses in Mangaluru. The smart city is at the cusp of development & has many development activities that are making a mark in its skyline. Valencia has grown into a premium part of Mangaluru since the last decade. Being in the heart of the city with great connectivity to all important places of worship, shopping, education, hospitals & entertainment, one is geographically at an advantage. MarcelÃ¢â‚¬â„¢s Maison boasts of contemporary architecture, coupled with modern amenities to make your life comfortable. Be it commercial space or residential apartment, one can be rest assured of a premium touch in both sphereÃ¢â‚¬â„¢s.",
     location: "Valencia, Mangaluru",
     units: "2 & 3 BHK",
     Possession: "2025 (Completed)",
@@ -382,7 +382,7 @@ export const projects: Project[] = [
     status: "Completed",
     tagline: "Compact, efficient family apartments",
     description:
-      "There comes a time in everyoneâ€™s life where one gets to walk a different path. A path that leads to a new way of life, an opportunity to upgrade to a newer lifestyle, to be the epitome of fine living. K.R.K. AAYUSH, by Udbhav Developers is one such residential project in Mangalore which can escalate you to a new way of living. It is located in the one of the residential hubs of Mangalore at Urwa Hoigebail, with 21 contemporary styled apartments and modern amenities. With good road connectivity to major hubs of the city and being in the vicinity of all major hospitals, educational institutes, religious centres, entertainment zones and areas of business interests, one is in a good place geographically. More than that, with the build quality & all the amenities on board, one can be rest assured of truly moving towards fine living.",
+      "There comes a time in everyoneÃ¢â‚¬â„¢s life where one gets to walk a different path. A path that leads to a new way of life, an opportunity to upgrade to a newer lifestyle, to be the epitome of fine living. K.R.K. AAYUSH, by Udbhav Developers is one such residential project in Mangalore which can escalate you to a new way of living. It is located in the one of the residential hubs of Mangalore at Urwa Hoigebail, with 21 contemporary styled apartments and modern amenities. With good road connectivity to major hubs of the city and being in the vicinity of all major hospitals, educational institutes, religious centres, entertainment zones and areas of business interests, one is in a good place geographically. More than that, with the build quality & all the amenities on board, one can be rest assured of truly moving towards fine living.",
     location: "Urwa Hoigebail, Mangalore",
     units: "1 & 2 BHK",
     Typology: "1 and 2 BHK Residential Apartments",
@@ -448,7 +448,7 @@ export const projects: Project[] = [
     status: "Completed",
     tagline: "Green-Canopy Residences",
     description:
-      "Bhaskar Coconut Groves built in the calm and serene neighborhood near Nantoor Junction, Mangalore surrounded by abundant greenery, is an five storied premium apartment which houses a total of 28 homes including duplex. Replete with all modern amenities like childrenâ€™s play area, recreation room, Gym, spacious lobby, reticulated gas connection, security, power-backup, ample parking space and Automatic lift, this apartment will be the perfect place to unwind and lead a comfortable life. With Vaastu in mind while laying down the floor plan, these apartments incorporate spacious rooms that are designed in a manner that permits maximum ventilation and light.",
+      "Bhaskar Coconut Groves built in the calm and serene neighborhood near Nantoor Junction, Mangalore surrounded by abundant greenery, is an five storied premium apartment which houses a total of 28 homes including duplex. Replete with all modern amenities like childrenÃ¢â‚¬â„¢s play area, recreation room, Gym, spacious lobby, reticulated gas connection, security, power-backup, ample parking space and Automatic lift, this apartment will be the perfect place to unwind and lead a comfortable life. With Vaastu in mind while laying down the floor plan, these apartments incorporate spacious rooms that are designed in a manner that permits maximum ventilation and light.",
     location: "Maroli, Mangalore",
     projectarea: '35 Cents',
     reraNoproj: '-',
@@ -481,17 +481,17 @@ export const projects: Project[] = [
 export const newsmedia: Media[] = [
   {
     slug: "marcels-maison-inauguration",
-    name: "Marcelâ€™s Maison",
-    tagline: "Marcelâ€™s Maison inaugurated in Valencia - A new landmark for premium living, business",
-    description: "Marcelâ€™s Maison inaugurated in Valencia - A new landmark for premium living, business",
+    name: "MarcelÃ¢â‚¬â„¢s Maison",
+    tagline: "MarcelÃ¢â‚¬â„¢s Maison inaugurated in Valencia - A new landmark for premium living, business",
+    description: "MarcelÃ¢â‚¬â„¢s Maison inaugurated in Valencia - A new landmark for premium living, business",
     units: "3 & 4 BHK",
     image: "Maison1",
     link: "https://www.daijiworld.com/news/newsDisplay?newsID=1265898",
   },
   {
     slug: "marcels-maison-groundbreaking",
-    name: "Marcelâ€™s Maison",
-    tagline: "Ground-breaking ceremony for Udbhav Developersâ€™ 'Marcel's Maison' held",
+    name: "MarcelÃ¢â‚¬â„¢s Maison",
+    tagline: "Ground-breaking ceremony for Udbhav DevelopersÃ¢â‚¬â„¢ 'Marcel's Maison' held",
     description: "Shanthi pairs elevated apartment living with ground-floor retail...",
     units: "2 & 3 BHK",
     image: "Maison2",
@@ -499,8 +499,8 @@ export const newsmedia: Media[] = [
   },
   {
     slug: "marcels-maison-groundbreaking",
-    name: "Marcelâ€™s Maison",
-    tagline: "Udbhav Developers presents Marcelâ€™s Maison at Valencia - Bookings open",
+    name: "MarcelÃ¢â‚¬â„¢s Maison",
+    tagline: "Udbhav Developers presents MarcelÃ¢â‚¬â„¢s Maison at Valencia - Bookings open",
     description: "Shanthi pairs elevated apartment living with ground-floor retail...",
     units: "2 & 3 BHK",
     image: "Maison3",
@@ -509,8 +509,8 @@ export const newsmedia: Media[] = [
 
   {
     slug: "marcels-maison-groundbreaking",
-    name: "Udbhav Developersâ€™ â€˜KRK Aayush",
-    tagline: "Udbhav Developersâ€™ â€˜KRK Aayushâ€™ residential building inaugurated",
+    name: "Udbhav DevelopersÃ¢â‚¬â„¢ Ã¢â‚¬ËœKRK Aayush",
+    tagline: "Udbhav DevelopersÃ¢â‚¬â„¢ Ã¢â‚¬ËœKRK AayushÃ¢â‚¬â„¢ residential building inaugurated",
     description: "Shanthi pairs elevated apartment living with ground-floor retail...",
     units: "2 & 3 BHK",
     image: "KRKAayush",
@@ -519,7 +519,7 @@ export const newsmedia: Media[] = [
   {
     slug: "marcels-maison-groundbreaking",
     name: "Udbhav shanthi",
-    tagline: "Udbhav Developersâ€™ â€˜KRK Aayushâ€™ residential building inaugurated",
+    tagline: "Udbhav DevelopersÃ¢â‚¬â„¢ Ã¢â‚¬ËœKRK AayushÃ¢â‚¬â„¢ residential building inaugurated",
     description: "Shanthi pairs elevated apartment living with ground-floor retail...",
     units: "2 & 3 BHK",
     image: "shanthi1",
@@ -528,7 +528,7 @@ export const newsmedia: Media[] = [
   {
     slug: "marcels-maison-groundbreaking",
     name: "Udbhav Square",
-    tagline: "Ready to occupy commercial space available at â€˜Udbhav Squareâ€™ at Kottara",
+    tagline: "Ready to occupy commercial space available at Ã¢â‚¬ËœUdbhav SquareÃ¢â‚¬â„¢ at Kottara",
     description: "Shanthi pairs elevated apartment living with ground-floor retail...",
     units: "2 & 3 BHK",
     image: "Square1",
@@ -537,8 +537,8 @@ export const newsmedia: Media[] = [
   {
     slug: "marcels-maison-inauguration",
     name: "Udbhav Square",
-    tagline: "Mangaluruâ€™s finest commercial complex â€˜Udbhav Squareâ€™ inaugurated.",
-    description: "Marcelâ€™s Maison inaugurated in Valencia - A new landmark for premium living, business",
+    tagline: "MangaluruÃ¢â‚¬â„¢s finest commercial complex Ã¢â‚¬ËœUdbhav SquareÃ¢â‚¬â„¢ inaugurated.",
+    description: "MarcelÃ¢â‚¬â„¢s Maison inaugurated in Valencia - A new landmark for premium living, business",
     units: "3 & 4 BHK",
     image: "square2",
     link: "https://www.daijiworld.com/news/newsDisplay.aspx?newsID=678408",
@@ -546,7 +546,7 @@ export const newsmedia: Media[] = [
   {
     slug: "marcels-maison-groundbreaking",
     name: "Udbhav Square",
-    tagline: "â€˜Udbhav Squareâ€™ in Kottara Chowki - Golden opportunity for investors  ",
+    tagline: "Ã¢â‚¬ËœUdbhav SquareÃ¢â‚¬â„¢ in Kottara Chowki - Golden opportunity for investors  ",
     description: "Shanthi pairs elevated apartment living with ground-floor retail...",
     units: "2 & 3 BHK",
     image: "square3",
@@ -564,7 +564,7 @@ export const newsmedia: Media[] = [
   {
     slug: "marcels-maison-groundbreaking",
     name: "Udbhav Chinmaya",
-    tagline: " New residential project â€˜Udbhav Chinmayaâ€™ launched in heart of Mangaluru                  ",
+    tagline: " New residential project Ã¢â‚¬ËœUdbhav ChinmayaÃ¢â‚¬â„¢ launched in heart of Mangaluru                  ",
     description: "Shanthi pairs elevated apartment living with ground-floor retail...",
     units: "2 & 3 BHK",
     image: "Chinmaya1",
@@ -621,13 +621,13 @@ export const testimonials: Testimonial[] = [
     rating: 5,
   },
   {
-    quote: "I had invested in one of the apartments at Bhaskar Coconut Grooves as this was recommended by one of my friends. As I was out of India, I did not get a chance to look at the site location nor check on the progress of the apartment by myself. However, I was up to date on the progress â€“ this was only because of complete transparency by the staff at BCG, and detailed updates on the project on their website and emails. They helped with all the paper works, including back coordinationâ€™s etc. I returned to India and this matched with project completion. The schedules were met; the architect, design and specifications were as explained during my purchase â€“ with the best amenities and unmatched Quality. The geographic location was perfect for a peaceful residential complex and also close to NH and city. Mr. Kiran B.K. from BCG and his team were very professional in their approach towards project and always had â€œcustomer firstâ€ attitude. They are very passionate, reliable and committed - this makes me recommend Udbhav Developers Mangalore properties. Best wishes and thank you for the wonderful job.",
+    quote: "I had invested in one of the apartments at Bhaskar Coconut Grooves as this was recommended by one of my friends. As I was out of India, I did not get a chance to look at the site location nor check on the progress of the apartment by myself. However, I was up to date on the progress Ã¢â‚¬â€œ this was only because of complete transparency by the staff at BCG, and detailed updates on the project on their website and emails. They helped with all the paper works, including back coordinationÃ¢â‚¬â„¢s etc. I returned to India and this matched with project completion. The schedules were met; the architect, design and specifications were as explained during my purchase Ã¢â‚¬â€œ with the best amenities and unmatched Quality. The geographic location was perfect for a peaceful residential complex and also close to NH and city. Mr. Kiran B.K. from BCG and his team were very professional in their approach towards project and always had Ã¢â‚¬Å“customer firstÃ¢â‚¬Â attitude. They are very passionate, reliable and committed - this makes me recommend Udbhav Developers Mangalore properties. Best wishes and thank you for the wonderful job.",
     name: "Mr. Varadaraj Shanbhag",
     location: "Mangalore",
     rating: 5,
   },
   {
-    quote: "ONE HAPPY CUSTOMER ðŸ™‚ Quality in construction is not just what you see from outside once completed, but mainly what lays underneath the ground (i,e foundation) too. Ask Udbhav developer about it and they will explain you every stage of construction, from FOUNDATION to finishing. What I noticed with this energetic team of Mr Kiran is they are mainly focused on quality and customer satisfaction. In challenging period of Covid-19, they completed the `KRK AayushÂ´ project within time frame. This shows their commitment towards business and customer satisfaction.",
+    quote: "ONE HAPPY CUSTOMER Ã°Å¸â„¢â€š Quality in construction is not just what you see from outside once completed, but mainly what lays underneath the ground (i,e foundation) too. Ask Udbhav developer about it and they will explain you every stage of construction, from FOUNDATION to finishing. What I noticed with this energetic team of Mr Kiran is they are mainly focused on quality and customer satisfaction. In challenging period of Covid-19, they completed the `KRK AayushÃ‚Â´ project within time frame. This shows their commitment towards business and customer satisfaction.",
     name: "Praveen D",
     location: "MANGALORE",
     rating: 5,
@@ -663,7 +663,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
   },
   {
-    quote: "My wife and I own and reside in one of Udbhav Developerâ€™s recent projects. We are very happy with our decision, and all guests and visitors to our home have commended the quality and look of the property. Kiran the owner of the firm, and his dedicated and highly capable staff, notably Vignesh, are friendly, approachable, and responsive even post-handover of property. Here are our specific technical points: A) Timely execution of construction work B) Prompt and hassle free hand over of property and smooth formalities. C) Premium materials used and so is build quality. No sign of unskilled labour/technicians. D) Good floor plan, good use of available space without making common areas feel cramped. D) Good amenities as promised upfront, with a touch of something extra, for example the thoughtfully planned greenery on terrace and flower gardens.",
+    quote: "My wife and I own and reside in one of Udbhav DeveloperÃ¢â‚¬â„¢s recent projects. We are very happy with our decision, and all guests and visitors to our home have commended the quality and look of the property. Kiran the owner of the firm, and his dedicated and highly capable staff, notably Vignesh, are friendly, approachable, and responsive even post-handover of property. Here are our specific technical points: A) Timely execution of construction work B) Prompt and hassle free hand over of property and smooth formalities. C) Premium materials used and so is build quality. No sign of unskilled labour/technicians. D) Good floor plan, good use of available space without making common areas feel cramped. D) Good amenities as promised upfront, with a touch of something extra, for example the thoughtfully planned greenery on terrace and flower gardens.",
     name: "Mr. Nagaraj Panyam",
     location: "",
     rating: 5,
@@ -719,7 +719,7 @@ export const processSteps = [
   {
     title: "Site & Feasibility",
     description:
-      "We assess land, zoning, and market demand before a single line is drawn â€” so every project starts on solid ground.",
+      "We assess land, zoning, and market demand before a single line is drawn Ã¢â‚¬â€ so every project starts on solid ground.",
   },
   {
     title: "Design & Approvals",
@@ -734,6 +734,6 @@ export const processSteps = [
   {
     title: "Handover & Beyond",
     description:
-      "ASK & Associates takes over post-handover â€” statutory compliance, repairs, and long-term upkeep, so ownership stays effortless.",
+      "ASK & Associates takes over post-handover Ã¢â‚¬â€ statutory compliance, repairs, and long-term upkeep, so ownership stays effortless.",
   },
 ];

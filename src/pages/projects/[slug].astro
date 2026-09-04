@@ -500,8 +500,7 @@ const isRich = !!project.reraNo;
          </div>
         
         <!-- Right Column (Sticky Sidebar) -->
-        <div class="lg:col-span-5 pt-2">
-           <div class="space-y-6 h-full">
+        <div class="lg:col-span-5 pt-2 space-y-6">
              <!-- Quick Facts Card (Scrolls normally) -->
              <div class="bg-white rounded-[2rem] shadow-sm border border-border p-5 sm:p-8">
                 <ul class="space-y-6 divide-y divide-border">
@@ -553,7 +552,7 @@ const isRich = !!project.reraNo;
              </div>
 
              <!-- Wrapper for Form & CTA that becomes sticky -->
-             <div class="sticky top-28 space-y-6">
+             <div class="sticky top-28 space-y-6 max-h-[calc(100vh-8rem)] overflow-y-auto pb-4 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded-full pr-1">
                <!-- Enquiry Form Card -->
                <div class="bg-white rounded-[2rem] shadow-sm border border-border p-5 sm:p-8" id="enquire">
                   <EnquiryForm dark={false} redirectUrl={project.slug === 'udbhav-chinmaya' ? '/chinmaya-thank-you' : '/thank-you'} client:idle />
@@ -574,7 +573,6 @@ const isRich = !!project.reraNo;
                   </a>
                </div>
              </div>
-           </div>
          </div>
         </div>  
       </section>
