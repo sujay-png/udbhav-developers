@@ -182,6 +182,103 @@ const { post } = Astro.props;
           }
         }
       }
+
+      // Elementor FAQ Accordion logic
+      const accordions = document.querySelectorAll('.elementor-accordion, .elementor-toggle');
+      accordions.forEach(acc => {
+        const items = acc.querySelectorAll('.elementor-accordion-item, .elementor-toggle-item');
+        items.forEach(item => {
+          const titleWrap = item.querySelector('.elementor-tab-title');
+          const content = item.querySelector('.elementor-tab-content');
+          if (titleWrap && content) {
+            titleWrap.style.cursor = 'pointer';
+            titleWrap.style.display = 'flex';
+            titleWrap.style.justifyContent = 'space-between';
+            titleWrap.style.alignItems = 'center';
+            titleWrap.style.padding = '1.25rem 0';
+            titleWrap.style.borderBottom = '1px solid #E5E7EB';
+            titleWrap.style.fontWeight = '600';
+            
+            const a = titleWrap.querySelector('a');
+            if (a) {
+              a.style.color = '#121417';
+              a.style.textDecoration = 'none';
+              a.style.fontSize = '1.125rem';
+            }
+
+            const arrow = document.createElement('span');
+            arrow.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B02317" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
+            arrow.style.transition = 'transform 0.3s ease';
+            titleWrap.appendChild(arrow);
+
+            // Hide content initially
+            content.style.padding = '1.5rem 0';
+            content.style.display = 'none';
+            content.style.color = '#554946';
+
+            titleWrap.addEventListener('click', (e) => {
+              e.preventDefault();
+              const isOpen = content.style.display === 'block';
+              content.style.display = isOpen ? 'none' : 'block';
+              arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+              if (a) a.style.color = isOpen ? '#121417' : '#B02317';
+            });
+          }
+        });
+      });
+
+      // ElementsKit FAQ Accordion logic
+      const ekitAccordions = document.querySelectorAll('.elementskit-accordion');
+      ekitAccordions.forEach(acc => {
+        const items = acc.querySelectorAll('.elementskit-card');
+        items.forEach(item => {
+          const header = item.querySelector('.elementskit-card-header');
+          const content = item.querySelector('.elementskit-card-body');
+          const a = item.querySelector('.ekit-accordion--toggler');
+          
+          if (header && content && a) {
+            header.style.cursor = 'pointer';
+            header.style.borderBottom = '1px solid #E5E7EB';
+            header.style.padding = '1.25rem 0';
+            
+            a.style.display = 'flex';
+            a.style.justifyContent = 'space-between';
+            a.style.alignItems = 'center';
+            a.style.textDecoration = 'none';
+            a.style.color = '#121417';
+            a.style.fontWeight = '600';
+            a.style.fontSize = '1.125rem';
+            
+            // Remove the default elementskit icons
+            const iconGroup = a.querySelector('.ekit_accordion_icon_group');
+            if (iconGroup) iconGroup.remove();
+            
+            // Add custom SVG arrow
+            const arrow = document.createElement('span');
+            arrow.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B02317" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
+            arrow.style.transition = 'transform 0.3s ease';
+            a.appendChild(arrow);
+            
+            // Fix collapse container
+            const collapseDiv = content.closest('.collapse') || content;
+            collapseDiv.style.display = 'none'; // ensure it's hidden properly initially
+            collapseDiv.style.visibility = 'visible'; 
+            collapseDiv.style.opacity = '1';
+            collapseDiv.style.height = 'auto';
+            
+            content.style.padding = '1.5rem 0';
+            content.style.color = '#554946';
+            
+            header.addEventListener('click', (e) => {
+              e.preventDefault();
+              const isOpen = collapseDiv.style.display === 'block';
+              collapseDiv.style.display = isOpen ? 'none' : 'block';
+              arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+              a.style.color = isOpen ? '#121417' : '#B02317';
+            });
+          }
+        });
+      });
     });
   </script>
 </BaseLayout>
@@ -208,6 +305,43 @@ const { post } = Astro.props;
   .prose-content table { width: 100%; margin: 2.5rem 0; border-collapse: collapse; text-align: left; }
   .prose-content th, .prose-content td { padding: 1rem; border-bottom: 1px solid #E5E7EB; }
   .prose-content th { font-weight: 600; color: #121417; background-color: #FDF9F7; }
+
+  /* Gallery / Elementor Gallery - 4 Column Grid */
+  .prose-content .wp-block-gallery,
+  .prose-content .elementor-image-gallery .gallery,
+  .prose-content .gallery {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+    margin: 2.5rem 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+  @media (min-width: 768px) {
+    .prose-content .wp-block-gallery,
+    .prose-content .elementor-image-gallery .gallery,
+    .prose-content .gallery {
+      grid-template-columns: repeat(4, 1fr) !important;
+    }
+  }
+  .prose-content .wp-block-gallery .wp-block-image,
+  .prose-content .wp-block-gallery figure,
+  .prose-content .elementor-image-gallery .gallery-item,
+  .prose-content .gallery .gallery-item {
+    margin: 0 !important;
+    width: 100% !important;
+    display: block !important;
+  }
+  .prose-content .wp-block-gallery img,
+  .prose-content .elementor-image-gallery img,
+  .prose-content .gallery img {
+    margin: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    object-fit: cover !important;
+    border-radius: 1rem !important;
+  }
 
   /* Table of Contents Styling */
   .prose-content .elementor-widget-table-of-contents {
