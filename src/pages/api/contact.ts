@@ -47,9 +47,10 @@ export const POST: APIRoute = async ({ request }) => {
         'input_6': fields.subject || '',
         'input_7': fields.message || '',
       };
-      // Only include captcha token if provided
+      // Gravity Forms requires the reCAPTCHA token to be passed as g-recaptcha-response
       if (fields.recaptchaToken) {
         gfPayload['input_10'] = fields.recaptchaToken;
+        gfPayload['g-recaptcha-response'] = fields.recaptchaToken;
       }
 
     } else if (formId === 2) {
