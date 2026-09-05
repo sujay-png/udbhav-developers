@@ -1,9 +1,10 @@
 ---
+import { pageSeoData } from "@/lib/site-data";
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { siteConfig } from '@/lib/site-data';
 ---
 
-<BaseLayout title={`Privacy Policy & Terms | ${siteConfig.name}`} description="Privacy Policy, Terms & Conditions, Refund Policy, and Cookie Policy for Udbhav Developers.">
+<BaseLayout seoTitle={pageSeoData.privacyPolicy.seoTitle} seoDescription={pageSeoData.privacyPolicy.seoDescription}>
   <!-- Banner Section with Glassmorphism -->
   <div class="relative min-h-[30vh] sm:min-h-[35vh] flex items-center justify-center overflow-hidden pt-16">
     <!-- Background Image -->

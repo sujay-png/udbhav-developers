@@ -18,7 +18,7 @@ const { project } = Astro.props;
 const hasUpdates = project.updates && project.updates.length > 0;
 ---
 
-<BaseLayout title={`${project.name} Gallery`} description={`Project updates and gallery for ${project.name}`}>
+<BaseLayout seoTitle={`${project.name} Gallery`} seoDescription={`Project updates and gallery for ${project.name}`}>
   <!-- Hero Section -->
   <section class="relative pt-32 pb-16 px-6 bg-ink text-white overflow-hidden">
     <div class="absolute inset-0 z-0 opacity-20">

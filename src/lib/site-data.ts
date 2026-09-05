@@ -319,6 +319,8 @@ export const projects: Project[] = [
   {
     slug: "udbhav-shanthi",
     name: "Udbhav Shanthi",
+    // seoTitle: "Custom SEO Title Here",
+    // seoDescription: "Custom SEO Description Here",
     category: "Residential",
     status: "Completed",
     tagline: "Divine serenity alongside modern amenities",
@@ -349,6 +351,8 @@ export const projects: Project[] = [
   {
     slug: "udbhav-marcels-maison",
     name: "Udbhav Marcel's Maison",
+    // seoTitle: "Custom SEO Title Here",
+    // seoDescription: "Custom SEO Description Here",
     category: "Residential",
     status: "Completed",
     tagline: "Premium living with integrated retail",
@@ -382,6 +386,8 @@ export const projects: Project[] = [
   {
     slug: "k-r-k-aayush",
     name: "K.R.K. Aayush",
+    // seoTitle: "Custom SEO Title Here",
+    // seoDescription: "Custom SEO Description Here",
     category: "Residential",
     status: "Completed",
     tagline: "Compact, efficient family apartments",
@@ -414,6 +420,8 @@ export const projects: Project[] = [
   {
     slug: "udbhav-square",
     name: "Udbhav Square",
+    // seoTitle: "Custom SEO Title Here",
+    // seoDescription: "Custom SEO Description Here",
     category: "Commercial",
     status: "Completed",
     tagline: "Elegantly designed commercial hub",
@@ -448,6 +456,8 @@ export const projects: Project[] = [
   {
     slug: "bhaskar-coconut-groves",
     name: "Bhaskar Coconut Groves",
+    // seoTitle: "Custom SEO Title Here",
+    // seoDescription: "Custom SEO Description Here",
     category: "Residential",
     status: "Completed",
     tagline: "Green-Canopy Residences",
@@ -496,45 +506,45 @@ export const newsmedia: Media[] = [
     slug: "marcels-maison-groundbreaking",
     name: "Marcel's Maison",
     tagline: "Ground-breaking ceremony for Udbhav Developers' 'Marcel's Maison' held",
-    description: "Shanthi pairs elevated apartment living with ground-floor retail...",
+    description: "Udbhav Developers celebrates the ground-breaking ceremony for Marcel's Maison, a premium residential project in Valencia, Mangalore.",
     units: "2 & 3 BHK",
     image: "Maison2",
     link: "https://www.daijiworld.com/news/newsDisplay?newsID=1043758",
   },
   {
-    slug: "marcels-maison-groundbreaking",
+    slug: "marcels-maison-bookings-open",
     name: "Marcel's Maison",
     tagline: "Udbhav Developers presents Marcel's Maison at Valencia - Bookings open",
-    description: "Shanthi pairs elevated apartment living with ground-floor retail...",
+    description: "Udbhav Developers announces the launch and open bookings for Marcel's Maison, an upcoming premium mixed-use project in Valencia, Mangaluru.",
     units: "2 & 3 BHK",
     image: "Maison3",
     link: "https://www.daijiworld.com/news/newsDisplay?newsID=1042541",
   },
 
   {
-    slug: "marcels-maison-groundbreaking",
-    name: "Udbhav Developers' 'KRK Aayush",
+    slug: "krk-aayush-inaugurated",
+    name: "K.R.K. Aayush",
     tagline: "Udbhav Developers' 'KRK Aayush' residential building inaugurated",
-    description: "Shanthi pairs elevated apartment living with ground-floor retail...",
-    units: "2 & 3 BHK",
+    description: "Udbhav Developers proudly inaugurates K.R.K. Aayush, a beautifully designed residential building situated in Urwa Hoigebail, Mangaluru.",
+    units: "1 & 2 BHK",
     image: "KRKAayush",
     link: "https://www.daijiworld.com/news/newsDisplay?newsID=974722#.Yr8JRfBFhHE.whatsapp",
   },
   {
-    slug: "marcels-maison-groundbreaking",
-    name: "Udbhav shanthi",
-    tagline: "Udbhav Developers' 'KRK Aayush' residential building inaugurated",
-    description: "Shanthi pairs elevated apartment living with ground-floor retail...",
-    units: "2 & 3 BHK",
+    slug: "udbhav-shanthi-inaugurated",
+    name: "Udbhav Shanthi",
+    tagline: "Udbhav Developers inaugurates Udbhav Shanthi residential project in Kadri",
+    description: "Udbhav Shanthi, an exclusive residential apartment complex by Udbhav Developers, has been officially inaugurated in Kadri, Mangalore.",
+    units: "3 BHK",
     image: "shanthi1",
     link: "https://www.daijiworld.com/news/newsDisplay?newsID=940244",
   },
   {
-    slug: "marcels-maison-groundbreaking",
+    slug: "udbhav-square-ready-to-occupy",
     name: "Udbhav Square",
     tagline: "Ready to occupy commercial space available at 'Udbhav Square' at Kottara",
-    description: "Shanthi pairs elevated apartment living with ground-floor retail...",
-    units: "2 & 3 BHK",
+    description: "Udbhav Square offers elegantly designed, ready-to-occupy commercial spaces in Kottara Chowki, perfect for offices, clinics, and retail.",
+    units: "Office & Retail",
     image: "Square1",
     link: "https://www.daijiworld.com/news/newsDisplay.aspx?newsID=735321",
   },
@@ -741,3 +751,78 @@ export const processSteps = [
       "ASK & Associates takes over post-handover — statutory compliance, repairs, and long-term upkeep, so ownership stays effortless.",
   },
 ];
+
+export const pageSeoData: Record<string, { seoTitle: string; seoDescription: string }> = {
+  home: {
+    seoTitle: "Best Builder & Developer in Mangalore / Mangaluru",
+    seoDescription: "Udbhav Developers is the leading Builder & Developer in Mangalore offering premium residential apartments, commercial spaces, quality construction, and modern living.",
+  },
+  aboutUs: {
+    seoTitle: "About Udbhav Developers | Trusted Builders in Mangalore",
+    seoDescription: "Learn about Udbhav Developers, trusted builders in Mangalore since 2012, delivering premium residential apartments, commercial spaces, and quality construction.",
+  },
+  buyersGuide: {
+    seoTitle: "Property Buyers Guide - Udbhav Developers",
+    seoDescription: "Expert buyer's guide for homes in Mangaluru. Learn about RERA, home loans, payment plans, legal checks, and investment tips. Explore exclusive 3 & 4 BHK apartments at Udbhav Chinmaya in Kadri.",
+  },
+  contact: {
+    seoTitle: "Contact Us - Udbhav Developers",
+    seoDescription: "Get in touch with Udbhav Developers — visit our Mangalore office, call, or send an enquiry about our residential and commercial projects.",
+  },
+  company: {
+    seoTitle: "Company",
+    seoDescription: "Established 2012 — Udbhav Developers stands for excellence, integrity, and innovation in premium residential apartments, commercial spaces, and retail shops.",
+  },
+  services: {
+    seoTitle: "Services - Udbhav Developers",
+    seoDescription: "Building construction, interior design, and building maintenance — Udbhav Developers' full-service construction ecosystem in Mangalore.",
+  },
+  process: {
+    seoTitle: "Process",
+    seoDescription: "How Udbhav Developers takes a project from site feasibility to handover — and what buyers can expect at every stage.",
+  },
+  testimonials: {
+    seoTitle: "Testimonials - Udbhav Developers",
+    seoDescription: "Hear from the visionaries and families who have chosen to build their legacy with Udbhav Developers.",
+  },
+  careers: {
+    seoTitle: "Careers - Udbhav Developers",
+    seoDescription: "Be a part of our journey At Udbhav, we believe great spaces are built by great teams.",
+  },
+  newsMedia: {
+    seoTitle: "News & Media - Udbhav Developers",
+    seoDescription: "News, corporate updates, and media resources for Udbhav Developers.",
+  },
+  media: {
+    seoTitle: "Media & Press",
+    seoDescription: "News, corporate updates, and media resources for Udbhav Developers.",
+  },
+  blog: {
+    seoTitle: "Blog",
+    seoDescription: "Architectural Chronicles — insights on luxury real estate, investment strategy, and the craft of development from Udbhav Developers.",
+  },
+  terms: {
+    seoTitle: "Terms & Conditions",
+    seoDescription: "Terms and conditions, privacy policy, and other legal guidelines for Udbhav Developers.",
+  },
+  privacyPolicy: {
+    seoTitle: "Privacy Policy & Terms | Udbhav Developers",
+    seoDescription: "Privacy Policy, Terms & Conditions, Refund Policy, and Cookie Policy for Udbhav Developers.",
+  },
+  ourProjects: {
+    seoTitle: "Projects Archive",
+    seoDescription: "At Udbhav Developers, we stand for excellence, integrity, and innovation in the development of premium residential apartments, commercial spaces, and retail shops.",
+  },
+  thankYou: {
+    seoTitle: "Thank You",
+    seoDescription: "Thank you for contacting Udbhav Developers.",
+  },
+  chinmayaThankYou: {
+    seoTitle: "Thank You — Udbhav Chinmaya",
+    seoDescription: "Thank you for your interest in Udbhav Chinmaya.",
+  },
+  notFound: {
+    seoTitle: "Page Not Found - 404",
+    seoDescription: "The page you are looking for does not exist.",
+  }
+};

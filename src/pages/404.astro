@@ -1,9 +1,10 @@
 ---
+import { pageSeoData } from "@/lib/site-data";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Icon } from "@/components/Icon";
 ---
 
-<BaseLayout title="Page Not Found - 404" description="The page you are looking for does not exist.">
+<BaseLayout seoTitle={pageSeoData.notFound.seoTitle} seoDescription={pageSeoData.notFound.seoDescription}>
   <section class="relative flex min-h-[80vh] flex-col items-center justify-center px-6 py-24 text-center">
     <!-- Background with Overlay -->
     <div class="absolute inset-0 z-0 overflow-hidden bg-[#FDF9F7]">

@@ -1,4 +1,5 @@
 ---
+import { pageSeoData } from "@/lib/site-data";
 // NewsMedia.astro page
 import Hero from "@/components/NewsMedia/Hero.astro";
 import Newsupdates from "@/components/NewsMedia/Newsupdates.astro";
@@ -9,7 +10,7 @@ import { updates } from "@/lib/updates";
 import LatestUpdates from "@/components/NewsMedia/LatestUpdates.astro";
 ---
 
-<BaseLayout title="Udbhav Developers" description="Premium architectural developers in Mangalore since 2012. Residential apartments, commercial spaces, and retail shops built with purpose, driven by trust.">
+<BaseLayout seoTitle={pageSeoData.newsMedia.seoTitle} seoDescription={pageSeoData.newsMedia.seoDescription}>
   <Hero />
   <LatestUpdates updatelist={updates} />
 

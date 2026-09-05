@@ -1,4 +1,5 @@
 ---
+import { pageSeoData } from "@/lib/site-data";
 // src/pages/buyers-guide.astro
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ArtPanel from "@/components/ArtPanel.astro";
@@ -156,7 +157,7 @@ const generalFaqs = [
 ];
 --- 
 
-<BaseLayout title="Buyer's Guide" description="Everything you need before buying a home in Mangaluru from Udbhav Developers.">
+<BaseLayout seoTitle={pageSeoData.buyersGuide.seoTitle} seoDescription={pageSeoData.buyersGuide.seoDescription}>
   
   <!-- Hero Section -->
   <section class="relative overflow-hidden bg-[#121417] text-white">

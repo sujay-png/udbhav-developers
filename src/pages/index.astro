@@ -1,4 +1,5 @@
 ---
+import { pageSeoData } from "@/lib/site-data";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Hero from "@/components/sections/Hero.astro";
 import FeaturedProjects from "@/components/sections/FeaturedProjects.astro";
@@ -9,7 +10,7 @@ import Whychooseus from "@/components/sections/Whychooseus.astro";
 import ContactCta from "@/components/about/contactCta.astro";
 ---
 
-<BaseLayout title="Udbhav Developers" description="Premium architectural developers in Mangalore since 2012. Residential apartments, commercial spaces, and retail shops built with purpose, driven by trust.">
+<BaseLayout seoTitle={pageSeoData.home.seoTitle} seoDescription={pageSeoData.home.seoDescription}>
   <Hero />
   <FeaturedProjects />
   <AboutTeaser />

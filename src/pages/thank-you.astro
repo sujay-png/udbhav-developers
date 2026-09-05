@@ -1,9 +1,10 @@
 ---
+import { pageSeoData } from "@/lib/site-data";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Icon } from "@/components/Icon";
 ---
 
-<BaseLayout title="Thank You" description="Thank you for contacting Udbhav Developers.">
+<BaseLayout seoTitle={pageSeoData.thankYou.seoTitle} seoDescription={pageSeoData.thankYou.seoDescription}>
   <section class="relative flex min-h-[80vh] flex-col items-center justify-center px-6 py-24 text-center">
     <!-- Background with Overlay -->
     <div class="absolute inset-0 z-0 overflow-hidden">

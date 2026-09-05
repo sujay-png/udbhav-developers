@@ -1,8 +1,9 @@
 ---
+import { pageSeoData } from "@/lib/site-data";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Terms & Conditions" description="Terms and conditions, privacy policy, and other legal guidelines for Udbhav Developers.">
+<BaseLayout seoTitle={pageSeoData.terms.seoTitle} seoDescription={pageSeoData.terms.seoDescription}>
   <section class="relative overflow-hidden h-[300px] flex items-center justify-center">
     <div class="absolute inset-0">
       <img src="/images/home_bannerimage.webp" alt="Terms & Conditions" class="w-full h-full object-cover" />

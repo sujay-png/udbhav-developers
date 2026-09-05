@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 ---
 
-<BaseLayout title={post.title} description={post.excerpt}>
+<BaseLayout seoTitle={post.title} seoDescription={post.excerpt}>
   <article class="bg-white font-sans">
     
     <!-- Hero Header -->
@@ -108,9 +108,9 @@ const { post } = Astro.props;
   <script>
     // Client-side script to generate the TOC if the WordPress plugin (Elementor TOC) left it empty
     document.addEventListener('DOMContentLoaded', () => {
-      const tocWidget = document.querySelector('.elementor-widget-table-of-contents');
-      const tocHeader = document.querySelector('.elementor-toc__header');
-      const tocBody = document.querySelector('.elementor-toc__body');
+      const tocWidget = document.querySelector('.elementor-widget-table-of-contents') as HTMLElement | null;
+      const tocHeader = document.querySelector('.elementor-toc__header') as HTMLElement | null;
+      const tocBody = document.querySelector('.elementor-toc__body') as HTMLElement | null;
       
       if (tocWidget && tocHeader && tocBody) {
         // Clear out existing toggle buttons from elementor
