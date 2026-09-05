@@ -42,14 +42,8 @@ import { Icon } from "@/components/Icon";
             <input type="email" name="email" required placeholder="you@example.com" class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
           </div>
           <div class="space-y-2">
-            <label class="text-sm font-medium text-ink">Budget <span class="text-clay">(Required)</span></label>
-            <select name="budget" required class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors bg-white">
-              <option value="">Select budget range</option>
-              <option value="Under 1.5 Cr">Under ₹1.5 Cr</option>
-              <option value="1.5 - 2 Cr">₹1.5 – 2 Cr</option>
-              <option value="2 - 2.5 Cr">₹2 – 2.5 Cr</option>
-              <option value="Above 2.5 Cr">Above ₹2.5 Cr</option>
-            </select>
+            <label class="text-sm font-medium text-ink">Current City <span class="text-clay">(Required)</span></label>
+            <input type="text" name="city" required placeholder="Type Your City" class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
           </div>
         </div>
 
@@ -58,11 +52,11 @@ import { Icon } from "@/components/Icon";
           <label class="text-sm font-medium text-ink">Preferred Unit Type <span class="text-clay">(Required)</span></label>
           <div class="space-y-2">
             <label class="flex items-center space-x-3 cursor-pointer group">
-              <input type="radio" name="bhk" value="3 BHK" required class="w-5 h-5 border-gray-300 accent-[#B02317]" />
+              <input type="radio" name="bhk" value="3BHK" required class="w-5 h-5 border-gray-300 accent-[#B02317]" />
               <span class="text-sm text-ink">3 BHK</span>
             </label>
             <label class="flex items-center space-x-3 cursor-pointer group">
-              <input type="radio" name="bhk" value="4 BHK" class="w-5 h-5 border-gray-300 accent-[#B02317]" />
+              <input type="radio" name="bhk" value="4BHK" class="w-5 h-5 border-gray-300 accent-[#B02317]" />
               <span class="text-sm text-ink">4 BHK</span>
             </label>
           </div>
@@ -192,7 +186,7 @@ import { Icon } from "@/components/Icon";
             lastName: fd.get('lastName'),
             phone: fd.get('phone'),
             email: fd.get('email'),
-            budget: fd.get('budget'),
+            city: fd.get('city'),
             bhk: fd.get('bhk'),
             intendedUse: fd.get('intendedUse'),
             loanPref: fd.get('loanPref'),

@@ -99,9 +99,23 @@ export const POST: APIRoute = async ({ request }) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(gfPayload),
+      redirect: 'manual', // Prevent Astro from following GF's success redirects
     });
 
-    const gfData = await gfResponse.json();
+    const responseText = await gfResponse.text();
+    let gfData;
+    
+    try {
+      gfData = JSON.parse(responseText);
+    } catch (e) {
+      // GF is configured to redirect on success, which returns an HTML page or empty body.
+      // If we hit this block and the status is 302, it means the submission was successful.
+      if (gfResponse.status === 302 || gfResponse.status === 301) {
+        gfData = { is_valid: true };
+      } else {
+        throw new Error(`GF API returned non-JSON. Status: ${gfResponse.status}. Body: ${responseText.substring(0, 100)}`);
+      }
+    }
 
     // GF returns is_valid: true on success
     if (gfData.is_valid === false) {
