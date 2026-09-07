@@ -2,13 +2,15 @@
 import { pageSeoData } from "@/lib/site-data";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Icon } from "@/components/Icon";
+import { Image } from "astro:assets";
+import udbhavChinmayaImg from "@/assets/images/udbahv-chinmaya/gallery/udbhav-chinmaya-1.jpg";
 ---
 
 <BaseLayout title="Thank You â€” Udbhav Chinmaya" description="Thank you for your interest in Udbhav Chinmaya.">
   <section class="relative flex min-h-[80vh] flex-col items-center justify-center px-6 py-24 text-center">
     <!-- Background with Overlay -->
     <div class="absolute inset-0 z-0 overflow-hidden">
-      <img src="/images/udbahv-chinmaya/gallery/udbhav-chinmaya-1.jpg" alt="Udbhav Chinmaya" class="h-full w-full object-cover opacity-60" />
+      <Image src={udbhavChinmayaImg} alt="Udbhav Chinmaya" class="h-full w-full object-cover opacity-60" />
       <div class="absolute inset-0 bg-cream/80 backdrop-blur-[2px]"></div>
     </div>
     

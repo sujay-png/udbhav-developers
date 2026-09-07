@@ -2,6 +2,7 @@
 export const prerender = true;
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { projects, type Project } from "@/lib/site-data";
+import { Image } from "astro:assets";
 
 export function getStaticPaths() {
   return projects.map((project) => ({
@@ -17,13 +18,25 @@ interface Props {
 const { project } = Astro.props;
 const hasUpdates = project.updates && project.updates.length > 0;
 const slugify = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+const allImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/**/*.{jpeg,jpg,png,webp,gif}', { eager: true });
 ---
 
 <BaseLayout seoTitle={`${project.name} Gallery`} seoDescription={`Project updates and gallery for ${project.name}`}>
   <!-- Hero Section -->
   <section class="relative pt-32 pb-16 px-6 bg-ink text-white overflow-hidden">
     <div class="absolute inset-0 z-0 opacity-20">
-      <img src={project.galleryImages?.[0]?.src || "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80"} alt="Background" class="w-full h-full object-cover" />
+      {(() => {
+        const heroSrc = project.galleryImages?.[0]?.src;
+        if (!heroSrc) {
+          return <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80" alt="Background" class="w-full h-full object-cover" />;
+        }
+        const imgObj = allImages[heroSrc]?.default;
+        return imgObj ? (
+          <Image src={imgObj} alt="Background" class="w-full h-full object-cover" />
+        ) : (
+          <img src={heroSrc} alt="Background" class="w-full h-full object-cover" />
+        );
+      })()}
       <div class="absolute inset-0 bg-ink/80 mix-blend-multiply"></div>
     </div>
     
@@ -48,22 +61,35 @@ const slugify = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-')
               <h2 class="font-display text-2xl sm:text-3xl text-ink">{update.title}</h2>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {update.images.map((img) => (
+              {update.images.map((imgSrc) => {
+                const imgObj = allImages[imgSrc]?.default;
+                return (
                 <div class="relative overflow-hidden rounded-2xl aspect-[4/3] bg-ink/5 shadow-sm border border-border group">
-                  <img 
-                    src={img} 
-                    alt={update.title} 
-                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
+                  {imgObj ? (
+                    <Image 
+                      src={imgObj} 
+                      alt={update.title} 
+                      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                      widths={[320, 640]}
+                      sizes="(max-width: 640px) 320px, 640px"
+                    />
+                  ) : (
+                    <img 
+                      src={imgSrc} 
+                      alt={update.title} 
+                      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  )}
                   <!-- Hover Overlay -->
                   <div class="absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                    <button class="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full font-medium tracking-wide border border-white/30 transition-colors pointer-events-auto" onclick={`openLightbox('${img}')`}>
+                    <button class="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full font-medium tracking-wide border border-white/30 transition-colors pointer-events-auto" onclick={`openLightbox('${imgObj ? imgObj.src : imgSrc}')`}>
                       View
                     </button>
                   </div>
                 </div>
-              ))}
+              )})}
             </div>
           </section>
         ))}
