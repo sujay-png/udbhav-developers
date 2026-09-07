@@ -41,13 +41,13 @@ const slides = [
 ---
 
 <section class="hero-slider relative h-screen overflow-hidden">
-
+  <h1 class="sr-only">Udbhav Developers - Premium Builders in Mangalore</h1>
   <div class="swiper heroSwiper h-full">
 
     <div class="swiper-wrapper">
 
       {
-        slides.map((slide) => (
+        slides.map((slide, index) => (
           <div class="swiper-slide relative">
 
             <!-- Background -->
@@ -56,6 +56,8 @@ const slides = [
               src={slide.image}
               alt={slide.highlight}
               class="absolute inset-0 h-full w-full object-cover"
+              loading={index === 0 ? "eager" : "lazy"}
+              fetchpriority={index === 0 ? "high" : "auto"}
             />
 
             <!-- Full Image Overlay (Slight darkening) -->
@@ -72,7 +74,7 @@ const slides = [
                 Premium Architectural Excellence
               </p>
 
-              <h1 class="max-w-5xl font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-tight text-white break-words [text-shadow:0_2px_12px_rgba(0,0,0,0.6),_0_1px_4px_rgba(0,0,0,0.8)]">
+              <h2 class="max-w-5xl font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-tight text-white break-words [text-shadow:0_2px_12px_rgba(0,0,0,0.6),_0_1px_4px_rgba(0,0,0,0.8)]">
 
                 {slide.title}
 
@@ -82,7 +84,7 @@ const slides = [
                   {slide.highlight}
                 </span>
 
-              </h1>
+              </h2>
 
               <p class="mt-8 max-w-2xl text-base sm:text-lg leading-8 text-white/90 [text-shadow:0_2px_12px_rgba(0,0,0,0.6),_0_1px_4px_rgba(0,0,0,0.8)]">
                 {slide.subtitle}

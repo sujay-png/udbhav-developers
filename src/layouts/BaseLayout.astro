@@ -48,13 +48,30 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={finalDescription} />
     <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Udbhav Developers" />
     <meta property="og:url" content={canonicalURL} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={finalDescription} />
+    <meta name="twitter:image" content={new URL(image, Astro.site)} />
 
     <meta name="generator" content={Astro.generator} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "Udbhav Developers",
+      "url": Astro.site,
+      "logo": new URL("/images/udbhav-developers-logo-1.svg", Astro.site).toString(),
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Mangalore",
+        "addressRegion": "Karnataka"
+      }
+    })} />
   </head>
   <body class="relative overflow-x-clip">
     <Header />

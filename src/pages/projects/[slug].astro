@@ -53,6 +53,17 @@ const isRich = !!project.reraNo;
 ---
 
 <BaseLayout seoTitle={project.seoTitle || project.name} seoDescription={project.seoDescription || `${project.tagline} — ${project.name} by Udbhav Developers in ${project.location}.`}>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    "name": project.name,
+    "description": project.description || project.tagline,
+    "image": galleryImages.length > 0 ? new URL(galleryImages[0].src, Astro.site).toString() : new URL("/og-image.jpg", Astro.site).toString(),
+    "brand": {
+      "@type": "Organization",
+      "name": "Udbhav Developers"
+    }
+  })} />
   
   {isRich ? (
     <>

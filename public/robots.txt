@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://udbhavdevelopers.com/sitemap-index.xml

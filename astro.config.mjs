@@ -5,12 +5,14 @@ import react from '@astrojs/react';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vercel from '@astrojs/vercel';
+import sitemap from '@astrojs/sitemap';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://udbhavdevelopers.com',
+  trailingSlash: 'ignore',
   output: 'server', // This explicitly enables Server-Side Rendering
   adapter: vercel(),
   vite: {
@@ -21,5 +23,5 @@ export default defineConfig({
       },
     },
   },
-  integrations: [react()],
+  integrations: [react(), sitemap()],
 });
