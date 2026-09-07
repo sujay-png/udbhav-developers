@@ -228,88 +228,101 @@ export const projects: Project[] = [
       {
         title: "Bhoomi Pooja Chinmaya ( October 15th 2025 )",
         images: [
-          "/images/udbahv-chinmaya/projects/bhoomipooja1.jpg",
-          "/images/udbahv-chinmaya/projects/bhoomipooja2.jpg",
-          "/images/udbahv-chinmaya/projects/bhoomipooja3.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/bhoomi-img-1.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/bhoomi-img-3.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/bhoomi-img-4.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/bhoomi-img-5.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/bhoomi-img-6.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/bhoomi-img-8.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/bhoomi-img-9.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/bhoomi-img-10.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/bhoomi-img-11.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/bhoomi-img-12.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/bhoomi-img-13.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/bhoomi-img-14.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/bhoomi-img-15.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/bhoomi-img-16.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/bhoomi-img-17.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/bhoomi-img-18.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/bhoomi-img-19.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/bhoomi-img-20.jpg",
+          "/images/udbahv-chinmaya/bhoomi-puja/imgi_3_NBP_5170-scaled (1).jpg",
         ]
       },
       {
         title: "Project Updates ( December 12th 2025 )",
         images: [
-          "/images/udbahv-chinmaya/projects/projectupdates1.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates2.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates3.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates4.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates5.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates6.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates7.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates8.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates9.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates10.jpg",
-
+          "/images/udbahv-chinmaya/project dec/dec 1.webp",
+          "/images/udbahv-chinmaya/project dec/dec-2.webp",
+          "/images/udbahv-chinmaya/project dec/dec 3.webp",
+          "/images/udbahv-chinmaya/project dec/dec 4.webp",
+          "/images/udbahv-chinmaya/project dec/dec-5.jpg",
+          "/images/udbahv-chinmaya/project dec/dec-6.jpg",
+          "/images/udbahv-chinmaya/project dec/dec-7.jpg",
+          "/images/udbahv-chinmaya/project dec/dec-8.webp",
+          "/images/udbahv-chinmaya/project dec/imgi_47_WhatsApp-Image-2026-01-15-at-6.32.22-PM.jpg",
+          "/images/udbahv-chinmaya/project dec/imgi_49_WhatsApp-Image-2026-01-15-at-6.32.21-PM.jpg"
         ]
       },
-
-
       {
         title: "Project Updates ( February 06th 2026 )",
         images: [
-          "/images/udbahv-chinmaya/projects/projectupdates3.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates2.jpg",
-         
-          "/images/udbahv-chinmaya/projects/projectupdates9.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates1.jpg"
+          "/images/udbahv-chinmaya/updates/february-06-2026/1.jpg",
+          "/images/udbahv-chinmaya/updates/february-06-2026/2.jpg",
+          "/images/udbahv-chinmaya/updates/february-06-2026/3.jpg",
         ]
       },
       {
         title: "Project Updates ( March 11th 2026 )",
         images: [
-          "/images/udbahv-chinmaya/projects/projectupdates6.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates4.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates10.jpg",
-          
-          "/images/udbahv-chinmaya/projects/projectupdates4.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates5.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates7.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates9.jpg",
-         
-          
-          "/images/udbahv-chinmaya/projects/projectupdates1.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates5.jpg"
+          "/images/udbahv-chinmaya/updates/march-11-2026/1.jpg",
+          "/images/udbahv-chinmaya/updates/march-11-2026/2.jpg",
+          "/images/udbahv-chinmaya/updates/march-11-2026/3.jpg",
         ]
       },
-
       {
         title: "Project Updates ( April 01st 2026 )",
         images: [
-          "/images/udbahv-chinmaya/projects/projectupdates10.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates3.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates6.jpg"
+          "/images/udbahv-chinmaya/project-updates-april1st/april-1.jpg",
+          "/images/udbahv-chinmaya/project-updates-april1st/april-2.jpg",
+          "/images/udbahv-chinmaya/project-updates-april1st/april-3.jpg",
+          "/images/udbahv-chinmaya/project-updates-april1st/april-4.jpg",
+          "/images/udbahv-chinmaya/project-updates-april1st/april-5.jpg",
+          "/images/udbahv-chinmaya/project-updates-april1st/april-6.jpg",
+          "/images/udbahv-chinmaya/project-updates-april1st/april-7.jpg",
+          "/images/udbahv-chinmaya/project-updates-april1st/april-08.jpg",
         ]
       },
       {
         title: "Project Updates ( May 01st 2026 )",
         images: [
-          "/images/udbahv-chinmaya/projects/projectupdates9.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates2.jpg",
+          "/images/udbahv-chinmaya/updates/may-01-2026/1.jpg",
+          "/images/udbahv-chinmaya/updates/may-01-2026/2.jpg",
+          "/images/udbahv-chinmaya/updates/may-01-2026/3.jpg",
         ]
       },
       {
         title: "Project Updates ( June 02nd 2026 )",
         images: [
-          "/images/udbahv-chinmaya/projects/projectupdates2.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates6.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates1.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates9.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates4.jpg"
+          "/images/udbahv-chinmaya/updates/june-02-2026/1.jpg",
+          "/images/udbahv-chinmaya/updates/june-02-2026/2.jpg",
+          "/images/udbahv-chinmaya/updates/june-02-2026/3.jpg",
         ]
       },
       {
         title: "Project Updates ( July 04th 2026 )",
         images: [
-          "/images/udbahv-chinmaya/projects/projectupdates7.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates4.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates5.jpg",
+          "/images/udbahv-chinmaya/updates/july-04-2026/1.jpg",
+          "/images/udbahv-chinmaya/updates/july-04-2026/2.jpg",
+          "/images/udbahv-chinmaya/updates/july-04-2026/3.jpg",
+        ]
+      },
+      {
+        title: "Project Updates ( August 05th 2026 )",
+        images: [
+          "/images/udbahv-chinmaya/updates/august-05-2026/1.jpg",
+          "/images/udbahv-chinmaya/updates/august-05-2026/2.jpg",
+          "/images/udbahv-chinmaya/updates/august-05-2026/3.jpg",
         ]
       }
 

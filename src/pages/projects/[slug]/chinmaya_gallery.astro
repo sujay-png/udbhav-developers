@@ -18,7 +18,8 @@ interface Props {
 
 const { project } = Astro.props;
 
-const projectUpdates = project?.updates ? [...project.updates] : [];
+const projectUpdates = project?.updates ? [...project.updates].reverse() : [];
+const slugify = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 ---
 
 {projectUpdates.length > 0 ? (
@@ -31,39 +32,40 @@ const projectUpdates = project?.updates ? [...project.updates] : [];
         </h3>
 
         {/* Carousel for this Month */}
-        <div class="relative group/gallery" data-gallery-id={`updates-carousel-${index}`}>
-          <div
-            id={`updates-carousel-${index}`}
-            class="flex gap-6 overflow-x-auto scroll-smooth pb-6 pt-2 select-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-          >
-            {update.images.map((imgSrc, imgIdx) => (
-              <div class="min-w-[220px] sm:min-w-[280px] lg:min-w-[320px] max-w-[320px] flex-shrink-0 group">
-                <div class="relative overflow-hidden rounded-2xl aspect-[4/3] bg-ink/5 shadow-sm mb-3 border border-border">
-                  <img
-                    src={imgSrc}
-                    alt={`${update.title} - Photo ${imgIdx + 1}`}
-                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
+        <div class="relative mt-2">
+          <div class="relative group/gallery" data-gallery-id={`updates-carousel-${index}`}>
+            <div
+              id={`updates-carousel-${index}`}
+              class="flex gap-6 overflow-x-auto scroll-smooth pb-6 select-none snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {update.images.map((imgSrc, imgIdx) => (
+                <div class="min-w-[220px] sm:min-w-[280px] lg:min-w-[320px] max-w-[320px] flex-shrink-0 group snap-start">
+                  <div class="relative overflow-hidden rounded-2xl aspect-[4/3] bg-ink/5 shadow-sm border border-border">
+                    <img
+                      src={imgSrc}
+                      alt={`${update.title} - Photo ${imgIdx + 1}`}
+                      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
-                <div class="flex items-center justify-between px-1">
-                  <h4 class="font-display text-ink text-sm sm:text-base line-clamp-1">{update.title}</h4>
-                  <span class="text-[10px] sm:text-xs font-medium tracking-wide text-muted-foreground uppercase flex-shrink-0 ml-2">
-                    Photo {imgIdx + 1}
-                  </span>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            <!-- Navigation Buttons for this carousel -->
+            <button data-action="prev" aria-label="Previous" class="hidden sm:flex items-center justify-center absolute left-2 lg:-left-4 top-1/2 -translate-y-1/2 z-50 w-10 h-10 rounded-full bg-clay/90 text-white hover:bg-clay transition-colors shadow-md cursor-pointer pointer-events-auto">
+              <svg class="w-5 h-5 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+            </button>
+            <button data-action="next" aria-label="Next" class="hidden sm:flex items-center justify-center absolute right-2 lg:-right-4 top-1/2 -translate-y-1/2 z-50 w-10 h-10 rounded-full bg-clay/90 text-white hover:bg-clay transition-colors shadow-md cursor-pointer pointer-events-auto">
+              <svg class="w-5 h-5 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+            </button>
           </div>
 
-          <!-- Navigation Buttons for this carousel -->
-          <div class="hidden sm:flex gap-3 justify-end mt-2">
-            <button data-action="prev" aria-label="Previous" class="h-10 w-10 rounded-full border border-border bg-white hover:bg-muted flex items-center justify-center transition-colors shadow-sm text-ink cursor-pointer">
-              ←
-            </button>
-            <button data-action="next" aria-label="Next" class="h-10 w-10 rounded-full border border-border bg-white hover:bg-muted flex items-center justify-center transition-colors shadow-sm text-ink cursor-pointer">
-              →
-            </button>
+          <!-- View All Button -->
+          <div class="flex justify-center mt-2 mb-6 z-10 relative">
+            <a href={`/projects/${project?.slug}/gallery#${slugify(update.title)}`} class="inline-flex h-12 items-center justify-center rounded-md bg-clay px-8 text-sm font-bold text-cream shadow hover:bg-clay-hover transition-colors">
+              View All
+            </a>
           </div>
         </div>
       </div>
@@ -87,15 +89,46 @@ const projectUpdates = project?.updates ? [...project.updates] : [];
 
       if (!container || !btnPrev || !btnNext) return;
 
-      const scrollAmount = 340;
+      const scrollAmount = 344;
 
-      btnPrev.onclick = () => {
-        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      const scrollNext = () => {
+        if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+          container.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
       };
 
-      btnNext.onclick = () => {
-        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      const scrollPrev = () => {
+        if (container.scrollLeft <= 10) {
+          container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
+        } else {
+          container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        }
       };
+
+      btnPrev.onclick = scrollPrev;
+      btnNext.onclick = scrollNext;
+      
+      // Auto-slide animation functionality
+      let autoPlayInterval;
+      
+      const startAutoPlay = () => {
+        autoPlayInterval = setInterval(scrollNext, 3000);
+      };
+
+      const stopAutoPlay = () => {
+        clearInterval(autoPlayInterval);
+      };
+
+      // Start autoplay by default
+      startAutoPlay();
+
+      // Pause auto-sliding on hover or touch to allow manual clicking
+      gallery.addEventListener('mouseenter', stopAutoPlay);
+      gallery.addEventListener('mouseleave', startAutoPlay);
+      gallery.addEventListener('touchstart', stopAutoPlay, { passive: true });
+      gallery.addEventListener('touchend', startAutoPlay, { passive: true });
     });
   }
 

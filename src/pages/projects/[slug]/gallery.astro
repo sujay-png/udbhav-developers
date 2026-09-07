@@ -16,6 +16,7 @@ interface Props {
 
 const { project } = Astro.props;
 const hasUpdates = project.updates && project.updates.length > 0;
+const slugify = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 ---
 
 <BaseLayout seoTitle={`${project.name} Gallery`} seoDescription={`Project updates and gallery for ${project.name}`}>
@@ -42,7 +43,7 @@ const hasUpdates = project.updates && project.updates.length > 0;
     {hasUpdates ? (
       <div class="max-w-[1200px] mx-auto space-y-24">
         {project.updates!.map((update) => (
-          <section class="space-y-8">
+          <section id={slugify(update.title)} class="space-y-8">
             <div class="flex items-center justify-between border-b border-border pb-4">
               <h2 class="font-display text-2xl sm:text-3xl text-ink">{update.title}</h2>
             </div>
@@ -57,7 +58,7 @@ const hasUpdates = project.updates && project.updates.length > 0;
                   />
                   <!-- Hover Overlay -->
                   <div class="absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                    <button class="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full font-medium tracking-wide border border-white/30 transition-colors pointer-events-auto">
+                    <button class="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full font-medium tracking-wide border border-white/30 transition-colors pointer-events-auto" onclick={`openLightbox('${img}')`}>
                       View
                     </button>
                   </div>
@@ -76,4 +77,68 @@ const hasUpdates = project.updates && project.updates.length > 0;
       </div>
     )}
   </div>
+
+  <!-- Lightbox -->
+  <div id="gallery-lightbox" class="fixed inset-0 z-[100] bg-black/80 hidden items-center justify-center p-4 md:p-10 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+    <button id="close-lightbox" class="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-clay transition-colors z-50 p-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <div class="relative w-full max-w-5xl max-h-full flex items-center justify-center overflow-hidden rounded-lg">
+      <img id="lightbox-img" src="" alt="Gallery Preview" class="max-w-full max-h-[90vh] object-contain shadow-2xl scale-95 transition-transform duration-300" />
+    </div>
+  </div>
 </BaseLayout>
+
+<script>
+  function setupLightbox() {
+    const lightbox = document.getElementById('gallery-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+    const closeBtn = document.getElementById('close-lightbox');
+
+    (window as any).openLightbox = (imgSrc: string) => {
+      if(!lightboxImg || !lightbox) return;
+      lightboxImg.src = imgSrc;
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+      
+      // small delay for transition
+      setTimeout(() => {
+        lightbox.classList.remove('opacity-0');
+        lightboxImg.classList.remove('scale-95');
+        lightboxImg.classList.add('scale-100');
+      }, 10);
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightboxFn = () => {
+      if(!lightbox || !lightboxImg) return;
+      lightbox.classList.add('opacity-0');
+      lightboxImg.classList.remove('scale-100');
+      lightboxImg.classList.add('scale-95');
+      setTimeout(() => {
+        lightbox.classList.remove('flex');
+        lightbox.classList.add('hidden');
+        document.body.style.overflow = '';
+      }, 300);
+    };
+
+    if(closeBtn) closeBtn.addEventListener('click', closeLightboxFn);
+
+    if(lightbox) {
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          closeLightboxFn();
+        }
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox && !lightbox.classList.contains('hidden')) {
+        closeLightboxFn();
+      }
+    });
+  }
+
+  setupLightbox();
+  document.addEventListener('astro:page-load', setupLightbox);
+</script>
