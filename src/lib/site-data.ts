@@ -254,7 +254,7 @@ export const projects: Project[] = [
         images: [
           "/images/udbahv-chinmaya/projects/projectupdates3.jpg",
           "/images/udbahv-chinmaya/projects/projectupdates2.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates9.jpg",
+         
           "/images/udbahv-chinmaya/projects/projectupdates9.jpg",
           "/images/udbahv-chinmaya/projects/projectupdates1.jpg"
         ]
@@ -265,13 +265,13 @@ export const projects: Project[] = [
           "/images/udbahv-chinmaya/projects/projectupdates6.jpg",
           "/images/udbahv-chinmaya/projects/projectupdates4.jpg",
           "/images/udbahv-chinmaya/projects/projectupdates10.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates1.jpg",
+          
           "/images/udbahv-chinmaya/projects/projectupdates4.jpg",
           "/images/udbahv-chinmaya/projects/projectupdates5.jpg",
           "/images/udbahv-chinmaya/projects/projectupdates7.jpg",
           "/images/udbahv-chinmaya/projects/projectupdates9.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates7.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates10.jpg",
+         
+          
           "/images/udbahv-chinmaya/projects/projectupdates1.jpg",
           "/images/udbahv-chinmaya/projects/projectupdates5.jpg"
         ]
@@ -290,7 +290,6 @@ export const projects: Project[] = [
         images: [
           "/images/udbahv-chinmaya/projects/projectupdates9.jpg",
           "/images/udbahv-chinmaya/projects/projectupdates2.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates9.jpg"
         ]
       },
       {
@@ -309,8 +308,6 @@ export const projects: Project[] = [
           "/images/udbahv-chinmaya/projects/projectupdates7.jpg",
           "/images/udbahv-chinmaya/projects/projectupdates4.jpg",
           "/images/udbahv-chinmaya/projects/projectupdates5.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates7.jpg",
-          "/images/udbahv-chinmaya/projects/projectupdates4.jpg"
         ]
       }
 
