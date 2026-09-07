@@ -69,8 +69,19 @@ const isRich = !!project.reraNo;
     <>
       <!-- Rich Hero Section -->
       <section class="relative bg-ink text-cream pt-24 pb-48 md:pt-32 md:pb-64">
-        <div class="absolute inset-0 overflow-hidden z-0">
-          {galleryImages.length > 0 ? (
+        <div class="absolute inset-0 overflow-hidden z-0 bg-ink">
+          {project.heroVideo ? (
+             <div class="absolute inset-0 pointer-events-none">
+                <iframe 
+                  src={project.heroVideo} 
+                  allow="autoplay; encrypted-media" 
+                  allowfullscreen
+                  class="w-[300vw] h-[300vh] md:w-[150vw] md:h-[150vh] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover"
+                  style="border:0;"
+                ></iframe>
+                <div class="absolute inset-0 bg-ink/40"></div>
+             </div>
+          ) : galleryImages.length > 0 ? (
              <div class="absolute inset-0 opacity-40 mix-blend-overlay">
                <img src={galleryImages[0].src} alt="" class="w-full h-full object-cover" />
              </div>
@@ -80,8 +91,12 @@ const isRich = !!project.reraNo;
         </div>
         
         <div class="relative mx-auto max-w-[1400px] px-5 flex flex-col items-center text-center z-10">
-          <h1 class="font-display text-5xl md:text-7xl leading-tight mb-2">{project.name}</h1>
-          <p class="text-xl md:text-3xl font-display mb-4 text-cream/90">{project.subtitle}</p>
+          <h1 class="font-display text-center mb-4">
+             <span class="block text-5xl md:text-7xl leading-tight mb-2 text-cream">{project.name}</span>
+             {project.subtitle && (
+               <span class="block text-xl md:text-3xl font-display mt-2 text-cream/90" set:html={project.subtitle}></span>
+             )}
+          </h1>
           
           <div class="flex flex-wrap justify-center gap-2 text-sm font-medium tracking-wide text-cream/70 mb-8">
              <a href="/" class="hover:text-cream transition-colors">Home</a>
@@ -115,27 +130,27 @@ const isRich = !!project.reraNo;
              <div class="bg-white rounded-xl shadow-lg border border-border p-6 text-center text-ink flex flex-col items-center gap-3 hover:-translate-y-1 transition-transform duration-500">
                 <Icon name="tag" className="w-8 h-8 text-yellow-500" />
                 <h4 class="font-display text-sm md:text-base leading-tight">Starting Price</h4>
-                <p class="text-[10px] md:text-xs text-muted-foreground leading-relaxed">Apartments start from {project.price}. This gives you a clear entry point while allowing choice across configurations.</p>
+                <p class="text-[10px] md:text-xs text-ink/80 leading-relaxed">Apartments start from {project.price}. This gives you a clear entry point while allowing choice across configurations.</p>
              </div>
              <div class="bg-white rounded-xl shadow-lg border border-border p-6 text-center text-ink flex flex-col items-center gap-3 hover:-translate-y-1 transition-transform duration-500">
                 <Icon name="calendar-check" className="w-8 h-8 text-blue-500" />
                 <h4 class="font-display text-sm md:text-base leading-tight">Easy Booking</h4>
-                <p class="text-[10px] md:text-xs text-muted-foreground leading-relaxed">Our easy booking process is designed to give you complete transparency and expert guidance.</p>
+                <p class="text-[10px] md:text-xs text-ink/80 leading-relaxed">Our easy booking process is designed to give you complete transparency and expert guidance.</p>
              </div>
              <div class="bg-white rounded-xl shadow-lg border border-border p-6 text-center text-ink flex flex-col items-center gap-3 hover:-translate-y-1 transition-transform duration-500">
                 <Icon name="file-text" className="w-8 h-8 text-green-500" />
                 <h4 class="font-display text-sm md:text-base leading-tight">Agreement Payment</h4>
-                <p class="text-[10px] md:text-xs text-muted-foreground leading-relaxed">25% payable at the time of agreement This includes the booking amount and confirms your purchase legally.</p>
+                <p class="text-[10px] md:text-xs text-ink/80 leading-relaxed">25% payable at the time of agreement This includes the booking amount and confirms your purchase legally.</p>
              </div>
              <div class="bg-white rounded-xl shadow-lg border border-border p-6 text-center text-ink flex flex-col items-center gap-3 hover:-translate-y-1 transition-transform duration-500">
                 <Icon name="bar-chart" className="w-8 h-8 text-orange-500" />
                 <h4 class="font-display text-sm md:text-base leading-tight">Construction-Linked Flexible Payments</h4>
-                <p class="text-[10px] md:text-xs text-muted-foreground leading-relaxed">You pay in stages as the project develops, instead of a heavy upfront commitment.</p>
+                <p class="text-[10px] md:text-xs text-ink/80 leading-relaxed">You pay in stages as the project develops, instead of a heavy upfront commitment.</p>
              </div>
              <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center border-t-4 border-yellow-500 hover:-translate-y-1 transition-transform duration-300">
                <img src="/images/udbahv-chinmaya/home-loan.png" alt="Home Loan" class="w-10 h-10 object-contain mb-3" />
                <h4 class="font-bold text-ink text-sm mb-2">Home Loan Assistance</h4>
-               <p class="text-[10px] text-muted-foreground leading-tight">Loan facility available from all major banks such as Karnataka Bank, Canara Bank & SBI Bank. Smooth loan processing, Competitive interest rates and Easy EMIs.</p>
+               <p class="text-[10px] text-ink/80 leading-tight">Loan facility available from all major banks such as Karnataka Bank, Canara Bank & SBI Bank. Smooth loan processing, Competitive interest rates and Easy EMIs.</p>
              </div>
           </div>
         </div>
@@ -193,7 +208,7 @@ const isRich = !!project.reraNo;
                )}
              </div>
              
-             <div class="prose prose-ink max-w-none text-muted-foreground leading-relaxed">
+             <div class="prose prose-ink max-w-none text-ink/90 leading-relaxed">
                <p>{project.description}</p>
                <p>With only {project.totalUnits} exclusive apartments, {project.name} ensures privacy, comfort, and a refined living experience in a prime urban location. <a href="/images/udbahv-chinmaya/RERACERT.pdf" target="_blank" class="text-clay font-bold hover:underline">View RERA Certificate Here.</a></p>
              </div>
@@ -203,7 +218,7 @@ const isRich = !!project.reraNo;
            {project.whyChooseUs && (
              <div class="space-y-6">
                <h2 class="font-display text-3xl text-ink">Why Choose {project.name}?</h2>
-               <div class="prose prose-ink max-w-none text-muted-foreground leading-relaxed">
+               <div class="prose prose-ink max-w-none text-ink/90 leading-relaxed">
                  <p>Finding a home in the city often means compromising — either on space, peace, or connectivity. {project.name} eliminates that compromise.</p>
                  <p>{project.whyChooseUs}</p>
                  <p>Thoughtfully planned layouts, premium fittings, advanced security systems, and lifestyle amenities come together to deliver a living experience that feels complete in every way.</p>
@@ -218,17 +233,17 @@ const isRich = !!project.reraNo;
                 <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-500">
                    <img src="/images/udbahv-chinmaya/property-selection.png" alt="Property Selection" class="w-12 h-12 mx-auto mb-4 object-contain" />
                    <h4 class="font-bold text-sm text-clay mb-2">Property Selection</h4>
-                   <p class="text-[11px] text-muted-foreground leading-relaxed">We assist you in identifying properties that perfectly align with your investment goals and personal preferences. Our team offers comprehensive information, virtual tours, and personalized support to ensure you make a confident and informed decision.</p>
+                   <p class="text-[11px] text-ink/80 leading-relaxed">We assist you in identifying properties that perfectly align with your investment goals and personal preferences. Our team offers comprehensive information, virtual tours, and personalized support to ensure you make a confident and informed decision.</p>
                 </div>
                 <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-500">
                    <img src="/images/udbahv-chinmaya/legal-finance-assistance.png" alt="Legal and Financial Assistance" class="w-12 h-12 mx-auto mb-4 object-contain" />
                    <h4 class="font-bold text-sm text-clay mb-2">Legal and Financial Assistance</h4>
-                   <p class="text-[11px] text-muted-foreground leading-relaxed">Our experts provide comprehensive guidance on the legal and financial aspects of property investment, ensuring full compliance with regulations and facilitating smooth, hassle-free transactions.</p>
+                   <p class="text-[11px] text-ink/80 leading-relaxed">Our experts provide comprehensive guidance on the legal and financial aspects of property investment, ensuring full compliance with regulations and facilitating smooth, hassle-free transactions.</p>
                 </div>
                 <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-500">
                    <img src="/images/udbahv-chinmaya/post-purchase.png" alt="Post-Purchase Support" class="w-12 h-12 mx-auto mb-4 object-contain" />
                    <h4 class="font-bold text-sm text-clay mb-2">Post-Purchase Support</h4>
-                   <p class="text-[11px] text-muted-foreground leading-relaxed">Our commitment to you goes beyond the purchase. We provide comprehensive post-purchase support, including property management, rental assistance, and resale services, ensuring your investment remains valuable, well-maintained, and rewarding.</p>
+                   <p class="text-[11px] text-ink/80 leading-relaxed">Our commitment to you goes beyond the purchase. We provide comprehensive post-purchase support, including property management, rental assistance, and resale services, ensuring your investment remains valuable, well-maintained, and rewarding.</p>
                 </div>
              </div>
            </div>
@@ -616,7 +631,7 @@ const isRich = !!project.reraNo;
           {subtitle}
         </h3>
       )}
-      <p class="text-[15px] font-normal leading-relaxed text-muted-foreground sm:text-base">
+      <p class="text-[15px] font-normal leading-relaxed text-ink/90 sm:text-base">
         {project.description}
       </p>
     </div>

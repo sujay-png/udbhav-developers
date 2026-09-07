@@ -33,6 +33,7 @@ export type Project = {
   mapDesc?: string;
   mapSrc?: string;
   mapQueryName?: string;
+  heroVideo?: string;
   galleryImages?: GalleryItem[];
   reraNo?: string;
   reraNoproj?: string;
@@ -97,7 +98,8 @@ export const projects: Project[] = [
     projectarea: '64 Cents',
     projectsize: 'Ground + 5 Floors',
     image: "Udbhav-website",
-    subtitle: "Kadri Sanctuary",
+    subtitle: "Premium Luxury 3 & 4 BHK Mangalore Apartments <br/> Located In Prime Kadri Area",
+    heroVideo: "https://www.youtube.com/embed/gHpEFKIw91s?autoplay=1&mute=1&loop=1&playlist=gHpEFKIw91s&controls=0&showinfo=0&rel=0&disablekb=1",
     mapTitle: "Kadri",
     mapDesc:
       "Kadri stands as one of Mangaluru's most cherished residential nodes, offering a fine balance of quiet green avenues and urban convenience.",
