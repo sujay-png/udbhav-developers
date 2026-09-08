@@ -267,18 +267,21 @@ export const projects: Project[] = [
       {
         title: "Project Updates ( February 06th 2026 )",
         images: [
-          "/src/assets/images/udbahv-chinmaya/February/WEB2.webp",
-          "/src/assets/images/udbahv-chinmaya/February/WEB3.webp",
-          "/src/assets/images/udbahv-chinmaya/February/WEB4.webp",
-          "/src/assets/images/udbahv-chinmaya/February/WEB5.webp",
-          "/src/assets/images/udbahv-chinmaya/February/WEB6.webp",
-          "/src/assets/images/udbahv-chinmaya/February/WEB7.webp",
-          "/src/assets/images/udbahv-chinmaya/February/WEB8.webp",
-          "/src/assets/images/udbahv-chinmaya/February/WEB9.webp",
-          "/src/assets/images/udbahv-chinmaya/February/WEB10.webp",
-          "/src/assets/images/udbahv-chinmaya/February/WEB11.webp",
-          "/src/assets/images/udbahv-chinmaya/February/WEB12.webp",
-          "/src/assets/images/udbahv-chinmaya/February/WEB13.webp",
+          "/src/assets/images/udbahv-chinmaya/February/IMG20260204091028.jpg-scaled.webp",
+          "/src/assets/images/udbahv-chinmaya/February/IMG20260204091030.jpg-scaled.webp",
+          "/src/assets/images/udbahv-chinmaya/February/IMG20260204091034.jpg-scaled.webp",
+          "/src/assets/images/udbahv-chinmaya/February/IMG20260204091043.jpg-scaled.webp",
+          "/src/assets/images/udbahv-chinmaya/February/IMG20260204091049.jpg-scaled.webp",
+          "/src/assets/images/udbahv-chinmaya/February/IMG20260204092754.jpg-scaled.webp",
+          "/src/assets/images/udbahv-chinmaya/February/IMG20260204092757.jpg-scaled.webp",
+          "/src/assets/images/udbahv-chinmaya/February/IMG20260205092249.jpg-scaled.webp",
+          "/src/assets/images/udbahv-chinmaya/February/IMG20260205092313.jpg-scaled.webp",
+          "/src/assets/images/udbahv-chinmaya/February/IMG20260205095518.jpg-scaled.webp",
+          "/src/assets/images/udbahv-chinmaya/February/IMG20260205095524.jpg-scaled.webp",
+          "/src/assets/images/udbahv-chinmaya/February/IMG20260205095534.jpg-scaled.webp",
+          "/src/assets/images/udbahv-chinmaya/February/IMG20260206091817.jpg-scaled.webp",
+          "/src/assets/images/udbahv-chinmaya/February/IMG20260206091825.jpg-scaled.webp",
+          "/src/assets/images/udbahv-chinmaya/February/IMG20260206093144.jpg-scaled.webp"
         ]
       },
       {
