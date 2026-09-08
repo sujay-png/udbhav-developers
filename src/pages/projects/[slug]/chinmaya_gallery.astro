@@ -129,25 +129,6 @@ const allImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/imag
       btnPrev.onclick = scrollPrev;
       btnNext.onclick = scrollNext;
       
-      // Auto-slide animation functionality
-      let autoPlayInterval;
-      
-      const startAutoPlay = () => {
-        autoPlayInterval = setInterval(scrollNext, 3000);
-      };
-
-      const stopAutoPlay = () => {
-        clearInterval(autoPlayInterval);
-      };
-
-      // Start autoplay by default
-      startAutoPlay();
-
-      // Pause auto-sliding on hover or touch to allow manual clicking
-      gallery.addEventListener('mouseenter', stopAutoPlay);
-      gallery.addEventListener('mouseleave', startAutoPlay);
-      gallery.addEventListener('touchstart', stopAutoPlay, { passive: true });
-      gallery.addEventListener('touchend', startAutoPlay, { passive: true });
     });
   }
 

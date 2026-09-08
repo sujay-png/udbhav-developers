@@ -908,13 +908,6 @@ const isRich = !!project.reraNo;
           (controls as HTMLElement).style.display = isCarouselMode ? '' : 'none';
         });
         
-        // Handle autoplay logic
-        if (!isCarouselMode) {
-           (window as any).stopAutoplay();
-        } else {
-           (window as any).startAutoplay();
-        }
-
         // Filter cards and toggle classes
         cards.forEach(card => {
           const c = card as HTMLElement;
@@ -938,65 +931,28 @@ const isRich = !!project.reraNo;
       });
     });
 
-    // Carousel logic for plans
+    // Manual floor-plan carousel controls
     const btnsLeft = document.querySelectorAll('.plans-scroll-left');
     const btnsRight = document.querySelectorAll('.plans-scroll-right');
-    let autoplayInterval: any;
 
     const getScrollAmount = () => {
       const firstCard = container?.querySelector('.plan-card') as HTMLElement;
-      if (firstCard) {
-         return firstCard.offsetWidth + 24; // width + gap-6 (24px)
-      }
-      return 340; // fallback
+      return firstCard ? firstCard.offsetWidth + 24 : 340;
     };
-
-    (window as any).startAutoplay = () => {
-      (window as any).stopAutoplay();
-      autoplayInterval = setInterval(() => {
-        if (container && container.classList.contains('flex')) {
-          const scrollAmount = getScrollAmount();
-          // Check if we're at the end (with a small 10px buffer)
-          if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
-             container.scrollTo({ left: 0, behavior: 'smooth' });
-          } else {
-             container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-          }
-        }
-      }, 3500); // 3.5 seconds
-    };
-
-    (window as any).stopAutoplay = () => {
-      if (autoplayInterval) clearInterval(autoplayInterval);
-    };
-
-    // Export to local scope for backward compatibility with the click handler we just defined above
-    const startAutoplay = (window as any).startAutoplay;
-    const stopAutoplay = (window as any).stopAutoplay;
 
     if (container && btnsLeft.length > 0 && btnsRight.length > 0) {
       btnsLeft.forEach(btn => {
         btn.addEventListener('click', () => {
           container.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-          startAutoplay();
         });
       });
 
       btnsRight.forEach(btn => {
         btn.addEventListener('click', () => {
           container.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-          startAutoplay();
         });
       });
-
-      // Pause autoplay when interacting
-      container.addEventListener('mouseenter', stopAutoplay);
-      container.addEventListener('mouseleave', startAutoplay);
-      container.addEventListener('touchstart', stopAutoplay, { passive: true });
-      container.addEventListener('touchend', startAutoplay, { passive: true });
     }
-
-    startAutoplay();
 
     // Initialize first filter
     const activeBtn = document.querySelector('.filter-btn[data-filter="3BHK"]') as HTMLElement;
@@ -1060,7 +1016,6 @@ const isRich = !!project.reraNo;
     
     let currentIndex = 0;
     const total = dots.length;
-    let autoplayInterval: any;
     
     function goToSlide(index: number) {
       if (index < 0) index = total - 1;
@@ -1080,44 +1035,22 @@ const isRich = !!project.reraNo;
       });
     }
 
-    function startAutoplay() {
-      stopAutoplay();
-      autoplayInterval = setInterval(() => {
-        goToSlide(currentIndex + 1);
-      }, 4000); // 4 seconds
-    }
-
-    function stopAutoplay() {
-      if (autoplayInterval) clearInterval(autoplayInterval);
-    }
     
     btnPrev.addEventListener('click', () => {
       goToSlide(currentIndex - 1);
-      startAutoplay();
     });
     
     btnNext.addEventListener('click', () => {
       goToSlide(currentIndex + 1);
-      startAutoplay();
     });
     
     dots.forEach((dot) => {
       dot.addEventListener('click', (e) => {
         const index = parseInt((e.target as HTMLElement).getAttribute('data-index') || '0');
         goToSlide(index);
-        startAutoplay();
       });
     });
 
-    const parent = carousel.parentElement;
-    if (parent) {
-      parent.addEventListener('mouseenter', stopAutoplay);
-      parent.addEventListener('mouseleave', startAutoplay);
-      parent.addEventListener('touchstart', stopAutoplay, { passive: true });
-      parent.addEventListener('touchend', startAutoplay, { passive: true });
-    }
-
-    startAutoplay();
   }
 
   function setupSpecsViewMore() {
@@ -1184,35 +1117,6 @@ const isRich = !!project.reraNo;
     setTimeout(updateButtons, 100);
     window.addEventListener('resize', updateButtons);
 
-    // Autoplay logic
-    let autoplayTimer: any;
-    
-    function startAutoplay() {
-      stopAutoplay();
-      autoplayTimer = setInterval(() => {
-        if (!container) return;
-        const isAtEnd = container.scrollLeft >= container.scrollWidth - container.clientWidth - 5;
-        if (isAtEnd) {
-          container.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        }
-      }, 3000);
-    }
-    
-    function stopAutoplay() {
-      if (autoplayTimer) clearInterval(autoplayTimer);
-    }
-    
-    // Pause autoplay on hover or interaction
-    const wrapper = container.parentElement;
-    if (wrapper) {
-      wrapper.addEventListener('mouseenter', stopAutoplay);
-      wrapper.addEventListener('mouseleave', startAutoplay);
-      wrapper.addEventListener('touchstart', stopAutoplay, { passive: true });
-    }
-    
-    startAutoplay();
   }
 
   setupGallery();
