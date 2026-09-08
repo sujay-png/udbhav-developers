@@ -289,8 +289,7 @@ export const projects: Project[] = [
           "/src/assets/images/udbahv-chinmaya/March month 2026 - Resized images/3.webp",
           "/src/assets/images/udbahv-chinmaya/March month 2026 - Resized images/4.webp",
           "/src/assets/images/udbahv-chinmaya/March month 2026 - Resized images/5.webp",
-          "/src/assets/images/udbahv-chinmaya/March month 2026 - Resized images/6.webp",
-          "/src/assets/images/udbahv-chinmaya/March month 2026 - Resized images/7.webp",
+          
           "/src/assets/images/udbahv-chinmaya/March month 2026 - Resized images/8.webp",
           "/src/assets/images/udbahv-chinmaya/March month 2026 - Resized images/9.webp",
           "/src/assets/images/udbahv-chinmaya/March month 2026 - Resized images/11.webp",
