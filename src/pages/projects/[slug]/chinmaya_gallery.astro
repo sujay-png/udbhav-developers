@@ -105,13 +105,16 @@ const allImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/imag
 
       if (!container || !btnPrev || !btnNext) return;
 
-      const scrollAmount = 344;
+      const getScrollAmount = () => {
+        const firstItem = container.querySelector('.snap-start');
+        return firstItem ? firstItem.offsetWidth + 24 : 344;
+      };
 
       const scrollNext = () => {
         if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
           container.scrollTo({ left: 0, behavior: 'smooth' });
         } else {
-          container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+          container.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
         }
       };
 
@@ -119,7 +122,7 @@ const allImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/imag
         if (container.scrollLeft <= 10) {
           container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
         } else {
-          container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+          container.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
         }
       };
 
