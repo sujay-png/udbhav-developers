@@ -2,20 +2,29 @@
 import { Icon } from "@/components/Icon";
 import ArtPanel from "@/components/ArtPanel.astro";
 import { pillars, siteConfig } from "@/lib/site-data";
-
-
 ---
 
 <section class="bg-blush">
-  <div class="mx-auto grid max-w-[1400px] gap-12 px-5 py-24 md:px-10 lg:grid-cols-12 lg:items-start">
+  <div
+    class="mx-auto grid max-w-[1400px] gap-12 px-5 py-24 md:px-10 lg:grid-cols-12 lg:items-start"
+  >
     <div class="lg:col-span-5 lg:pr-19 xl:pr-16">
-      <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-clay">Since {siteConfig.founded}</p>
-      <h2 class="mt-4 text-balance font-display text-4xl leading-[1.1] md:text-[2.75rem]">
-        Building with <em class="italic text-clay">Purpose</em>, Driven by <em class="italic text-clay">Trust.</em>
+      <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-clay">
+        Since {siteConfig.founded}
+      </p>
+      <h2
+        class="mt-4 text-balance font-display text-4xl leading-[1.1] md:text-[2.75rem]"
+      >
+        Building with <em class="italic text-clay">Purpose</em>, Driven by <em
+          class="italic text-clay">Trust.</em
+        >
       </h2>
       <p class="mt-6 max-w-lg text-[15px] leading-relaxed text-ink/70">
-        At Udbhav Developers, we stand for excellence, integrity, and innovation in the development of premium residential apartments, commercial spaces, and retail shops.
-Since our inception in 2012, we have been committed to creating future-ready structures that blend thoughtful design with long-term value.
+        At Udbhav Developers, we stand for excellence, integrity, and innovation
+        in the development of premium residential apartments, commercial spaces,
+        and retail shops. Since our inception in 2012, we have been committed to
+        creating future-ready structures that blend thoughtful design with
+        long-term value.
       </p>
 
       <div class="mt-10 grid gap-6 sm:grid-cols-3">
@@ -23,10 +32,15 @@ Since our inception in 2012, we have been committed to creating future-ready str
           pillars.map((p) => (
             <div>
               <div class="grid h-11 w-11 place-items-center rounded-full bg-cream text-clay">
-                <Icon name={p.icon as "shield" | "leaf" | "smile"} className="h-5 w-5" />
+                <Icon
+                  name={p.icon as "shield" | "leaf" | "smile"}
+                  className="h-5 w-5"
+                />
               </div>
               <p class="mt-3 text-sm font-semibold text-ink">{p.title}</p>
-              <p class="mt-1 text-xs leading-relaxed text-muted-foreground">{p.description}</p>
+              <p class="mt-1 text-xs leading-relaxed text-muted-foreground">
+                {p.description}
+              </p>
             </div>
           ))
         }
@@ -37,22 +51,44 @@ Since our inception in 2012, we have been committed to creating future-ready str
       <img
         src="/images/udbhav-developers-logo.png"
         alt="Udbhav Developers Logo"
-        class="w-full h-auto object-contain px-8 pb-16"/>
-      <svg width="0" height="0" class="absolute">
-        <defs>
-          <clipPath id="u-badge-shape" clipPathUnits="objectBoundingBox">
-            <path d="M 0 0.2 Q 0.5 0.35 1 0 L 1 0.6 C 1 0.82 0.776 1 0.5 1 C 0.224 1 0 0.82 0 0.6 Z" />
-          </clipPath>
-        </defs>
-      </svg>
-      <div 
-        class="absolute -bottom-10 left-9 bg-clay text-center text-cream flex flex-col items-center justify-center w-[100px] aspect-[4/5]"
-        style="clip-path: url(#u-badge-shape);"
-      >
-        <div class="translate-x-1 translate-y-1.5 flex flex-col items-center">
-          <p class="font-display text-3xl leading-none">13+</p>
-          <p class="mt-1 text-[8px] uppercase tracking-wider text-cream/90 max-w-[60px]">Years of Excellence</p>
-        </div>
+        class="w-full h-auto object-contain px-8 pb-16"
+      />
+      <div class="absolute -bottom-2 left-4 sm:left-8 drop-shadow-xl z-10 w-[200px] text-clay">
+        <svg viewBox="0 0 240 110" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+          <!-- Left Tail -->
+          <path d="M 10,40 L 50,40 L 50,100 L 10,100 L 25,70 Z" fill="currentColor" />
+          <path d="M 10,40 L 50,40 L 50,100 L 10,100 L 25,70 Z" fill="black" fill-opacity="0.15" />
+          
+          <!-- Right Tail -->
+          <path d="M 230,40 L 190,40 L 190,100 L 230,100 L 215,70 Z" fill="currentColor" />
+          <path d="M 230,40 L 190,40 L 190,100 L 230,100 L 215,70 Z" fill="black" fill-opacity="0.15" />
+
+          <!-- Left Fold -->
+          <path d="M 30,80 L 50,76 L 50,100 Z" fill="currentColor" />
+          <path d="M 30,80 L 50,76 L 50,100 Z" fill="black" fill-opacity="0.3" />
+
+          <!-- Right Fold -->
+          <path d="M 210,80 L 190,76 L 190,100 Z" fill="currentColor" />
+          <path d="M 210,80 L 190,76 L 190,100 Z" fill="black" fill-opacity="0.3" />
+          
+          <!-- Front Ribbon Band -->
+          <path d="M 30,20 Q 120,0 210,20 L 210,80 Q 120,60 30,80 Z" fill="currentColor" />
+          
+          <!-- Text Paths -->
+          <defs>
+            <path id="main-text-path" d="M 30,56 Q 120,36 210,56" />
+            <path id="sub-text-path" d="M 30,70 Q 120,50 210,70" />
+          </defs>
+          
+          <!-- Text Elements -->
+          <text text-anchor="middle" class="text-cream font-display" fill="currentColor" style="font-size: 32px;">
+            <textPath href="#main-text-path" startOffset="50%">13+</textPath>
+          </text>
+          
+          <text text-anchor="middle" class="text-cream/90 uppercase" fill="currentColor" style="font-size: 9px; letter-spacing: 0.25em;">
+            <textPath href="#sub-text-path" startOffset="50%">Years of Excellence</textPath>
+          </text>
+        </svg>
       </div>
     </div>
   </div>
