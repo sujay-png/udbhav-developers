@@ -408,6 +408,32 @@ export const projects: Project[] = [
           "/src/assets/images/udbahv-chinmaya/August 2026/SAI_5183.webp",
           "/src/assets/images/udbahv-chinmaya/August 2026/SAI_5184.webp",
         ]
+      },
+      {
+        title: "Project Updates ( September 15th 2026 )",
+        images: [
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0116.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0119.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0122.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0124.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0129.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0131.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0137.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0142.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0145.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0153.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0155.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0157.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0164.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0184.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0201.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0204.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0206.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0211.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/WhatsApp Image 2026-09-10 at 5.13.40 PM (1).webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/WhatsApp Image 2026-09-10 at 5.13.40 PM (2).webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/WhatsApp Image 2026-09-10 at 5.13.40 PM.webp"
+        ]
       }
 
     ]
