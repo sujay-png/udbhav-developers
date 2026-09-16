@@ -412,12 +412,12 @@ export const projects: Project[] = [
       {
         title: "Project Updates ( September 15th 2026 )",
         images: [
-          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0116.webp",
-          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0119.webp",
           "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0122.webp",
-          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0124.webp",
           "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0129.webp",
           "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0131.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0116.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0119.webp",
+          "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0124.webp",
           "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0137.webp",
           "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0142.webp",
           "/src/assets/images/udbahv-chinmaya/september 2026/SAI_0145.webp",
