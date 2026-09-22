@@ -1,11 +1,14 @@
 ---
+import Footer from "@/components/layout/Footer.astro";
+import "@/styles/global.css";
+
 const floorPlans = [
   {
     id: 1,
     series: "Series No. 1",
     title: "3BHK 1730 Sft",
     config: "3 BHK, 1,730 sq.ft.",
-    views: "Front View",
+    views: "101, 201, 301, 401, 501",
     image: "/images/3bhk  flats in kadri series 1.webp",
   },
   {
@@ -13,7 +16,7 @@ const floorPlans = [
     series: "Series No. 1",
     title: "3BHK 1730 Sft (Top View).",
     config: "3BHK 1730 Sft (Top View).",
-    views: "Top View",
+    views: "101, 201, 301, 401, 501",
     image: "/images/3 bhk kadri flats series 1 (top view).webp",
   },
   {
@@ -21,7 +24,7 @@ const floorPlans = [
     series: "Series No. 2",
     title: "3BHK 1715 Sft",
     config: "3 BHK, 1,715 sq.ft.",
-    views: "Front View",
+    views: "102, 202, 302, 402, 502",
     image: "/images/chinmaya 3 bhk series 2.webp",
   },
   {
@@ -29,7 +32,7 @@ const floorPlans = [
     series: "Series No. 2",
     title: "3BHK 1715 Sft (Top View)",
     config: "3 BHK, 1,715 sq.ft.",
-    views: "Top View",
+    views: "102, 202, 302, 402, 502",
     image: "/images/Chinmaya series 2 top view.webp",
   },
   {
@@ -37,7 +40,7 @@ const floorPlans = [
     series: "Series No. 3",
     title: "3BHK 1795 Sft",
     config: "3 BHK, 1,795 sq.ft.",
-    views: "Front View",
+    views: "103, 203, 303, 403, 503",
     image: "/images/Chinmaya series 3.webp",
   },
   {
@@ -45,7 +48,7 @@ const floorPlans = [
     series: "Series No. 3",
     title: "3BHK 1795 Sft (Top View)",
     config: "3 BHK, 1,795 sq.ft.",
-    views: "Top View",
+    views: "103, 203, 303, 403, 503",
     image: "/images/chinmaya series 3 top view.webp",
   },
   {
@@ -53,7 +56,7 @@ const floorPlans = [
     series: "Series No. 4",
     title: "3BHK 1820 Sft",
     config: "3 BHK, 1,820 sq.ft.",
-    views: "Front View",
+    views: "104, 204, 304, 404, 504",
     image: "/images/Series 4- 3 bhk.webp",
   },
   {
@@ -61,7 +64,7 @@ const floorPlans = [
     series: "Series No. 4",
     title: "3BHK 1820 Sft (Top View)",
     config: "3 BHK, 1,820 sq.ft.",
-    views: "Top View",
+    views: "104, 204, 304, 404, 504",
     image: "/images/Series 4 top view.webp",
   },
   {
@@ -69,7 +72,7 @@ const floorPlans = [
     series: "Series No. 6",
     title: "3BHK 1810 Sft",
     config: "3 BHK, 1,810 sq.ft.",
-    views: "Front View",
+    views: "106, 206, 306, 406, 506",
     image: "/images/series 6.webp",
   },
   {
@@ -77,7 +80,7 @@ const floorPlans = [
     series: "Series No. 6",
     title: "3BHK 1810 Sft (Top View)",
     config: "3 BHK, 1,810 sq.ft.",
-    views: "Top View",
+    views: "106, 206, 306, 406, 506",
     image: "/images/series 6 top view.webp",
   },
   {
@@ -85,7 +88,7 @@ const floorPlans = [
     series: "Series No. 7",
     title: "3BHK 1810 Sft",
     config: "3 BHK, 1,765 sq.ft.",
-    views: "Front View",
+    views: "107, 207, 307, 407, 507",
     image: "/images/series 7.webp",
   },
   {
@@ -93,7 +96,7 @@ const floorPlans = [
     series: "Series No. 7",
     title: "3BHK 1810 Sft (Top View)",
     config: "3 BHK, 1,765 sq.ft.",
-    views: "Top View",
+    views: "107, 207, 307, 407, 507",
     image: "/images/Series 7 top view.webp",
   },
   {
@@ -101,7 +104,7 @@ const floorPlans = [
     series: "Series No. 8",
     title: "3BHK 1880 Sft",
     config: "3 BHK, 1880 sq.ft.",
-    views: "Front View",
+    views: "108, 208, 308, 408, 508",
     image: "/images/series 8.webp",
   },
   {
@@ -109,7 +112,7 @@ const floorPlans = [
     series: "Series No. 8",
     title: "3BHK 1880 Sft (Top View)",
     config: "3 BHK, 1880 sq.ft.",
-    views: "Top View",
+    views: "108, 208, 308, 408, 508",
     image: "/images/series 8 top view.webp",
   },
 ];
@@ -129,7 +132,7 @@ const floorPlans = [
     />
     <style>
       :root {
-        --ink: #211d1a;
+        --ink: #0c0c0c;
         --ink-soft: #5b5349;
         --paper: #ffffff;
         --paper-soft: #f7f1e7;
@@ -186,7 +189,7 @@ const floorPlans = [
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        font-size: 0.82rem;
+        font-size: 0.95rem;
         font-weight: 600;
         letter-spacing: 0.02em;
         color: var(--red);
@@ -200,19 +203,20 @@ const floorPlans = [
       }
 
       h2.section-title {
-        font-family: var(--font-body);
+        font-family: var(--font-display);
         font-weight: 700;
         font-size: clamp(1.55rem, 2.4vw, 2.1rem);
         line-height: 1.2;
         margin: 0 0 14px;
-        max-width: 22ch;
+        max-width: 23ch;
         color: var(--ink);
       }
       p.section-lede {
-        color: var(--ink-soft);
+        color: var(--ink);
         max-width: 62ch;
-        font-size: 1rem;
+        font-size: 1.35rem;
         margin: 0 0 40px;
+        font-weight: normal;
       }
 
       /* ---------------- NAV ---------------- */
@@ -289,9 +293,12 @@ const floorPlans = [
       }
       .hero-grid {
         display: grid;
-        grid-template-columns: 1.02fr 1fr;
-        gap: 56px;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
         align-items: center;
+      }
+      .hero-copy {
+        padding-left: max(32px, calc((80vw - 1170px) / 2 + 32px));
       }
       .hero h1 {
         font-family: var(--font-display);
@@ -303,8 +310,8 @@ const floorPlans = [
         max-width: 13ch;
       }
       .hero .lede {
-        font-size: 1.06rem;
-        color: var(--ink-soft);
+        font-size: 1.35rem;
+        color: rgb(14 15 16);
         max-width: 46ch;
         margin: 0 0 30px;
         padding-left: 16px;
@@ -332,6 +339,7 @@ const floorPlans = [
       .btn-primary {
         background: var(--red);
         color: #fff;
+        padding: 15px 53px;
       }
       .btn-primary:hover {
         background: var(--red-deep);
@@ -357,12 +365,13 @@ const floorPlans = [
         position: relative;
       }
       .hero-media img {
+        margin-left: -60px;
         width: 100%;
-        height: 446px;
+        height: 495px;
         object-fit: cover;
-        border-radius: 5px;
+        border-radius: 5px 0 0 5px;
         display: block;
-        box-shadow: 0 43px 122px -7px #211d1a;
+        box-shadow: -15px 25px 60px rgba(0, 0, 0, 0.12);
       }
       .hero-media .tag {
         position: absolute;
@@ -388,8 +397,20 @@ const floorPlans = [
         .hero-grid {
           grid-template-columns: 1fr;
         }
+        .hero-copy {
+          padding-right: max(32px, calc((100vw - 1180px) / 2 + 32px));
+        }
+        .hero-media img {
+          border-radius: 0;
+        }
         .hero-media .tag {
           display: none;
+        }
+      }
+      @media (max-width: 640px) {
+        .hero-copy {
+          padding-left: 20px;
+          padding-right: 20px;
         }
       }
 
@@ -548,12 +569,14 @@ const floorPlans = [
         flex-wrap: wrap;
       }
       .fp-note {
-        font-size: 0.9rem;
+        font-size: 1rem;
         color: var(--ink-soft);
         white-space: nowrap;
+        font-weight: 900;
       }
       .fp-note strong {
-        color: var(--red);
+        color: var(--ink);
+        font-size: 1.35rem;
       }
       .fp-grid {
         display: grid;
@@ -734,13 +757,14 @@ const floorPlans = [
         margin-bottom: 2px;
       }
       .amen-text span {
-        color: var(--ink-soft);
-        font-size: 0.94rem;
+        color: var(--ink);
+        font-size: 1.35rem;
       }
       .amen-side p {
-        color: var(--ink-soft);
+        color: var(--ink);
         margin: 0 0 28px;
         max-width: 44ch;
+        font-size: 1.35rem;
       }
       @media (max-width: 900px) {
         .amen-grid {
@@ -757,8 +781,8 @@ const floorPlans = [
       .cta-strip-inner {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 24px;
+
+        gap: 111px;
         flex-wrap: wrap;
       }
       .cta-strip h3 {
@@ -805,7 +829,7 @@ const floorPlans = [
         padding: 13px 0;
         border-top: 1px solid var(--line);
         font-size: 0.93rem;
-        color: var(--ink-soft);
+        color: var(--ink);
       }
       .loc-list li:last-child {
         border-bottom: 1px solid var(--line);
@@ -854,7 +878,7 @@ const floorPlans = [
       }
       .adv-card p {
         margin: 0;
-        color: var(--ink-soft);
+        color: var(--ink);
         font-size: 0.94rem;
       }
       .adv-card.wide {
@@ -932,7 +956,7 @@ const floorPlans = [
         align-items: start;
       }
       .excl-copy p {
-        color: var(--ink-soft);
+        color: var(--ink);
         margin: 0 0 20px;
         max-width: 50ch;
       }
@@ -975,7 +999,7 @@ const floorPlans = [
       }
       .offers-list h4 {
         margin: 0 0 16px;
-        font-size: 1rem;
+        font-size: 1.5rem;
         font-weight: 700;
         color: var(--ink);
       }
@@ -996,7 +1020,7 @@ const floorPlans = [
         gap: 64px;
       }
       .split-block p {
-        color: var(--ink-soft);
+        color: var(--ink);
         margin: 0;
         max-width: 50ch;
       }
@@ -1017,11 +1041,33 @@ const floorPlans = [
         border-top: 1px solid var(--line);
         border-bottom: 1px solid var(--line);
       }
+      .line-clamp-4 {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .grid-read-more-btn {
+        background: none;
+        border: none;
+        color: var(--red);
+        cursor: pointer;
+        padding: 0;
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-top: 8px;
+        align-self: flex-start;
+      }
+      .grid-read-more-btn:hover {
+        text-decoration: underline;
+      }
       .test-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 24px;
         margin-top: 8px;
+        align-items: start;
       }
       .test-card {
         background: #fff;
@@ -1069,7 +1115,7 @@ const floorPlans = [
         display: grid;
         grid-template-columns: repeat(7, 1fr);
         gap: 0;
-        margin: 56px 0 0;
+        margin: 56px -72px 0;
       }
       .journey-line::before {
         content: "";
@@ -1094,19 +1140,15 @@ const floorPlans = [
         width: 48px;
         height: 48px;
         border-radius: 50%;
-        background: #fff;
+        background: var(--red);
         border: 2px solid var(--red);
-        color: var(--red);
+        color: #fff;
         font-weight: 700;
         font-size: 1.05rem;
         display: flex;
         align-items: center;
         justify-content: center;
         margin-bottom: 18px;
-      }
-      .j-step:first-child .j-num {
-        background: var(--red);
-        color: #fff;
       }
       .j-title {
         font-size: 0.92rem;
@@ -1170,15 +1212,16 @@ const floorPlans = [
       }
       .spec-card li {
         font-size: 0.88rem;
-        color: var(--ink-soft);
+        color: var(--ink);
         padding-left: 14px;
         position: relative;
+        font-weight: normal;
       }
       .spec-card li::before {
         content: "—";
         position: absolute;
         left: 0;
-        color: var(--line);
+        color: var(--ink);
       }
       @media (max-width: 900px) {
         .specs-grid {
@@ -1195,16 +1238,82 @@ const floorPlans = [
       .updates {
         background: var(--paper);
         padding: 92px 0;
-        text-align: center;
       }
-      .updates .placeholder {
-        margin-top: 24px;
-        border: 1.5px dashed var(--line);
-        border-radius: 6px;
-        padding: 64px 24px;
-        color: var(--ink-soft);
-        font-size: 0.92rem;
-        background: var(--paper-soft);
+      .update-date-title {
+        font-family: Georgia, serif;
+        font-size: 1.4rem;
+        color: var(--ink);
+        border-left: 4px solid var(--red);
+        padding-left: 16px;
+        margin-top: 48px;
+        margin-bottom: -16px;
+        text-align: left;
+      }
+      .gallery-wrapper {
+        position: relative;
+        margin: 40px auto 0;
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+      }
+      .gallery-scroll {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding-bottom: 16px;
+      }
+      .gallery-scroll::-webkit-scrollbar {
+        display: none;
+      }
+      .gallery-scroll img {
+        flex: 0 0 85%;
+        max-width: 400px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 12px;
+        scroll-snap-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      @media (min-width: 768px) {
+        .gallery-scroll img {
+          flex: 0 0 calc(33.333% - 16px);
+        }
+      }
+      .gallery-arrow {
+        position: absolute;
+        top: calc(50% - 8px);
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--red);
+        color: white;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 2;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        font-size: 1.2rem;
+        transition: transform 0.2s;
+      }
+      .gallery-arrow:hover {
+        transform: translateY(-50%) scale(1.1);
+      }
+      .gallery-arrow.left-arrow {
+        left: -20px;
+      }
+      .gallery-arrow.right-arrow {
+        right: -20px;
+      }
+      @media (max-width: 860px) {
+        .gallery-arrow {
+          display: none;
+        }
       }
 
       /* FAQ */
@@ -1233,7 +1342,7 @@ const floorPlans = [
         flex-shrink: 0;
       }
       .faq-a {
-        color: var(--ink-soft);
+        color: var(--ink);
         font-size: 0.95rem;
         margin: 0;
         max-width: 70ch;
@@ -1276,6 +1385,71 @@ const floorPlans = [
         color: #fff;
       }
     </style>
+    <script>
+      if (!document.body.dataset.gridReadMoreInit) {
+        document.body.dataset.gridReadMoreInit = "true";
+
+        document.addEventListener("click", (e) => {
+          const galleryArrow = (e.target as HTMLElement).closest(
+            ".gallery-arrow",
+          );
+          if (galleryArrow) {
+            const wrapper = galleryArrow.closest(".gallery-wrapper");
+            const scrollContainer = wrapper?.querySelector(".gallery-scroll");
+            if (scrollContainer) {
+              const firstImg = scrollContainer.querySelector("img");
+              const scrollAmount = firstImg
+                ? firstImg.clientWidth + 16
+                : scrollContainer.clientWidth * 0.8;
+              if (galleryArrow.classList.contains("left-arrow")) {
+                scrollContainer.scrollBy({
+                  left: -scrollAmount,
+                  behavior: "smooth",
+                });
+              } else {
+                scrollContainer.scrollBy({
+                  left: scrollAmount,
+                  behavior: "smooth",
+                });
+              }
+            }
+            return;
+          }
+
+          const target = (e.target as HTMLElement).closest(
+            ".grid-read-more-btn",
+          ) as HTMLButtonElement | null;
+          if (!target) return;
+
+          const container = target.closest(".group");
+          const quote = container?.querySelector(".quote-text") as HTMLElement;
+
+          if (quote) {
+            // Collapse all other quotes
+            document.querySelectorAll(".quote-text").forEach((otherQuote) => {
+              if (
+                otherQuote !== quote &&
+                !otherQuote.classList.contains("line-clamp-4")
+              ) {
+                otherQuote.classList.add("line-clamp-4");
+                const otherBtn = otherQuote
+                  .closest(".group")
+                  ?.querySelector(".grid-read-more-btn");
+                if (otherBtn) {
+                  otherBtn.textContent = "Read more";
+                  otherBtn.setAttribute("aria-expanded", "false");
+                }
+              }
+            });
+
+            quote.classList.toggle("line-clamp-4");
+            const isExpanded = !quote.classList.contains("line-clamp-4");
+            target.textContent = isExpanded ? "Read less" : "Read more";
+            target.setAttribute("aria-expanded", isExpanded.toString());
+          }
+        });
+      }
+    </script>
   </head>
   <body>
     <header class="nav">
@@ -1308,36 +1482,33 @@ const floorPlans = [
 
     <!-- HERO -->
     <section class="hero">
-      <div class="wrap">
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <div class="eyebrow">
-              Kadri's New Premium Residential Project Limited To Only 40 Luxury
-              Homes
-            </div>
-            <h1>Luxury 3 BHK Flats For Sale In Kadri Mangalore</h1>
-            <p class="lede">
-              Located in the area of independent houses on the peaceful
-              Chandrika Layout at Swami Vivekananda road/ Pinto's lane, Kadri
-              Kambla road, one of the most pleasant residential streets in Kadri
-              area.
-            </p>
-            <div class="hero-ctas">
-              <a
-                href="/images/udbahv-chinmaya/CHINMAYA-BROCHURE.pdf"
-                target="_blank"
-                class="btn btn-primary">Download Free Brochure</a
-              >
-              <a href="/contact" class="btn btn-outline">Check 3 BHK Flats</a>
-            </div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            Kadri's New Premium Residential Project Limited To Only 40 Luxury
+            Homes
           </div>
-          <div class="hero-media">
-            <img
-              src="/images/luxury apartment mangalore.webp"
-              alt="Udbhav Chinmaya apartment building"
-            />
-            <!-- <div class="tag"><strong>₹1.60 Cr*</strong>Spacious 3 BHK, 1,715–1,880 sq.ft.</div> -->
+          <h1>Luxury 3 BHK Flats For Sale In Kadri Mangalore</h1>
+          <p class="lede">
+            Located in the area of independent houses on the peaceful Chandrika
+            Layout at Swami Vivekananda road/ Pinto's lane, Kadri Kambla road,
+            one of the most pleasant residential streets in Kadri area.
+          </p>
+          <div class="hero-ctas">
+            <a href="/contact" class="btn btn-primary">Enquire 3 BHK Flat</a>
+            <a
+              href="/images/udbahv-chinmaya/CHINMAYA-BROCHURE.pdf"
+              target="_blank"
+              class="btn btn-outline">Download Free Brochure</a
+            >
           </div>
+        </div>
+        <div class="hero-media">
+          <img
+            src="/images/luxury apartment mangalore.webp"
+            alt="Udbhav Chinmaya apartment building"
+          />
+          <!-- <div class="tag"><strong>₹1.60 Cr*</strong>Spacious 3 BHK, 1,715–1,880 sq.ft.</div> -->
         </div>
       </div>
 
@@ -1349,28 +1520,28 @@ const floorPlans = [
                 ><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z"
                 ></path></svg
               >
-            </div><span>RERA Approved</span>
+            </div><span><b>RERA Approved</b></span>
           </div>
           <div class="badge-item">
             <div class="badge-icon">
               <svg viewBox="0 0 24 24" stroke-width="1.8"
                 ><path d="M3 12l9-9 9 9M5 10v10h14V10"></path></svg
               >
-            </div><span>Peaceful Location</span>
+            </div><span class="text-bold"><b>Peaceful Location</b></span>
           </div>
           <div class="badge-item">
             <div class="badge-icon">
               <svg viewBox="0 0 24 24" stroke-width="1.8"
                 ><path d="M12 3v18M4 8l8-5 8 5M4 8v9M20 8v9"></path></svg
               >
-            </div><span>Vaastu-Compliant</span>
+            </div><span><b>Vaastu-Compliant</b></span>
           </div>
           <div class="badge-item">
             <div class="badge-icon">
               <svg viewBox="0 0 24 24" stroke-width="1.8"
                 ><path d="M3 17l6-6 4 4 8-8M15 7h6v6"></path></svg
               >
-            </div><span>High Return On Investment</span>
+            </div><span><b>High Return On Investment</b></span>
           </div>
         </div>
       </div>
@@ -1406,8 +1577,8 @@ const floorPlans = [
             <div>
               Project Status &nbsp;<strong>Under Active Construction</strong>
             </div>
+            <a href="/contact" class="rera-link">View RERA document &rarr;</a>
           </div>
-          <a href="/contact" class="rera-link">View RERA document &rarr;</a>
         </div>
       </div>
     </section>
@@ -1419,9 +1590,9 @@ const floorPlans = [
           <div>
             <div class="eyebrow">Floor Plan</div>
             <h2 class="section-title">Udbhav Chinmaya 3 BHK Floor Plan</h2>
-          </div>
-          <div class="fp-note">
-            Only <strong>a few units</strong> remaining in this series
+            <div class="fp-note">
+              <strong> Only a few units remaining in this series</strong>
+            </div>
           </div>
         </div>
         <div class="fp-grid" style="display:block;">
@@ -1475,7 +1646,7 @@ const floorPlans = [
                   >
                 </li>
                 <li>
-                  <span>Views</span><strong id="fp-views-text"
+                  <span>Flat No</span><strong id="fp-views-text"
                     >{floorPlans[0].views}</strong
                   >
                 </li>
@@ -1486,14 +1657,17 @@ const floorPlans = [
                 style="margin-top: 24px;">Enquire This Layout</a
               >
             </div>
-          </div>
-          <div class="fp-arrows" style="display:flex; gap:16px;">
-            <button class="carousel-arrow left-arrow" id="fp-prev"
-              >&larr;</button
+            <div
+              class="fp-arrows"
+              style="display:flex; gap:16px; justify-content: center;"
             >
-            <button class="carousel-arrow right-arrow" id="fp-next"
-              >&rarr;</button
-            >
+              <button class="carousel-arrow left-arrow" id="fp-prev"
+                >&larr;</button
+              >
+              <button class="carousel-arrow right-arrow" id="fp-next"
+                >&rarr;</button
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -1516,7 +1690,7 @@ const floorPlans = [
         function updateActiveCard(index) {
           cards.forEach((c) => c.classList.remove("active"));
           const seriesStartIndex = Math.floor(index / 2) * 2;
-          
+
           if (cards[seriesStartIndex]) {
             cards[seriesStartIndex].classList.add("active");
             cards[seriesStartIndex].scrollIntoView({
@@ -1568,11 +1742,29 @@ const floorPlans = [
       <div class="wrap">
         <div class="eyebrow">Amenities</div>
         <h2 class="section-title" style="max-width:34ch">
-          Luxury Apartments For Sale In Mangalore — Udbhav Chinmaya Kadri,
-          Managlore
+          Luxury 3 BHK Apartments In Mangalore
         </h2>
+        <h3 style="font-size: 1.7rem; margin-top: 0;">Udbhav Chinmaya Kadri</h3>
         <div class="amen-grid" style="margin-top:36px">
-          <div class="amen-side">
+          <div
+            class="amen-side"
+            style="position: sticky; top: 120px; align-self: start;"
+          >
+            <!-- Youtube vedio-->
+            <div class="yt-vedios" style="margin-bottom:24px">
+              <div class="yt-vedio">
+                <iframe
+                  width="100%"
+                  height="315"
+                  src="https://www.youtube.com/embed/kknoLaXHTaQ"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                >
+                </iframe>
+              </div>
+            </div>
             <p>
               A single tower housing society limited to only 40 luxury homes
               located in residential chandrika layout near pinto's lane, kadri
@@ -1669,9 +1861,11 @@ const floorPlans = [
       <div class="wrap">
         <div class="eyebrow">Location</div>
         <h2 class="section-title" style="max-width:30ch">
-          Luxury 3 BHK Flats in Kadri — Located At Peaceful Residential Lane
-          Area
+          Luxury 3 BHK Flats in Kadri
         </h2>
+        <h3 style="font-size: 1.7rem; margin-top: 0;">
+          Located At Peaceful Residential Lane Area
+        </h3>
         <p class="section-lede">
           Udbhav Chinmaya has chosen the kind of address where families have
           lived here for two &amp; three generations. The street is lined with
@@ -1713,7 +1907,8 @@ const floorPlans = [
             </ul>
           </div>
           <div class="loc-col">
-            <h4>Everyday Needs Nearby</h4>
+            <!-- <h4>Everyday Needs Nearby</h4> -->
+            <h4></h4>
             <ul class="loc-list">
               <li><span>Daily retail store</span><span>within 500m</span></li>
               <li><span>Vinaya Hospital</span><span>approx 550 m</span></li>
@@ -1805,8 +2000,7 @@ const floorPlans = [
               social infrastructure, cultural landmarks and established
               communities that no other surrounding area can replicate.
             </p>
-          </div>
-          <div>
+            &nbsp;
             <ul class="her-list">
               <li>
                 <strong>Kadri Manjunath Temple</strong> — one of the region's oldest
@@ -1830,6 +2024,14 @@ const floorPlans = [
               single-driver growth corridors.
             </p>
           </div>
+          <div>
+            <img
+              src="/images/location map- luxury flats 3bhk.webp"
+              width="100%"
+              height="350px"
+              alt=""
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -1839,9 +2041,9 @@ const floorPlans = [
       <div class="wrap">
         <div class="eyebrow">Exclusivity</div>
         <h2 class="section-title" style="max-width:30ch">
-          Only 40 Exclusive Luxury Apartments In Kadri Mangalore
+          Only 40 Exclusive Luxury Homes
         </h2>
-        <div class="excl-grid" style="margin-top:36px">
+        <div class="excl-grid" style="margin-top:36px ">
           <div class="excl-copy">
             <p>
               Limited to only 40 luxury homes in prime kadri address offers more
@@ -1886,7 +2088,8 @@ const floorPlans = [
       <div class="wrap cta-strip-inner">
         <div>
           <h3>Only a Few Luxury 3 BHK Flats Available</h3>
-          <p>Kadri's most exclusive residential address — 40 homes only.</p>
+          <p>Udbhav Chinmaya's 3BHK apartment is a great choice to prepare</p>
+          <p>for a return from gulf/abroad.</p>
         </div>
         <a href="/contact" class="btn btn-white"
           >Schedule Your Site Visit &rarr;</a
@@ -1896,483 +2099,672 @@ const floorPlans = [
 
     <!-- VAASTU + TRACK RECORD -->
     <section class="split-text">
-      <div class="wrap split-grid">
-        <div class="split-block">
-          <div class="eyebrow">Design Philosophy</div>
-          <h2 class="section-title">Vaastu-Compliant 3 BHK Apartment Design</h2>
-          <p>
-            Vaastu compliance is a non-negotiable checklist item for families
-            from Tulu-speaking coastal Karnataka. Udbhav Chinmaya's explicit
-            Vaastu compliance design addresses this preference directly. The
-            apartment layouts have been designed with Vaastu-prescribed layout
-            orientation, room placement, entry direction and proportions.
-            Chinmaya's small scale character allows the architect to optimize
-            Vaastu standards for each and every 40 apartments to its optimum.
-          </p>
-        </div>
-        <div class="split-block">
-          <div class="eyebrow">Track Record</div>
-          <h2 class="section-title">
-            Udbhav Developers Mangalore Track Record
-          </h2>
-          <p style="margin-bottom:16px;">
-            Udbhav Developers was established in 2012 by a Kadri-based
-            entrepreneur named Mr. Kiran BK, a qualified civil engineer with
-            over two decades of domestic and international real estate
-            development experience. Now with a focus on premium small-format
-            projects in Kadri-Mangalore.
-          </p>
-          <p>
-            Udbhav Developers has delivered some of the landmark structures
-            across Mangalore, including Udbhav Shanthi (Completion 2023), Udbhav
-            Square (Kottara), KRK Aayush (2022), Marcel's Maison (2025) &amp;
-            Bhaskar Coconut Groves (2015).
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section class="testimonials">
       <div class="wrap">
-        <div class="eyebrow">Testimonials</div>
-        <h2 class="section-title">What Families Say About Udbhav Developers</h2>
-        <div class="test-grid">
-          <div class="test-card">
-            <div class="quote-mark">&ldquo;</div>
-            <p>
-              My wife and I own and reside in one of Udbhav Developer's recent
-              projects. We are very happy with our decision, and all guests and
-              visitors to our home have commended the quality and look of the
-              property. Kiran the owner of the firm, and his dedicated and
-              highly capable staff, notably Vignesh, are friendly, approachable,
-              and responsive even post-handover of property. Here are our
-              specific technical points: A) Timely execution of construction
-              work B) Prompt and hassle free hand over of property and smooth
-              formalities. C) Premium materials used and so is build quality. No
-              sign of unskilled labour/technicians. D) Good floor plan, good use
-              of available space without making common areas feel cramped. D)
-              Good amenities as promised upfront, with a touch of something
-              extra, for example the thoughtfully planned greenery on terrace
-              and flower gardens.
-            </p>
-            <div class="who">Mr. Nagaraj Panyam</div>
-          </div>
-          <div class="test-card">
-            <div class="quote-mark">&ldquo;</div>
-            <p>
-              I have known Mr. Kiran B.K from the time he was in Oman, the
-              U.A.E, then in U.K followed by returning to Mangalore to being a
-              developer. I had no doubt in his abilities, he proved himself
-              first in his residential projects and now in the commercial
-              project. Having travelled around the world and being resident of a
-              few countries such as U.A.E and Canada, I find the projects
-              completed by Udbhav Developers equal in quality and standards to
-              international buildings. The amenities, structure and engineering
-              behind Udbhav developed buildings are world class. I wish Kiran
-              B.K and team all the very best in their future endeavours,
-              Mangalore needs more such quality buildings, Keep up the good
-              work!
-            </p>
-            <div class="who">Rohit Damodar</div>
-          </div>
-          <div class="test-card">
-            <div class="quote-mark">&ldquo;</div>
-            <p>
-              We are the proud owners of one of the apartments build by Udbhav
-              Developers in their first venture. The build quality is good and
-              they have used branded fittings in plumbing and electricals. They
-              are very approachable and easy to work with and have always
-              answered our questions patiently and positively. We would highly
-              recommend them.
-            </p>
-            <div class="who">
-              Mr. Anuroop Vijaya Kumar &amp; Mrs. Karthika Mohan
-            </div>
-            <div class="where">Mangalore</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7 STEP JOURNEY -->
-    <section class="journey">
-      <div class="wrap">
-        <div class="eyebrow">Buying Process</div>
-        <h2 class="section-title" style="max-width:30ch">
-          Own 3 BHK Flat In Kadri In 7-Simple Steps
-        </h2>
-        <p class="section-lede">
-          Buying an apartment in Mangalore doesn't have to be overwhelming. From
-          your first inquiry to handing over the keys, our 7 step process keeps
-          things transparent and simple so you can make an informed decision.
-        </p>
-        <div class="journey-line">
-          <div class="j-step">
-            <div class="j-num">1</div><div class="j-title">
-              Enquiry &amp; Requirement Discussion
-            </div>
-          </div>
-          <div class="j-step">
-            <div class="j-num">2</div><div class="j-title">
-              Site Visit / Virtual Tour
-            </div>
-          </div>
-          <div class="j-step">
-            <div class="j-num">3</div><div class="j-title">
-              Legal Verification
-            </div>
-          </div>
-          <div class="j-step">
-            <div class="j-num">4</div><div class="j-title">Unit Selection</div>
-          </div>
-          <div class="j-step">
-            <div class="j-num">5</div><div class="j-title">
-              Home Loan Assistance
-            </div>
-          </div>
-          <div class="j-step">
-            <div class="j-num">6</div><div class="j-title">
-              Booking &amp; Agreement
-            </div>
-          </div>
-          <div class="j-step">
-            <div class="j-num">7</div><div class="j-title">
-              Handover &amp; Post-Purchase Support
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA STRIP 2 -->
-    <div class="cta-strip">
-      <div class="wrap cta-strip-inner">
-        <div>
-          <h3>Book Your Dream Home Today</h3>
-          <p>Limited Luxury 3 BHK Flats Available</p>
-        </div>
-        <a href="/contact" class="btn btn-white"
-          >Schedule Your Site Visit &rarr;</a
+        <div class="eyebrow">Track Record</div>
+        <h2
+          class="section-title"
+          style="font-size:clamp(1.55rem, 2.4vw, 2.1rem);"
         >
+          Udbhav Developers Mangalore
+        </h2>
+
+        <div class="split-grid" style="margin-top:36px;">
+          <div class="split-block">
+            <img
+              src="/images/udbhav-developers-kiranbk.webp"
+              alt=""
+              style="border-radius:6px; width:100%; object-fit:cover;"
+            />
+          </div>
+          <div class="split-block">
+            <p style="margin-bottom:16px;">
+              Udbhav Developers was established in 2012 by a Kadri-based
+              entrepreneur named Mr. Kiran BK, a qualified civil engineer with
+              over two decades of domestic and international real estate
+              development experience. Now with a focus on premium small-format
+              projects in Kadri-Mangalore.
+            </p>
+
+            <p style="margin:0;">
+              Udbhav Developers has delivered some of the landmark structures
+              across Mangalore, including Udbhav Shanthi (Completion 2023),
+              Udbhav Square (Kottara), KRK Aayush (2022), Marcel's Maison (2025)
+              &amp; Bhaskar Coconut Groves (2015).Over the last decade, each
+              completed development has consistently fulfilled buyer
+              expectations through transparent delivery, uncompromising
+              structural quality, and strong long-term property appreciation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="wrap">
+      <div class="eyebrow">Testimonials</div>
+      <h2 class="section-title">What Families Say About Udbhav Developers</h2>
+      <div class="test-grid">
+        <div class="test-card group">
+          <div class="quote-mark">&ldquo;</div>
+          <p class="quote-text line-clamp-4">
+            My wife and I own and reside in one of Udbhav Developer's recent
+            projects. We are very happy with our decision, and all guests and
+            visitors to our home have commended the quality and look of the
+            property. Kiran the owner of the firm, and his dedicated and highly
+            capable staff, notably Vignesh, are friendly, approachable, and
+            responsive even post-handover of property. Here are our specific
+            technical points: A) Timely execution of construction work B) Prompt
+            and hassle free hand over of property and smooth formalities. C)
+            Premium materials used and so is build quality. No sign of unskilled
+            labour/technicians. D) Good floor plan, good use of available space
+            without making common areas feel cramped. D) Good amenities as
+            promised upfront, with a touch of something extra, for example the
+            thoughtfully planned greenery on terrace and flower gardens.
+          </p>
+          <button class="grid-read-more-btn" aria-expanded="false"
+            >Read more</button
+          >
+          <div class="who" style="margin-top: 16px;">Mr. Nagaraj Panyam</div>
+        </div>
+        <div class="test-card group">
+          <div class="quote-mark">&ldquo;</div>
+          <p class="quote-text line-clamp-4">
+            I have known Mr. Kiran B.K from the time he was in Oman, the U.A.E,
+            then in U.K followed by returning to Mangalore to being a developer.
+            I had no doubt in his abilities, he proved himself first in his
+            residential projects and now in the commercial project. Having
+            travelled around the world and being resident of a few countries
+            such as U.A.E and Canada, I find the projects completed by Udbhav
+            Developers equal in quality and standards to international
+            buildings. The amenities, structure and engineering behind Udbhav
+            developed buildings are world class. I wish Kiran B.K and team all
+            the very best in their future endeavours, Mangalore needs more such
+            quality buildings, Keep up the good work!
+          </p>
+          <button class="grid-read-more-btn" aria-expanded="false"
+            >Read more</button
+          >
+          <div class="who" style="margin-top: 16px;">Mr. Rohit Damodar</div>
+        </div>
+        <div class="test-card group">
+          <div class="quote-mark">&ldquo;</div>
+          <p class="quote-text line-clamp-4">
+            We are the proud owners of one of the apartments build by Udbhav
+            Developers in their first venture. The build quality is good and
+            they have used branded fittings in plumbing and electricals. They
+            are very approachable and easy to work with and have always answered
+            our questions patiently and positively. We would highly recommend
+            them.
+          </p>
+          <button class="grid-read-more-btn" aria-expanded="false"
+            >Read more</button
+          >
+          <div class="who" style="margin-top: 16px;">
+            Mr. Anuroop Vijaya Kumar &amp; Mrs. Karthika Mohan
+          </div>
+          <div class="where">Mangalore</div>
+        </div>
+      </div>
+
+      <div class="test-grid">
+        <div class="test-card group">
+          <div class="quote-mark">&ldquo;</div>
+          <p class="quote-text line-clamp-4">
+            I have brought a flat in the first project of Udbhav developers at
+            Mangalore, Nantoor during the construction stage. This is the 5th
+            year of residence after project completion. There have not been any
+            structural issues or seepage issues. The quality of workmanship and
+            dedication shown from Kiran and Udbhav developers in completion of
+            project, delivery in time and quality is excellent. I could see the
+            same quality, workmanship & dedication in their upcoming projects.
+            HAPPY CUSTOMER!!!!!!!!!
+          </p>
+          <button class="grid-read-more-btn" aria-expanded="false"
+            >Read more</button
+          >
+          <div class="who" style="margin-top: 16px;">Mr. Krishnam Raju</div>
+        </div>
+        <div class="test-card group">
+          <div class="quote-mark">&ldquo;</div>
+          <p class="quote-text line-clamp-4">
+            I was referred to Udbhav Developers and Kiran, by one of my friends
+            and have never regretted the decision. Kiran has been spot on with
+            all the work w.r.t the flat and has always made quality a priority.
+            This is what sets Udbhav Developers apart from other builders that I
+            have dealt with. Being abroad most of the time, he has made dealing
+            with him very simple and also provided any timely guidance whenever
+            required (in my case when the registration costs were going to
+            increase the next month, he suggested me to get it done within the
+            same month). All the construction work has been on time and he has
+            gone beyond his actual work to help me find tenants for my current
+            apartment and also suggested lawyers for the khata and rental
+            agreement. All in all, it has been great dealing with Udbhav
+            Developers and Kiran and am sure all flat owners of Bhaskar Coconut
+            groves would feel the same. My best wishes for all your future
+            ventures.
+          </p>
+          <button class="grid-read-more-btn" aria-expanded="false"
+            >Read more</button
+          >
+          <div class="who" style="margin-top: 16px;">Mr. Rayan Cornelio</div>
+        </div>
+        <div class="test-card group">
+          <div class="quote-mark">&ldquo;</div>
+          <p class="quote-text line-clamp-4">
+            I had invested in one of the apartments at Bhaskar Coconut Grooves
+            as this was recommended by one of my friends. As I was out of India,
+            I did not get a chance to look at the site location nor check on the
+            progress of the apartment by myself. However, I was up to date on
+            the progress – this was only because of complete transparency by the
+            staff at BCG, and detailed updates on the project on their website
+            and emails. They helped with all the paper works, including back
+            coordination's etc. I returned to India and this matched with
+            project completion. The schedules were met; the architect, design
+            and specifications were as explained during my purchase – with the
+            best amenities and unmatched Quality. The geographic location was
+            perfect for a peaceful residential complex and also close to NH and
+            city. Mr. Kiran B.K. from BCG and his team were very professional in
+            their approach towards project and always had ‘customer first’
+            attitude. They are very passionate, reliable and committed - this
+            makes me recommend Udbhav Developers Mangalore properties. Best
+            wishes and thank you for the wonderful job.
+          </p>
+          <button class="grid-read-more-btn" aria-expanded="false"
+            >Read more</button
+          >
+          <div class="who" style="margin-top: 16px;">Mr.Varadaraj Shanbhag</div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- SPECIFICATIONS -->
-    <section class="specs">
-      <div class="wrap">
-        <div class="eyebrow">Specifications</div>
-        <h2 class="section-title" style="max-width:36ch">
-          Specifications &amp; Features of Chinmaya Flats In Kadri Mangalore
-        </h2>
-        <p class="section-lede">
-          Udbhav Chinmaya Kadri is Mangalore's new &amp; premium housing
-          society. Take a look at some of the features &amp; specifications of
-          Udbhav Chinmaya:
+  <!-- 7 STEP JOURNEY -->
+  <section class="journey">
+    <div class="wrap">
+      <div class="eyebrow">Buying Process</div>
+      <h2 class="section-title" style="max-width:30ch">
+        Own 3 BHK Flat In Kadri In 7-Simple Steps
+      </h2>
+      <p class="section-lede">
+        Buying an apartment in Mangalore doesn't have to be overwhelming. From
+        your first inquiry to handing over the keys, our 7 step process keeps
+        things transparent and simple so you can make an informed decision.
+      </p>
+      <div class="journey-line">
+        <div class="j-step">
+          <div class="j-num">1</div><div class="j-title">
+            Enquiry &amp; Requirement Discussion
+          </div>
+        </div>
+        <div class="j-step">
+          <div class="j-num">2</div><div class="j-title">
+            Site Visit / Virtual Tour
+          </div>
+        </div>
+        <div class="j-step">
+          <div class="j-num">3</div><div class="j-title">
+            Legal Verification
+          </div>
+        </div>
+        <div class="j-step">
+          <div class="j-num">4</div><div class="j-title">Unit Selection</div>
+        </div>
+        <div class="j-step">
+          <div class="j-num">5</div><div class="j-title">
+            Home Loan Assistance
+          </div>
+        </div>
+        <div class="j-step">
+          <div class="j-num">6</div><div class="j-title">
+            Booking &amp; Agreement
+          </div>
+        </div>
+        <div class="j-step">
+          <div class="j-num">7</div><div class="j-title">
+            Handover &amp; Post-Purchase Support
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP 2 -->
+  <div class="cta-strip">
+    <div class="wrap cta-strip-inner">
+      <div>
+        <h3>Book Your Dream Home Today</h3>
+        <p>Limited Luxury 3 BHK Flats Available.</p>
+      </div>
+      <a href="/contact" class="btn btn-white"
+        >Schedule Your Site Visit &rarr;</a
+      >
+    </div>
+  </div>
+
+  <!-- SPECIFICATIONS -->
+  <section class="specs">
+    <div class="wrap">
+      <div class="eyebrow">Specifications</div>
+      <h2 class="section-title" style="max-width:36ch">
+        Specifications &amp; Features of Chinmaya Flats In Kadri Mangalore
+      </h2>
+      <p class="section-lede">
+        Udbhav Chinmaya Kadri is Mangalore's new &amp; premium housing society.
+        Take a look at some of the features &amp; specifications of Udbhav
+        Chinmaya:
+      </p>
+      <div class="specs-grid">
+        <div class="spec-card">
+          <h4>Structure &amp; Walls</h4><ul>
+            <li>
+              Framed structure built with reinforced cement concrete (RCC).
+            </li>
+            <li>
+              External walls constructed using laterite stone with double
+              plastering.
+            </li>
+            <li>Internal walls built with concrete blocks.</li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h4>Flooring &amp; Wall Cladding</h4><ul>
+            <li>Superior flooring quality 800x800 mm vitrified tiles.</li>
+            <li>
+              Bathroom walls built with Ceramic tiles running up to ceiling
+              height.
+            </li>
+            <li>Bathroom flooring: Designer 600x1200 mm ceramic tiles.</li>
+            <li>
+              Lobbies &amp; Corridors: Finished with granite, Italian marble, or
+              vitrified tiles.
+            </li>
+            <li>Staircase steps: Fitted with 1200x300 mm anti-slip tiles.</li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h4>Doors &amp; Windows</h4><ul>
+            <li>
+              Main door frame: Hardwood frame with an attractive Melamine
+              Polished main door.
+            </li>
+            <li>Main door lock: Equipped with a secure digital lock.</li>
+            <li>
+              Internal doors: Fitted with Masonite door shutters and designer
+              locks.
+            </li>
+            <li>
+              Washroom doors: Built with a Granite/WPC frame and water-resistant
+              FRP shutters.
+            </li>
+            <li>
+              Windows: Aluminium/UPVC glazed windows equipped with MS safety
+              grills and mosquito mesh.
+            </li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h4>Plumbing &amp; Sanitary</h4><ul>
+            <li>
+              Plumbing lines: Superior quality, ISI-certified CPVC/UPVC
+              pressure-tested lines and fittings.
+            </li>
+            <li>
+              Toilets: Equipped with Jaguar or equivalent make EWC (European
+              Water Closet).
+            </li>
+            <li>
+              Bathroom provisions: Plumbing ready for water heaters/geysers.
+            </li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h4>Electrical &amp; Communication</h4><ul>
+            <li>
+              Wiring: Premium Finolex, RR, or equivalent brand electrical
+              wiring.
+            </li>
+            <li>
+              Air conditioning: AC points provided in all bedrooms and halls.
+            </li>
+            <li>
+              Media &amp; Telecom: Telephone and cable TV points installed in
+              the living room and master bedroom.
+            </li>
+            <li>
+              Bathroom electricals: Dedicated geyser points and exhaust fan
+              provisions.
+            </li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h4>Kitchen Features</h4><ul>
+            <li>
+              Counter &amp; Sink: Granite countertop fitted with a stainless
+              steel (SS) single-bowl sink and drainboard.
+            </li>
+            <li>
+              Wall cladding: Ceramic tiles extending 2 feet above the granite
+              counter.
+            </li>
+            <li>
+              Appliances: Sufficient electrical points to accommodate all
+              kitchen appliances.
+            </li>
+            <li>
+              Utility provisions: Dedicated points for an exhaust fan, RO water
+              purifier, instant geyser, and chimney.
+            </li>
+            <li>Gas supply: Piped gas connection via GAIL pipeline.</li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h4>Paint &amp; Finishes</h4><ul>
+            <li>
+              Internal surfaces built by premium emulsion paint over a smooth
+              putty finish on walls and ceilings.
+            </li>
+            <li>
+              External surfaces: Coated with external-grade, antifungal superior
+              paint.
+            </li>
+            <li>
+              Metalwork: All metal fixtures and fabrications coated with enamel
+              paint.
+            </li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h4>High Security</h4><ul>
+            <li>CCTV camera monitoring across all floors.</li>
+            <li>
+              Access control: Biometric access control systems for common areas.
+            </li>
+            <li>
+              Apartment security: Video door phones paired with main door
+              digital locks.
+            </li>
+            <li>
+              Power reliability: 100% power backup for both individual
+              apartments and common areas.
+            </li>
+          </ul>
+        </div>
+        <div class="spec-card">
+          <h4>Sustainability &amp; Accessibility</h4><ul>
+            <li>Green solar-powered lighting installed for common areas.</li>
+            <li>
+              Motion sensors installed for common passage lighting to save
+              energy.
+            </li>
+            <li>Water conservation: Integrated rainwater harvesting system.</li>
+            <li>
+              Green mobility: Dedicated EV charging provisions for each car
+              parking space.
+            </li>
+            <li>Inclusivity: Wheelchair-friendly main lobby design.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP 3 -->
+  <div class="cta-strip">
+    <div class="wrap cta-strip-inner">
+      <div>
+        <h3>Enquire Premium 3 BHK Unit Options</h3>
+        <p>Located at Peaceful Residential Lane Area, Kadri.</p>
+      </div>
+      <a href="/contact" class="btn btn-white">Enquire Now &rarr;</a>
+    </div>
+  </div>
+
+  <!-- CONSTRUCTION UPDATES -->
+  <section class="updates">
+    <div class="wrap">
+      <div class="eyebrow">Site Progress</div>
+      <h2 class="section-title">
+        Recent Construction Updates Of Udbhav Chinmaya
+      </h2>
+
+      <div class="update-date-title">
+        Project Updates ( September 15th 2026 )
+      </div>
+
+      <div class="gallery-wrapper">
+        <button class="gallery-arrow left-arrow" aria-label="Previous"
+          >&lt;</button
+        >
+        <div class="gallery-scroll">
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/SAI_0122.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/SAI_0129.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/SAI_0131.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/SAI_0116.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/SAI_0119.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/images/SAI_0124.4NOOdNFU_2rXHfW.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/SAI_0137.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/SAI_0142.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/images/SAI_0145.BlUcybjH_Z1mVurk.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/SAI_0153.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/SAI_0155.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/SAI_0157.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/SAI_0164.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/SAI_0184.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/SAI_0201.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/SAI_0204.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/SAI_0206.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/SAI_0211.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/WhatsApp Image 2026-09-10 at 5.13.40 PM (1).webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/WhatsApp Image 2026-09-10 at 5.13.40 PM (2).webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/src/assets/images/udbahv-chinmaya/september 2026/WhatsApp Image 2026-09-10 at 5.13.40 PM.webp"
+            alt="Construction Update"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <button class="gallery-arrow right-arrow" aria-label="Next">></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="wrap">
+      <div class="eyebrow">FAQ</div>
+      <h2 class="section-title" style="max-width:40ch">
+        Frequently Ask Questions About 3 BHK Flats In Kadri, Mangalore
+      </h2>
+
+      <div class="faq-item">
+        <p class="faq-q">
+          <span class="qnum">1.</span> Where can I find a 3 BHK flat for sale in Kadri?
         </p>
-        <div class="specs-grid">
-          <div class="spec-card">
-            <h4>Structure &amp; Walls</h4><ul>
-              <li>
-                Framed structure built with reinforced cement concrete (RCC).
-              </li>
-              <li>
-                External walls constructed using laterite stone with double
-                plastering.
-              </li>
-              <li>Internal walls built with concrete blocks.</li>
-            </ul>
-          </div>
-          <div class="spec-card">
-            <h4>Flooring &amp; Wall Cladding</h4><ul>
-              <li>Superior flooring quality 800x800 mm vitrified tiles.</li>
-              <li>
-                Bathroom walls built with Ceramic tiles running up to ceiling
-                height.
-              </li>
-              <li>Bathroom flooring: Designer 600x1200 mm ceramic tiles.</li>
-              <li>
-                Lobbies &amp; Corridors: Finished with granite, Italian marble,
-                or vitrified tiles.
-              </li>
-              <li>Staircase steps: Fitted with 1200x300 mm anti-slip tiles.</li>
-            </ul>
-          </div>
-          <div class="spec-card">
-            <h4>Doors &amp; Windows</h4><ul>
-              <li>
-                Main door frame: Hardwood frame with an attractive Melamine
-                Polished main door.
-              </li>
-              <li>Main door lock: Equipped with a secure digital lock.</li>
-              <li>
-                Internal doors: Fitted with Masonite door shutters and designer
-                locks.
-              </li>
-              <li>
-                Washroom doors: Built with a Granite/WPC frame and
-                water-resistant FRP shutters.
-              </li>
-              <li>
-                Windows: Aluminium/UPVC glazed windows equipped with MS safety
-                grills and mosquito mesh.
-              </li>
-            </ul>
-          </div>
-          <div class="spec-card">
-            <h4>Plumbing &amp; Sanitary</h4><ul>
-              <li>
-                Plumbing lines: Superior quality, ISI-certified CPVC/UPVC
-                pressure-tested lines and fittings.
-              </li>
-              <li>
-                Toilets: Equipped with Jaguar or equivalent make EWC (European
-                Water Closet).
-              </li>
-              <li>
-                Bathroom provisions: Plumbing ready for water heaters/geysers.
-              </li>
-            </ul>
-          </div>
-          <div class="spec-card">
-            <h4>Electrical &amp; Communication</h4><ul>
-              <li>
-                Wiring: Premium Finolex, RR, or equivalent brand electrical
-                wiring.
-              </li>
-              <li>
-                Air conditioning: AC points provided in all bedrooms and halls.
-              </li>
-              <li>
-                Media &amp; Telecom: Telephone and cable TV points installed in
-                the living room and master bedroom.
-              </li>
-              <li>
-                Bathroom electricals: Dedicated geyser points and exhaust fan
-                provisions.
-              </li>
-            </ul>
-          </div>
-          <div class="spec-card">
-            <h4>Kitchen Features</h4><ul>
-              <li>
-                Counter &amp; Sink: Granite countertop fitted with a stainless
-                steel (SS) single-bowl sink and drainboard.
-              </li>
-              <li>
-                Wall cladding: Ceramic tiles extending 2 feet above the granite
-                counter.
-              </li>
-              <li>
-                Appliances: Sufficient electrical points to accommodate all
-                kitchen appliances.
-              </li>
-              <li>
-                Utility provisions: Dedicated points for an exhaust fan, RO
-                water purifier, instant geyser, and chimney.
-              </li>
-              <li>Gas supply: Piped gas connection via GAIL pipeline.</li>
-            </ul>
-          </div>
-          <div class="spec-card">
-            <h4>Paint &amp; Finishes</h4><ul>
-              <li>
-                Internal surfaces built by premium emulsion paint over a smooth
-                putty finish on walls and ceilings.
-              </li>
-              <li>
-                External surfaces: Coated with external-grade, antifungal
-                superior paint.
-              </li>
-              <li>
-                Metalwork: All metal fixtures and fabrications coated with
-                enamel paint.
-              </li>
-            </ul>
-          </div>
-          <div class="spec-card">
-            <h4>High Security</h4><ul>
-              <li>CCTV camera monitoring across all floors.</li>
-              <li>
-                Access control: Biometric access control systems for common
-                areas.
-              </li>
-              <li>
-                Apartment security: Video door phones paired with main door
-                digital locks.
-              </li>
-              <li>
-                Power reliability: 100% power backup for both individual
-                apartments and common areas.
-              </li>
-            </ul>
-          </div>
-          <div class="spec-card">
-            <h4>Sustainability &amp; Accessibility</h4><ul>
-              <li>Green solar-powered lighting installed for common areas.</li>
-              <li>
-                Motion sensors installed for common passage lighting to save
-                energy.
-              </li>
-              <li>
-                Water conservation: Integrated rainwater harvesting system.
-              </li>
-              <li>
-                Green mobility: Dedicated EV charging provisions for each car
-                parking space.
-              </li>
-              <li>Inclusivity: Wheelchair-friendly main lobby design.</li>
-            </ul>
-          </div>
-        </div>
+        <p class="faq-a">
+          You can find premium 3 BHK flats for sale in Kadri, Mangalore through
+          direct developer listings or established real estate portals. If you
+          want a low-density, premium option, Udbhav Chinmaya offers exclusive,
+          ultra-spacious 3 BHK configurations (1,715 to 1,880 sq. ft.) located
+          in the quiet residential corridor of Chandrika Layout, Swami
+          Vivekananda Road in Kadri.
+        </p>
       </div>
-    </section>
+      <div class="faq-item">
+        <p class="faq-q">
+          <span class="qnum">2.</span> Is it worth buying a 3 BHK luxury flat in Kadri?
+        </p>
+        <p class="faq-a">
+          Yes, buying a 3 BHK luxury flat in Kadri is highly worth it due to
+          steady capital appreciation, special infrastructure & excellent
+          coastal connectivity.
+        </p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">
+          <span class="qnum">3.</span> What are some good 3 BHK flats for sale in
+          Mangalore?
+        </p>
+        <p class="faq-a">
+          Good 3 BHK flats for sale in Mangalore should balance generous square
+          footage, high-end construction materials, and a low-density layout.
+          While massive high-rises are common, boutique low-rise developments
+          like Udbhav Chinmaya in Kadri stand out by providing premium 3 BHK
+          spaces featuring zero shared common walls, Vaastu-compliant
+          architectural layouts, and dedicated resort-style amenities shared
+          among only 40 families.
+        </p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">
+          <span class="qnum">4.</span> Is Udbhav Chinmaya RERA approved?
+        </p>
+        <p class="faq-a">
+          Yes, Udbhav Chinmaya is fully RERA approved and legally registered
+          with the Karnataka Real Estate Regulatory Authority. The project
+          complies completely with all construction milestones, structural
+          engineering guidelines, and financial transparency standards mandated
+          under regional regulatory law.
+        </p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">
+          <span class="qnum">6.</span> Are the lifestyle and fitness amenities shared
+          with outside visitors?
+        </p>
+        <p class="faq-a">
+          No. All premium lifestyle amenities—including the rooftop infinity
+          swimming pool, elite multi-purpose party hall, fully-equipped gym, and
+          kids zone—are completely private and restricted strictly to residents
+          and their personal guests, preserving low-density quietness and
+          community security.
+        </p>
+      </div>
 
-    <!-- CTA STRIP 3 -->
-    <div class="cta-strip">
-      <div class="wrap cta-strip-inner">
-        <div><h3>Enquire Premium 3 BHK Unit Options</h3></div>
-        <a href="/contact" class="btn btn-white">Enquire Now &rarr;</a>
+      <div class="faq-item">
+        <p class="faq-q">
+          <span class="qnum">7.</span>
+
+          What are the recent completed projects of Udbahv Developers?
+        </p>
+        <p class="faq-a">
+          Udbhav Developers has delivered landmark structures across Mangalore,
+          including Udbhav Shanthi (Completion 2023), Udbhav Square (Kottara),
+          KRK Aayush (2022), Marcel' s Maison (2025) &amp; Bhaskar Coconut
+          Groves (2015). <p></p>
+        </p>
       </div>
     </div>
 
-    <!-- CONSTRUCTION UPDATES -->
-    <section class="updates">
-      <div class="wrap">
-        <div class="eyebrow">Site Progress</div>
-        <h2 class="section-title" style="margin:0 auto; text-align:center;">
-          Recent Construction Updates Of Udbhav Chinmaya
-        </h2>
-        <div class="placeholder">
-          Construction update photos go here — source current site images from
-          the team before publishing.
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq">
-      <div class="wrap">
-        <div class="eyebrow">FAQ</div>
-        <h2 class="section-title" style="max-width:40ch">
-          Frequently Ask Questions About 3 BHK Flats In Kadri, Mangalore
-        </h2>
-
-        <div class="faq-item">
-          <p class="faq-q">
-            <span class="qnum">1.</span> Where can I find a 3 BHK flat for sale in
-            Kadri?
-          </p>
-          <p class="faq-a">
-            You can find premium 3 BHK flats for sale in Kadri, Mangalore
-            through direct developer listings or established real estate
-            portals. If you want a low-density, premium option, Udbhav Chinmaya
-            offers exclusive, ultra-spacious 3 BHK configurations (1,715 to
-            1,880 sq. ft.) located in the quiet residential corridor of
-            Chandrika Layout, Swami Vivekananda Road in Kadri.
-          </p>
-        </div>
-        <div class="faq-item">
-          <p class="faq-q">
-            <span class="qnum">2.</span> Is it worth buying a 3 BHK luxury flat in
-            Kadri?
-          </p>
-          <p class="faq-a">
-            Yes, buying a 3 BHK luxury flat in Kadri is highly worth it due to
-            steady capital appreciation, special infrastructure &amp; excellent
-            coastal connectivity.
-          </p>
-        </div>
-        <div class="faq-item">
-          <p class="faq-q">
-            <span class="qnum">3.</span> What are some good 3 BHK flats for sale in
-            Mangalore?
-          </p>
-          <p class="faq-a">
-            Good 3 BHK flats for sale in Mangalore should balance generous
-            square footage, high-end construction materials, and a low-density
-            layout. While massive high-rises are common, boutique low-rise
-            developments like Udbhav Chinmaya in Kadri stand out by providing
-            premium 3 BHK spaces featuring zero shared common walls,
-            Vaastu-compliant architectural layouts, and dedicated resort-style
-            amenities shared among only 40 families.
-          </p>
-        </div>
-        <div class="faq-item">
-          <p class="faq-q">
-            <span class="qnum">4.</span> Is Udbhav Chinmaya RERA approved?
-          </p>
-          <p class="faq-a">
-            Yes, Udbhav Chinmaya is fully RERA approved and legally registered
-            with the Karnataka Real Estate Regulatory Authority. The project
-            complies completely with all construction milestones, structural
-            engineering guidelines, and financial transparency standards
-            mandated under regional regulatory law.
-          </p>
-        </div>
-        <div class="faq-item">
-          <p class="faq-q">
-            <span class="qnum">6.</span> Are the lifestyle and fitness amenities shared
-            with outside visitors?
-          </p>
-          <p class="faq-a">
-            No. All premium lifestyle amenities—including the rooftop infinity
-            swimming pool, elite multi-purpose party hall, fully-equipped gym,
-            and kids zone—are completely private and restricted strictly to
-            residents and their personal guests, preserving low-density
-            quietness and community security.
-          </p>
-        </div>
-        <!-- <div class="faq-item">
-          <p class="faq-q">How is Kadri, Mangalore for buying a home?</p>
-          <p class="faq-a">
-            Kadri is a luxury locality to buy an apartment, as compared to other
-            areas in the surrounding areas. This locality ranks Along NH-66.
-            Some of the popular features of Kadri are:
-            <ul>
-              <li>Employment Zones Nearby</li>
-              <li>Close to Railway Station</li>
-              <li>Proximity to Hospitals</li>
-              <li>Upcoming Flyover</li>
-            </ul>
-          </p>
-        </div>
-        <div class="faq-item">
-          <p class="faq-q">Is kadri real estate sustainable?</p>
-          <p class="faq-a">
-            Yes it is. It is a structural premium supported by land scarcity (no
-            large undeveloped land parcels remain in central Kadri), social
-            infrastructure density (no peripheral zone can match it for
-            decades), and cultural-heritage proximity (Kadri Manjunath Temple is
-            not relocatable).
-          </p>
-        </div> -->
-        <div class="faq-item">
-          <p class="faq-q">
-            What are the recent completed projects of Udbahv Developers?
-          </p>
-          <p class="faq-a">
-            Udbhav Developers has delivered landmark structures across
-            Mangalore, including Udbhav Shanthi (Completion 2023), Udbhav Square
-            (Kottara), KRK Aayush (2022), Marcel's Maison (2025) &amp; Bhaskar
-            Coconut Groves (2015).
-          </p>
-        </div>
-        <!-- <div class="faq-item">
-          <p class="faq-q">Is it better to invest in a land or apartment?</p>
-          <p class="faq-a">
-            Answer to be finalised once the reference video is reviewed.<br
-            /><span class="faq-pending">Draft pending</span>
-          </p>
-        </div> -->
-      </div>
-    </section>
-
-    <footer>
+    <!-- <footer>
       <div class="wrap">
         <strong>Udbhav Chinmaya</strong> — Chandrika Layout, Swami Vivekananda Road,
         Kadri, Mangalore. RERA Approved.
       </div>
-    </footer>
+    </footer> -->
+  </section>
+  <body class="relative">
+    <Footer />
   </body>
 </html>
