@@ -25,7 +25,8 @@ const fallbackTitle = title || "Udbhav Developers";
 const finalTitle = seoTitle || fallbackTitle;
 const pageTitle = finalTitle === "Udbhav Developers" ? finalTitle : `${finalTitle} · Udbhav Developers`;
 const finalDescription = seoDescription || description;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonicalURL = new URL(pathname, Astro.site);
 ---
 
 <!doctype html>
