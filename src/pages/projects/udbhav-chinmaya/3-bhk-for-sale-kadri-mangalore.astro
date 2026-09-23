@@ -3,6 +3,12 @@ import Footer from "@/components/layout/Footer.astro";
 import "@/styles/global.css";
 import { floorPlans } from "@/lib/floorPlans";
 import BrochureForm from "@/components/BrochureForm.astro";
+import ReraForm from "@/components/ReraForm.astro";
+import GlobalEnquiryPopup from "@/components/GlobalEnquiryPopup.astro";
+import { Image } from 'astro:assets';
+import canaraBankImg from "@/assets/images/udbahv-chinmaya/canara-bank.png";
+import kBankImg from "@/assets/images/udbahv-chinmaya/kbank.png";
+import sbBankImg from "@/assets/images/udbahv-chinmaya/sb-bank.png";
 ---
 
 <!doctype html>
@@ -1384,11 +1390,11 @@ import BrochureForm from "@/components/BrochureForm.astro";
             one of the most pleasant residential streets in Kadri area.
           </p>
           <div class="hero-ctas">
-            <a href="/contact" class="btn btn-primary">Enquire 3 BHK Flat</a>
-            <a
-              href="#"
-              data-open-brochure="true"
-              class="btn btn-outline">Download Free Brochure</a
+            <a href="#" data-open-enquiry="true" class="btn btn-primary"
+              >Enquire 3 BHK Flat</a
+            >
+            <a href="#" data-open-brochure="true" class="btn btn-outline"
+              >Download Free Brochure</a
             >
           </div>
         </div>
@@ -1400,6 +1406,20 @@ import BrochureForm from "@/components/BrochureForm.astro";
           <!-- <div class="tag"><strong>₹1.60 Cr*</strong>Spacious 3 BHK, 1,715–1,880 sq.ft.</div> -->
         </div>
       </div>
+
+    <!-- PARTNERS -->
+    <div class="partners-block" style="padding: 20px 0 0 0; margin-top: 40px;">
+      <div class="wrap">
+        <h2 style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; margin: 0 0 24px 0; display: flex; align-items: center; gap: 6px; color: var(--ink);">
+          Our Partners <span style="color: #eab308; font-size: 2rem; line-height: 0; position: relative; top: -3px;">.</span>
+        </h2>
+        <div style="display: flex; gap: 20px; justify-content: space-between; align-items: center; flex-wrap: wrap; width: 100%;">
+          <Image src={canaraBankImg} alt="Canara Bank" style="height: 48px; width: auto; object-fit: contain;" />
+          <Image src={sbBankImg} alt="State Bank of India" style="height: 48px; width: auto; object-fit: contain;" />
+          <Image src={kBankImg} alt="Karnataka Bank Ltd" style="height: 48px; width: auto; object-fit: contain;" />
+        </div>
+      </div>
+    </div>
 
       <div class="badges">
         <div class="wrap badge-row">
@@ -1447,11 +1467,11 @@ import BrochureForm from "@/components/BrochureForm.astro";
           </div>
           <div class="fact">
             <div class="label">Starting Price</div><div class="value">
-              From ₹1.60* Crore onwards
+              ₹1.60* Crore onwards
             </div>
           </div>
           <div class="fact">
-            <div class="label">Booking</div><div class="value">25% Booking</div>
+            <div class="label">Booking</div><div class="value">25% payable at the time of agreement</div>
           </div>
           <div class="fact">
             <div class="label">Financing</div><div class="value">
@@ -1466,7 +1486,7 @@ import BrochureForm from "@/components/BrochureForm.astro";
             <div>
               Project Status &nbsp;<strong>Under Active Construction</strong>
             </div>
-            <a href="/contact" class="rera-link">View RERA document &rarr;</a>
+            <a href="#" data-open-rera="true" class="rera-link">View RERA document &rarr;</a>
           </div>
         </div>
       </div>
@@ -1480,7 +1500,7 @@ import BrochureForm from "@/components/BrochureForm.astro";
             <div class="eyebrow">Floor Plan</div>
             <h2 class="section-title">Udbhav Chinmaya 3 BHK Floor Plan</h2>
             <div class="fp-note">
-              <strong> Only a few units remaining in this series</strong>
+              <strong> Only a few units remaining in each series</strong>
             </div>
           </div>
         </div>
@@ -1541,7 +1561,8 @@ import BrochureForm from "@/components/BrochureForm.astro";
                 </li>
               </ul>
               <a
-                href="/contact"
+                href="#"
+                data-open-enquiry="true"
                 class="btn btn-primary"
                 style="margin-top: 24px;">Enquire This Layout</a
               >
@@ -1660,7 +1681,7 @@ import BrochureForm from "@/components/BrochureForm.astro";
               Kambla road, with exclusive amenities for more comfort, private
               &amp; secured living.
             </p>
-            <a href="/contact" class="btn btn-primary"
+            <a href="#" data-open-enquiry="true" class="btn btn-primary"
               >Schedule Your Site Visit</a
             >
           </div>
@@ -1980,7 +2001,7 @@ import BrochureForm from "@/components/BrochureForm.astro";
           <p>Udbhav Chinmaya's 3BHK apartment is a great choice to prepare</p>
           <p>for a return from gulf/abroad.</p>
         </div>
-        <a href="/contact" class="btn btn-white"
+        <a href="#" data-open-enquiry="true" class="btn btn-white"
           >Schedule Your Site Visit &rarr;</a
         >
       </div>
@@ -2245,7 +2266,7 @@ import BrochureForm from "@/components/BrochureForm.astro";
         <h3>Book Your Dream Home Today</h3>
         <p>Limited Luxury 3 BHK Flats Available.</p>
       </div>
-      <a href="/contact" class="btn btn-white"
+      <a href="#" data-open-enquiry="true" class="btn btn-white"
         >Schedule Your Site Visit &rarr;</a
       >
     </div>
@@ -2425,7 +2446,9 @@ import BrochureForm from "@/components/BrochureForm.astro";
         <h3>Enquire Premium 3 BHK Unit Options</h3>
         <p>Located at Peaceful Residential Lane Area, Kadri.</p>
       </div>
-      <a href="/contact" class="btn btn-white">Enquire Now &rarr;</a>
+      <a href="#" data-open-enquiry="true" class="btn btn-white"
+        >Enquire Now &rarr;</a
+      >
     </div>
   </div>
 
@@ -2675,5 +2698,7 @@ import BrochureForm from "@/components/BrochureForm.astro";
   <body class="relative">
     <Footer />
     <BrochureForm />
+    <ReraForm />
+    <GlobalEnquiryPopup />
   </body>
 </html>

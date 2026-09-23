@@ -3,7 +3,7 @@ import { Icon } from "@/components/Icon";
 ---
 
 <dialog
-    id="brochure-modal"
+    id="rera-modal"
     class="backdrop:bg-black/70 p-0 rounded-[5px] shadow-2xl bg-cream w-[95%] max-w-2xl max-h-[90vh] m-auto overflow-hidden"
 >
     <div class="flex flex-col h-full max-h-[90vh]">
@@ -12,7 +12,7 @@ import { Icon } from "@/components/Icon";
         >
             <h2 class="font-display text-base sm:text-2xl text-ink">
                 Enter Your Name & Pincode to <br />
-                Download Free Brochure
+                Download RERA Certificate
             </h2>
             <button
                 type="button"
@@ -38,7 +38,7 @@ import { Icon } from "@/components/Icon";
         </div>
 
         <div class="p-6 sm:p-8 overflow-y-auto scrollbar-thin">
-            <form class="space-y-6" id="brochure-form">
+            <form class="space-y-6" id="rera-form">
                 <!-- Name -->
                 <div class="space-y-2 max-w-sm mx-auto">
                     <label class="block text-left text-sm font-medium text-ink"
@@ -68,7 +68,7 @@ import { Icon } from "@/components/Icon";
                     <div class="pt-4 flex justify-center">
                         <button
                             type="submit"
-                            id="brochure-submit-btn"
+                            id="rera-submit-btn"
                             class="w-48 h-12 bg-clay hover:bg-clay-hover text-white font-bold rounded-none shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5 duration-300 disabled:opacity-60"
                         >
                             Download
@@ -82,27 +82,19 @@ import { Icon } from "@/components/Icon";
     <script>
         const setupModal = () => {
             const dialog = document.getElementById(
-                "brochure-modal",
+                "rera-modal",
             ) as HTMLDialogElement;
             if (!dialog) return;
 
             const closeBtns = dialog.querySelectorAll(".close-modal");
-            let currentDownloadUrl = "/images/udbahv-chinmaya/CHINMAYA-BROCHURE.pdf"; // Fallback
-            let currentDownloadName = "CHINMAYA-BROCHURE.pdf";
 
             // Open dialog when any matching trigger is clicked
             document.addEventListener("click", (e) => {
                 const trigger = (e.target as Element).closest(
-                    "[data-open-brochure]",
-                ) as HTMLElement;
+                    "[data-open-rera]",
+                );
                 if (trigger) {
                     e.preventDefault();
-                    if (trigger.dataset.brochureUrl) {
-                        currentDownloadUrl = trigger.dataset.brochureUrl;
-                    }
-                    if (trigger.dataset.brochureName) {
-                        currentDownloadName = trigger.dataset.brochureName;
-                    }
                     dialog.showModal();
                     document.body.classList.add("overflow-hidden");
                     document.documentElement.classList.add("overflow-hidden");
@@ -136,10 +128,10 @@ import { Icon } from "@/components/Icon";
 
             // Form submission → Gravity Forms
             const form = document.getElementById(
-                "brochure-form",
+                "rera-form",
             ) as HTMLFormElement;
             const submitBtn = document.getElementById(
-                "brochure-submit-btn",
+                "rera-submit-btn",
             ) as HTMLButtonElement;
             const errorEl = document.getElementById(
                 "popup-form-error",
@@ -171,8 +163,8 @@ import { Icon } from "@/components/Icon";
                 try {
                     // Trigger the brochure download
                     const link = document.createElement("a");
-                    link.href = currentDownloadUrl;
-                    link.download = currentDownloadName;
+                    link.href = "/images/udbahv-chinmaya/RERACERT.pdf";
+                    link.download = "RERACERT.pdf";
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);

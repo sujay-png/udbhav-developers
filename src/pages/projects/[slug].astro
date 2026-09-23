@@ -5,6 +5,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import ArtPanel from "@/components/ArtPanel.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
 import ProjectContactForm from "@/components/sections/ProjectContactForm.astro";
+import BrochureForm from "@/components/BrochureForm.astro";
 import { Icon } from "@/components/Icon";
 import { Image } from "astro:assets";
 import { projects, type Project } from "@/lib/site-data";
@@ -126,7 +127,7 @@ const isRich = !!project.reraNo;
           </div>
       
           {project.brochureUrl && (
-             <a href={project.brochureUrl} target="_blank" class="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-sm bg-[#f2ebd9] border-l-4 border-yellow-500 px-12 text-sm font-medium text-ink transition-colors shadow-lg relative overflow-hidden group">
+             <a href="#" data-open-brochure="true" data-brochure-url={project.brochureUrl} data-brochure-name={`${project.name}-Brochure.pdf`} class="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-sm bg-[#f2ebd9] border-l-4 border-yellow-500 px-12 text-sm font-medium text-ink transition-colors shadow-lg relative overflow-hidden group">
                <span class="absolute inset-0 bg-yellow-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></span>
                <span class="relative z-10 flex items-center">
                  <Icon name="download" className="w-4 h-4 mr-2 text-ink/70 group-hover:text-ink transition-colors" /> Download Brochure
@@ -624,7 +625,7 @@ const isRich = !!project.reraNo;
                <!-- CTA Buttons -->
                <div class="space-y-4 pt-4">
                   {project.brochureUrl && (
-                     <a href={project.brochureUrl} target="_blank" class="w-full inline-flex h-12 items-center justify-center rounded-sm bg-[#f2ebd9] border-l-4 border-yellow-500 px-4 text-sm font-medium text-ink transition-colors shadow-sm relative overflow-hidden group">
+                     <a href="#" data-open-brochure="true" data-brochure-url={project.brochureUrl} data-brochure-name={`${project.name}-Brochure.pdf`} class="w-full inline-flex h-12 items-center justify-center rounded-sm bg-[#f2ebd9] border-l-4 border-yellow-500 px-4 text-sm font-medium text-ink transition-colors shadow-sm relative overflow-hidden group">
                        <span class="absolute inset-0 bg-yellow-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-0"></span>
                        <span class="relative z-10 flex items-center">
                          <Icon name="download" className="w-4 h-4 mr-2 text-ink/70 group-hover:text-ink transition-colors" /> Download Brochure
@@ -849,6 +850,7 @@ const isRich = !!project.reraNo;
       <img id="lightbox-img" src="" alt="Floor Plan Preview" class="max-w-full max-h-[90vh] object-contain shadow-2xl scale-95 transition-transform duration-300" />
     </div>
   </div>
+  <BrochureForm />
 </BaseLayout>
 
 <script>
