@@ -2,6 +2,7 @@
 import Footer from "@/components/layout/Footer.astro";
 import "@/styles/global.css";
 import { floorPlans } from "@/lib/floorPlans";
+import BrochureForm from "@/components/BrochureForm.astro";
 ---
 
 <!doctype html>
@@ -1385,8 +1386,8 @@ import { floorPlans } from "@/lib/floorPlans";
           <div class="hero-ctas">
             <a href="/contact" class="btn btn-primary">Enquire 3 BHK Flat</a>
             <a
-              href="/images/udbahv-chinmaya/CHINMAYA-BROCHURE.pdf"
-              target="_blank"
+              href="#"
+              data-open-brochure="true"
               class="btn btn-outline">Download Free Brochure</a
             >
           </div>
@@ -2000,37 +2001,23 @@ import { floorPlans } from "@/lib/floorPlans";
           <div class="split-block">
             <img
               src="/images/udbhav-developers-kiranbk.webp"
-              alt="Mr. B.K. Kiran"
-              style="border-radius:24px; width:100%; object-fit:cover; box-shadow: 0 12px 32px rgba(0,0,0,0.08);"
+              alt=""
+              style="border-radius:6px; width:100%; object-fit:cover;"
             />
           </div>
           <div class="split-block">
-            <div
-              class="eyebrow"
-              style="margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.85rem;"
-            >
-              About Us
-            </div>
-            <p
-              style="margin-bottom:32px; font-size: 1.35rem; line-height:1.7; color: var(--ink); max-width: none;"
-            >
-              Udbhav Developers is a founder-led boutique real estate firm
-              specializing in premium residential and commercial developments in
-              prime locations. Guided by engineering discipline, transparent
-              practices, and a long-term value mindset.
+            <p style="margin-bottom:16px;">
+              Udbhav Developers was established in 2012 by a Kadri-based
+              entrepreneur named Mr. Kiran BK, a qualified civil engineer with
+              over two decades of domestic and international real estate
+              development experience. Now with a focus on premium small-format
+              projects in Kadri-Mangalore.
             </p>
-            <div
-              style="border-left: 3px solid var(--red); background: var(--paper-soft); padding: 24px 32px; border-radius: 0 8px 8px 0;"
-            >
-              <p
-                style="margin:0; font-size: 1.35rem; line-height:1.65; color: var(--ink); max-width: none;"
-              >
-                Led by <strong style="color:var(--ink);">Mr. B.K. Kiran</strong
-                >, a qualified civil engineer with over two decades of
-                international and domestic experience, Udbhav Developers follows
-                a focused, quality-first approach.
-              </p>
-            </div>
+
+            <p style="margin:0;">
+              Udbhav Developers has delivered some of the landmark structures
+              across Mangalore, including Udbhav Shanthi (Completion 2023),
+            </p>
           </div>
         </div>
 
@@ -2042,22 +2029,18 @@ import { floorPlans } from "@/lib/floorPlans";
             <p
               style="margin:0; font-size: 1.35rem; line-height:1.75; color: var(--ink); max-width: none;"
             >
-              Mr. Kiran remains closely involved in every stage of development,
-              from land evaluation and feasibility studies to design
-              coordination, construction supervision, and final delivery. His
-              engineering background ensures disciplined planning, cost control,
-              structural integrity, and adherence to timelines.
+              Over the last decade, each completed development has consistently
+              fulfilled buyer expectations through transparent delivery,
+              uncompromising structural quality, and strong long-term property
+              appreciation.
             </p>
           </div>
           <div class="split-block">
             <p
               style="margin:0; font-size: 1.35rem; line-height:1.75; color: var(--ink); max-width: none;"
             >
-              Rather than pursuing aggressive expansion, Udbhav Developers has
-              adopted a focused growth strategy. By limiting the number of
-              projects undertaken at any given time, the firm ensures that every
-              development receives full attention, resulting in superior design
-              resolution, consistent quality, and dependable delivery.
+              Udbhav Square (Kottara), KRK Aayush (2022), Marcel's Maison (2025)
+              &amp; Bhaskar Coconut Groves (2015).
             </p>
           </div>
         </div>
@@ -2691,5 +2674,6 @@ import { floorPlans } from "@/lib/floorPlans";
   </section>
   <body class="relative">
     <Footer />
+    <BrochureForm />
   </body>
 </html>

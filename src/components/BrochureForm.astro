@@ -1,0 +1,237 @@
+---
+import { Icon } from "@/components/Icon";
+---
+
+<dialog
+    id="brochure-modal"
+    class="backdrop:bg-black/70 p-0 rounded-2xl shadow-2xl bg-cream w-[95%] max-w-2xl max-h-[90vh] m-auto overflow-hidden"
+>
+    <div class="flex flex-col h-full max-h-[90vh]">
+        <div
+            class="flex justify-center items-center p-6 border-b border-border relative shrink-0"
+        >
+            <h2 class="font-display text-3xl sm:text-4xl text-ink">
+                Download Brochure
+            </h2>
+            <button
+                type="button"
+                class="close-modal absolute right-6 text-gray-400 hover:text-gray-800 transition-colors p-2 rounded-full hover:bg-gray-100"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><line x1="18" y1="6" x2="6" y2="18"></line><line
+                        x1="6"
+                        y1="6"
+                        x2="18"
+                        y2="18"></line></svg
+                >
+            </button>
+        </div>
+
+        <div class="p-6 sm:p-8 overflow-y-auto scrollbar-thin">
+            <form class="space-y-6" id="brochure-form">
+                <!-- Name -->
+                <div class="space-y-2">
+                    <label class="text-sm font-medium text-ink"
+                        >Name <span class="text-clay">(Required)</span></label
+                    >
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <input
+                                type="text"
+                                name="firstName"
+                                required
+                                placeholder="First name"
+                                class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-sm font-medium text-ink"
+                        >Pincode <span class="text-clay">(Required)</span
+                        ></label
+                    >
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <input
+                                type="text"
+                                name="pincode"
+                                required
+                                placeholder="Pincode"
+                                class="w-full h-11 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex justify-center">
+                        <button
+                            type="submit"
+                            id="brochure-submit-btn"
+                            class="w-48 h-12 bg-clay hover:bg-clay-hover text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5 duration-300 disabled:opacity-60"
+                        >
+                            Download
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const setupModal = () => {
+            const dialog = document.getElementById(
+                "brochure-modal",
+            ) as HTMLDialogElement;
+            if (!dialog) return;
+
+            const closeBtns = dialog.querySelectorAll(".close-modal");
+
+            // Open dialog when any matching trigger is clicked
+            document.addEventListener("click", (e) => {
+                const trigger = (e.target as Element).closest(
+                    "[data-open-brochure]",
+                );
+                if (trigger) {
+                    e.preventDefault();
+                    dialog.showModal();
+                    document.body.classList.add("overflow-hidden");
+                    document.documentElement.classList.add("overflow-hidden");
+                }
+            });
+
+            // Close dialog on close button click
+            closeBtns.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    dialog.close();
+                });
+            });
+
+            // Close dialog when clicking backdrop
+            dialog.addEventListener("click", (e) => {
+                const rect = dialog.getBoundingClientRect();
+                const isInDialog =
+                    rect.top <= e.clientY &&
+                    e.clientY <= rect.top + rect.height &&
+                    rect.left <= e.clientX &&
+                    e.clientX <= rect.left + rect.width;
+                if (!isInDialog) {
+                    dialog.close();
+                }
+            });
+
+            dialog.addEventListener("close", () => {
+                document.body.classList.remove("overflow-hidden");
+                document.documentElement.classList.remove("overflow-hidden");
+            });
+
+            // Form submission → Gravity Forms
+            const form = document.getElementById(
+                "brochure-form",
+            ) as HTMLFormElement;
+            const submitBtn = document.getElementById(
+                "brochure-submit-btn",
+            ) as HTMLButtonElement;
+            const errorEl = document.getElementById(
+                "popup-form-error",
+            ) as HTMLElement;
+
+            form?.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = "Downloading…";
+                }
+                if (errorEl) errorEl.classList.add("hidden");
+
+                const fd = new FormData(form);
+                try {
+                    // IMPORTANT: This MUST be a Google Apps Script Web App URL.
+                    // It should look like: https://script.google.com/macros/s/.../exec
+                    // It CANNOT be the docs.google.com/spreadsheets/... URL.
+                    const GOOGLE_SCRIPT_URL =
+                        "https://docs.google.com/spreadsheets/d/1DtvXqr89n2C7yIbX5QjFp7YDaaAiWmszeaAihEjTuB8/edit?gid=1845495113#gid=1845495113";
+
+                    if (
+                        GOOGLE_SCRIPT_URL &&
+                        GOOGLE_SCRIPT_URL.includes("script.google.com")
+                    ) {
+                        await fetch(GOOGLE_SCRIPT_URL, {
+                            method: "POST",
+                            mode: "no-cors", // Required for simple Google Apps Script POSTs from the browser
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({
+                                firstName: fd.get("firstName"),
+                                pincode: fd.get("pincode"),
+                            }),
+                        });
+                    } else {
+                        console.error("Invalid Google Script URL provided.");
+                    }
+
+                    // Trigger the brochure download
+                    const link = document.createElement("a");
+                    link.href = "/images/udbahv-chinmaya/CHINMAYA-BROCHURE.pdf";
+                    link.download = "CHINMAYA-BROCHURE.pdf";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+
+                    dialog.close();
+                    form.reset();
+
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = "Download";
+                    }
+                } catch {
+                    if (errorEl) errorEl.classList.remove("hidden");
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = "Download";
+                    }
+                }
+            });
+        };
+
+        setupModal();
+        document.addEventListener("astro:page-load", setupModal);
+    </script>
+
+    <style>
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            animation: fade-in 0.3s ease-out;
+        }
+        dialog[open] {
+            animation: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+    </style>
+</dialog>
