@@ -1,121 +1,7 @@
 ---
 import Footer from "@/components/layout/Footer.astro";
 import "@/styles/global.css";
-
-const floorPlans = [
-  {
-    id: 1,
-    series: "Series No. 1",
-    title: "3BHK 1730 Sft",
-    config: "3 BHK, 1,730 sq.ft.",
-    views: "101, 201, 301, 401, 501",
-    image: "/images/3bhk  flats in kadri series 1.webp",
-  },
-  {
-    id: 2,
-    series: "Series No. 1",
-    title: "3BHK 1730 Sft (Top View).",
-    config: "3BHK 1730 Sft (Top View).",
-    views: "101, 201, 301, 401, 501",
-    image: "/images/3 bhk kadri flats series 1 (top view).webp",
-  },
-  {
-    id: 3,
-    series: "Series No. 2",
-    title: "3BHK 1715 Sft",
-    config: "3 BHK, 1,715 sq.ft.",
-    views: "102, 202, 302, 402, 502",
-    image: "/images/chinmaya 3 bhk series 2.webp",
-  },
-  {
-    id: 4,
-    series: "Series No. 2",
-    title: "3BHK 1715 Sft (Top View)",
-    config: "3 BHK, 1,715 sq.ft.",
-    views: "102, 202, 302, 402, 502",
-    image: "/images/Chinmaya series 2 top view.webp",
-  },
-  {
-    id: 5,
-    series: "Series No. 3",
-    title: "3BHK 1795 Sft",
-    config: "3 BHK, 1,795 sq.ft.",
-    views: "103, 203, 303, 403, 503",
-    image: "/images/Chinmaya series 3.webp",
-  },
-  {
-    id: 6,
-    series: "Series No. 3",
-    title: "3BHK 1795 Sft (Top View)",
-    config: "3 BHK, 1,795 sq.ft.",
-    views: "103, 203, 303, 403, 503",
-    image: "/images/chinmaya series 3 top view.webp",
-  },
-  {
-    id: 7,
-    series: "Series No. 4",
-    title: "3BHK 1820 Sft",
-    config: "3 BHK, 1,820 sq.ft.",
-    views: "104, 204, 304, 404, 504",
-    image: "/images/Series 4- 3 bhk.webp",
-  },
-  {
-    id: 8,
-    series: "Series No. 4",
-    title: "3BHK 1820 Sft (Top View)",
-    config: "3 BHK, 1,820 sq.ft.",
-    views: "104, 204, 304, 404, 504",
-    image: "/images/Series 4 top view.webp",
-  },
-  {
-    id: 9,
-    series: "Series No. 6",
-    title: "3BHK 1810 Sft",
-    config: "3 BHK, 1,810 sq.ft.",
-    views: "106, 206, 306, 406, 506",
-    image: "/images/series 6.webp",
-  },
-  {
-    id: 10,
-    series: "Series No. 6",
-    title: "3BHK 1810 Sft (Top View)",
-    config: "3 BHK, 1,810 sq.ft.",
-    views: "106, 206, 306, 406, 506",
-    image: "/images/series 6 top view.webp",
-  },
-  {
-    id: 11,
-    series: "Series No. 7",
-    title: "3BHK 1810 Sft",
-    config: "3 BHK, 1,765 sq.ft.",
-    views: "107, 207, 307, 407, 507",
-    image: "/images/series 7.webp",
-  },
-  {
-    id: 12,
-    series: "Series No. 7",
-    title: "3BHK 1810 Sft (Top View)",
-    config: "3 BHK, 1,765 sq.ft.",
-    views: "107, 207, 307, 407, 507",
-    image: "/images/Series 7 top view.webp",
-  },
-  {
-    id: 13,
-    series: "Series No. 8",
-    title: "3BHK 1880 Sft",
-    config: "3 BHK, 1880 sq.ft.",
-    views: "108, 208, 308, 408, 508",
-    image: "/images/series 8.webp",
-  },
-  {
-    id: 14,
-    series: "Series No. 8",
-    title: "3BHK 1880 Sft (Top View)",
-    config: "3 BHK, 1880 sq.ft.",
-    views: "108, 208, 308, 408, 508",
-    image: "/images/series 8 top view.webp",
-  },
-];
+import { floorPlans } from "@/lib/floorPlans";
 ---
 
 <!doctype html>
@@ -795,7 +681,7 @@ const floorPlans = [
       .cta-strip p {
         margin: 0;
         color: var(--cream-on-red);
-        font-size: 0.98rem;
+        font-size: 1.35rem;
       }
 
       /* location */
@@ -879,7 +765,7 @@ const floorPlans = [
       .adv-card p {
         margin: 0;
         color: var(--ink);
-        font-size: 0.94rem;
+        font-size: 1.35rem;
       }
       .adv-card.wide {
         grid-column: 1/-1;
@@ -923,7 +809,7 @@ const floorPlans = [
       .her-list li {
         padding: 16px 0;
         border-top: 1px solid rgba(255, 255, 255, 0.14);
-        font-size: 0.96rem;
+        font-size: 1.35rem;
         color: #e6e1d6;
       }
       .her-list li:last-child {
@@ -934,7 +820,7 @@ const floorPlans = [
       }
       .her-close {
         color: #cbc4b9;
-        font-size: 0.98rem;
+        font-size: 1.35rem;
         margin-top: 26px;
       }
       @media (max-width: 860px) {
@@ -959,6 +845,7 @@ const floorPlans = [
         color: var(--ink);
         margin: 0 0 20px;
         max-width: 50ch;
+        font-size: 1.35rem;
       }
       .offers-list {
         list-style: none;
@@ -980,7 +867,7 @@ const floorPlans = [
         display: flex;
         gap: 14px;
         align-items: flex-start;
-        font-size: 0.96rem;
+        font-size: 1.35rem;
         color: var(--ink);
       }
       .offers-list .tick {
@@ -1023,6 +910,7 @@ const floorPlans = [
         color: var(--ink);
         margin: 0;
         max-width: 50ch;
+        font-size: 1.35rem;
       }
       .split-block h2 {
         font-size: 1.4rem;
@@ -1086,7 +974,7 @@ const floorPlans = [
       }
       .test-card p {
         color: var(--ink-soft);
-        font-size: 0.92rem;
+        font-size: 1.35rem;
         margin: 0 0 22px;
         flex-grow: 1;
       }
@@ -1332,7 +1220,7 @@ const floorPlans = [
       .faq-q {
         font-weight: 700;
         color: var(--ink);
-        font-size: 1rem;
+        font-size: 1.35rem;
         margin: 0 0 10px;
         display: flex;
         gap: 10px;
@@ -1343,7 +1231,7 @@ const floorPlans = [
       }
       .faq-a {
         color: var(--ink);
-        font-size: 0.95rem;
+        font-size: 1.35rem;
         margin: 0;
         max-width: 70ch;
       }
@@ -2112,27 +2000,64 @@ const floorPlans = [
           <div class="split-block">
             <img
               src="/images/udbhav-developers-kiranbk.webp"
-              alt=""
-              style="border-radius:6px; width:100%; object-fit:cover;"
+              alt="Mr. B.K. Kiran"
+              style="border-radius:24px; width:100%; object-fit:cover; box-shadow: 0 12px 32px rgba(0,0,0,0.08);"
             />
           </div>
           <div class="split-block">
-            <p style="margin-bottom:16px;">
-              Udbhav Developers was established in 2012 by a Kadri-based
-              entrepreneur named Mr. Kiran BK, a qualified civil engineer with
-              over two decades of domestic and international real estate
-              development experience. Now with a focus on premium small-format
-              projects in Kadri-Mangalore.
+            <div
+              class="eyebrow"
+              style="margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.85rem;"
+            >
+              About Us
+            </div>
+            <p
+              style="margin-bottom:32px; font-size: 1.35rem; line-height:1.7; color: var(--ink); max-width: none;"
+            >
+              Udbhav Developers is a founder-led boutique real estate firm
+              specializing in premium residential and commercial developments in
+              prime locations. Guided by engineering discipline, transparent
+              practices, and a long-term value mindset.
             </p>
+            <div
+              style="border-left: 3px solid var(--red); background: var(--paper-soft); padding: 24px 32px; border-radius: 0 8px 8px 0;"
+            >
+              <p
+                style="margin:0; font-size: 1.35rem; line-height:1.65; color: var(--ink); max-width: none;"
+              >
+                Led by <strong style="color:var(--ink);">Mr. B.K. Kiran</strong
+                >, a qualified civil engineer with over two decades of
+                international and domestic experience, Udbhav Developers follows
+                a focused, quality-first approach.
+              </p>
+            </div>
+          </div>
+        </div>
 
-            <p style="margin:0;">
-              Udbhav Developers has delivered some of the landmark structures
-              across Mangalore, including Udbhav Shanthi (Completion 2023),
-              Udbhav Square (Kottara), KRK Aayush (2022), Marcel's Maison (2025)
-              &amp; Bhaskar Coconut Groves (2015).Over the last decade, each
-              completed development has consistently fulfilled buyer
-              expectations through transparent delivery, uncompromising
-              structural quality, and strong long-term property appreciation.
+        <div
+          class="split-grid"
+          style="margin-top:14px; align-items: start; gap: 40px;"
+        >
+          <div class="split-block">
+            <p
+              style="margin:0; font-size: 1.35rem; line-height:1.75; color: var(--ink); max-width: none;"
+            >
+              Mr. Kiran remains closely involved in every stage of development,
+              from land evaluation and feasibility studies to design
+              coordination, construction supervision, and final delivery. His
+              engineering background ensures disciplined planning, cost control,
+              structural integrity, and adherence to timelines.
+            </p>
+          </div>
+          <div class="split-block">
+            <p
+              style="margin:0; font-size: 1.35rem; line-height:1.75; color: var(--ink); max-width: none;"
+            >
+              Rather than pursuing aggressive expansion, Udbhav Developers has
+              adopted a focused growth strategy. By limiting the number of
+              projects undertaken at any given time, the firm ensures that every
+              development receives full attention, resulting in superior design
+              resolution, consistent quality, and dependable delivery.
             </p>
           </div>
         </div>
