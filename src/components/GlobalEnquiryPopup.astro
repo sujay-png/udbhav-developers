@@ -5,7 +5,7 @@ import { Icon } from "@/components/Icon";
 <dialog id="global-enquiry-modal" class="backdrop:bg-black/70 p-0 rounded-[5px] shadow-2xl bg-cream w-[95%] max-w-2xl max-h-[90vh] m-auto overflow-hidden">
   <div class="flex flex-col h-full max-h-[90vh]">
     <div class="flex justify-center items-center p-6 border-b border-border relative shrink-0">
-      <h2 class="font-display text-3xl sm:text-4xl text-ink">Get In Touch</h2>
+      <h2 class="font-display text-2xl sm:text-2xl text-ink">Enquire 3BHK Unit Options</h2>
       <button type="button" class="close-modal absolute right-6 text-gray-400 hover:text-gray-800 transition-colors p-2 rounded-full hover:bg-gray-100">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
@@ -49,15 +49,11 @@ import { Icon } from "@/components/Icon";
 
         <!-- Preferred Unit Type (BHK) -->
         <div class="space-y-3 pt-2">
-          <label class="text-sm font-medium text-ink">Preferred Unit Type <span class="text-clay">(Required)</span></label>
+          <label class="text-sm font-medium text-ink">Preferred Unit Type</label>
           <div class="space-y-2">
             <label class="flex items-center space-x-3 cursor-pointer group">
-              <input type="radio" name="bhk" value="3BHK" required class="w-5 h-5 border-gray-300 accent-[#B02317]" />
+              <input type="radio" name="bhk" value="3BHK" class="w-5 h-5 border-gray-300 accent-[#B02317]" />
               <span class="text-sm text-ink">3 BHK</span>
-            </label>
-            <label class="flex items-center space-x-3 cursor-pointer group">
-              <input type="radio" name="bhk" value="4BHK" class="w-5 h-5 border-gray-300 accent-[#B02317]" />
-              <span class="text-sm text-ink">4 BHK</span>
             </label>
           </div>
         </div>
