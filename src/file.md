@@ -1488,7 +1488,7 @@ const faqSchema = {
         </ul>
 
         <div class="nav-actions">
-          <a href="#" data-open-enquiry="true" class="btn btn-primary" style="padding: 10px 22px;">Enquiry</a>
+          <a href="/contact/" class="btn btn-primary" style="padding: 10px 22px;">Enquiry</a>
           <img src="/images/credai-mangalore-logo.webp" alt="CREDAI Mangalore" style="height: 32px; width: auto; object-fit: contain;" />
         </div>
       </div>

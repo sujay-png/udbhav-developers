@@ -55,20 +55,20 @@ const slides = [
             <img
               src={slide.image}
               alt={slide.highlight}
-              class="absolute inset-0 h-full w-full object-cover"
+              class="hero-image absolute inset-0 h-full w-full object-cover"
               loading={index === 0 ? "eager" : "lazy"}
               fetchpriority={index === 0 ? "high" : "auto"}
             />
 
             <!-- Full Image Overlay (Slight darkening) -->
-            <div class="absolute inset-0 bg-black/30"></div>
+            <div class="hero-overlay absolute inset-0 bg-black/30"></div>
 
             <!-- Localized Gradient Overlay -->
-            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.5)_0%,rgba(0,0,0,0)_60%)] pointer-events-none"></div>
+            <div class="hero-overlay absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.5)_0%,rgba(0,0,0,0)_60%)] pointer-events-none"></div>
 
             <!-- Content -->
 
-            <div class="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-6 text-center">
+            <div class="hero-content relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-6 text-center">
 
               <p class="mb-6 text-xs font-semibold uppercase tracking-[0.45em] text-white/90 [text-shadow:0_2px_12px_rgba(0,0,0,0.6),_0_1px_4px_rgba(0,0,0,0.8)]">
                 Premium Architectural Excellence
@@ -168,3 +168,77 @@ const slides = [
     },
   });
 </script>
+<style>
+  @media (max-width: 640px) {
+    .hero-slider {
+      height: auto;
+      min-height: 0;
+      background: #111827;
+    }
+
+    :global(.heroSwiper),
+    :global(.heroSwiper .swiper-wrapper),
+    :global(.heroSwiper .swiper-slide) {
+      height: auto;
+    }
+
+    :global(.heroSwiper .swiper-slide) {
+      display: flex;
+      flex-direction: column;
+      background: #111827;
+    }
+
+    .hero-image {
+      position: relative;
+      inset: auto;
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    :global(.heroSwiper .hero-overlay) {
+      display: none;
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: none;
+      height: auto;
+      padding: 1.75rem 1.25rem 4.25rem;
+    }
+
+    .hero-content > p:first-child {
+      margin-bottom: 0.75rem;
+      font-size: 0.625rem;
+      letter-spacing: 0.2em;
+    }
+
+    .hero-content h2 {
+      font-size: clamp(2rem, 9vw, 3rem);
+      line-height: 1.05;
+    }
+
+    .hero-content > p:nth-of-type(2) {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .hero-content > div:last-child {
+      margin-top: 1.25rem;
+    }
+
+    .hero-content > div:last-child a {
+      height: 3.25rem;
+      padding-inline: 1.5rem;
+    }
+
+    :global(.heroSwiper .swiper-button-next),
+    :global(.heroSwiper .swiper-button-prev) {
+      display: none;
+    }
+  }
+</style>

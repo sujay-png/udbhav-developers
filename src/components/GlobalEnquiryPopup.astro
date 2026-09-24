@@ -327,7 +327,11 @@ import { Icon } from "@/components/Icon";
         if (!res.ok) throw new Error("Failed");
         dialog.close();
         form.reset();
-        window.location.href = "/thank-you";
+        if (window.location.pathname.includes('chinmaya') || window.location.pathname.includes('3-bhk-for-sale-kadri-mangalore')) {
+          window.location.href = "/chinmaya-thank-you";
+        } else {
+          window.location.href = "/thank-you";
+        }
       } catch {
         if (errorEl) errorEl.classList.remove("hidden");
         if (submitBtn) {
