@@ -2,28 +2,66 @@
 import { Icon } from "@/components/Icon";
 ---
 
-<dialog id="global-enquiry-modal" class="backdrop:bg-black/70 p-0 rounded-[5px] shadow-2xl bg-cream w-[95%] max-w-2xl max-h-[90vh] m-auto overflow-hidden">
+<dialog
+  id="global-enquiry-modal"
+  class="backdrop:bg-black/70 p-0 rounded-[5px] shadow-2xl bg-cream w-[95%] max-w-2xl max-h-[90vh] m-auto overflow-hidden"
+>
   <div class="flex flex-col h-full max-h-[90vh]">
-    <div class="flex justify-center items-center p-6 border-b border-border relative shrink-0">
-      <h2 class="font-display text-2xl sm:text-2xl text-ink">Enquire 3BHK Unit Options</h2>
-      <button type="button" class="close-modal absolute right-6 text-gray-400 hover:text-gray-800 transition-colors p-2 rounded-full hover:bg-gray-100">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    <div
+      class="flex justify-center items-center p-6 border-b border-border relative shrink-0"
+    >
+      <h2 class="font-display text-2xl sm:text-2xl text-ink">
+        Enquire 3BHK Unit Options
+      </h2>
+      <button
+        type="button"
+        class="close-modal absolute right-6 text-gray-400 hover:text-gray-800 transition-colors p-2 rounded-full hover:bg-gray-100"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><line x1="18" y1="6" x2="6" y2="18"></line><line
+            x1="6"
+            y1="6"
+            x2="18"
+            y2="18"></line></svg
+        >
       </button>
     </div>
-    
+
     <div class="p-6 sm:p-8 overflow-y-auto scrollbar-thin">
       <form class="space-y-6" id="global-enquiry-form">
-        
         <!-- Name -->
         <div class="space-y-2">
-          <label class="text-sm font-medium text-ink">Name <span class="text-clay">(Required)</span></label>
+          <label class="text-sm font-medium text-ink"
+            >Name <span class="text-clay">(Required)</span></label
+          >
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <input type="text" name="firstName" required placeholder="First name" class="w-full h-11 rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
+              <input
+                type="text"
+                name="firstName"
+                required
+                placeholder="First name"
+                class="w-full h-11 rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors"
+              />
               <p class="text-xs text-gray-500 mt-1">First</p>
             </div>
             <div>
-              <input type="text" name="lastName" required placeholder="Last name" class="w-full h-11 rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
+              <input
+                type="text"
+                name="lastName"
+                required
+                placeholder="Last name"
+                class="w-full h-11 rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors"
+              />
               <p class="text-xs text-gray-500 mt-1">Last</p>
             </div>
           </div>
@@ -31,28 +69,59 @@ import { Icon } from "@/components/Icon";
 
         <!-- Phone -->
         <div class="space-y-2">
-          <label class="text-sm font-medium text-ink">Phone <span class="text-clay">(Required)</span></label>
-          <input type="tel" name="phone" required placeholder="+91 98765 43210" class="w-full h-11 rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
+          <label class="text-sm font-medium text-ink"
+            >Phone <span class="text-clay">(Required)</span></label
+          >
+          <input
+            type="tel"
+            name="phone"
+            required
+            placeholder="+91 98765 43210"
+            class="w-full h-11 rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors"
+          />
         </div>
 
         <!-- Email & Budget -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="space-y-2">
-            <label class="text-sm font-medium text-ink">Email <span class="text-clay">(Required)</span></label>
-            <input type="email" name="email" required placeholder="you@example.com" class="w-full h-11 rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
+            <label class="text-sm font-medium text-ink"
+              >Email <span class="text-clay">(Required)</span></label
+            >
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="you@example.com"
+              class="w-full h-11 rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors"
+            />
           </div>
           <div class="space-y-2">
-            <label class="text-sm font-medium text-ink">Current City <span class="text-clay">(Required)</span></label>
-            <input type="text" name="city" required placeholder="Type Your City" class="w-full h-11 rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors" />
+            <label class="text-sm font-medium text-ink"
+              >Current City <span class="text-clay">(Required)</span></label
+            >
+            <input
+              type="text"
+              name="city"
+              required
+              placeholder="Type Your City"
+              class="w-full h-11 rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors"
+            />
           </div>
         </div>
 
         <!-- Preferred Unit Type (BHK) -->
         <div class="space-y-3 pt-2">
-          <label class="text-sm font-medium text-ink">Preferred Unit Type</label>
+          <label class="text-sm font-medium text-ink">Preferred Unit Type</label
+          >
           <div class="space-y-2">
             <label class="flex items-center space-x-3 cursor-pointer group">
-              <input type="radio" name="bhk" value="3BHK" checked class="w-5 h-5 border-gray-300 accent-[#B02317]" />
+              <input
+                type="radio"
+                name="bhk"
+                value="3BHK"
+                checked
+                class="w-5 h-5 border-gray-300 accent-[#B02317]"
+              />
               <span class="text-sm text-ink">3 BHK</span>
             </label>
           </div>
@@ -60,14 +129,27 @@ import { Icon } from "@/components/Icon";
 
         <!-- Intended Use -->
         <div class="space-y-3 pt-2">
-          <label class="text-sm font-medium text-ink">Intended Use <span class="text-clay">(Required)</span></label>
+          <label class="text-sm font-medium text-ink"
+            >Intended Use <span class="text-clay">(Required)</span></label
+          >
           <div class="space-y-2">
             <label class="flex items-center space-x-3 cursor-pointer">
-              <input type="radio" name="intendedUse" value="Self Use" required class="w-5 h-5 border-gray-300 accent-[#B02317]" />
+              <input
+                type="radio"
+                name="intendedUse"
+                value="Self Use"
+                required
+                class="w-5 h-5 border-gray-300 accent-[#B02317]"
+              />
               <span class="text-sm text-ink">Self Use</span>
             </label>
             <label class="flex items-center space-x-3 cursor-pointer">
-              <input type="radio" name="intendedUse" value="Investment" class="w-5 h-5 border-gray-300 accent-[#B02317]" />
+              <input
+                type="radio"
+                name="intendedUse"
+                value="Investment"
+                class="w-5 h-5 border-gray-300 accent-[#B02317]"
+              />
               <span class="text-sm text-ink">Investment</span>
             </label>
           </div>
@@ -75,22 +157,46 @@ import { Icon } from "@/components/Icon";
 
         <!-- Bank / Loan Preference -->
         <div class="space-y-3 pt-2">
-          <label class="text-sm font-medium text-ink">Bank / Loan Preference <span class="text-clay">(Required)</span></label>
+          <label class="text-sm font-medium text-ink"
+            >Bank / Loan Preference <span class="text-clay">(Required)</span
+            ></label
+          >
           <div class="space-y-2">
             <label class="flex items-center space-x-3 cursor-pointer">
-              <input type="radio" name="loanPref" value="Need Home Loan Assistance" required class="w-5 h-5 border-gray-300 accent-[#B02317]" />
+              <input
+                type="radio"
+                name="loanPref"
+                value="Need Home Loan Assistance"
+                required
+                class="w-5 h-5 border-gray-300 accent-[#B02317]"
+              />
               <span class="text-sm text-ink">Need Home Loan Assistance</span>
             </label>
             <label class="flex items-center space-x-3 cursor-pointer">
-              <input type="radio" name="loanPref" value="Already Pre-Approved" class="w-5 h-5 border-gray-300 accent-[#B02317]" />
+              <input
+                type="radio"
+                name="loanPref"
+                value="Already Pre-Approved"
+                class="w-5 h-5 border-gray-300 accent-[#B02317]"
+              />
               <span class="text-sm text-ink">Already Pre-Approved</span>
             </label>
             <label class="flex items-center space-x-3 cursor-pointer">
-              <input type="radio" name="loanPref" value="Planning to Apply" class="w-5 h-5 border-gray-300 accent-[#B02317]" />
+              <input
+                type="radio"
+                name="loanPref"
+                value="Planning to Apply"
+                class="w-5 h-5 border-gray-300 accent-[#B02317]"
+              />
               <span class="text-sm text-ink">Planning to Apply</span>
             </label>
             <label class="flex items-center space-x-3 cursor-pointer">
-              <input type="radio" name="loanPref" value="Self-Funded" class="w-5 h-5 border-gray-300 accent-[#B02317]" />
+              <input
+                type="radio"
+                name="loanPref"
+                value="Self-Funded"
+                class="w-5 h-5 border-gray-300 accent-[#B02317]"
+              />
               <span class="text-sm text-ink">Self-Funded</span>
             </label>
           </div>
@@ -98,21 +204,37 @@ import { Icon } from "@/components/Icon";
 
         <!-- WhatsApp Consent -->
         <div class="space-y-3 pt-2 pb-4">
-          <label class="text-sm font-medium text-ink">WhatsApp Consent <span class="text-clay">(Required)</span></label>
+          <label class="text-sm font-medium text-ink"
+            >WhatsApp Consent <span class="text-clay">(Required)</span></label
+          >
           <div class="space-y-2">
             <label class="flex items-center space-x-3 cursor-pointer">
-              <input type="checkbox" name="whatsapp" required class="w-5 h-5 border-gray-300 rounded accent-[#B02317]" />
-              <span class="text-sm text-ink">I agree to receive project details and updates via WhatsApp.</span>
+              <input
+                type="checkbox"
+                name="whatsapp"
+                required
+                class="w-5 h-5 border-gray-300 rounded accent-[#B02317]"
+              />
+              <span class="text-sm text-ink"
+                >I agree to receive project details and updates via WhatsApp.</span
+              >
             </label>
           </div>
         </div>
 
-        <div id="popup-form-error" class="hidden rounded-md bg-red-500/10 p-3 text-sm text-red-500">
+        <div
+          id="popup-form-error"
+          class="hidden rounded-md bg-red-500/10 p-3 text-sm text-red-500"
+        >
           Submission failed. Please try again.
         </div>
 
         <div class="pt-4 flex justify-center">
-          <button type="submit" id="popup-submit-btn" class="w-48 h-12 bg-clay hover:bg-clay-hover text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5 duration-300 disabled:opacity-60">
+          <button
+            type="submit"
+            id="popup-submit-btn"
+            class="w-48 h-12 bg-clay hover:bg-clay-hover text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5 duration-300 disabled:opacity-60"
+          >
             Submit
           </button>
         </div>
@@ -123,86 +245,101 @@ import { Icon } from "@/components/Icon";
 
 <script>
   const setupModal = () => {
-    const dialog = document.getElementById('global-enquiry-modal') as HTMLDialogElement;
+    const dialog = document.getElementById(
+      "global-enquiry-modal",
+    ) as HTMLDialogElement;
     if (!dialog) return;
 
-    const closeBtns = document.querySelectorAll('.close-modal');
-    
+    const closeBtns = document.querySelectorAll(".close-modal");
+
     // Open dialog when any matching trigger is clicked
-    document.addEventListener('click', (e) => {
-      const trigger = (e.target as Element).closest('[data-open-enquiry]');
+    document.addEventListener("click", (e) => {
+      const trigger = (e.target as Element).closest("[data-open-enquiry]");
       if (trigger) {
         e.preventDefault();
         dialog.showModal();
-        document.body.classList.add('overflow-hidden');
-        document.documentElement.classList.add('overflow-hidden');
+        document.body.classList.add("overflow-hidden");
+        document.documentElement.classList.add("overflow-hidden");
       }
     });
 
     // Close dialog on close button click
-    closeBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
+    closeBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
         dialog.close();
       });
     });
 
     // Close dialog when clicking backdrop
-    dialog.addEventListener('click', (e) => {
+    dialog.addEventListener("click", (e) => {
       const rect = dialog.getBoundingClientRect();
-      const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
-        rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
+      const isInDialog =
+        rect.top <= e.clientY &&
+        e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX &&
+        e.clientX <= rect.left + rect.width;
       if (!isInDialog) {
         dialog.close();
       }
     });
 
-    dialog.addEventListener('close', () => {
-        document.body.classList.remove('overflow-hidden');
-        document.documentElement.classList.remove('overflow-hidden');
+    dialog.addEventListener("close", () => {
+      document.body.classList.remove("overflow-hidden");
+      document.documentElement.classList.remove("overflow-hidden");
     });
 
     // Form submission → Gravity Forms
-    const form = document.getElementById('global-enquiry-form') as HTMLFormElement;
-    const submitBtn = document.getElementById('popup-submit-btn') as HTMLButtonElement;
-    const errorEl = document.getElementById('popup-form-error') as HTMLElement;
+    const form = document.getElementById(
+      "global-enquiry-form",
+    ) as HTMLFormElement;
+    const submitBtn = document.getElementById(
+      "popup-submit-btn",
+    ) as HTMLButtonElement;
+    const errorEl = document.getElementById("popup-form-error") as HTMLElement;
 
-    form?.addEventListener('submit', async (e) => {
+    form?.addEventListener("submit", async (e) => {
       e.preventDefault();
-      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Submitting…'; }
-      if (errorEl) errorEl.classList.add('hidden');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Submitting…";
+      }
+      if (errorEl) errorEl.classList.add("hidden");
 
       const fd = new FormData(form);
       try {
-        const res = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             formId: 2,
-            firstName: fd.get('firstName'),
-            lastName: fd.get('lastName'),
-            phone: fd.get('phone'),
-            email: fd.get('email'),
-            city: fd.get('city'),
-            bhk: fd.get('bhk'),
-            intendedUse: fd.get('intendedUse'),
-            loanPref: fd.get('loanPref'),
-            whatsapp: !!fd.get('whatsapp'),
+            firstName: fd.get("firstName"),
+            lastName: fd.get("lastName"),
+            phone: fd.get("phone"),
+            email: fd.get("email"),
+            city: fd.get("city"),
+            bhk: fd.get("bhk"),
+            intendedUse: fd.get("intendedUse"),
+            loanPref: fd.get("loanPref"),
+            whatsapp: !!fd.get("whatsapp"),
           }),
         });
 
-        if (!res.ok) throw new Error('Failed');
+        if (!res.ok) throw new Error("Failed");
         dialog.close();
         form.reset();
-        window.location.href = '/thank-you';
+        window.location.href = "/thank-you";
       } catch {
-        if (errorEl) errorEl.classList.remove('hidden');
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit'; }
+        if (errorEl) errorEl.classList.remove("hidden");
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Submit";
+        }
       }
     });
   };
 
   setupModal();
-  document.addEventListener('astro:page-load', setupModal);
+  document.addEventListener("astro:page-load", setupModal);
 </script>
 
 <style>
@@ -215,11 +352,21 @@ import { Icon } from "@/components/Icon";
     animation: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
   @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
   @keyframes slide-up {
-    from { opacity: 0; transform: translateY(20px) scale(0.95); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
   }
 </style>

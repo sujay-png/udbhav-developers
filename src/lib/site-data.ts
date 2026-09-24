@@ -156,7 +156,7 @@ export const projects: Project[] = [
       },
       {
         question: "6. Over how many years can I repay my home loan for this apartment?",
-        answer: "You can repay your home loan over a maximum period of 20 years, subject to your age and income eligibility as assessed by the bank. The repayment tenure will not ordinarily extend beyond your retirement age or 65 years, whichever is earlier.\n\nSince EMI varies based on your loan amount, tenure, and the bank's current interest rate, we recommend using our <a href='/buyers-guide?tab=emi' class='text-[#c32828] hover:underline underline-offset-4 decoration-1 decoration-[#c32828]'>EMI Calculator</a> on the <a href='/buyers-guide' class='text-[#c32828] hover:underline underline-offset-4 decoration-1 decoration-[#c32828]'>Buyers Guide</a> page to get an instant personalised estimate — or simply speak to our team and we will work out the numbers for you."
+        answer: "You can repay your home loan over a maximum period of 20 years, subject to your age and income eligibility as assessed by the bank. The repayment tenure will not ordinarily extend beyond your retirement age or 65 years, whichever is earlier.\n\nSince EMI varies based on your loan amount, tenure, and the bank's current interest rate, we recommend using our <a href='/buyers-guide/?tab=emi' class='text-[#c32828] hover:underline underline-offset-4 decoration-1 decoration-[#c32828]'>EMI Calculator</a> on the <a href='/buyers-guide/' class='text-[#c32828] hover:underline underline-offset-4 decoration-1 decoration-[#c32828]'>Buyers Guide</a> page to get an instant personalised estimate — or simply speak to our team and we will work out the numbers for you."
       }
     ],
     apartmentConfigurations: [
@@ -709,30 +709,30 @@ export const newsmedia: Media[] = [
 ];
 
 export const navLinks = [
-  { label: "About Us", href: "/about-us" },
+  { label: "About Us", href: "/about-us/" },
   {
     label: "Projects",
-    href: "/our-projects",
+    href: "/our-projects/",
     children: [
       {
         label: "Ongoing",
         status: "Ongoing",
-        href: "/our-projects?status=ongoing",
+        href: "/our-projects/?status=ongoing",
         items: projects.filter((p) => p.status === "Ongoing"),
       },
       {
         label: "Completed",
         status: "Completed",
-        href: "/our-projects?status=completed",
+        href: "/our-projects/?status=completed",
         items: projects.filter((p) => p.status === "Completed"),
       },
     ],
   },
-  { label: "Buyers Guide", href: "/buyers-guide" },
-  { label: "Testimonials", href: "/testimonials" },
-  { label: "Careers", href: "/careers" },
-  { label: "News Media", href: "/news-media" },
-  { label: "Blog", href: "/blog" },
+  { label: "Buyers Guide", href: "/buyers-guide/" },
+  { label: "Testimonials", href: "/testimonials/" },
+  { label: "Careers", href: "/careers/" },
+  { label: "News Media", href: "/news-media/" },
+  { label: "Blog", href: "/blog/" },
 ];
 
 export type Testimonial = {
