@@ -177,17 +177,54 @@ const isRich = !!project.reraNo;
         
         <!-- Our Partners (Full Width) -->
         <div class="mb-16">
-  <h3 class="font-display text-3xl text-ink mb-8 flex items-center">
-    Our Partners
-    <span class="w-1.5 h-1.5 rounded-full bg-yellow-500 ml-2 mt-2"></span>
-  </h3>
+          <h3 class="font-display text-3xl text-ink mb-8 flex items-center">
+            Our Partners
+            <span class="w-1.5 h-1.5 rounded-full bg-yellow-500 ml-2 mt-2"></span>
+          </h3>
 
-  <div class="flex flex-wrap items-center justify-start gap-8 md:gap-12 lg:gap-16">
-    <Image src={canaraBankImg} alt="Canara Bank" class="h-12 sm:h-14 md:h-16 w-auto object-contain mix-blend-darken" />
-    <Image src={sbBankImg} alt="State Bank of India" class="h-12 sm:h-14 md:h-16 w-auto object-contain mix-blend-darken" />
-    <Image src={kbankImg} alt="Karnataka Bank" class="h-12 sm:h-14 md:h-16 w-auto object-contain mix-blend-darken" />
-  </div>
-</div>
+          <div class="marquee-container w-full overflow-hidden flex py-2 gap-[80px]">
+            <div class="marquee-content flex gap-[80px] shrink-0 items-center">
+              <Image src={canaraBankImg} alt="Canara Bank" class="marquee-item" />
+              <Image src={sbBankImg} alt="State Bank of India" class="marquee-item" />
+              <Image src={kbankImg} alt="Karnataka Bank" class="marquee-item" />
+            </div>
+            <div class="marquee-content flex gap-[80px] shrink-0 items-center" aria-hidden="true">
+              <Image src={canaraBankImg} alt="Canara Bank" class="marquee-item" />
+              <Image src={sbBankImg} alt="State Bank of India" class="marquee-item" />
+              <Image src={kbankImg} alt="Karnataka Bank" class="marquee-item" />
+            </div>
+            <div class="marquee-content flex gap-[80px] shrink-0 items-center" aria-hidden="true">
+              <Image src={canaraBankImg} alt="Canara Bank" class="marquee-item" />
+              <Image src={sbBankImg} alt="State Bank of India" class="marquee-item" />
+              <Image src={kbankImg} alt="Karnataka Bank" class="marquee-item" />
+            </div>
+            <div class="marquee-content flex gap-[80px] shrink-0 items-center" aria-hidden="true">
+              <Image src={canaraBankImg} alt="Canara Bank" class="marquee-item" />
+              <Image src={sbBankImg} alt="State Bank of India" class="marquee-item" />
+              <Image src={kbankImg} alt="Karnataka Bank" class="marquee-item" />
+            </div>
+          </div>
+        </div>
+
+        <style is:global>
+          .marquee-content {
+            animation: scroll 15s linear infinite;
+          }
+          .marquee-container:hover .marquee-content {
+            animation-play-state: paused;
+          }
+          @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-100% - 80px)); }
+          }
+          .marquee-item {
+            flex-shrink: 0;
+            height: 56px !important;
+            width: auto !important;
+            object-fit: contain;
+            mix-blend-mode: darken;
+          }
+        </style>
 
         <!-- Two Column Layout -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
