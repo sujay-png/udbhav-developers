@@ -165,6 +165,11 @@ const faqSchema = {
       }
 
       /* ---------------- NAV ---------------- */
+
+      .nav .wrap {
+      max-width: 100%;
+       padding-left: 0;
+    }  
       .nav {
         background: var(--paper-soft);
         border-bottom: 1px solid var(--line);
@@ -189,6 +194,7 @@ const faqSchema = {
         color: var(--ink);
         text-decoration: none;
         flex-shrink: 0;
+         padding-left: 20px;
       }
       .nav-links {
         display: flex;
@@ -216,6 +222,7 @@ const faqSchema = {
         align-items: center;
         gap: 22px;
         flex-shrink: 0;
+          padding-right: 20px;
       }
       @media (max-width: 1140px) {
         .nav-links { gap: 20px; }
