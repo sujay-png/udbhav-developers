@@ -1610,7 +1610,12 @@ const faqSchema = {
           <li><a href="#floor-plan">3BHK Floor Plan</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
           <li><a href="#our-process">Our Process</a></li>
-          <li><a href="#virtual-360">Virtual 360°</a></li>
+          <li>
+            <a
+              href="https://visualisation.propall.tech/uc-masterplan/"
+              target="_blank"
+              rel="noopener noreferrer">Virtual 360°</a>
+          </li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
 
@@ -3115,9 +3120,9 @@ const faqSchema = {
       class="faq bg-[var(--paper-soft)] py-[92px] border-t border-[var(--line)]"
       id="faq"
     >
-     <div class="wrap">
-  <div class="eyebrow">FAQ</div>
-  <div class="faq-static mt-10"> 
+      <div class="wrap">
+        <div class="eyebrow">FAQ</div>
+        <div class="faq-static mt-10">
           {
             faqs.map((faq, index) => {
               const num = (index + 1).toString().padStart(2, "0");
@@ -3131,7 +3136,7 @@ const faqSchema = {
                       <h3 class="faq-q-text m-0 font-semibold text-[16px] sm:text-[17.5px] text-ink">
                         {faq.q}
                       </h3>
-                      <p class="text-[16px] leading-[1.7] text-[#5b5349] max-w-[65ch] mt-3 mb-0">
+                      <p class="text-[16px] leading-[1.7] text-[var(--ink)] max-w-[65ch] mt-3 mb-0">
                         {faq.a}
                       </p>
                     </div>
@@ -3187,8 +3192,66 @@ const faqSchema = {
     <ReraForm />
     <GlobalEnquiryPopup />
 
+    <!-- Scroll to Top Button -->
+    <button
+      id="scrollToTopBtn"
+      class="fixed bottom-8 right-8 z-[90] w-[50px] h-[50px] flex items-center justify-center rounded-full bg-[var(--paper)] border-2 border-[var(--red)] text-[var(--red)] opacity-0 invisible transition-all duration-300 hover:bg-[var(--red)] hover:text-[var(--paper)] shadow-lg translate-y-4"
+      aria-label="Scroll to top"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        // Scroll to Top Logic
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        if (scrollToTopBtn) {
+          window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+              scrollToTopBtn.classList.remove(
+                "opacity-0",
+                "invisible",
+                "translate-y-4",
+              );
+              scrollToTopBtn.classList.add(
+                "opacity-100",
+                "visible",
+                "translate-y-0",
+              );
+            } else {
+              scrollToTopBtn.classList.add(
+                "opacity-0",
+                "invisible",
+                "translate-y-4",
+              );
+              scrollToTopBtn.classList.remove(
+                "opacity-100",
+                "visible",
+                "translate-y-0",
+              );
+            }
+          });
+
+          scrollToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+          });
+        }
+
         const journeySection = document.querySelector(".journey");
         const journeyLine = document.querySelector(".journey-line");
         if (!journeySection || !journeyLine) return;
