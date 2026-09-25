@@ -13,41 +13,41 @@ import sbBankImg from "@/assets/images/udbahv-chinmaya/sb-bank.png";
 const faqs = [
   {
     q: "Where can I find a 3 BHK flat for sale in Kadri?",
-    a: "You can find premium 3 BHK flats for sale in Kadri, Mangalore through direct developer listings or established real estate portals. If you want a low-density, premium option, Udbhav Chinmaya offers exclusive, ultra-spacious 3 BHK configurations (1,715 to 1,880 sq. ft.) located in the quiet residential corridor of Chandrika Layout, Swami Vivekananda Road in Kadri."
+    a: "You can find premium 3 BHK flats for sale in Kadri, Mangalore through direct developer listings or established real estate portals. If you want a low-density, premium option, Udbhav Chinmaya offers exclusive, ultra-spacious 3 BHK configurations (1,715 to 1,880 sq. ft.) located in the quiet residential corridor of Chandrika Layout, Swami Vivekananda Road in Kadri.",
   },
   {
     q: "Is it worth buying a 3 BHK luxury flat in Kadri?",
-    a: "Yes, buying a 3 BHK luxury flat in Kadri is highly worth it due to steady capital appreciation, special infrastructure & excellent coastal connectivity."
+    a: "Yes, buying a 3 BHK luxury flat in Kadri is highly worth it due to steady capital appreciation, special infrastructure & excellent coastal connectivity.",
   },
   {
     q: "What are some good 3 BHK flats for sale in Mangalore?",
-    a: "Good 3 BHK flats for sale in Mangalore should balance generous square footage, high-end construction materials, and a low-density layout. While massive high-rises are common, boutique low-rise developments like Udbhav Chinmaya in Kadri stand out by providing premium 3 BHK spaces featuring Vaastu-compliant architectural layouts, and dedicated resort-style amenities shared among only 40 families."
+    a: "Good 3 BHK flats for sale in Mangalore should balance generous square footage, high-end construction materials, and a low-density layout. While massive high-rises are common, boutique low-rise developments like Udbhav Chinmaya in Kadri stand out by providing premium 3 BHK spaces featuring Vaastu-compliant architectural layouts, and dedicated resort-style amenities shared among only 40 families.",
   },
   {
     q: "Is Udbhav Chinmaya RERA approved?",
-    a: "Yes, Udbhav Chinmaya is fully RERA approved and legally registered with the Karnataka Real Estate Regulatory Authority. The project complies completely with all construction milestones, structural engineering guidelines, and financial transparency standards mandated under regional regulatory law."
+    a: "Yes, Udbhav Chinmaya is fully RERA approved and legally registered with the Karnataka Real Estate Regulatory Authority. The project complies completely with all construction milestones, structural engineering guidelines, and financial transparency standards mandated under regional regulatory law.",
   },
   {
     q: "Are the lifestyle and fitness amenities shared with outside visitors?",
-    a: "No. All premium lifestyle amenities—including the rooftop infinity swimming pool, elite multi-purpose party hall, fully-equipped gym, and kids zone—are completely private and restricted strictly to residents and their personal guests, preserving low-density quietness and community security."
+    a: "No. All premium lifestyle amenities—including the rooftop infinity swimming pool, elite multi-purpose party hall, fully-equipped gym, and kids zone—are completely private and restricted strictly to residents and their personal guests, preserving low-density quietness and community security.",
   },
   {
     q: "What are the recent completed projects of Udbhav Developers?",
-    a: "Udbhav Developers has delivered landmark structures across Mangalore, including Udbhav Shanthi (Completion 2023), Udbhav Square (Kottara), KRK Aayush (2022), Marcel's Maison (2025) & Bhaskar Coconut Groves (2015)."
-  }
+    a: "Udbhav Developers has delivered landmark structures across Mangalore, including Udbhav Shanthi (Completion 2023), Udbhav Square (Kottara), KRK Aayush (2022), Marcel's Maison (2025) & Bhaskar Coconut Groves (2015).",
+  },
 ];
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": faqs.map(faq => ({
+  mainEntity: faqs.map((faq) => ({
     "@type": "Question",
-    "name": faq.q,
-    "acceptedAnswer": {
+    name: faq.q,
+    acceptedAnswer: {
       "@type": "Answer",
-      "text": faq.a
-    }
-  }))
+      text: faq.a,
+    },
+  })),
 };
 ---
 
@@ -167,11 +167,10 @@ const faqSchema = {
       /* ---------------- NAV ---------------- */
 
       .nav .wrap {
-      max-width: 100%;
-       /* padding-left: 20px; */
-       padding-right:10px;
-
-    }  
+        max-width: 100%;
+        /* padding-left: 20px; */
+        padding-right: 10px;
+      }
       .nav {
         background: var(--paper-soft);
         border-bottom: 1px solid var(--line);
@@ -196,7 +195,7 @@ const faqSchema = {
         color: var(--ink);
         text-decoration: none;
         flex-shrink: 0;
-         padding-left: 20px;
+        padding-left: 20px;
       }
       .nav-links {
         display: flex;
@@ -224,14 +223,21 @@ const faqSchema = {
         align-items: center;
         gap: 22px;
         flex-shrink: 0;
-          padding-right: 20px;
+        padding-right: 20px;
       }
       @media (max-width: 1140px) {
-        .nav-links { gap: 20px; }
-        .nav-links a { font-size: 0.72rem; letter-spacing: 0.1em; }
+        .nav-links {
+          gap: 20px;
+        }
+        .nav-links a {
+          font-size: 0.72rem;
+          letter-spacing: 0.1em;
+        }
       }
       @media (max-width: 980px) {
-        .nav-links { display: none; }
+        .nav-links {
+          display: none;
+        }
       }
 
       /* ---------------- HERO (light) ---------------- */
@@ -562,7 +568,10 @@ const faqSchema = {
         flex: 0 0 calc(50% - 10px);
         scroll-snap-align: none;
         cursor: pointer;
-        transition: border-color 0.2s, transform 0.2s ease, box-shadow 0.2s ease;
+        transition:
+          border-color 0.2s,
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
         text-align: center;
       }
       .fp-card:hover {
@@ -1091,20 +1100,54 @@ const faqSchema = {
         animation: lineDrawX 4s ease-out forwards;
       }
       @keyframes lineDrawX {
-        from { transform: scaleX(0); }
-        to { transform: scaleX(1); }
+        from {
+          transform: scaleX(0);
+        }
+        to {
+          transform: scaleX(1);
+        }
       }
-      .journey-line:not(.is-visible) .j-num { transform: scale(0); }
-      .journey-line:not(.is-visible) .j-title { opacity: 0; transform: translateY(20px); }
-      .journey-line.is-visible .j-num { animation: circlePop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-      .journey-line.is-visible .j-title { animation: labelFadeUp 0.8s ease-out forwards; }
-      .journey-line.is-visible .j-step:nth-child(1) .j-num, .journey-line.is-visible .j-step:nth-child(1) .j-title { animation-delay: 0ms; }
-      .journey-line.is-visible .j-step:nth-child(2) .j-num, .journey-line.is-visible .j-step:nth-child(2) .j-title { animation-delay: 600ms; }
-      .journey-line.is-visible .j-step:nth-child(3) .j-num, .journey-line.is-visible .j-step:nth-child(3) .j-title { animation-delay: 1200ms; }
-      .journey-line.is-visible .j-step:nth-child(4) .j-num, .journey-line.is-visible .j-step:nth-child(4) .j-title { animation-delay: 1800ms; }
-      .journey-line.is-visible .j-step:nth-child(5) .j-num, .journey-line.is-visible .j-step:nth-child(5) .j-title { animation-delay: 2400ms; }
-      .journey-line.is-visible .j-step:nth-child(6) .j-num, .journey-line.is-visible .j-step:nth-child(6) .j-title { animation-delay: 3000ms; }
-      .journey-line.is-visible .j-step:nth-child(7) .j-num, .journey-line.is-visible .j-step:nth-child(7) .j-title { animation-delay: 3600ms; }
+      .journey-line:not(.is-visible) .j-num {
+        transform: scale(0);
+      }
+      .journey-line:not(.is-visible) .j-title {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      .journey-line.is-visible .j-num {
+        animation: circlePop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+      .journey-line.is-visible .j-title {
+        animation: labelFadeUp 0.8s ease-out forwards;
+      }
+      .journey-line.is-visible .j-step:nth-child(1) .j-num,
+      .journey-line.is-visible .j-step:nth-child(1) .j-title {
+        animation-delay: 0ms;
+      }
+      .journey-line.is-visible .j-step:nth-child(2) .j-num,
+      .journey-line.is-visible .j-step:nth-child(2) .j-title {
+        animation-delay: 600ms;
+      }
+      .journey-line.is-visible .j-step:nth-child(3) .j-num,
+      .journey-line.is-visible .j-step:nth-child(3) .j-title {
+        animation-delay: 1200ms;
+      }
+      .journey-line.is-visible .j-step:nth-child(4) .j-num,
+      .journey-line.is-visible .j-step:nth-child(4) .j-title {
+        animation-delay: 1800ms;
+      }
+      .journey-line.is-visible .j-step:nth-child(5) .j-num,
+      .journey-line.is-visible .j-step:nth-child(5) .j-title {
+        animation-delay: 2400ms;
+      }
+      .journey-line.is-visible .j-step:nth-child(6) .j-num,
+      .journey-line.is-visible .j-step:nth-child(6) .j-title {
+        animation-delay: 3000ms;
+      }
+      .journey-line.is-visible .j-step:nth-child(7) .j-num,
+      .journey-line.is-visible .j-step:nth-child(7) .j-title {
+        animation-delay: 3600ms;
+      }
       .j-step {
         position: relative;
         z-index: 1;
@@ -1127,7 +1170,9 @@ const faqSchema = {
         align-items: center;
         justify-content: center;
         margin-bottom: 18px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
       }
       .j-title {
         font-size: 0.92rem;
@@ -1144,12 +1189,22 @@ const faqSchema = {
         color: var(--red);
       }
       @keyframes circlePop {
-        0% { transform: scale(0); }
-        100% { transform: scale(1); }
+        0% {
+          transform: scale(0);
+        }
+        100% {
+          transform: scale(1);
+        }
       }
       @keyframes labelFadeUp {
-        0% { opacity: 0; transform: translateY(20px); }
-        100% { opacity: 1; transform: translateY(0); }
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
       @media (max-width: 980px) {
         .journey-line {
@@ -1187,14 +1242,28 @@ const faqSchema = {
         }
       }
       @keyframes lineDrawY {
-        from { transform: scaleY(0); }
-        to { transform: scaleY(1); }
+        from {
+          transform: scaleY(0);
+        }
+        to {
+          transform: scaleY(1);
+        }
       }
       @media (prefers-reduced-motion: reduce) {
-        .journey-line * { animation: none !important; transition: none !important; }
-        .journey-line::after { transform: scaleX(1) scaleY(1) !important; }
-        .journey-line:not(.is-visible) .j-num { transform: scale(1); }
-        .journey-line:not(.is-visible) .j-title { opacity: 1; transform: translateY(0); }
+        .journey-line * {
+          animation: none !important;
+          transition: none !important;
+        }
+        .journey-line::after {
+          transform: scaleX(1) scaleY(1) !important;
+        }
+        .journey-line:not(.is-visible) .j-num {
+          transform: scale(1);
+        }
+        .journey-line:not(.is-visible) .j-title {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       /* specifications */
@@ -1350,6 +1419,13 @@ const faqSchema = {
       .faq-item:last-child {
         border-bottom: 1px solid var(--line);
       }
+      .faq-static-row {
+        border-top: 1px solid var(--line);
+        padding: 24px 0;
+      }
+      .faq-static-row:last-child {
+        border-bottom: 1px solid var(--line);
+      }
       .faq-q {
         font-weight: 700;
         color: var(--ink);
@@ -1414,8 +1490,12 @@ const faqSchema = {
         animation-play-state: paused;
       }
       @keyframes scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-100% - 80px)); }
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(calc(-100% - 80px));
+        }
       }
       .marquee-item {
         flex-shrink: 0;
@@ -1504,15 +1584,24 @@ const faqSchema = {
 
   <body class="relative">
     <!-- ANNOUNCEMENT BAR -->
-    <div class="w-full bg-primary text-primary-foreground text-center py-3 px-6 text-[0.95rem] font-medium">
-      4BHK units sold out. Limited 3BHK residences available. RERA ID: PRK/KA/RERA/1257/334/PR/311225/008371
+    <div
+      class="w-full bg-primary text-primary-foreground text-center py-3 px-6 text-[0.95rem] font-medium"
+    >
+      4BHK units sold out. Limited 3BHK residences available. RERA ID:
+      PRK/KA/RERA/1257/334/PR/311225/008371
     </div>
 
     <header class="nav">
       <div class="wrap nav-inner">
         <a href="/" class="brand">
-          <img src="/images/udbhav-developers-logo-1.png" style="width:26px; height:auto;" alt="Udbhav Logo" />
-          <span style="white-space:nowrap; font-family:var(--font-display); font-weight:600; font-size:1.3rem; color:var(--ink);">
+          <img
+            src="/images/udbhav-developers-logo-1.png"
+            style="width:26px; height:auto;"
+            alt="Udbhav Logo"
+          />
+          <span
+            style="white-space:nowrap; font-family:var(--font-display); font-weight:600; font-size:1.3rem; color:var(--ink);"
+          >
             Udbhav <span style="color:var(--red);">Developers</span>
           </span>
         </a>
@@ -1526,8 +1615,17 @@ const faqSchema = {
         </ul>
 
         <div class="nav-actions">
-          <a href="#" data-open-enquiry="true" class="btn btn-primary" style="padding: 10px 22px;">Enquiry</a>
-          <img src="/images/credai-mangalore-logo.webp" alt="CREDAI Mangalore" style="height: 32px; width: auto; object-fit: contain;" />
+          <a
+            href="#"
+            data-open-enquiry="true"
+            class="btn btn-primary"
+            style="padding: 10px 22px;">Enquiry</a
+          >
+          <img
+            src="/images/credai-mangalore-logo.webp"
+            alt="CREDAI Mangalore"
+            style="height: 32px; width: auto; object-fit: contain;"
+          />
         </div>
       </div>
     </header>
@@ -1580,24 +1678,72 @@ const faqSchema = {
           </h2>
           <div class="marquee-container">
             <div class="marquee-content">
-              <Image src={canaraBankImg} alt="Canara Bank" class="marquee-item" />
-              <Image src={sbBankImg} alt="State Bank of India" class="marquee-item" />
-              <Image src={kBankImg} alt="Karnataka Bank Ltd" class="marquee-item" />
+              <Image
+                src={canaraBankImg}
+                alt="Canara Bank"
+                class="marquee-item"
+              />
+              <Image
+                src={sbBankImg}
+                alt="State Bank of India"
+                class="marquee-item"
+              />
+              <Image
+                src={kBankImg}
+                alt="Karnataka Bank Ltd"
+                class="marquee-item"
+              />
             </div>
             <div class="marquee-content" aria-hidden="true">
-              <Image src={canaraBankImg} alt="Canara Bank" class="marquee-item" />
-              <Image src={sbBankImg} alt="State Bank of India" class="marquee-item" />
-              <Image src={kBankImg} alt="Karnataka Bank Ltd" class="marquee-item" />
+              <Image
+                src={canaraBankImg}
+                alt="Canara Bank"
+                class="marquee-item"
+              />
+              <Image
+                src={sbBankImg}
+                alt="State Bank of India"
+                class="marquee-item"
+              />
+              <Image
+                src={kBankImg}
+                alt="Karnataka Bank Ltd"
+                class="marquee-item"
+              />
             </div>
             <div class="marquee-content" aria-hidden="true">
-              <Image src={canaraBankImg} alt="Canara Bank" class="marquee-item" />
-              <Image src={sbBankImg} alt="State Bank of India" class="marquee-item" />
-              <Image src={kBankImg} alt="Karnataka Bank Ltd" class="marquee-item" />
+              <Image
+                src={canaraBankImg}
+                alt="Canara Bank"
+                class="marquee-item"
+              />
+              <Image
+                src={sbBankImg}
+                alt="State Bank of India"
+                class="marquee-item"
+              />
+              <Image
+                src={kBankImg}
+                alt="Karnataka Bank Ltd"
+                class="marquee-item"
+              />
             </div>
             <div class="marquee-content" aria-hidden="true">
-              <Image src={canaraBankImg} alt="Canara Bank" class="marquee-item" />
-              <Image src={sbBankImg} alt="State Bank of India" class="marquee-item" />
-              <Image src={kBankImg} alt="Karnataka Bank Ltd" class="marquee-item" />
+              <Image
+                src={canaraBankImg}
+                alt="Canara Bank"
+                class="marquee-item"
+              />
+              <Image
+                src={sbBankImg}
+                alt="State Bank of India"
+                class="marquee-item"
+              />
+              <Image
+                src={kBankImg}
+                alt="Karnataka Bank Ltd"
+                class="marquee-item"
+              />
             </div>
           </div>
         </div>
@@ -1708,7 +1854,12 @@ const faqSchema = {
                     class={`fp-card ${index === 0 || index === 1 ? "active" : ""}`}
                     data-index={index}
                   >
-                    <img src={plan.image} alt={plan.title} onclick="openLightbox(this.src)" class="cursor-pointer" />
+                    <img
+                      src={plan.image}
+                      alt={plan.title}
+                      onclick="openLightbox(this.src)"
+                      class="cursor-pointer"
+                    />
                     <div class="fp-card-title">
                       {plan.series}
                       <br />
@@ -1731,14 +1882,24 @@ const faqSchema = {
               >
                 {floorPlans[0].series}
               </div>
-              <h3 style="font-size: 1.8rem; margin-top: 0; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-                <span id="fp-title-text">{floorPlans[0].shortTitle || floorPlans[0].title}</span>
-                <span id="fp-top-view-badge" style={`font-size: 0.9rem; font-weight: 600; padding: 4px 10px; background: var(--red-tint); color: var(--red); border-radius: 4px; display: ${floorPlans[0].title.toLowerCase().includes('top view') ? 'inline-block' : 'none'};`}>Top View</span>
+              <h3
+                style="font-size: 1.8rem; margin-top: 0; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;"
+              >
+                <span id="fp-title-text"
+                  >{floorPlans[0].shortTitle || floorPlans[0].title}</span
+                >
+                <span
+                  id="fp-top-view-badge"
+                  style={`font-size: 0.9rem; font-weight: 600; padding: 4px 10px; background: var(--red-tint); color: var(--red); border-radius: 4px; display: ${floorPlans[0].title.toLowerCase().includes("top view") ? "inline-block" : "none"};`}
+                  >Top View</span
+                >
               </h3>
               <ul class="fp-specs" style="margin-top: 24px;">
                 <li>
                   <span>Configuration</span><strong id="fp-config-text"
-                    >{floorPlans[0].config.replace(/\s*\(Top View\)\.?/i, "")}</strong
+                    >{
+                      floorPlans[0].config.replace(/\s*\(Top View\)\.?/i, "")
+                    }</strong
                   >
                 </li>
                 <li>
@@ -1804,7 +1965,10 @@ const faqSchema = {
           if (plan) {
             seriesText.textContent = plan.series;
             titleText.textContent = plan.shortTitle || plan.title;
-            configText.textContent = plan.config.replace(/\s*\(Top View\)\.?/i, "");
+            configText.textContent = plan.config.replace(
+              /\s*\(Top View\)\.?/i,
+              "",
+            );
             viewsText.textContent = plan.views;
 
             const topViewBadge = document.getElementById("fp-top-view-badge");
@@ -2133,7 +2297,9 @@ const faqSchema = {
           Kadri has been Mangalore's Preferred Residential Address for Three
           Generations.
         </h2>
-        <div class="her-grid grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-50 md:gap-20 lg:gap-20 xl:gap-24">
+        <div
+          class="her-grid grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-50 md:gap-20 lg:gap-20 xl:gap-24"
+        >
           <!-- Text Column -->
           <div class="flex flex-col gap-8 lg:block">
             <p class="section-lede" style="margin-bottom:0;">
@@ -2168,7 +2334,10 @@ const faqSchema = {
           </div>
 
           <!-- Map Column -->
-          <div class="lg:sticky lg:top-24 self-start opacity-0 translate-y-4 transition-all duration-1000 ease-out" data-animate="fade-in">
+          <div
+            class="lg:sticky lg:top-24 self-start opacity-0 translate-y-4 transition-all duration-1000 ease-out"
+            data-animate="fade-in"
+          >
             <img
               src="/images/location map- luxury flats 3bhk.webp"
               class="w-full h-auto rounded-xl shadow-2xl"
@@ -2270,7 +2439,9 @@ const faqSchema = {
 
             <p style="margin:0;">
               Udbhav Developers has delivered some of the landmark structures
-              across Mangalore, including Udbhav Shanthi (Completion 2023), Udbhav Square (Kottara), KRK Aayush (2022), Marcel's Maison (2025) &amp; Bhaskar Coconut Groves (2015).
+              across Mangalore, including Udbhav Shanthi (Completion 2023),
+              Udbhav Square (Kottara), KRK Aayush (2022), Marcel's Maison (2025)
+              &amp; Bhaskar Coconut Groves (2015).
             </p>
           </div>
         </div>
@@ -2289,8 +2460,7 @@ const faqSchema = {
               appreciation.
             </p>
           </div>
-          <div class="split-block">
-          </div>
+          <div class="split-block"></div>
         </div>
       </div>
     </section>
@@ -2307,16 +2477,17 @@ const faqSchema = {
               My wife and I own and reside in one of Udbhav Developer's recent
               projects. We are very happy with our decision, and all guests and
               visitors to our home have commended the quality and look of the
-              property. Kiran the owner of the firm, and his dedicated and highly
-              capable staff, notably Vignesh, are friendly, approachable, and
-              responsive even post-handover of property. Here are our specific
-              technical points: A) Timely execution of construction work B) Prompt
-              and hassle free hand over of property and smooth formalities. C)
-              Premium materials used and so is build quality. No sign of unskilled
-              labour/technicians. D) Good floor plan, good use of available space
-              without making common areas feel cramped. D) Good amenities as
-              promised upfront, with a touch of something extra, for example the
-              thoughtfully planned greenery on terrace and flower gardens.
+              property. Kiran the owner of the firm, and his dedicated and
+              highly capable staff, notably Vignesh, are friendly, approachable,
+              and responsive even post-handover of property. Here are our
+              specific technical points: A) Timely execution of construction
+              work B) Prompt and hassle free hand over of property and smooth
+              formalities. C) Premium materials used and so is build quality. No
+              sign of unskilled labour/technicians. D) Good floor plan, good use
+              of available space without making common areas feel cramped. D)
+              Good amenities as promised upfront, with a touch of something
+              extra, for example the thoughtfully planned greenery on terrace
+              and flower gardens.
             </p>
             <button class="grid-read-more-btn" aria-expanded="false"
               >Read more</button
@@ -2326,17 +2497,18 @@ const faqSchema = {
           <div class="test-card group">
             <div class="quote-mark">&ldquo;</div>
             <p class="quote-text line-clamp-4">
-              I have known Mr. Kiran B.K from the time he was in Oman, the U.A.E,
-              then in U.K followed by returning to Mangalore to being a developer.
-              I had no doubt in his abilities, he proved himself first in his
-              residential projects and now in the commercial project. Having
-              travelled around the world and being resident of a few countries
-              such as U.A.E and Canada, I find the projects completed by Udbhav
-              Developers equal in quality and standards to international
-              buildings. The amenities, structure and engineering behind Udbhav
-              developed buildings are world class. I wish Kiran B.K and team all
-              the very best in their future endeavours, Mangalore needs more such
-              quality buildings, Keep up the good work!
+              I have known Mr. Kiran B.K from the time he was in Oman, the
+              U.A.E, then in U.K followed by returning to Mangalore to being a
+              developer. I had no doubt in his abilities, he proved himself
+              first in his residential projects and now in the commercial
+              project. Having travelled around the world and being resident of a
+              few countries such as U.A.E and Canada, I find the projects
+              completed by Udbhav Developers equal in quality and standards to
+              international buildings. The amenities, structure and engineering
+              behind Udbhav developed buildings are world class. I wish Kiran
+              B.K and team all the very best in their future endeavours,
+              Mangalore needs more such quality buildings, Keep up the good
+              work!
             </p>
             <button class="grid-read-more-btn" aria-expanded="false"
               >Read more</button
@@ -2349,9 +2521,9 @@ const faqSchema = {
               We are the proud owners of one of the apartments build by Udbhav
               Developers in their first venture. The build quality is good and
               they have used branded fittings in plumbing and electricals. They
-              are very approachable and easy to work with and have always answered
-              our questions patiently and positively. We would highly recommend
-              them.
+              are very approachable and easy to work with and have always
+              answered our questions patiently and positively. We would highly
+              recommend them.
             </p>
             <button class="grid-read-more-btn" aria-expanded="false"
               >Read more</button
@@ -2369,12 +2541,12 @@ const faqSchema = {
             <p class="quote-text line-clamp-4">
               I have brought a flat in the first project of Udbhav developers at
               Mangalore, Nantoor during the construction stage. This is the 5th
-              year of residence after project completion. There have not been any
-              structural issues or seepage issues. The quality of workmanship and
-              dedication shown from Kiran and Udbhav developers in completion of
-              project, delivery in time and quality is excellent. I could see the
-              same quality, workmanship & dedication in their upcoming projects.
-              HAPPY CUSTOMER!!!!!!!!!
+              year of residence after project completion. There have not been
+              any structural issues or seepage issues. The quality of
+              workmanship and dedication shown from Kiran and Udbhav developers
+              in completion of project, delivery in time and quality is
+              excellent. I could see the same quality, workmanship & dedication
+              in their upcoming projects. HAPPY CUSTOMER!!!!!!!!!
             </p>
             <button class="grid-read-more-btn" aria-expanded="false"
               >Read more</button
@@ -2384,21 +2556,21 @@ const faqSchema = {
           <div class="test-card group">
             <div class="quote-mark">&ldquo;</div>
             <p class="quote-text line-clamp-4">
-              I was referred to Udbhav Developers and Kiran, by one of my friends
-              and have never regretted the decision. Kiran has been spot on with
-              all the work w.r.t the flat and has always made quality a priority.
-              This is what sets Udbhav Developers apart from other builders that I
-              have dealt with. Being abroad most of the time, he has made dealing
-              with him very simple and also provided any timely guidance whenever
-              required (in my case when the registration costs were going to
-              increase the next month, he suggested me to get it done within the
-              same month). All the construction work has been on time and he has
-              gone beyond his actual work to help me find tenants for my current
-              apartment and also suggested lawyers for the khata and rental
-              agreement. All in all, it has been great dealing with Udbhav
-              Developers and Kiran and am sure all flat owners of Bhaskar Coconut
-              groves would feel the same. My best wishes for all your future
-              ventures.
+              I was referred to Udbhav Developers and Kiran, by one of my
+              friends and have never regretted the decision. Kiran has been spot
+              on with all the work w.r.t the flat and has always made quality a
+              priority. This is what sets Udbhav Developers apart from other
+              builders that I have dealt with. Being abroad most of the time, he
+              has made dealing with him very simple and also provided any timely
+              guidance whenever required (in my case when the registration costs
+              were going to increase the next month, he suggested me to get it
+              done within the same month). All the construction work has been on
+              time and he has gone beyond his actual work to help me find
+              tenants for my current apartment and also suggested lawyers for
+              the khata and rental agreement. All in all, it has been great
+              dealing with Udbhav Developers and Kiran and am sure all flat
+              owners of Bhaskar Coconut groves would feel the same. My best
+              wishes for all your future ventures.
             </p>
             <button class="grid-read-more-btn" aria-expanded="false"
               >Read more</button
@@ -2409,27 +2581,30 @@ const faqSchema = {
             <div class="quote-mark">&ldquo;</div>
             <p class="quote-text line-clamp-4">
               I had invested in one of the apartments at Bhaskar Coconut Grooves
-              as this was recommended by one of my friends. As I was out of India,
-              I did not get a chance to look at the site location nor check on the
-              progress of the apartment by myself. However, I was up to date on
-              the progress – this was only because of complete transparency by the
-              staff at BCG, and detailed updates on the project on their website
-              and emails. They helped with all the paper works, including back
-              coordination's etc. I returned to India and this matched with
-              project completion. The schedules were met; the architect, design
-              and specifications were as explained during my purchase – with the
-              best amenities and unmatched Quality. The geographic location was
-              perfect for a peaceful residential complex and also close to NH and
-              city. Mr. Kiran B.K. from BCG and his team were very professional in
-              their approach towards project and always had ‘customer first’
-              attitude. They are very passionate, reliable and committed - this
-              makes me recommend Udbhav Developers Mangalore properties. Best
-              wishes and thank you for the wonderful job.
+              as this was recommended by one of my friends. As I was out of
+              India, I did not get a chance to look at the site location nor
+              check on the progress of the apartment by myself. However, I was
+              up to date on the progress – this was only because of complete
+              transparency by the staff at BCG, and detailed updates on the
+              project on their website and emails. They helped with all the
+              paper works, including back coordination's etc. I returned to
+              India and this matched with project completion. The schedules were
+              met; the architect, design and specifications were as explained
+              during my purchase – with the best amenities and unmatched
+              Quality. The geographic location was perfect for a peaceful
+              residential complex and also close to NH and city. Mr. Kiran B.K.
+              from BCG and his team were very professional in their approach
+              towards project and always had ‘customer first’ attitude. They are
+              very passionate, reliable and committed - this makes me recommend
+              Udbhav Developers Mangalore properties. Best wishes and thank you
+              for the wonderful job.
             </p>
             <button class="grid-read-more-btn" aria-expanded="false"
               >Read more</button
             >
-            <div class="who" style="margin-top: 16px;">Mr.Varadaraj Shanbhag</div>
+            <div class="who" style="margin-top: 16px;">
+              Mr.Varadaraj Shanbhag
+            </div>
           </div>
         </div>
       </div>
@@ -2506,9 +2681,9 @@ const faqSchema = {
           Specifications &amp; Features of Chinmaya Flats In Kadri Mangalore
         </h2>
         <p class="section-lede">
-          Udbhav Chinmaya Kadri is Mangalore's new &amp; premium housing society.
-          Take a look at some of the features &amp; specifications of Udbhav
-          Chinmaya:
+          Udbhav Chinmaya Kadri is Mangalore's new &amp; premium housing
+          society. Take a look at some of the features &amp; specifications of
+          Udbhav Chinmaya:
         </p>
         <div class="specs-grid">
           <div class="spec-card">
@@ -2532,8 +2707,8 @@ const faqSchema = {
               </li>
               <li>Bathroom flooring: Designer 600x1200 mm ceramic tiles.</li>
               <li>
-                Lobbies &amp; Corridors: Finished with granite, Italian marble, or
-                vitrified tiles.
+                Lobbies &amp; Corridors: Finished with granite, Italian marble,
+                or vitrified tiles.
               </li>
               <li>Staircase steps: Fitted with 1200x300 mm anti-slip tiles.</li>
             </ul>
@@ -2550,8 +2725,8 @@ const faqSchema = {
                 locks.
               </li>
               <li>
-                Washroom doors: Built with a Granite/WPC frame and water-resistant
-                FRP shutters.
+                Washroom doors: Built with a Granite/WPC frame and
+                water-resistant FRP shutters.
               </li>
               <li>
                 Windows: Aluminium/UPVC glazed windows equipped with MS safety
@@ -2608,8 +2783,8 @@ const faqSchema = {
                 kitchen appliances.
               </li>
               <li>
-                Utility provisions: Dedicated points for an exhaust fan, RO water
-                purifier, instant geyser, and chimney.
+                Utility provisions: Dedicated points for an exhaust fan, RO
+                water purifier, instant geyser, and chimney.
               </li>
               <li>Gas supply: Piped gas connection via GAIL pipeline.</li>
             </ul>
@@ -2621,12 +2796,12 @@ const faqSchema = {
                 putty finish on walls and ceilings.
               </li>
               <li>
-                External surfaces: Coated with external-grade, antifungal superior
-                paint.
+                External surfaces: Coated with external-grade, antifungal
+                superior paint.
               </li>
               <li>
-                Metalwork: All metal fixtures and fabrications coated with enamel
-                paint.
+                Metalwork: All metal fixtures and fabrications coated with
+                enamel paint.
               </li>
             </ul>
           </div>
@@ -2634,7 +2809,8 @@ const faqSchema = {
             <h4>High Security</h4><ul>
               <li>CCTV camera monitoring across all floors.</li>
               <li>
-                Access control: Biometric access control systems for common areas.
+                Access control: Biometric access control systems for common
+                areas.
               </li>
               <li>
                 Apartment security: Video door phones paired with main door
@@ -2653,7 +2829,9 @@ const faqSchema = {
                 Motion sensors installed for common passage lighting to save
                 energy.
               </li>
-              <li>Water conservation: Integrated rainwater harvesting system.</li>
+              <li>
+                Water conservation: Integrated rainwater harvesting system.
+              </li>
               <li>
                 Green mobility: Dedicated EV charging provisions for each car
                 parking space.
@@ -2695,7 +2873,9 @@ const faqSchema = {
             >&lt;</button
           >
           <div class="gallery-scroll py-3">
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/SAI_0122.webp"
                 alt="Construction Update"
@@ -2704,7 +2884,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/SAI_0129.webp"
                 alt="Construction Update"
@@ -2713,7 +2895,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/SAI_0131.webp"
                 alt="Construction Update"
@@ -2722,7 +2906,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/SAI_0116.webp"
                 alt="Construction Update"
@@ -2731,7 +2917,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/SAI_0119.webp"
                 alt="Construction Update"
@@ -2740,7 +2928,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/SAI_0124.4NOOdNFU_2rXHfW.webp"
                 alt="Construction Update"
@@ -2749,7 +2939,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/SAI_0137.webp"
                 alt="Construction Update"
@@ -2758,7 +2950,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/SAI_0142.webp"
                 alt="Construction Update"
@@ -2767,7 +2961,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/SAI_0145.BlUcybjH_Z1mVurk.webp"
                 alt="Construction Update"
@@ -2776,7 +2972,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/SAI_0153.webp"
                 alt="Construction Update"
@@ -2785,7 +2983,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/SAI_0155.webp"
                 alt="Construction Update"
@@ -2794,7 +2994,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/SAI_0157.webp"
                 alt="Construction Update"
@@ -2803,7 +3005,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/SAI_0164.webp"
                 alt="Construction Update"
@@ -2812,7 +3016,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/SAI_0184.webp"
                 alt="Construction Update"
@@ -2821,7 +3027,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/SAI_0201.webp"
                 alt="Construction Update"
@@ -2830,7 +3038,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/SAI_0204.webp"
                 alt="Construction Update"
@@ -2839,7 +3049,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/SAI_0206.webp"
                 alt="Construction Update"
@@ -2848,7 +3060,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/SAI_0211.webp"
                 alt="Construction Update"
@@ -2857,7 +3071,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/WhatsApp Image 2026-09-10 at 5.13.40 PM (1).webp"
                 alt="Construction Update"
@@ -2866,7 +3082,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/WhatsApp Image 2026-09-10 at 5.13.40 PM (2).webp"
                 alt="Construction Update"
@@ -2875,7 +3093,9 @@ const faqSchema = {
                 class="w-full h-full object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:group-hover:scale-105 will-change-transform motion-reduce:transition-none motion-reduce:transform-none"
               />
             </div>
-            <div class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none">
+            <div
+              class="slider-card group overflow-hidden rounded-[12px] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-xl motion-reduce:transition-none motion-reduce:transform-none"
+            >
               <img
                 src="/images/udbahv-chinmaya/september 2026/WhatsApp Image 2026-09-10 at 5.13.40 PM.webp"
                 alt="Construction Update"
@@ -2891,67 +3111,74 @@ const faqSchema = {
     </section>
 
     <!-- FAQ -->
-    <section class="faq bg-[var(--paper-soft)] py-[92px] border-t border-[var(--line)]" id="faq">
-      <div class="wrap">
-        <div class="eyebrow">FAQ</div>
-        <h2 class="section-title" style="max-width:40ch">FAQ</h2>
-        <div class="faq-accordion mt-10">
-          {faqs.map((faq, index) => {
-            const num = (index + 1).toString().padStart(2, '0');
-            const isOpen = index === 0;
-            return (
-              <div 
-                class="group/row faq-row border-t border-[var(--line)] last:border-b border-l-[3px] border-l-transparent data-[state=open]:border-l-[var(--red)] transition-colors duration-300"
-                data-state={isOpen ? "open" : "closed"}
-              >
-                <button 
-                  class="faq-trigger w-full flex items-start sm:items-center justify-between py-5 sm:py-6 text-left group focus:outline-none min-h-[48px]"
-                  aria-expanded={isOpen ? "true" : "false"}
-                  aria-controls={`faq-answer-${index}`}
-                  id={`faq-title-${index}`}
-                >
-                  <div class="flex items-start gap-4 sm:gap-6 pr-4">
-                    <span class="faq-num font-display font-semibold text-[1.05rem] text-[var(--ink-soft)] group-hover:text-[var(--red)] transition-colors">
+    <section
+      class="faq bg-[var(--paper-soft)] py-[92px] border-t border-[var(--line)]"
+      id="faq"
+    >
+     <div class="wrap">
+  <div class="eyebrow">FAQ</div>
+  <div class="faq-static mt-10"> 
+          {
+            faqs.map((faq, index) => {
+              const num = (index + 1).toString().padStart(2, "0");
+              return (
+                <div class="faq-static-row">
+                  <div class="flex items-start gap-4 sm:gap-6">
+                    <span class="faq-num font-display font-semibold text-[1.05rem] text-[var(--red)]">
                       {num}
                     </span>
-                    <h2 class="faq-q-text m-0 font-semibold text-[16px] sm:text-[17.5px] text-ink group-hover:text-[var(--red)] transition-colors">
-                      {faq.q}
-                    </h2>
-                  </div>
-                  <div class="faq-icon w-8 h-8 rounded-full border border-[var(--line)] flex items-center justify-center text-[var(--ink)] group-hover:border-[var(--red)] group-hover:text-[var(--red)] transition-colors shrink-0 group-data-[state=open]/row:border-[var(--red)] group-data-[state=open]/row:text-[var(--red)]">
-                    <!-- Plus Icon that rotates 45deg when data-state is open -->
-                    <svg class="w-4 h-4 transition-transform duration-300 group-data-[state=open]/row:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-                    </svg>
-                  </div>
-                </button>
-                <div 
-                  class="faq-answer-wrapper grid transition-all duration-300 ease-in-out" 
-                  style={isOpen ? "grid-template-rows: 1fr;" : "grid-template-rows: 0fr;"}
-                  id={`faq-answer-${index}`}
-                >
-                  <div class="overflow-hidden">
-                    <div class="pl-10 sm:pl-14 pr-4 pb-6 pt-1">
-                      <p class="text-[16px] leading-[1.7] text-[#5b5349] max-w-[65ch] m-0">
+                    <div>
+                      <h3 class="faq-q-text m-0 font-semibold text-[16px] sm:text-[17.5px] text-ink">
+                        {faq.q}
+                      </h3>
+                      <p class="text-[16px] leading-[1.7] text-[#5b5349] max-w-[65ch] mt-3 mb-0">
                         {faq.a}
                       </p>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })
+          }
         </div>
       </div>
     </section>
 
     <!-- LIGHTBOX -->
-    <div id="plan-lightbox" class="fixed inset-0 z-[100] bg-black/80 hidden items-center justify-center p-4 md:p-10 backdrop-blur-sm opacity-0 transition-opacity duration-300">
-      <button id="close-lightbox" class="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-[#c32828] transition-colors z-50 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    <div
+      id="plan-lightbox"
+      class="fixed inset-0 z-[100] bg-black/80 hidden items-center justify-center p-4 md:p-10 backdrop-blur-sm opacity-0 transition-opacity duration-300"
+    >
+      <button
+        id="close-lightbox"
+        class="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-[#c32828] transition-colors z-50 p-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><line x1="18" y1="6" x2="6" y2="18"></line><line
+            x1="6"
+            y1="6"
+            x2="18"
+            y2="18"></line></svg
+        >
       </button>
-      <div class="relative w-full max-w-5xl max-h-full flex items-center justify-center overflow-hidden rounded-lg">
-        <img id="lightbox-img" src="" alt="Floor Plan Preview" class="max-w-full max-h-[90vh] object-contain shadow-2xl scale-95 transition-transform duration-300" />
+      <div
+        class="relative w-full max-w-5xl max-h-full flex items-center justify-center overflow-hidden rounded-lg"
+      >
+        <img
+          id="lightbox-img"
+          src=""
+          alt="Floor Plan Preview"
+          class="max-w-full max-h-[90vh] object-contain shadow-2xl scale-95 transition-transform duration-300"
+        />
       </div>
     </div>
 
@@ -2961,70 +3188,43 @@ const faqSchema = {
     <GlobalEnquiryPopup />
 
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const journeySection = document.querySelector('.journey');
-        const journeyLine = document.querySelector('.journey-line');
+      document.addEventListener("DOMContentLoaded", () => {
+        const journeySection = document.querySelector(".journey");
+        const journeyLine = document.querySelector(".journey-line");
         if (!journeySection || !journeyLine) return;
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              if (entry.target.classList.contains('journey')) {
-                journeyLine.classList.add('is-visible');
-              } else if (entry.target instanceof HTMLElement && entry.target.dataset.animate === 'fade-in') {
-                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                  entry.target.classList.remove('opacity-0', 'translate-y-4');
-                  entry.target.classList.add('opacity-100', 'translate-y-0');
-                } else {
-                  entry.target.classList.remove('opacity-0');
-                  entry.target.classList.add('opacity-100');
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                if (entry.target.classList.contains("journey")) {
+                  journeyLine.classList.add("is-visible");
+                } else if (
+                  entry.target instanceof HTMLElement &&
+                  entry.target.dataset.animate === "fade-in"
+                ) {
+                  if (
+                    !window.matchMedia("(prefers-reduced-motion: reduce)")
+                      .matches
+                  ) {
+                    entry.target.classList.remove("opacity-0", "translate-y-4");
+                    entry.target.classList.add("opacity-100", "translate-y-0");
+                  } else {
+                    entry.target.classList.remove("opacity-0");
+                    entry.target.classList.add("opacity-100");
+                  }
                 }
+                observer.unobserve(entry.target);
               }
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.3 });
+            });
+          },
+          { threshold: 0.3 },
+        );
 
         observer.observe(journeySection);
 
-        const mapAnim = document.querySelector('.legacy-map-anim');
+        const mapAnim = document.querySelector(".legacy-map-anim");
         const fadeEls = document.querySelectorAll('[data-animate="fade-in"]');
-        fadeEls.forEach(el => observer.observe(el));
-      });
-
-      document.addEventListener('DOMContentLoaded', () => {
-        const triggers = document.querySelectorAll('.faq-trigger');
-
-        triggers.forEach(trigger => {
-          trigger.addEventListener('click', () => {
-            const row = trigger.closest('.faq-row');
-            if (!row) return;
-
-            const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-            const controlsId = trigger.getAttribute('aria-controls');
-            const wrapper = controlsId ? document.getElementById(controlsId) : null;
-
-            if (!isExpanded) {
-              // Close all others
-              document.querySelectorAll('.faq-row[data-state="open"]').forEach(openRow => {
-                openRow.setAttribute('data-state', 'closed');
-                const btn = openRow.querySelector('.faq-trigger');
-                if (btn) btn.setAttribute('aria-expanded', 'false');
-                const panel = openRow.querySelector('.faq-answer-wrapper') as HTMLElement | null;
-                if (panel) panel.style.gridTemplateRows = '0fr';
-              });
-
-              // Open current
-              trigger.setAttribute('aria-expanded', 'true');
-              row.setAttribute('data-state', 'open');
-              if (wrapper) wrapper.style.gridTemplateRows = '1fr';
-            } else {
-              // Close current
-              trigger.setAttribute('aria-expanded', 'false');
-              row.setAttribute('data-state', 'closed');
-              if (wrapper) wrapper.style.gridTemplateRows = '0fr';
-            }
-          });
-        });
+        fadeEls.forEach((el) => observer.observe(el));
       });
     </script>
   </body>

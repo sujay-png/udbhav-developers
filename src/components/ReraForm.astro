@@ -71,7 +71,7 @@ import { Icon } from "@/components/Icon";
                             id="rera-submit-btn"
                             class="w-48 h-12 bg-clay hover:bg-clay-hover text-white font-bold rounded-none shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5 duration-300 disabled:opacity-60"
                         >
-                            Download
+                            View
                         </button>
                     </div>
                 </div>
@@ -141,16 +141,16 @@ import { Icon } from "@/components/Icon";
                 e.preventDefault();
                 if (submitBtn) {
                     submitBtn.disabled = true;
-                    submitBtn.textContent = "Downloading…";
+                    submitBtn.textContent = "Opening…";
                 }
                 if (errorEl) errorEl.classList.add("hidden");
 
                 const fd = new FormData(form);
                 try {
                     // Attempt to save data in the background. If it fails, log it and continue.
-                    await fetch('/api/brochure/', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                    await fetch("/api/brochure/", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
                             firstName: fd.get("firstName"),
                             pincode: fd.get("pincode"),
@@ -161,26 +161,21 @@ import { Icon } from "@/components/Icon";
                 }
 
                 try {
-                    // Trigger the brochure download
-                    const link = document.createElement("a");
-                    link.href = "/images/udbahv-chinmaya/RERACERT.pdf";
-                    link.download = "RERACERT.pdf";
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
+                    // Open the RERA certificate in a new tab
+                    window.open("/images/udbahv-chinmaya/RERACERT.pdf", "_blank");
 
                     dialog.close();
                     form.reset();
 
                     if (submitBtn) {
                         submitBtn.disabled = false;
-                        submitBtn.textContent = "Download";
+                        submitBtn.textContent = "View";
                     }
                 } catch {
                     if (errorEl) errorEl.classList.remove("hidden");
                     if (submitBtn) {
                         submitBtn.disabled = false;
-                        submitBtn.textContent = "Download";
+                        submitBtn.textContent = "View";
                     }
                 }
             });
