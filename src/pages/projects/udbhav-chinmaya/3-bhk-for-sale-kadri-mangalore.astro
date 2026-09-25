@@ -168,7 +168,8 @@ const faqSchema = {
 
       .nav .wrap {
       max-width: 100%;
-       padding-left: 0;
+       /* padding-left: 20px; */
+       padding-right:10px;
 
     }  
       .nav {
@@ -1394,6 +1395,35 @@ const faqSchema = {
         border-radius: 3px;
       }
 
+      /* Marquee */
+      .marquee-container {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        gap: 80px;
+        padding: 10px 0;
+      }
+      .marquee-content {
+        display: flex;
+        gap: 80px;
+        animation: scroll 15s linear infinite;
+        flex-shrink: 0;
+        align-items: center;
+      }
+      .marquee-container:hover .marquee-content {
+        animation-play-state: paused;
+      }
+      @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-100% - 80px)); }
+      }
+      .marquee-item {
+        flex-shrink: 0;
+        height: 48px;
+        width: auto;
+        object-fit: contain;
+      }
+
       footer {
         background: var(--ink);
         color: #b9b2a5;
@@ -1548,24 +1578,27 @@ const faqSchema = {
               >.</span
             >
           </h2>
-          <div
-            style="display: flex; gap: 20px; justify-content: space-between; align-items: center; flex-wrap: wrap; width: 100%;"
-          >
-            <Image
-              src={canaraBankImg}
-              alt="Canara Bank"
-              style="height: 48px; width: auto; object-fit: contain;"
-            />
-            <Image
-              src={sbBankImg}
-              alt="State Bank of India"
-              style="height: 48px; width: auto; object-fit: contain;"
-            />
-            <Image
-              src={kBankImg}
-              alt="Karnataka Bank Ltd"
-              style="height: 48px; width: auto; object-fit: contain;"
-            />
+          <div class="marquee-container">
+            <div class="marquee-content">
+              <Image src={canaraBankImg} alt="Canara Bank" class="marquee-item" />
+              <Image src={sbBankImg} alt="State Bank of India" class="marquee-item" />
+              <Image src={kBankImg} alt="Karnataka Bank Ltd" class="marquee-item" />
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+              <Image src={canaraBankImg} alt="Canara Bank" class="marquee-item" />
+              <Image src={sbBankImg} alt="State Bank of India" class="marquee-item" />
+              <Image src={kBankImg} alt="Karnataka Bank Ltd" class="marquee-item" />
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+              <Image src={canaraBankImg} alt="Canara Bank" class="marquee-item" />
+              <Image src={sbBankImg} alt="State Bank of India" class="marquee-item" />
+              <Image src={kBankImg} alt="Karnataka Bank Ltd" class="marquee-item" />
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+              <Image src={canaraBankImg} alt="Canara Bank" class="marquee-item" />
+              <Image src={sbBankImg} alt="State Bank of India" class="marquee-item" />
+              <Image src={kBankImg} alt="Karnataka Bank Ltd" class="marquee-item" />
+            </div>
           </div>
         </div>
       </div>
