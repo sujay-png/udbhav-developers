@@ -1,21 +1,21 @@
----
+﻿---
 import { Icon } from "@/components/Icon";
 ---
 
 <dialog
   id="global-enquiry-modal"
-  class="backdrop:bg-black/70 p-0 rounded-[5px] shadow-2xl bg-cream w-[95%] max-w-2xl max-h-[90vh] m-auto overflow-hidden"
+  class="enquiry-modal backdrop:bg-black/70 p-0 rounded-[5px] shadow-2xl bg-cream w-[95%] max-w-2xl max-h-[90vh] m-auto overflow-hidden"
 >
-  <div class="flex flex-col h-full max-h-[90vh]">
+  <div class="enquiry-modal-shell flex flex-col h-full max-h-[90vh]">
     <div
-      class="flex justify-center items-center p-6 border-b border-border relative shrink-0"
+      class="enquiry-modal-header flex justify-center items-center p-6 border-b border-border relative shrink-0"
     >
-      <h2 class="font-display text-2xl sm:text-2xl text-ink">
+      <h2 class="enquiry-modal-title font-display text-lg sm:text-2xl text-ink">
         Enquire 3BHK Unit Options
       </h2>
       <button
         type="button"
-        class="close-modal absolute right-6 text-gray-400 hover:text-gray-800 transition-colors p-2 rounded-full hover:bg-gray-100"
+        aria-label="Close enquiry form" class="enquiry-modal-close close-modal absolute right-6 text-gray-400 hover:text-gray-800 transition-colors p-2 rounded-full hover:bg-gray-100"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +36,7 @@ import { Icon } from "@/components/Icon";
       </button>
     </div>
 
-    <div class="p-6 sm:p-8 overflow-y-auto scrollbar-thin">
+    <div class="enquiry-modal-content p-6 sm:p-8 overflow-y-auto scrollbar-thin">
       <form class="space-y-6" id="global-enquiry-form">
         <!-- Name -->
         <div class="space-y-2">
@@ -52,7 +52,7 @@ import { Icon } from "@/components/Icon";
                 placeholder="First name"
                 class="w-full h-11 rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors"
               />
-              <p class="text-xs text-gray-500 mt-1">First</p>
+              <p class="text-sm text-gray-600 mt-1">First</p>
             </div>
             <div>
               <input
@@ -62,7 +62,7 @@ import { Icon } from "@/components/Icon";
                 placeholder="Last name"
                 class="w-full h-11 rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-clay/20 focus:border-clay transition-colors"
               />
-              <p class="text-xs text-gray-500 mt-1">Last</p>
+              <p class="text-sm text-gray-600 mt-1">Last</p>
             </div>
           </div>
         </div>
@@ -120,7 +120,7 @@ import { Icon } from "@/components/Icon";
                 name="bhk"
                 value="3BHK"
                 checked
-                class="w-5 h-5 border-gray-300 accent-[#B02317]"
+                class="enquiry-radio"
               />
               <span class="text-sm text-ink">3 BHK</span>
             </label>
@@ -139,7 +139,7 @@ import { Icon } from "@/components/Icon";
                 name="intendedUse"
                 value="Self Use"
                 required
-                class="w-5 h-5 border-gray-300 accent-[#B02317]"
+                class="enquiry-radio"
               />
               <span class="text-sm text-ink">Self Use</span>
             </label>
@@ -148,7 +148,7 @@ import { Icon } from "@/components/Icon";
                 type="radio"
                 name="intendedUse"
                 value="Investment"
-                class="w-5 h-5 border-gray-300 accent-[#B02317]"
+                class="enquiry-radio"
               />
               <span class="text-sm text-ink">Investment</span>
             </label>
@@ -168,7 +168,7 @@ import { Icon } from "@/components/Icon";
                 name="loanPref"
                 value="Need Home Loan Assistance"
                 required
-                class="w-5 h-5 border-gray-300 accent-[#B02317]"
+                class="enquiry-radio"
               />
               <span class="text-sm text-ink">Need Home Loan Assistance</span>
             </label>
@@ -177,7 +177,7 @@ import { Icon } from "@/components/Icon";
                 type="radio"
                 name="loanPref"
                 value="Already Pre-Approved"
-                class="w-5 h-5 border-gray-300 accent-[#B02317]"
+                class="enquiry-radio"
               />
               <span class="text-sm text-ink">Already Pre-Approved</span>
             </label>
@@ -186,7 +186,7 @@ import { Icon } from "@/components/Icon";
                 type="radio"
                 name="loanPref"
                 value="Planning to Apply"
-                class="w-5 h-5 border-gray-300 accent-[#B02317]"
+                class="enquiry-radio"
               />
               <span class="text-sm text-ink">Planning to Apply</span>
             </label>
@@ -195,7 +195,7 @@ import { Icon } from "@/components/Icon";
                 type="radio"
                 name="loanPref"
                 value="Self-Funded"
-                class="w-5 h-5 border-gray-300 accent-[#B02317]"
+                class="enquiry-radio"
               />
               <span class="text-sm text-ink">Self-Funded</span>
             </label>
@@ -371,6 +371,90 @@ import { Icon } from "@/components/Icon";
     to {
       opacity: 1;
       transform: translateY(0) scale(1);
+    }
+  }
+
+  .enquiry-modal {
+    max-height: 90vh;
+    max-height: 90dvh;
+  }
+  .enquiry-modal-shell {
+    min-height: 0;
+  }
+  .enquiry-modal-header {
+    padding-right: 3.75rem;
+    padding-left: 1.5rem;
+  }
+  .enquiry-modal-title {
+    max-width: 100%;
+    font-size: clamp(1.05rem, 4.5vw, 1.5rem);
+    line-height: 1.25;
+    text-align: center;
+  }
+  .enquiry-modal-close {
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 1;
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    place-items: center;
+    border: 1px solid #c9beb5;
+    background: #fff;
+    color: #352d29;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%);
+  }
+  .enquiry-modal-close:hover {
+    background: #f3ece6;
+    color: #1f1916;
+  }
+  .enquiry-modal-content {
+    min-height: 0;
+    flex: 1 1 auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  .enquiry-radio {
+    display: grid;
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    place-content: center;
+    border: 1.5px solid #6b625d;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+  }
+  .enquiry-radio:checked {
+    border-color: #b02317;
+    background: radial-gradient(circle, #b02317 0 5px, #fff 5.5px);
+  }
+  .enquiry-radio:focus-visible {
+    outline: 2px solid #b02317;
+    outline-offset: 2px;
+  }
+  @media (max-width: 640px) {
+    .enquiry-modal {
+      height: 90vh;
+      height: 90dvh;
+    }
+    .enquiry-modal-shell {
+      height: 100%;
+      max-height: 100%;
+    }
+    .enquiry-modal-header {
+      min-height: 3.75rem;
+      padding: 0.75rem 3.5rem 0.75rem 1rem;
+    }
+    .enquiry-modal-title {
+      font-size: clamp(1rem, 4.5vw, 1.125rem);
+    }
+    .enquiry-modal-content {
+      padding: 1rem;
     }
   }
 </style>

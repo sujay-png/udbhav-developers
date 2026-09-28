@@ -368,10 +368,14 @@ const faqSchema = {
         position: relative;
       }
       .hero-media img {
-        margin-left: -60px;
-        width: 100%;
-        height: 495px;
-        object-fit: cover;
+       margin-left: -60px;
+  width: 100%;
+  height: 495px;
+  object-fit: cover;
+  border-radius: 5px 0 0 5px;
+  display: block;
+  box-shadow: -15px 25px 60px rgba(0, 0, 0, 0.12);
+ 
         border-radius: 5px 0 0 5px;
         display: block;
         box-shadow: -15px 25px 60px rgba(0, 0, 0, 0.12);
@@ -397,11 +401,19 @@ const faqSchema = {
         margin-bottom: 2px;
       }
       @media (max-width: 900px) {
-        .hero-grid {
-          grid-template-columns: 5fr;
-        }
+      
+       .hero-grid {
+         grid-template-columns: 1fr; 
+        }  
+       
         .hero-media img {
           margin-left: 0;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;   /* proportional on every phone */
+  object-fit: cover;     /* crops evenly, never stretches */
+  border-radius: 0;
+  box-shadow: none;
         }
         .hero-copy {
           padding-right: max(32px, calc((100vw - 1180px) / 2 + 32px));
@@ -1527,6 +1539,44 @@ const faqSchema = {
         left: 0;
         color: var(--ink);
       }
+      @media (max-width: 600px) {
+        .specs-extra-group {
+          display: none;
+        }
+        .specs-extra-group.is-open {
+          display: block;
+        }
+        .specs-toggle-wrap {
+          grid-column: 1 / -1;
+          padding: 16px;
+          background: #fff;
+          border-bottom: 1px solid var(--line);
+          text-align: center;
+        }
+        .specs-toggle {
+          min-height: 48px;
+          width: 100%;
+          max-width: 320px;
+          border: 1.5px solid var(--red);
+          background: transparent;
+          color: var(--red);
+          font-weight: 600;
+          font-size: 1rem;
+          border-radius: 3px;
+          cursor: pointer;
+        }
+        .specs-toggle:hover {
+          background: var(--red-tint);
+        }
+      }
+      @media (min-width: 601px) {
+        .specs-toggle-wrap {
+          display: none;
+        }
+        .specs-extra-group {
+          display: contents;
+        }
+      }
       @media (max-width: 900px) {
         .specs-grid {
           grid-template-columns: 1fr 1fr;
@@ -1773,9 +1823,9 @@ const faqSchema = {
         display: none;
         flex-direction: column;
         justify-content: center;
-        gap: 5px;
-        width: 32px;
-        height: 32px;
+        gap: 4px;
+        width: 28px;
+        height: 28px;
         background: none;
         border: none;
         cursor: pointer;
@@ -1784,7 +1834,7 @@ const faqSchema = {
       }
       .nav-hamburger span {
         display: block;
-        width: 100%;
+        width: 26px;
         height: 2px;
         background: var(--ink);
         border-radius: 2px;
@@ -1800,6 +1850,11 @@ const faqSchema = {
       }
       .nav-hamburger.open span:nth-child(3) {
         transform: translateY(-7px) rotate(-45deg);
+      }
+
+      .nav-hamburger:focus-visible {
+        outline: 2px solid var(--red);
+        outline-offset: 4px;
       }
 
       /* Mobile slide-out panel */
@@ -1879,7 +1934,15 @@ const faqSchema = {
           display: flex;
         }
       }
-    </style>
+          @media (max-width: 640px) {
+        .hero-media img {
+          object-fit: unset;
+         object-fit: unset;
+            height: 240px;
+              width: 102%;
+        }
+      }
+</style>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const hamburger = document.getElementById("navHamburger");
@@ -1955,22 +2018,12 @@ const faqSchema = {
           ) as HTMLButtonElement | null;
           if (!target) return;
 
-          const specCard = target.closest(".spec-card");
-          if (specCard) {
-            const points = Array.from(specCard.querySelectorAll("ul > li"));
-            const expanded = target.getAttribute("aria-expanded") !== "true";
-            points.forEach((point, index) => { (point as HTMLElement).hidden = !expanded && index >= 3; });
-            target.setAttribute("aria-expanded", String(expanded));
-            target.textContent = expanded ? "Read Less" : "Read More";
-            return;
-          }
-
           const container = target.closest(".group");
           const expandableText = container?.querySelector(".quote-text, ul") as HTMLElement;
 
           if (expandableText) {
             // Collapse all other items
-            document.querySelectorAll(".quote-text, .spec-card ul").forEach((otherText) => {
+            document.querySelectorAll(".quote-text").forEach((otherText) => {
               if (
                 otherText !== expandableText &&
                 !otherText.classList.contains("line-clamp-4")
@@ -2108,6 +2161,7 @@ const faqSchema = {
           <img
             src="/images/luxury apartment mangalore.webp"
             alt="Udbhav Chinmaya apartment building"
+  
           />
           <!-- <div class="tag"><strong>&#8377;1.60 Cr*</strong>Spacious 3 BHK, 1,715&ndash;1,880 sq.ft.</div> -->
         </div>
@@ -3132,7 +3186,7 @@ const faqSchema = {
         </p>
         <div class="specs-grid">
           <div class="spec-card">
-            <h4>Structure &amp; Walls</h4><ul class="line-clamp-4">
+            <h4>Structure &amp; Walls</h4><ul>
               <li>
                 Framed structure built with reinforced cement concrete (RCC).
               </li>
@@ -3144,7 +3198,7 @@ const faqSchema = {
             </ul>
           </div>
           <div class="spec-card">
-            <h4>Flooring &amp; Wall Cladding</h4><ul class="line-clamp-4">
+            <h4>Flooring &amp; Wall Cladding</h4><ul>
               <li>Superior flooring quality 800x800 mm vitrified tiles.</li>
               <li>
                 Bathroom walls built with Ceramic tiles running up to ceiling
@@ -3159,7 +3213,7 @@ const faqSchema = {
             </ul>
           </div>
           <div class="spec-card">
-            <h4>Doors &amp; Windows</h4><ul class="line-clamp-4">
+            <h4>Doors &amp; Windows</h4><ul>
               <li>
                 Main door frame: Hardwood frame with an attractive Melamine
                 Polished main door.
@@ -3180,7 +3234,7 @@ const faqSchema = {
             </ul>
           </div>
           <div class="spec-card">
-            <h4>Plumbing &amp; Sanitary</h4><ul class="line-clamp-4">
+            <h4>Plumbing &amp; Sanitary</h4><ul>
               <li>
                 Plumbing lines: Superior quality, ISI-certified CPVC/UPVC
                 pressure-tested lines and fittings.
@@ -3194,8 +3248,17 @@ const faqSchema = {
               </li>
             </ul>
           </div>
-          <div class="spec-card">
-            <h4>Electrical &amp; Communication</h4><ul class="line-clamp-4">
+                    <div class="specs-toggle-wrap">
+            <button
+              type="button"
+              id="specsToggle"
+              class="specs-toggle"
+              aria-expanded="false"
+              aria-controls="specs-extra-group"
+            >Read More</button>
+          </div>
+          <div id="specs-extra-group" class="specs-extra-group"><div class="spec-card spec-extra">
+            <h4>Electrical &amp; Communication</h4><ul>
               <li>
                 Wiring: Premium Finolex, RR, or equivalent brand electrical
                 wiring.
@@ -3213,8 +3276,8 @@ const faqSchema = {
               </li>
             </ul>
           </div>
-          <div class="spec-card">
-            <h4>Kitchen Features</h4><ul class="line-clamp-4">
+          <div class="spec-card spec-extra">
+            <h4>Kitchen Features</h4><ul>
               <li>
                 Counter &amp; Sink: Granite countertop fitted with a stainless
                 steel (SS) single-bowl sink and drainboard.
@@ -3234,8 +3297,8 @@ const faqSchema = {
               <li>Gas supply: Piped gas connection via GAIL pipeline.</li>
             </ul>
           </div>
-          <div class="spec-card">
-            <h4>Paint &amp; Finishes</h4><ul class="line-clamp-4">
+          <div class="spec-card spec-extra">
+            <h4>Paint &amp; Finishes</h4><ul>
               <li>
                 Internal surfaces built by premium emulsion paint over a smooth
                 putty finish on walls and ceilings.
@@ -3250,8 +3313,8 @@ const faqSchema = {
               </li>
             </ul>
           </div>
-          <div class="spec-card">
-            <h4>High Security</h4><ul class="line-clamp-4">
+          <div class="spec-card spec-extra">
+            <h4>High Security</h4><ul>
               <li>CCTV camera monitoring across all floors.</li>
               <li>
                 Access control: Biometric access control systems for common
@@ -3267,8 +3330,8 @@ const faqSchema = {
               </li>
             </ul>
           </div>
-          <div class="spec-card">
-            <h4>Sustainability &amp; Accessibility</h4><ul class="line-clamp-4">
+          <div class="spec-card spec-extra">
+            <h4>Sustainability &amp; Accessibility</h4><ul>
               <li>Green solar-powered lighting installed for common areas.</li>
               <li>
                 Motion sensors installed for common passage lighting to save
@@ -3284,24 +3347,28 @@ const faqSchema = {
               <li>Inclusivity: Wheelchair-friendly main lobby design.</li>
             </ul>
           </div>
+          </div>
         </div>
       </div>
     </section>
 
     <script>
-      document.querySelectorAll(".specs .spec-card").forEach((card) => {
-        const list = card.querySelector("ul");
-        if (!list) return;
-        const points = Array.from(list.querySelectorAll("li"));
-        list.classList.remove("line-clamp-4");
-        if (points.length <= 3) return;
-        points.forEach((point, index) => { (point as HTMLElement).hidden = index >= 3; });
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "grid-read-more-btn mt-4 text-red font-semibold text-sm";
-        button.textContent = "Read More";
-        button.setAttribute("aria-expanded", "false");
-        list.after(button);
+      const specsToggle = document.getElementById("specsToggle");
+      const specsExtraGroup = document.getElementById("specs-extra-group");
+
+      specsToggle?.addEventListener("click", () => {
+        if (!specsExtraGroup) return;
+
+        const isOpen = specsExtraGroup.classList.toggle("is-open");
+        specsToggle.setAttribute("aria-expanded", String(isOpen));
+        specsToggle.textContent = isOpen ? "Read Less" : "Read More";
+
+        if (!isOpen) {
+          const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "auto"
+            : "smooth";
+          specsToggle.scrollIntoView({ block: "center", behavior });
+        }
       });
     </script>
 
