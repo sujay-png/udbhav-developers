@@ -398,7 +398,7 @@ const faqSchema = {
       }
       @media (max-width: 900px) {
         .hero-grid {
-          grid-template-columns: 1fr;
+          grid-template-columns: 5fr;
         }
         .hero-media img {
           margin-left: 0;
@@ -740,11 +740,12 @@ const faqSchema = {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       }
       .fp-card img {
-        border-radius: 3px;
+       border-radius: 3px;
         width: 100%;
-        height: 180px;
-        object-fit: cover;
-        margin-bottom: 16px;
+        height: auto;
+        max-height: 350px;
+        object-fit: contain;
+       margin-bottom: 16px;
       }
       .fp-card-title {
         font-size: 0.95rem;
@@ -798,11 +799,7 @@ const faqSchema = {
         .fp-card {
           flex: 0 0 calc(100% - 10px);
         }
-        .fp-card img {
-          height: auto;
-          max-height: 250px;
-          object-fit: contain;
-        }
+
         .carousel-arrow {
           width: 52px;
           height: 52px;
@@ -1739,16 +1736,16 @@ const faqSchema = {
       @media (max-width: 640px) {
         .nav .wrap {
           max-width: 100%;
-          padding-left: 0;
+          padding-left: 20px;
           padding-right: 10px;
         }
         .brand {
           padding-left: 0px !important;
-          gap: 3px;
+          gap: 8px !important;
         }
         .brand img {
-          width: 22px !important;
-          margin-right: 10px;
+          width: 16px !important;
+          margin-right: 0;
         }
         .brand span {
           font-size: 1.05rem !important;
@@ -1958,18 +1955,28 @@ const faqSchema = {
           ) as HTMLButtonElement | null;
           if (!target) return;
 
-          const container = target.closest(".group");
-          const quote = container?.querySelector(".quote-text") as HTMLElement;
+          const specCard = target.closest(".spec-card");
+          if (specCard) {
+            const points = Array.from(specCard.querySelectorAll("ul > li"));
+            const expanded = target.getAttribute("aria-expanded") !== "true";
+            points.forEach((point, index) => { (point as HTMLElement).hidden = !expanded && index >= 3; });
+            target.setAttribute("aria-expanded", String(expanded));
+            target.textContent = expanded ? "Read Less" : "Read More";
+            return;
+          }
 
-          if (quote) {
-            // Collapse all other quotes
-            document.querySelectorAll(".quote-text").forEach((otherQuote) => {
+          const container = target.closest(".group");
+          const expandableText = container?.querySelector(".quote-text, ul") as HTMLElement;
+
+          if (expandableText) {
+            // Collapse all other items
+            document.querySelectorAll(".quote-text, .spec-card ul").forEach((otherText) => {
               if (
-                otherQuote !== quote &&
-                !otherQuote.classList.contains("line-clamp-4")
+                otherText !== expandableText &&
+                !otherText.classList.contains("line-clamp-4")
               ) {
-                otherQuote.classList.add("line-clamp-4");
-                const otherBtn = otherQuote
+                otherText.classList.add("line-clamp-4");
+                const otherBtn = otherText
                   .closest(".group")
                   ?.querySelector(".grid-read-more-btn");
                 if (otherBtn) {
@@ -1979,8 +1986,8 @@ const faqSchema = {
               }
             });
 
-            quote.classList.toggle("line-clamp-4");
-            const isExpanded = !quote.classList.contains("line-clamp-4");
+            expandableText.classList.toggle("line-clamp-4");
+            const isExpanded = !expandableText.classList.contains("line-clamp-4");
             target.textContent = isExpanded ? "Read less" : "Read more";
             target.setAttribute("aria-expanded", isExpanded.toString());
           }
@@ -2490,8 +2497,7 @@ const faqSchema = {
         <h3 style="margin: 0 0 12px; font-weight: 600;">Udbhav Chinmaya Kadri</h3>
         <div class="amen-grid" style="margin-top:36px">
           <div
-            class="amen-side"
-            style="position: sticky; top: 120px; align-self: start;"
+            class="amen-side lg:sticky lg:top-[120px] self-start"
           >
             <!-- Youtube vedio-->
             <div class="yt-vedios" style="margin-bottom:24px">
@@ -2595,7 +2601,8 @@ const faqSchema = {
               </div>
             </li>
           </ul>
-        </div>
+
+          </div>
       </div>
     </section>
 
@@ -2648,6 +2655,7 @@ const faqSchema = {
                 >
               </li>
             </ul>
+
           </div>
           <div class="loc-col">
             <h4>Everyday Needs Nearby</h4>
@@ -2667,6 +2675,7 @@ const faqSchema = {
               <li><span>Manasa Water Park</span><span>approx 11 Km</span></li>
               <li><span>Tannirbhavi Beach</span><span>approx 12 Km</span></li>
             </ul>
+
           </div>
         </div>
       </div>
@@ -2813,8 +2822,7 @@ const faqSchema = {
             </p>
           </div>
           <div class="offers-list">
-            <h4>What Udbhav Chinmaya Offers</h4>
-            <ul>
+            <h4>What Udbhav Chinmaya Offers</h4><ul class="line-clamp-4">
               <li><span class="tick">1</span>Central Kadri address</li>
               <li>
                 <span class="tick">2</span>Spacious apartment (1,715+ sq ft)
@@ -2827,6 +2835,7 @@ const faqSchema = {
                 <span class="tick">5</span>Well-planned parking infrastructure
               </li>
             </ul>
+
           </div>
         </div>
       </div>
@@ -3101,7 +3110,7 @@ const faqSchema = {
       <div class="wrap cta-strip-inner">
         <div>
           <h3>Book Your Dream Home Today</h3>
-          <p>Limited Luxury 3 BHK Flats Available.</p>
+          <p>Limited Luxury 3 BHK Residences Available.</p>
         </div>
         <a href="#" data-open-enquiry="true" class="btn btn-white"
           >Schedule Your Site Visit &rarr;</a
@@ -3123,7 +3132,7 @@ const faqSchema = {
         </p>
         <div class="specs-grid">
           <div class="spec-card">
-            <h4>Structure &amp; Walls</h4><ul>
+            <h4>Structure &amp; Walls</h4><ul class="line-clamp-4">
               <li>
                 Framed structure built with reinforced cement concrete (RCC).
               </li>
@@ -3135,7 +3144,7 @@ const faqSchema = {
             </ul>
           </div>
           <div class="spec-card">
-            <h4>Flooring &amp; Wall Cladding</h4><ul>
+            <h4>Flooring &amp; Wall Cladding</h4><ul class="line-clamp-4">
               <li>Superior flooring quality 800x800 mm vitrified tiles.</li>
               <li>
                 Bathroom walls built with Ceramic tiles running up to ceiling
@@ -3150,7 +3159,7 @@ const faqSchema = {
             </ul>
           </div>
           <div class="spec-card">
-            <h4>Doors &amp; Windows</h4><ul>
+            <h4>Doors &amp; Windows</h4><ul class="line-clamp-4">
               <li>
                 Main door frame: Hardwood frame with an attractive Melamine
                 Polished main door.
@@ -3171,7 +3180,7 @@ const faqSchema = {
             </ul>
           </div>
           <div class="spec-card">
-            <h4>Plumbing &amp; Sanitary</h4><ul>
+            <h4>Plumbing &amp; Sanitary</h4><ul class="line-clamp-4">
               <li>
                 Plumbing lines: Superior quality, ISI-certified CPVC/UPVC
                 pressure-tested lines and fittings.
@@ -3186,7 +3195,7 @@ const faqSchema = {
             </ul>
           </div>
           <div class="spec-card">
-            <h4>Electrical &amp; Communication</h4><ul>
+            <h4>Electrical &amp; Communication</h4><ul class="line-clamp-4">
               <li>
                 Wiring: Premium Finolex, RR, or equivalent brand electrical
                 wiring.
@@ -3205,7 +3214,7 @@ const faqSchema = {
             </ul>
           </div>
           <div class="spec-card">
-            <h4>Kitchen Features</h4><ul>
+            <h4>Kitchen Features</h4><ul class="line-clamp-4">
               <li>
                 Counter &amp; Sink: Granite countertop fitted with a stainless
                 steel (SS) single-bowl sink and drainboard.
@@ -3226,7 +3235,7 @@ const faqSchema = {
             </ul>
           </div>
           <div class="spec-card">
-            <h4>Paint &amp; Finishes</h4><ul>
+            <h4>Paint &amp; Finishes</h4><ul class="line-clamp-4">
               <li>
                 Internal surfaces built by premium emulsion paint over a smooth
                 putty finish on walls and ceilings.
@@ -3242,7 +3251,7 @@ const faqSchema = {
             </ul>
           </div>
           <div class="spec-card">
-            <h4>High Security</h4><ul>
+            <h4>High Security</h4><ul class="line-clamp-4">
               <li>CCTV camera monitoring across all floors.</li>
               <li>
                 Access control: Biometric access control systems for common
@@ -3259,7 +3268,7 @@ const faqSchema = {
             </ul>
           </div>
           <div class="spec-card">
-            <h4>Sustainability &amp; Accessibility</h4><ul>
+            <h4>Sustainability &amp; Accessibility</h4><ul class="line-clamp-4">
               <li>Green solar-powered lighting installed for common areas.</li>
               <li>
                 Motion sensors installed for common passage lighting to save
@@ -3278,6 +3287,23 @@ const faqSchema = {
         </div>
       </div>
     </section>
+
+    <script>
+      document.querySelectorAll(".specs .spec-card").forEach((card) => {
+        const list = card.querySelector("ul");
+        if (!list) return;
+        const points = Array.from(list.querySelectorAll("li"));
+        list.classList.remove("line-clamp-4");
+        if (points.length <= 3) return;
+        points.forEach((point, index) => { (point as HTMLElement).hidden = index >= 3; });
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "grid-read-more-btn mt-4 text-red font-semibold text-sm";
+        button.textContent = "Read More";
+        button.setAttribute("aria-expanded", "false");
+        list.after(button);
+      });
+    </script>
 
     <!-- CTA STRIP 3 -->
     <div class="cta-strip">
