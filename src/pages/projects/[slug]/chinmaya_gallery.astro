@@ -80,7 +80,7 @@ const allImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/imag
 
           <!-- View All Button -->
           <div class="flex justify-center mt-4 mb-2 z-10 relative">
-            <a href={`/projects/${project?.slug}/gallery#${slugify(update.title)}`} class="inline-flex h-12 items-center justify-center rounded-md bg-clay px-8 text-sm font-bold text-cream shadow hover:bg-clay-hover transition-colors">
+            <a href={`/projects/${project?.slug}/gallery/#${slugify(update.title)}`} class="inline-flex h-12 items-center justify-center rounded-md bg-clay px-8 text-sm font-bold text-cream shadow hover:bg-clay-hover transition-colors">
               View All
             </a>
           </div>

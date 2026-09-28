@@ -12,7 +12,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.udbhavdevelopers.com',
-  trailingSlash: 'ignore',
+  trailingSlash: 'always',
   output: 'server', // This explicitly enables Server-Side Rendering
   adapter: vercel(),
   vite: {
