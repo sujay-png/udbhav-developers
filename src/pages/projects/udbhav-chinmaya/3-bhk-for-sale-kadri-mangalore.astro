@@ -1,4 +1,4 @@
-﻿---
+---
 import Footer from "@/components/layout/Footer.astro";
 import "@/styles/global.css";
 import { floorPlans } from "@/lib/floorPlans";
@@ -1554,19 +1554,17 @@ const faqSchema = {
           text-align: center;
         }
         .specs-toggle {
-          min-height: 48px;
-          width: 100%;
-          max-width: 320px;
-          border: 1.5px solid var(--red);
+          border: none;
           background: transparent;
           color: var(--red);
           font-weight: 600;
           font-size: 1rem;
-          border-radius: 3px;
           cursor: pointer;
+          padding: 8px 16px;
+          display: inline-block;
         }
         .specs-toggle:hover {
-          background: var(--red-tint);
+          text-decoration: underline;
         }
       }
       @media (min-width: 601px) {
@@ -3255,7 +3253,7 @@ const faqSchema = {
               class="specs-toggle"
               aria-expanded="false"
               aria-controls="specs-extra-group"
-            >Read More</button>
+            >Read more features</button>
           </div>
           <div id="specs-extra-group" class="specs-extra-group"><div class="spec-card spec-extra">
             <h4>Electrical &amp; Communication</h4><ul>
@@ -3361,7 +3359,7 @@ const faqSchema = {
 
         const isOpen = specsExtraGroup.classList.toggle("is-open");
         specsToggle.setAttribute("aria-expanded", String(isOpen));
-        specsToggle.textContent = isOpen ? "Read Less" : "Read More";
+        specsToggle.textContent = isOpen ? "Read less features" : "Read more features";
 
         if (!isOpen) {
           const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches

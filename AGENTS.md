@@ -227,3 +227,11 @@ When joining an existing project, inspect and adapt the existing architecture ra
 
 The primary principle is:
 > **SEO content should have one clear, centralized, human-readable source of truth, while SEO implementation should remain reusable and framework-appropriate.**
+
+## Workspace & Repository Cleanliness Rule
+
+**Strict prohibition on unnecessary and temporary files:**
+1. **Never create temporary or scratch files in the repository:** Do NOT create `.cjs`, `.js`, `.py`, `.sh`, `.tmp`, `.txt`, or other ad-hoc scripts or scratch files directly inside the workspace (neither in project root nor in subdirectories).
+2. **Use direct editing tools:** Always use built-in tools (`replace_file_content`, `multi_replace_file_content`) to modify code directly.
+3. **No extraneous external or internal files:** Do not generate extra files, sample files, or helper scripts unless explicitly instructed by the user. Keep the workspace tree completely clean and free of leftover artifacts.
+
