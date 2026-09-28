@@ -1,4 +1,4 @@
----
+﻿---
 import Footer from "@/components/layout/Footer.astro";
 import "@/styles/global.css";
 import { floorPlans } from "@/lib/floorPlans";
@@ -372,14 +372,14 @@ const faqSchema = {
         position: relative;
       }
       .hero-media img {
-       margin-left: -60px;
-  width: 100%;
-  height: 495px;
-  object-fit: cover;
-  border-radius: 5px 0 0 5px;
-  display: block;
-  box-shadow: -15px 25px 60px rgba(0, 0, 0, 0.12);
- 
+        margin-left: -60px;
+        width: 100%;
+        height: 495px;
+        object-fit: cover;
+        border-radius: 5px 0 0 5px;
+        display: block;
+        box-shadow: -15px 25px 60px rgba(0, 0, 0, 0.12);
+
         border-radius: 5px 0 0 5px;
         display: block;
         box-shadow: -15px 25px 60px rgba(0, 0, 0, 0.12);
@@ -405,19 +405,18 @@ const faqSchema = {
         margin-bottom: 2px;
       }
       @media (max-width: 900px) {
-      
-       .hero-grid {
-         grid-template-columns: 1fr; 
-        }  
-       
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+
         .hero-media img {
           margin-left: 0;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;   /* proportional on every phone */
-  object-fit: cover;     /* crops evenly, never stretches */
-  border-radius: 0;
-  box-shadow: none;
+          width: 100%;
+          height: auto;
+          aspect-ratio: 4 / 3; /* proportional on every phone */
+          object-fit: cover; /* crops evenly, never stretches */
+          border-radius: 0;
+          box-shadow: none;
         }
         .hero-copy {
           padding-right: max(32px, calc((100vw - 1180px) / 2 + 32px));
@@ -617,63 +616,63 @@ const faqSchema = {
           padding-left: 0;
         }
       }
-     @media (max-width: 560px) {
-  .facts .wrap {
-    padding: 0 8px;
-  }
+      @media (max-width: 560px) {
+        .facts .wrap {
+          padding: 0 8px;
+        }
 
-  .facts-top {
-    grid-template-columns: repeat(4, 1fr);
-    row-gap: 0;
-    padding: 24px 0 20px;
-  }
-  .fact,
-  .fact:first-child,
-  .fact:nth-child(3) {
-    padding: 0 4px;
-    border-left: 1px solid var(--line);
-    text-align: center;
-  }
-  .fact:first-child {
-    border-left: none;
-  }
-  .fact .label {
-    font-size: 0.75rem;
-    margin-bottom: 4px;
-    line-height: 1.2;
-  }
-  .fact .value {
-    font-size: 0.8125rem;
-    line-height: 1.35;
-    font-weight: 700;
-  }
+        .facts-top {
+          grid-template-columns: repeat(4, 1fr);
+          row-gap: 0;
+          padding: 24px 0 20px;
+        }
+        .fact,
+        .fact:first-child,
+        .fact:nth-child(3) {
+          padding: 0 4px;
+          border-left: 1px solid var(--line);
+          text-align: center;
+        }
+        .fact:first-child {
+          border-left: none;
+        }
+        .fact .label {
+          font-size: 0.75rem;
+          margin-bottom: 4px;
+          line-height: 1.2;
+        }
+        .fact .value {
+          font-size: 0.8125rem;
+          line-height: 1.35;
+          font-weight: 700;
+        }
 
-  /* NEW: stack the project details in a column */
-  .facts-bottom {
-    padding: 8px 0 28px;
-    gap: 0;
-  }
-  .facts-meta {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    width: 100%;
-  }
-  .facts-meta div {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 4px 16px;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--line);
-    font-size: var(--fs-body);
-  }
-  .rera-link {
-    display: inline-block;
-    margin-top: 16px;
-  }
-}
+        /* NEW: stack the project details in a column */
+        .facts-bottom {
+          padding: 8px 0 28px;
+          gap: 0;
+        }
+        .facts-meta {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          width: 100%;
+        }
+        .facts-meta div {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          flex-wrap: wrap;
+          gap: 4px 16px;
+          padding: 14px 0;
+          border-bottom: 1px solid var(--line);
+          font-size: var(--fs-body);
+        }
+        .rera-link {
+          display: inline-block;
+          margin-top: 16px;
+        }
+      }
       /* floor plan */
       .floorplan {
         background: var(--paper-soft);
@@ -766,12 +765,12 @@ const faqSchema = {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       }
       .fp-card img {
-       border-radius: 3px;
+        border-radius: 3px;
         width: 100%;
         height: auto;
         max-height: 350px;
         object-fit: contain;
-       margin-bottom: 16px;
+        margin-bottom: 16px;
       }
       .fp-card-title {
         font-size: 0.95rem;
@@ -818,10 +817,10 @@ const faqSchema = {
           font-size: var(--fs-body) !important;
         }
         .fp-note strong {
-  font-size: 1.05rem;
-  line-height: 1.35;
-  display: block;
-}  
+          font-size: 1.05rem;
+          line-height: 1.35;
+          display: block;
+        }
         .fp-card {
           flex: 0 0 calc(100% - 10px);
         }
@@ -1946,15 +1945,15 @@ const faqSchema = {
           display: flex;
         }
       }
-          @media (max-width: 640px) {
+      @media (max-width: 640px) {
         .hero-media img {
           object-fit: unset;
-         object-fit: unset;
-            height: 240px;
-              width: 102%;
+          object-fit: unset;
+          height: 240px;
+          width: 102%;
         }
       }
-</style>
+    </style>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const hamburger = document.getElementById("navHamburger");
@@ -2031,7 +2030,9 @@ const faqSchema = {
           if (!target) return;
 
           const container = target.closest(".group");
-          const expandableText = container?.querySelector(".quote-text, ul") as HTMLElement;
+          const expandableText = container?.querySelector(
+            ".quote-text, ul",
+          ) as HTMLElement;
 
           if (expandableText) {
             // Collapse all other items
@@ -2052,7 +2053,8 @@ const faqSchema = {
             });
 
             expandableText.classList.toggle("line-clamp-4");
-            const isExpanded = !expandableText.classList.contains("line-clamp-4");
+            const isExpanded =
+              !expandableText.classList.contains("line-clamp-4");
             target.textContent = isExpanded ? "Read less" : "Read more";
             target.setAttribute("aria-expanded", isExpanded.toString());
           }
@@ -2173,7 +2175,6 @@ const faqSchema = {
           <img
             src="/images/luxury apartment mangalore.webp"
             alt="Udbhav Chinmaya apartment building"
-  
           />
           <!-- <div class="tag"><strong>&#8377;1.60 Cr*</strong>Spacious 3 BHK, 1,715&ndash;1,880 sq.ft.</div> -->
         </div>
@@ -2560,11 +2561,11 @@ const faqSchema = {
         <h2 class="section-title" style="max-width:34ch">
           Luxury 3 BHK Apartments In Mangalore
         </h2>
-        <h3 style="margin: 0 0 12px; font-weight: 600;">Udbhav Chinmaya Kadri</h3>
+        <h3 style="margin: 0 0 12px; font-weight: 600;">
+          Udbhav Chinmaya Kadri
+        </h3>
         <div class="amen-grid" style="margin-top:36px">
-          <div
-            class="amen-side lg:sticky lg:top-[120px] self-start"
-          >
+          <div class="amen-side lg:sticky lg:top-[120px] self-start">
             <!-- Youtube vedio-->
             <div class="yt-vedios" style="margin-bottom:24px">
               <div class="yt-vedio">
@@ -2667,8 +2668,7 @@ const faqSchema = {
               </div>
             </li>
           </ul>
-
-          </div>
+        </div>
       </div>
     </section>
 
@@ -2704,7 +2704,9 @@ const faqSchema = {
                   >approx 1.5 km</span
                 >
               </li>
-              <li><span>AJ Hospital</span><span>approx 1.5&ndash;2 km</span></li>
+              <li>
+                <span>AJ Hospital</span><span>approx 1.5&ndash;2 km</span>
+              </li>
               <li>
                 <span>National Highway 66</span><span>approx 2.5 km</span>
               </li>
@@ -2721,7 +2723,6 @@ const faqSchema = {
                 >
               </li>
             </ul>
-
           </div>
           <div class="loc-col">
             <h4>Everyday Needs Nearby</h4>
@@ -2741,7 +2742,6 @@ const faqSchema = {
               <li><span>Manasa Water Park</span><span>approx 11 Km</span></li>
               <li><span>Tannirbhavi Beach</span><span>approx 12 Km</span></li>
             </ul>
-
           </div>
         </div>
       </div>
@@ -2793,8 +2793,9 @@ const faqSchema = {
               Walk-to-Everything Kadri Location
             </h4><p>
               Schools, hospitals, and the city's commercial core are all within
-              a short drive &mdash; Kadri remains one of Mangalore's most centrally
-              connected addresses, saving residents daily commute time.
+              a short drive &mdash; Kadri remains one of Mangalore's most
+              centrally connected addresses, saving residents daily commute
+              time.
             </p>
           </div>
         </div>
@@ -2823,14 +2824,15 @@ const faqSchema = {
 
             <ul class="her-list lg:mt-6">
               <li>
-                <strong>Kadri Manjunath Temple</strong> &mdash; one of the region's oldest
-                temples, with centuries of continuous pilgrimage tradition
+                <strong>Kadri Manjunath Temple</strong> &mdash; one of the region's
+                oldest temples, with centuries of continuous pilgrimage tradition
               </li>
               <li>
                 <strong>Kadri Park</strong> &mdash; Mangalore's largest public garden.
               </li>
               <li>
-                <strong>KPT Junction</strong> &mdash; one of the city's key commercial nodes
+                <strong>KPT Junction</strong> &mdash; one of the city's key commercial
+                nodes
               </li>
               <li>
                 <strong>KMC Hospital and several leading schools</strong>, all
@@ -2901,7 +2903,6 @@ const faqSchema = {
                 <span class="tick">5</span>Well-planned parking infrastructure
               </li>
             </ul>
-
           </div>
         </div>
       </div>
@@ -2912,7 +2913,10 @@ const faqSchema = {
       <div class="wrap cta-strip-inner">
         <div>
           <h3>Only a Few Luxury 3 BHK Flats Available</h3>
-          <p>Udbhav Chinmaya's 3BHK apartment is a great choice to prepare for a return from Gulf/abroad.</p>
+          <p>
+            Udbhav Chinmaya's 3BHK apartment is a great choice to prepare for a
+            return from Gulf/abroad.
+          </p>
         </div>
         <a href="#" data-open-enquiry="true" class="btn btn-white"
           >Schedule Your Site Visit &rarr;</a
@@ -3095,9 +3099,9 @@ const faqSchema = {
               as this was recommended by one of my friends. As I was out of
               India, I did not get a chance to look at the site location nor
               check on the progress of the apartment by myself. However, I was
-              up to date on the progress &ndash; this was only because of complete
-              transparency by the staff at BCG, and detailed updates on the
-              project on their website and emails. They helped with all the
+              up to date on the progress &ndash; this was only because of
+              complete transparency by the staff at BCG, and detailed updates on
+              the project on their website and emails. They helped with all the
               paper works, including back coordination's etc. I returned to
               India and this matched with project completion. The schedules were
               met; the architect, design and specifications were as explained
@@ -3260,105 +3264,109 @@ const faqSchema = {
               </li>
             </ul>
           </div>
-                    <div class="specs-toggle-wrap">
+          <div class="specs-toggle-wrap">
             <button
               type="button"
               id="specsToggle"
               class="specs-toggle"
               aria-expanded="false"
-              aria-controls="specs-extra-group"
-            >Read more features</button>
+              aria-controls="specs-extra-group">Read more features</button
+            >
           </div>
-          <div id="specs-extra-group" class="specs-extra-group"><div class="spec-card spec-extra">
-            <h4>Electrical &amp; Communication</h4><ul>
-              <li>
-                Wiring: Premium Finolex, RR, or equivalent brand electrical
-                wiring.
-              </li>
-              <li>
-                Air conditioning: AC points provided in all bedrooms and halls.
-              </li>
-              <li>
-                Media &amp; Telecom: Telephone and cable TV points installed in
-                the living room and master bedroom.
-              </li>
-              <li>
-                Bathroom electricals: Dedicated geyser points and exhaust fan
-                provisions.
-              </li>
-            </ul>
-          </div>
-          <div class="spec-card spec-extra">
-            <h4>Kitchen Features</h4><ul>
-              <li>
-                Counter &amp; Sink: Granite countertop fitted with a stainless
-                steel (SS) single-bowl sink and drainboard.
-              </li>
-              <li>
-                Wall cladding: Ceramic tiles extending 2 feet above the granite
-                counter.
-              </li>
-              <li>
-                Appliances: Sufficient electrical points to accommodate all
-                kitchen appliances.
-              </li>
-              <li>
-                Utility provisions: Dedicated points for an exhaust fan, RO
-                water purifier, instant geyser, and chimney.
-              </li>
-              <li>Gas supply: Piped gas connection via GAIL pipeline.</li>
-            </ul>
-          </div>
-          <div class="spec-card spec-extra">
-            <h4>Paint &amp; Finishes</h4><ul>
-              <li>
-                Internal surfaces built by premium emulsion paint over a smooth
-                putty finish on walls and ceilings.
-              </li>
-              <li>
-                External surfaces: Coated with external-grade, antifungal
-                superior paint.
-              </li>
-              <li>
-                Metalwork: All metal fixtures and fabrications coated with
-                enamel paint.
-              </li>
-            </ul>
-          </div>
-          <div class="spec-card spec-extra">
-            <h4>High Security</h4><ul>
-              <li>CCTV camera monitoring across all floors.</li>
-              <li>
-                Access control: Biometric access control systems for common
-                areas.
-              </li>
-              <li>
-                Apartment security: Video door phones paired with main door
-                digital locks.
-              </li>
-              <li>
-                Power reliability: 100% power backup for both individual
-                apartments and common areas.
-              </li>
-            </ul>
-          </div>
-          <div class="spec-card spec-extra">
-            <h4>Sustainability &amp; Accessibility</h4><ul>
-              <li>Green solar-powered lighting installed for common areas.</li>
-              <li>
-                Motion sensors installed for common passage lighting to save
-                energy.
-              </li>
-              <li>
-                Water conservation: Integrated rainwater harvesting system.
-              </li>
-              <li>
-                Green mobility: Dedicated EV charging provisions for each car
-                parking space.
-              </li>
-              <li>Inclusivity: Wheelchair-friendly main lobby design.</li>
-            </ul>
-          </div>
+          <div id="specs-extra-group" class="specs-extra-group">
+            <div class="spec-card spec-extra">
+              <h4>Electrical &amp; Communication</h4><ul>
+                <li>
+                  Wiring: Premium Finolex, RR, or equivalent brand electrical
+                  wiring.
+                </li>
+                <li>
+                  Air conditioning: AC points provided in all bedrooms and
+                  halls.
+                </li>
+                <li>
+                  Media &amp; Telecom: Telephone and cable TV points installed
+                  in the living room and master bedroom.
+                </li>
+                <li>
+                  Bathroom electricals: Dedicated geyser points and exhaust fan
+                  provisions.
+                </li>
+              </ul>
+            </div>
+            <div class="spec-card spec-extra">
+              <h4>Kitchen Features</h4><ul>
+                <li>
+                  Counter &amp; Sink: Granite countertop fitted with a stainless
+                  steel (SS) single-bowl sink and drainboard.
+                </li>
+                <li>
+                  Wall cladding: Ceramic tiles extending 2 feet above the
+                  granite counter.
+                </li>
+                <li>
+                  Appliances: Sufficient electrical points to accommodate all
+                  kitchen appliances.
+                </li>
+                <li>
+                  Utility provisions: Dedicated points for an exhaust fan, RO
+                  water purifier, instant geyser, and chimney.
+                </li>
+                <li>Gas supply: Piped gas connection via GAIL pipeline.</li>
+              </ul>
+            </div>
+            <div class="spec-card spec-extra">
+              <h4>Paint &amp; Finishes</h4><ul>
+                <li>
+                  Internal surfaces built by premium emulsion paint over a
+                  smooth putty finish on walls and ceilings.
+                </li>
+                <li>
+                  External surfaces: Coated with external-grade, antifungal
+                  superior paint.
+                </li>
+                <li>
+                  Metalwork: All metal fixtures and fabrications coated with
+                  enamel paint.
+                </li>
+              </ul>
+            </div>
+            <div class="spec-card spec-extra">
+              <h4>High Security</h4><ul>
+                <li>CCTV camera monitoring across all floors.</li>
+                <li>
+                  Access control: Biometric access control systems for common
+                  areas.
+                </li>
+                <li>
+                  Apartment security: Video door phones paired with main door
+                  digital locks.
+                </li>
+                <li>
+                  Power reliability: 100% power backup for both individual
+                  apartments and common areas.
+                </li>
+              </ul>
+            </div>
+            <div class="spec-card spec-extra">
+              <h4>Sustainability &amp; Accessibility</h4><ul>
+                <li>
+                  Green solar-powered lighting installed for common areas.
+                </li>
+                <li>
+                  Motion sensors installed for common passage lighting to save
+                  energy.
+                </li>
+                <li>
+                  Water conservation: Integrated rainwater harvesting system.
+                </li>
+                <li>
+                  Green mobility: Dedicated EV charging provisions for each car
+                  parking space.
+                </li>
+                <li>Inclusivity: Wheelchair-friendly main lobby design.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -3373,10 +3381,13 @@ const faqSchema = {
 
         const isOpen = specsExtraGroup.classList.toggle("is-open");
         specsToggle.setAttribute("aria-expanded", String(isOpen));
-        specsToggle.textContent = isOpen ? "Read less features" : "Read more features";
+        specsToggle.textContent = isOpen
+          ? "Read less features"
+          : "Read more features";
 
         if (!isOpen) {
-          const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          const behavior = window.matchMedia("(prefers-reduced-motion: reduce)")
+            .matches
             ? "auto"
             : "smooth";
           specsToggle.scrollIntoView({ block: "center", behavior });
