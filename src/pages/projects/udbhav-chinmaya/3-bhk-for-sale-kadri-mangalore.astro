@@ -325,6 +325,10 @@ const faqSchema = {
         flex-wrap: wrap;
         margin-bottom: 56px;
       }
+      .hero-ctas .btn {
+        width: 240px;
+        text-align: center;
+      }
       .btn {
         display: inline-flex;
         align-items: center;
@@ -341,7 +345,7 @@ const faqSchema = {
       .btn-primary {
         background: var(--red);
         color: #fff;
-        padding: 15px 53px;
+        padding: 15px 26px;
       }
 
       .btn-primary:hover {
@@ -452,6 +456,16 @@ const faqSchema = {
         .announcement-bar .rera-text {
           display: block;
           margin-top: 2px;
+        }
+        .hero-ctas {
+          flex-direction: column;
+          width: 100%;
+          gap: 12px;
+          margin-bottom: 40px;
+        }
+        .hero-ctas .btn {
+          width: 100%;
+          max-width: 100%;
         }
       }
       /* badge strip */
@@ -797,7 +811,7 @@ const faqSchema = {
       @media (max-width: 640px) {
         .fp-arrows {
           flex-direction: row !important;
-          justify-content: flex-start;
+          justify-content: center;
           order: 2;
         }
         .floorplan .section-title {
