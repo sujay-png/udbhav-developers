@@ -273,12 +273,25 @@ const propertySchema = {
         gap: 40px;
         flex-shrink: 0;
       }
+      .credai-logo {
+        height: 32px;
+        width: auto;
+        object-fit: contain;
+        margin-left: 35px;
+        padding-left: 10px;
+        transition: margin 0.2s ease, padding 0.2s ease;
+      }
       @media (max-width: 1140px) {
         .nav-links { gap: 20px; }
         .nav-links a { font-size: 0.72rem; letter-spacing: 0.1em; }
       }
       @media (max-width: 980px) {
         .nav-links { display: none; }
+        .credai-logo {
+          height: 26px !important;
+          margin-left: 0 !important;
+          padding-left: 0 !important;
+        }
       }
 
       /* ---------------- HERO (light) ---------------- */
@@ -1614,7 +1627,7 @@ const propertySchema = {
 
         <div class="nav-actions">
           <a href="/contact/" class="btn btn-primary" style="padding: 10px 22px;">Enquiry</a>
-          <img src="/images/credai-mangalore-logo.webp" alt="CREDAI Mangalore" style="height: 32px; width: auto; object-fit: contain;" />
+          <img src="/images/credai-mangalore-logo.webp" alt="CREDAI Mangalore" class="credai-logo" style="height: 32px; width: auto; object-fit: contain;" />
         </div>
       </div>
     </header>

@@ -1,4 +1,4 @@
----
+﻿---
 import Footer from "@/components/layout/Footer.astro";
 import "@/styles/global.css";
 import { floorPlans } from "@/lib/floorPlans";
@@ -199,8 +199,11 @@ const propertySchema = {
           padding-right: 0 !important;
           gap: 12px !important;
         }
-        .nav-actions img {
+        .nav-actions img,
+        .credai-logo {
           height: 24px !important;
+          margin-left: 0 !important;
+          padding-left: 0 !important;
         }
         .announcement-bar {
           font-size: 0.72rem !important;
@@ -351,6 +354,14 @@ const propertySchema = {
         background: var(--color-clay-hover, #8f2f1b);
         box-shadow: 0 4px 12px rgba(168, 58, 36, 0.25);
         transform: translateY(-1px);
+      }
+      .credai-logo {
+        height: 32px;
+        width: auto;
+        object-fit: contain;
+        margin-left: 65px;
+        padding-left: 9px;
+        transition: margin 0.2s ease, padding 0.2s ease;
       }
       @media (max-width: 1140px) {
         .nav-links {
@@ -2106,6 +2117,14 @@ const propertySchema = {
         .nav-actions .btn {
           display: none;
         }
+        .nav-actions {
+          gap: 12px !important;
+        }
+        .credai-logo {
+          height: 26px !important;
+          margin-left: 0 !important;
+          padding-left: 0 !important;
+        }
         .nav-hamburger {
           display: flex !important;
         }
@@ -2276,6 +2295,7 @@ const propertySchema = {
           <img
             src="/images/credai-mangalore-logo.webp"
             alt="CREDAI Mangalore"
+            class="credai-logo"
             style="height: 32px; width: auto; object-fit: contain;"
           />
           <button
