@@ -712,6 +712,9 @@ const propertySchema = {
           line-height: 1.35;
           font-weight: 700;
         }
+        .fp-card-title .fp-top-view-text {
+          display: none;
+        }
         .carousel-arrow {
           width: 46px;
           height: 46px;
@@ -1809,7 +1812,11 @@ const propertySchema = {
                     <div class="fp-card-title">
                       {plan.series}
                       <br />
-                      {plan.shortTitle || plan.title}
+                      <span>{(plan.shortTitle || plan.title).replace(/\s*\(Top View\)\.?/i, "")}</span>{
+                        (plan.shortTitle || plan.title).toLowerCase().includes("top view") && (
+                          <span class="fp-top-view-text"> (Top View)</span>
+                        )
+                      }
                     </div>
                   </div>
                 ))
