@@ -270,7 +270,7 @@ const propertySchema = {
       .nav-actions {
         display: flex;
         align-items: center;
-        gap: 22px;
+        gap: 40px;
         flex-shrink: 0;
       }
       @media (max-width: 1140px) {

@@ -1,4 +1,4 @@
----
+﻿---
 import Footer from "@/components/layout/Footer.astro";
 import "@/styles/global.css";
 import { floorPlans } from "@/lib/floorPlans";
@@ -188,6 +188,9 @@ const propertySchema = {
         .brand {
           padding-left: 12px !important;
           gap: 8px !important;
+          margin-right: 9%;
+              gap: 9px;
+    
         }
         .brand img {
           width: 22px !important;
@@ -332,7 +335,7 @@ const propertySchema = {
       .nav-actions {
         display: flex;
         align-items: center;
-        gap: 20px;
+        gap: 40px;
         flex-shrink: 0;
       }
       .nav-actions .btn-primary {
@@ -2276,7 +2279,10 @@ const propertySchema = {
           <img
             src="/images/credai-mangalore-logo.webp"
             alt="CREDAI Mangalore"
-            style="height: 32px; width: auto; object-fit: contain;"
+            style="height: 32px;
+              width: auto;
+              object-fit: contain;
+              margin-left: 41%;"
           />
           <button
             class="nav-hamburger"
