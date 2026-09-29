@@ -440,7 +440,7 @@ export const projects: Project[] = [
   },
   {
     slug: "udbhav-shanthi",
-    name: "Udbhav Shanthi",
+    name: "Udbhav Marcel's Maison",
     // seoTitle: "Custom SEO Title Here",
     // seoDescription: "Custom SEO Description Here",
     category: "Residential",
@@ -472,7 +472,7 @@ export const projects: Project[] = [
   },
   {
     slug: "udbhav-marcels-maison",
-    name: "Udbhav Marcel's Maison",
+    name: "Udbhav Shanthi",
     // seoTitle: "Custom SEO Title Here",
     // seoDescription: "Custom SEO Description Here",
     category: "Residential",

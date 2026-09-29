@@ -235,3 +235,15 @@ The primary principle is:
 2. **Use direct editing tools:** Always use built-in tools (`replace_file_content`, `multi_replace_file_content`) to modify code directly.
 3. **No extraneous external or internal files:** Do not generate extra files, sample files, or helper scripts unless explicitly instructed by the user. Keep the workspace tree completely clean and free of leftover artifacts.
 
+## Output Explanation Format Rule
+
+Whenever presenting code changes or data updates to the user, always structure the summary using a clear, clean markdown table format with clickable file links:
+
+1. **Header sentence** specifying the file and line range with a clickable markdown link.
+2. **Summary of Changes Table** with explicit columns:
+   - `Line`: Exact line number(s) modified
+   - `Target / Item / Context`: The specific item, element, or card changed
+   - `Before`: Value or code snippet prior to change
+   - `After`: Value or code snippet after change
+3. **Short explanation / rationale** if relevant.
+
