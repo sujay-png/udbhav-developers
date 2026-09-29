@@ -1,4 +1,4 @@
-﻿---
+---
 import Footer from "@/components/layout/Footer.astro";
 import "@/styles/global.css";
 import { floorPlans } from "@/lib/floorPlans";
@@ -140,6 +140,11 @@ const propertySchema = {
         --red-deep: #8a1b15;
         --red-tint: #fbeae7;
         --cream-on-red: #fcefe8;
+        --color-cream: #fbf1ea;
+        --color-clay: #a83a24;
+        --color-clay-hover: #8f2f1b;
+        --color-border: #e7d7c9;
+        --color-ink: #1a1410;
         --font-display: "Fraunces", Georgia, serif;
         --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
       }
@@ -253,26 +258,33 @@ const propertySchema = {
         width: 100%;
       }
 
-      /* ---------------- NAV ---------------- */
+      /* ---------------- NAV (Sticky Glassmorphic) ---------------- */
 
-      .nav .wrap {
-        max-width: 100%;
-        /* padding-left: 20px; */
-        padding-right: 10px;
-      }
       .nav {
-        background: var(--paper-soft);
-        border-bottom: 1px solid var(--line);
-        position: relative;
-        z-index: 20;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(251, 241, 234, 0.90);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(231, 215, 201, 0.75);
+        box-shadow: 0 4px 20px -2px rgba(26, 20, 16, 0.05);
+        transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      .nav .wrap {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-left: 24px;
+        padding-right: 24px;
       }
       .nav-inner {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 32px;
-        padding-top: 18px;
-        padding-bottom: 18px;
+        min-height: 5rem;
+        padding-top: 10px;
+        padding-bottom: 10px;
       }
       .brand {
         display: flex;
@@ -280,20 +292,21 @@ const propertySchema = {
         gap: 10px;
         font-family: var(--font-display);
         font-weight: 600;
-        font-size: 1.3rem;
-        color: var(--ink);
+        font-size: 1.25rem;
+        color: var(--color-ink, #1a1410);
         text-decoration: none;
         flex-shrink: 0;
-        padding-left: 20px;
+        letter-spacing: -0.01em;
+      }
+      .brand span {
+        white-space: nowrap;
+      }
+      .brand img {
+        height: 32px;
+        width: auto;
       }
       .hamburger-btn {
         display: none;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        color: var(--ink);
-        padding: 8px;
-        margin-left: 10px;
       }
       .nav-links {
         display: flex;
@@ -305,51 +318,70 @@ const propertySchema = {
       }
       .nav-links a {
         text-decoration: none;
-        font-size: 0.76rem;
+        font-size: 13px;
         font-weight: 500;
         text-transform: uppercase;
-        letter-spacing: 0.14em;
-        color: #3d3731;
+        letter-spacing: 0.08em;
+        color: rgba(26, 20, 16, 0.75);
         white-space: nowrap;
-        transition: color 0.18s ease;
+        transition: color 0.2s ease;
       }
       .nav-links a:hover {
-        color: var(--red);
+        color: var(--color-clay, #a83a24);
       }
       .nav-actions {
         display: flex;
         align-items: center;
-        gap: 22px;
+        gap: 20px;
         flex-shrink: 0;
-        padding-right: 20px;
       }
-      @media (max-width: 560px) {
-        .nav-actions {
-          gap: 10px;
-        }
-        .nav-actions .btn {
-          padding: 8px 12px !important;
-          font-size: 0.8rem;
-        }
-        .nav-actions img {
-          height: 24px !important;
-        }
-        .brand span {
-          font-size: 1.1rem !important;
-        }
+      .nav-actions .btn-primary {
+        background: var(--color-clay, #a83a24);
+        color: #fdf5f0;
+        border-radius: 4px;
+        padding: 10px 22px !important;
+        font-size: 13px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        transition: all 0.2s ease;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      }
+      .nav-actions .btn-primary:hover {
+        background: var(--color-clay-hover, #8f2f1b);
+        box-shadow: 0 4px 12px rgba(168, 58, 36, 0.25);
+        transform: translateY(-1px);
       }
       @media (max-width: 1140px) {
         .nav-links {
           gap: 20px;
         }
         .nav-links a {
-          font-size: 0.72rem;
-          letter-spacing: 0.1em;
+          font-size: 12px;
+          letter-spacing: 0.06em;
         }
       }
       @media (max-width: 980px) {
         .nav-links {
           display: none;
+        }
+      }
+      @media (max-width: 560px) {
+        .nav-inner {
+          min-height: 4rem;
+        }
+        .nav-actions {
+          gap: 10px;
+        }
+        .nav-actions .btn {
+          padding: 8px 14px !important;
+          font-size: 0.78rem;
+        }
+        .nav-actions img {
+          height: 24px !important;
+        }
+        .brand span {
+          font-size: 1.05rem !important;
         }
       }
 
@@ -873,33 +905,72 @@ const propertySchema = {
         margin-top: 24px;
       }
       @media (max-width: 640px) {
+        .floorplan {
+          padding: 48px 0 60px;
+        }
         .fp-arrows {
           flex-direction: row !important;
           justify-content: center;
+          gap: 16px;
+          margin-top: 16px;
           order: 2;
         }
         .floorplan .section-title {
-          font-size: var(--fs-body) !important;
+          font-size: 1.45rem !important;
+          margin-bottom: 8px;
         }
         .fp-note strong {
-          font-size: 1.05rem;
+          font-size: 0.95rem;
           line-height: 1.35;
           display: block;
         }
-        .fp-card {
-          flex: 0 0 calc(100% - 10px);
+        .fp-carousel {
+          order: 1;
+          gap: 14px;
+          padding: 4px 4px 14px;
+          scroll-snap-type: x mandatory;
         }
-
+        .fp-card {
+          flex: 0 0 min(86vw, 320px);
+          scroll-snap-align: center;
+          padding: 14px 12px;
+          border-radius: 8px;
+        }
+        .fp-card img {
+          max-height: 240px;
+          object-fit: contain;
+          margin-bottom: 12px;
+        }
+        .fp-card-title {
+          font-size: 0.92rem;
+          line-height: 1.35;
+          font-weight: 700;
+        }
         .carousel-arrow {
-          width: 52px;
-          height: 52px;
-          font-size: 1.4rem;
+          width: 46px;
+          height: 46px;
+          font-size: 1.25rem;
         }
         .fp-details {
           order: 3;
+          padding: 12px 4px 0;
         }
-        .fp-carousel {
-          order: 1;
+        .fp-details h3 {
+          font-size: 1.35rem !important;
+          margin-bottom: 12px;
+        }
+        .fp-specs {
+          margin: 0 0 20px !important;
+          gap: 10px !important;
+        }
+        .fp-specs li {
+          font-size: 0.88rem !important;
+          padding-bottom: 10px !important;
+        }
+        .fp-details .btn-primary {
+          width: 100%;
+          text-align: center;
+          justify-content: center;
         }
       }
 
@@ -1862,15 +1933,16 @@ const propertySchema = {
       @media (max-width: 640px) {
         .nav .wrap {
           max-width: 100%;
-          padding-left: 20px;
-          padding-right: 10px;
+          padding-left: 16px;
+          padding-right: 16px;
         }
         .brand {
           padding-left: 0px !important;
           gap: 8px !important;
         }
         .brand img {
-          width: 16px !important;
+          width: 20px !important;
+          height: auto !important;
           margin-right: 0;
         }
         .brand span {
@@ -1878,7 +1950,7 @@ const propertySchema = {
         }
         .nav-actions {
           padding-right: 0 !important;
-          gap: 12px !important;
+          gap: 10px !important;
         }
         .nav-actions img {
           height: 24px !important;
@@ -1899,18 +1971,24 @@ const propertySchema = {
         display: none;
         flex-direction: column;
         justify-content: center;
-        gap: 4px;
-        width: 28px;
-        height: 28px;
-        background: none;
-        border: none;
+        align-items: center;
+        gap: 5px;
+        width: 38px;
+        height: 38px;
+        background: transparent;
+        border: 1px solid rgba(26, 20, 16, 0.15);
+        border-radius: 4px;
         cursor: pointer;
         padding: 0;
         flex-shrink: 0;
+        transition: all 0.2s ease;
+      }
+      .nav-hamburger:hover {
+        border-color: rgba(168, 58, 36, 0.4);
       }
       .nav-hamburger span {
         display: block;
-        width: 26px;
+        width: 20px;
         height: 2px;
         background: var(--ink);
         border-radius: 2px;
@@ -1929,8 +2007,8 @@ const propertySchema = {
       }
 
       .nav-hamburger:focus-visible {
-        outline: 2px solid var(--red);
-        outline-offset: 4px;
+        outline: 2px solid var(--color-clay, #a83a24);
+        outline-offset: 2px;
       }
 
       /* Mobile slide-out panel */
@@ -1939,13 +2017,16 @@ const propertySchema = {
         top: 0;
         right: 0;
         height: 100%;
-        width: min(78vw, 320px);
-        background: var(--paper);
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+        width: min(80vw, 340px);
+        background: rgba(251, 241, 234, 0.98);
+        -webkit-backdrop-filter: blur(16px);
+        backdrop-filter: blur(16px);
+        border-left: 1px solid rgba(231, 215, 201, 0.8);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.12);
         z-index: 100;
         padding: 24px 24px 32px;
         transform: translateX(100%);
-        transition: transform 0.3s ease;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         overflow-y: auto;
       }
       .nav-mobile-panel.open {
@@ -1961,17 +2042,36 @@ const propertySchema = {
       .nav-mobile-panel ul li a {
         display: block;
         padding: 14px 4px;
-        border-bottom: 1px solid var(--line);
+        border-bottom: 1px solid rgba(231, 215, 201, 0.6);
         text-decoration: none;
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: var(--ink);
+        font-size: 0.92rem;
+        font-weight: 500;
+        color: var(--color-ink, #1a1410);
         text-transform: uppercase;
         letter-spacing: 0.08em;
+        transition: color 0.2s ease;
+      }
+      .nav-mobile-panel ul li a:hover {
+        color: var(--color-clay, #a83a24);
       }
       .nav-mobile-panel .btn-primary {
+        background: var(--color-clay, #a83a24);
+        color: #fdf5f0;
+        border-radius: 4px;
+        padding: 12px 20px;
+        font-size: 13px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        display: block;
         width: 100%;
         text-align: center;
+        text-decoration: none;
+        margin-top: 16px;
+        transition: all 0.2s ease;
+      }
+      .nav-mobile-panel .btn-primary:hover {
+        background: var(--color-clay-hover, #8f2f1b);
       }
       .nav-mobile-close {
         position: absolute;
@@ -2146,9 +2246,9 @@ const propertySchema = {
             alt="Udbhav Logo"
           />
           <span
-            style="white-space:nowrap; font-family:var(--font-display); font-weight:600; font-size:1.3rem; color:var(--ink);"
+            style="white-space:nowrap; font-family:var(--font-display); font-weight:600; font-size:1.25rem; color:var(--ink);"
           >
-            Udbhav <span style="color:var(--red);">Developers</span>
+            Udbhav <span style="color:var(--color-clay, #a83a24);">Developers</span>
           </span>
         </a>
 
@@ -2524,20 +2624,36 @@ const propertySchema = {
 
         let currentIndex = 0;
 
+        function isMobileView() {
+          return window.innerWidth <= 640;
+        }
+
         function updateActiveCard(index) {
           cards.forEach((c) => c.classList.remove("active"));
-          const seriesStartIndex = Math.floor(index / 2) * 2;
+          const isMobile = isMobileView();
 
-          if (cards[seriesStartIndex]) {
-            cards[seriesStartIndex].classList.add("active");
-            cards[seriesStartIndex].scrollIntoView({
-              behavior: "smooth",
-              block: "nearest",
-              inline: "start",
-            });
-          }
-          if (cards[seriesStartIndex + 1]) {
-            cards[seriesStartIndex + 1].classList.add("active");
+          if (isMobile) {
+            if (cards[index]) {
+              cards[index].classList.add("active");
+              cards[index].scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "center",
+              });
+            }
+          } else {
+            const seriesStartIndex = Math.floor(index / 2) * 2;
+            if (cards[seriesStartIndex]) {
+              cards[seriesStartIndex].classList.add("active");
+              cards[seriesStartIndex].scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "start",
+              });
+            }
+            if (cards[seriesStartIndex + 1]) {
+              cards[seriesStartIndex + 1].classList.add("active");
+            }
           }
 
           const plan = floorPlans[index];
@@ -2567,20 +2683,68 @@ const propertySchema = {
         });
 
         prevBtn.addEventListener("click", () => {
-          const currentSeriesIndex = Math.floor(currentIndex / 2) * 2;
-          if (currentSeriesIndex > 0) {
-            currentIndex = currentSeriesIndex - 2;
-            updateActiveCard(currentIndex);
+          const isMobile = isMobileView();
+          if (isMobile) {
+            if (currentIndex > 0) {
+              currentIndex -= 1;
+              updateActiveCard(currentIndex);
+            }
+          } else {
+            const currentSeriesIndex = Math.floor(currentIndex / 2) * 2;
+            if (currentSeriesIndex > 0) {
+              currentIndex = currentSeriesIndex - 2;
+              updateActiveCard(currentIndex);
+            }
           }
         });
 
         nextBtn.addEventListener("click", () => {
-          const currentSeriesIndex = Math.floor(currentIndex / 2) * 2;
-          if (currentSeriesIndex < cards.length - 2) {
-            currentIndex = currentSeriesIndex + 2;
-            updateActiveCard(currentIndex);
+          const isMobile = isMobileView();
+          if (isMobile) {
+            if (currentIndex < cards.length - 1) {
+              currentIndex += 1;
+              updateActiveCard(currentIndex);
+            }
+          } else {
+            const currentSeriesIndex = Math.floor(currentIndex / 2) * 2;
+            if (currentSeriesIndex < cards.length - 2) {
+              currentIndex = currentSeriesIndex + 2;
+              updateActiveCard(currentIndex);
+            }
           }
         });
+
+        let scrollTimeout;
+        carousel?.addEventListener(
+          "scroll",
+          () => {
+            if (!isMobileView()) return;
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+              const carouselCenter =
+                carousel.getBoundingClientRect().left +
+                carousel.clientWidth / 2;
+              let closestIndex = currentIndex;
+              let closestDistance = Infinity;
+
+              cards.forEach((card, i) => {
+                const rect = card.getBoundingClientRect();
+                const cardCenter = rect.left + rect.width / 2;
+                const distance = Math.abs(cardCenter - carouselCenter);
+                if (distance < closestDistance) {
+                  closestDistance = distance;
+                  closestIndex = i;
+                }
+              });
+
+              if (closestIndex !== currentIndex) {
+                currentIndex = closestIndex;
+                updateActiveCard(currentIndex);
+              }
+            }, 120);
+          },
+          { passive: true },
+        );
 
         // Lightbox logic
         const lightbox = document.getElementById("plan-lightbox");

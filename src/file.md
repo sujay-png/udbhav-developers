@@ -657,6 +657,75 @@ const propertySchema = {
           grid-column: 1 / -1;
         }
       }
+      @media (max-width: 640px) {
+        .floorplan {
+          padding: 48px 0 60px;
+        }
+        .fp-arrows {
+          flex-direction: row !important;
+          justify-content: center;
+          gap: 16px;
+          margin-top: 16px;
+          order: 2;
+        }
+        .floorplan .section-title {
+          font-size: 1.45rem !important;
+          margin-bottom: 8px;
+        }
+        .fp-note strong {
+          font-size: 0.95rem;
+          line-height: 1.35;
+          display: block;
+        }
+        .fp-carousel {
+          order: 1;
+          gap: 14px;
+          padding: 4px 4px 14px;
+          scroll-snap-type: x mandatory;
+        }
+        .fp-card {
+          flex: 0 0 min(86vw, 320px);
+          scroll-snap-align: center;
+          padding: 14px 12px;
+          border-radius: 8px;
+        }
+        .fp-card img {
+          max-height: 240px;
+          object-fit: contain;
+          margin-bottom: 12px;
+        }
+        .fp-card-title {
+          font-size: 0.92rem;
+          line-height: 1.35;
+          font-weight: 700;
+        }
+        .carousel-arrow {
+          width: 46px;
+          height: 46px;
+          font-size: 1.25rem;
+        }
+        .fp-details {
+          order: 3;
+          padding: 12px 4px 0;
+        }
+        .fp-details h3 {
+          font-size: 1.35rem !important;
+          margin-bottom: 12px;
+        }
+        .fp-specs {
+          margin: 0 0 20px !important;
+          gap: 10px !important;
+        }
+        .fp-specs li {
+          font-size: 0.88rem !important;
+          padding-bottom: 10px !important;
+        }
+        .fp-details .btn-primary {
+          width: 100%;
+          text-align: center;
+          justify-content: center;
+        }
+      }
 
       .fp-card-old {
         background: #fff;
@@ -1530,8 +1599,8 @@ const propertySchema = {
       <div class="wrap nav-inner">
         <a href="/" class="brand">
           <img src="/images/udbhav-developers-logo-1.png" style="width:26px; height:auto;" alt="Udbhav Logo" />
-          <span style="white-space:nowrap; font-family:var(--font-display); font-weight:600; font-size:1.3rem; color:var(--ink);">
-            Udbhav <span style="color:var(--red);">Developers</span>
+          <span style="white-space:nowrap; font-family:var(--font-display); font-weight:600; font-size:1.25rem; color:var(--ink);">
+            Udbhav <span style="color:var(--color-clay, #a83a24);">Developers</span>
           </span>
         </a>
 
@@ -1799,20 +1868,36 @@ const propertySchema = {
 
         let currentIndex = 0;
 
+        function isMobileView() {
+          return window.innerWidth <= 640;
+        }
+
         function updateActiveCard(index) {
           cards.forEach((c) => c.classList.remove("active"));
-          const seriesStartIndex = Math.floor(index / 2) * 2;
+          const isMobile = isMobileView();
 
-          if (cards[seriesStartIndex]) {
-            cards[seriesStartIndex].classList.add("active");
-            cards[seriesStartIndex].scrollIntoView({
-              behavior: "smooth",
-              block: "nearest",
-              inline: "start",
-            });
-          }
-          if (cards[seriesStartIndex + 1]) {
-            cards[seriesStartIndex + 1].classList.add("active");
+          if (isMobile) {
+            if (cards[index]) {
+              cards[index].classList.add("active");
+              cards[index].scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "center",
+              });
+            }
+          } else {
+            const seriesStartIndex = Math.floor(index / 2) * 2;
+            if (cards[seriesStartIndex]) {
+              cards[seriesStartIndex].classList.add("active");
+              cards[seriesStartIndex].scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "start",
+              });
+            }
+            if (cards[seriesStartIndex + 1]) {
+              cards[seriesStartIndex + 1].classList.add("active");
+            }
           }
 
           const plan = floorPlans[index];
@@ -1839,20 +1924,68 @@ const propertySchema = {
         });
 
         prevBtn.addEventListener("click", () => {
-          const currentSeriesIndex = Math.floor(currentIndex / 2) * 2;
-          if (currentSeriesIndex > 0) {
-            currentIndex = currentSeriesIndex - 2;
-            updateActiveCard(currentIndex);
+          const isMobile = isMobileView();
+          if (isMobile) {
+            if (currentIndex > 0) {
+              currentIndex -= 1;
+              updateActiveCard(currentIndex);
+            }
+          } else {
+            const currentSeriesIndex = Math.floor(currentIndex / 2) * 2;
+            if (currentSeriesIndex > 0) {
+              currentIndex = currentSeriesIndex - 2;
+              updateActiveCard(currentIndex);
+            }
           }
         });
 
         nextBtn.addEventListener("click", () => {
-          const currentSeriesIndex = Math.floor(currentIndex / 2) * 2;
-          if (currentSeriesIndex < cards.length - 2) {
-            currentIndex = currentSeriesIndex + 2;
-            updateActiveCard(currentIndex);
+          const isMobile = isMobileView();
+          if (isMobile) {
+            if (currentIndex < cards.length - 1) {
+              currentIndex += 1;
+              updateActiveCard(currentIndex);
+            }
+          } else {
+            const currentSeriesIndex = Math.floor(currentIndex / 2) * 2;
+            if (currentSeriesIndex < cards.length - 2) {
+              currentIndex = currentSeriesIndex + 2;
+              updateActiveCard(currentIndex);
+            }
           }
         });
+
+        let scrollTimeout;
+        carousel?.addEventListener(
+          "scroll",
+          () => {
+            if (!isMobileView()) return;
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+              const carouselCenter =
+                carousel.getBoundingClientRect().left +
+                carousel.clientWidth / 2;
+              let closestIndex = currentIndex;
+              let closestDistance = Infinity;
+
+              cards.forEach((card, i) => {
+                const rect = card.getBoundingClientRect();
+                const cardCenter = rect.left + rect.width / 2;
+                const distance = Math.abs(cardCenter - carouselCenter);
+                if (distance < closestDistance) {
+                  closestDistance = distance;
+                  closestIndex = i;
+                }
+              });
+
+              if (closestIndex !== currentIndex) {
+                currentIndex = closestIndex;
+                updateActiveCard(currentIndex);
+              }
+            }, 120);
+          },
+          { passive: true },
+        );
 
         // Lightbox logic
         const lightbox = document.getElementById("plan-lightbox");
