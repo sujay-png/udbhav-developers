@@ -1467,7 +1467,7 @@ const faqSchema = {
   <body class="relative">
     <!-- ANNOUNCEMENT BAR -->
     <div class="announcement-bar">
-      4BHK units sold out. Limited 3BHK residences available. RERA ID: PRK/KA/RERA/1257/334/PR/311225/008371
+      4BHK units sold out. Limited 3BHK residences available. RERA ID: PRM/KA/RERA/1257/334/PR/311225/008371
     </div>
 
     <header class="nav">
@@ -2220,11 +2220,7 @@ const faqSchema = {
           </div>
           <div class="split-block">
             <p style="margin-bottom:16px;">
-              Udbhav Developers was established in 2012 by a Kadri-based
-              entrepreneur named Mr. Kiran BK, a qualified civil engineer with
-              over two decades of domestic and international real estate
-              development experience. Now with a focus on premium small-format
-              projects in Kadri-Mangalore.
+            Udbhav Developers was founded in 2012 by Mr. Kiran BK, a qualified civil engineer and Kadri-based entrepreneur with over 20 years of global real estate experience. The firm now specializes in premium, small-format developments across Kadri, Mangalore. 
             </p>
 
             <p style="margin:0;">

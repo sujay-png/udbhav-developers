@@ -1,4 +1,4 @@
-﻿---
+---
 import Footer from "@/components/layout/Footer.astro";
 import "@/styles/global.css";
 import { floorPlans } from "@/lib/floorPlans";
@@ -49,6 +49,9 @@ const faqSchema = {
     },
   })),
 };
+
+const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonicalURL = new URL(pathname, Astro.site || "https://www.udbhavdevelopers.com");
 ---
 
 <!doctype html>
@@ -57,6 +60,7 @@ const faqSchema = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Luxury 3 BHK Flats in Kadri, Mangalore | Udbhav Chinmaya</title>
+    <link rel="canonical" href={canonicalURL} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -2068,7 +2072,7 @@ const faqSchema = {
     <div class="announcement-bar">
       4BHK units sold out. Limited 3BHK residences available.
       <span class="rera-text"
-        >RERA ID: PRK/KA/RERA/1257/334/PR/311225/008371</span
+        >RERA ID: PRM/KA/RERA/1257/334/PR/311225/008371</span
       >
     </div>
 
