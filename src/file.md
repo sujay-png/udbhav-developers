@@ -5,6 +5,7 @@ import { floorPlans } from "@/lib/floorPlans";
 import BrochureForm from "@/components/BrochureForm.astro";
 import ReraForm from "@/components/ReraForm.astro";
 import GlobalEnquiryPopup from "@/components/GlobalEnquiryPopup.astro";
+import LiteYouTube from "@/components/LiteYouTube.astro";
 import { Image } from "astro:assets";
 import canaraBankImg from "@/assets/images/udbahv-chinmaya/canara-bank.png";
 import kBankImg from "@/assets/images/udbahv-chinmaya/kbank.png";
@@ -49,6 +50,55 @@ const faqSchema = {
     }
   }))
 };
+
+const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonicalURL = new URL(pathname, Astro.site || "https://www.udbhavdevelopers.com");
+
+const propertySchema = {
+  "@context": "https://schema.org",
+  "@type": "RealEstateListing",
+  name: "3 BHK Flats For Sale In Kadri Mangalore | RERA Approved",
+  description:
+    "RERA-approved 3 BHK luxury flats for sale in Kadri, Mangalore. Located in peaceful Chandrika Layout. Bank Approved. Starting at ₹1.60 Cr*. Enquire now!",
+  url: canonicalURL.toString(),
+  image: new URL(
+    "/images/luxury apartment mangalore.webp",
+    Astro.site || "https://www.udbhavdevelopers.com"
+  ).toString(),
+  offers: {
+    "@type": "Offer",
+    price: "16000000",
+    priceCurrency: "INR",
+    availability: "https://schema.org/InStock",
+    validFrom: "2024-01-01",
+  },
+  about: {
+    "@type": "ApartmentComplex",
+    name: "Udbhav Chinmaya",
+    description:
+      "Exclusive low-density luxury residential complex of only 40 residences in Kadri, Mangalore.",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress:
+        "Chandrika Layout, Swami Vivekananda Road, Kadri Kambla Road",
+      addressLocality: "Kadri, Mangalore",
+      addressRegion: "Karnataka",
+      postalCode: "575002",
+      addressCountry: "IN",
+    },
+    numberOfAccommodationUnits: 40,
+    containedInPlace: {
+      "@type": "Place",
+      name: "Kadri, Mangalore",
+    },
+  },
+  provider: {
+    "@type": "RealEstateAgent",
+    name: "Udbhav Developers",
+    url: "https://www.udbhavdevelopers.com",
+    telephone: "+91 77604 71269",
+  },
+};
 ---
 
 <!doctype html>
@@ -56,7 +106,13 @@ const faqSchema = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Luxury 3 BHK Flats in Kadri, Mangalore | Udbhav Chinmaya</title>
+    <title>3 BHK Flats For Sale In Kadri Mangalore | RERA Approved</title>
+    <!-- Meta Description -->
+    <meta
+      name="description"
+      content="RERA-approved 3 BHK luxury flats for sale in Kadri, Mangalore. Located in peaceful Chandrika Layout. Bank Approved. Starting at ₹1.60 Cr*. Enquire now!"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(propertySchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1850,19 +1906,13 @@ const faqSchema = {
             class="amen-side"
             style="position: sticky; top: 120px; align-self: start;"
           >
-            <!-- Youtube vedio-->
+            <!-- Youtube video -->
             <div class="yt-vedios" style="margin-bottom:24px">
               <div class="yt-vedio">
-                <iframe
-                  width="100%"
-                  height="315"
-                  src="https://www.youtube.com/embed/kknoLaXHTaQ"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
-                >
-                </iframe>
+                <LiteYouTube
+                  videoId="kknoLaXHTaQ"
+                  title="Udbhav Chinmaya Kadri 3 BHK Luxury Flats Tour"
+                />
               </div>
             </div>
             <p>

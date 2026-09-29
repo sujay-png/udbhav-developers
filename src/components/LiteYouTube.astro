@@ -1,0 +1,55 @@
+---
+import "lite-youtube-embed/src/lite-yt-embed.css";
+
+interface Props {
+  videoId?: string;
+  videoUrl?: string;
+  title?: string;
+  playlabel?: string;
+  params?: string;
+  class?: string;
+}
+
+const {
+  videoId: propVideoId,
+  videoUrl,
+  title = "YouTube video player",
+  playlabel = "Play Video",
+  params,
+  class: className = "",
+} = Astro.props;
+
+function getYouTubeId(urlOrId?: string): string {
+  if (!urlOrId) return "";
+  if (/^[a-zA-Z0-9_-]{11}$/.test(urlOrId)) return urlOrId;
+  const match = urlOrId.match(/(?:embed\/|v=|vi\/|youtu\.be\/|\/v\/|shorts\/)([a-zA-Z0-9_-]{11})/);
+  return match ? match[1] : urlOrId;
+}
+
+const id = propVideoId || getYouTubeId(videoUrl);
+---
+
+{id && (
+  <lite-youtube
+    videoid={id}
+    playlabel={playlabel}
+    {...(params ? { params } : {})}
+    {...(title ? { "data-title": title } : {})}
+    class={`rounded-2xl overflow-hidden ${className}`.trim()}
+  ></lite-youtube>
+)}
+
+<script>
+  import "lite-youtube-embed";
+</script>
+
+<style is:global>
+  lite-youtube {
+    max-width: 100% !important;
+  }
+
+  /* Keep YouTube play button in its full red icon color at all times without needing hover */
+  lite-youtube > .lyt-playbtn {
+    filter: none !important;
+  }
+</style>
