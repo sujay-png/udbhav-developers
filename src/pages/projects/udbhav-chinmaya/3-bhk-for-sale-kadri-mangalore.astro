@@ -61,6 +61,13 @@ const canonicalURL = new URL(pathname, Astro.site || "https://www.udbhavdevelope
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Luxury 3 BHK Flats in Kadri, Mangalore | Udbhav Chinmaya</title>
     <link rel="canonical" href={canonicalURL} />
+    <link
+      rel="preload"
+      as="image"
+      href="/images/luxury apartment mangalore.webp"
+      type="image/webp"
+      fetchpriority="high"
+    />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -2179,6 +2186,8 @@ const canonicalURL = new URL(pathname, Astro.site || "https://www.udbhavdevelope
           <img
             src="/images/luxury apartment mangalore.webp"
             alt="Udbhav Chinmaya apartment building"
+            loading="eager"
+            fetchpriority="high"
           />
           <!-- <div class="tag"><strong>&#8377;1.60 Cr*</strong>Spacious 3 BHK, 1,715&ndash;1,880 sq.ft.</div> -->
         </div>
