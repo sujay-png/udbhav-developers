@@ -1,3 +1,16 @@
+export const mapEmbedUrl =
+  "https://maps.google.com/maps?q=UDBHAV+CHINMAYA,+Mangaluru&t=&z=15&ie=UTF8&iwloc=&output=embed";
+export const directionsUrl =
+  "https://maps.google.com/maps?q=UDBHAV+CHINMAYA,+Mangaluru";
+
+export const chinmayaContact = {
+  title: "Find Us",
+  address: "C6, 1st Floor, City Gate Building, Kadri Shivabhag, Mangalore - 575 002",
+  email: "info@udbhavdevelopers.com",
+  mapEmbedUrl,
+  directionsUrl,
+};
+
 export const siteConfig = {
   name: "Udbhav Developers",
   tagline: "Future-Ready Living.",
@@ -7,6 +20,8 @@ export const siteConfig = {
   email: "info@udbhavdevelopers.com",
   address: "C6, 1st Floor, City Gate Building, Above Jimmy's Super Market, Kadri Shivabhag, Mangalore – 575 002",
   location: "Mangalore, Karnataka",
+  mapEmbedUrl,
+  directionsUrl,
 };
 
 export type GalleryItem = {

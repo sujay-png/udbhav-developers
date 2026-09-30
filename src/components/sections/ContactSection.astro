@@ -1,0 +1,300 @@
+---
+import { chinmayaContact } from "@/lib/site-data";
+import ContactSectionForm from "./ContactSectionForm.astro";
+---
+
+<section id="contact" class="contact-section">
+  <div class="wrap">
+    <div class="contact-card">
+      <!-- Left Panel: Find Us -->
+      <div class="contact-info-panel">
+        <div class="contact-info-content">
+          <!-- Pin Icon Badge -->
+          <div class="pin-icon-badge" aria-hidden="true">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="var(--red)"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+
+          <h3 class="contact-info-title">{chinmayaContact.title}</h3>
+
+          <p class="contact-info-address">
+            {chinmayaContact.address}
+          </p>
+
+          <a href={`mailto:${chinmayaContact.email}`} class="contact-email-link">
+            {chinmayaContact.email}
+          </a>
+
+          <!-- Dark Map Card -->
+          <div class="map-card-container">
+            <div class="map-card">
+              <iframe
+                src={chinmayaContact.mapEmbedUrl}
+                loading="lazy"
+                title="Udbhav Chinmaya location"
+                class="map-iframe"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+
+              <!-- Marker overlay matching design -->
+              <div class="map-marker-overlay" aria-hidden="true">
+                <div class="map-marker-badge">Udbhav Chinmaya</div>
+                <div class="map-marker-pin"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Get Directions Link -->
+          <div class="directions-wrapper">
+            <a
+              href={chinmayaContact.directionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="directions-link"
+            >
+              Get Directions &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Form -->
+      <div class="contact-form-wrapper">
+        <ContactSectionForm />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    background: var(--paper);
+    padding: 80px 0 100px;
+    position: relative;
+    border-top: 1px solid var(--line);
+  }
+
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* One rounded card with soft large shadow, two columns, equal height */
+  .contact-card {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    background: var(--paper);
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    box-shadow: 0 24px 60px -12px rgba(12, 12, 12, 0.08), 0 4px 16px -2px rgba(12, 12, 12, 0.03);
+    overflow: hidden;
+    align-items: stretch;
+  }
+
+  /* LEFT PANEL: Find Us */
+  .contact-info-panel {
+    background-color: var(--paper-soft);
+    background-image: radial-gradient(var(--ink-soft) 1px, transparent 1px);
+    background-size: 18px 18px;
+    background-position: 0 0;
+    opacity: 1;
+    position: relative;
+    padding: 44px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--line);
+  }
+
+  .contact-info-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .pin-icon-badge {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1.5px solid var(--red);
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 6px rgba(179, 38, 30, 0.08);
+  }
+
+  .contact-info-title {
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 10px;
+  }
+
+  .contact-info-address {
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 32ch;
+    margin: 0 0 10px;
+  }
+
+  .contact-email-link {
+    color: var(--red);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 24px;
+    transition: color 0.18s ease;
+  }
+
+  .contact-email-link:hover {
+    color: var(--red-deep);
+    text-decoration: underline;
+  }
+
+  /* Dark Map Card */
+  .map-card-container {
+    width: 100%;
+    max-width: 310px;
+    margin: 0 auto;
+  }
+
+  .map-card {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #1e1e1e;
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  .map-iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    filter: invert(90%) hue-rotate(180deg) contrast(95%);
+  }
+
+  .map-marker-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .map-marker-badge {
+    background: #ffffff;
+    color: var(--ink);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    white-space: nowrap;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .map-marker-pin {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid var(--red);
+    margin-top: -1px;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.4));
+  }
+
+  .directions-wrapper {
+    margin-top: 18px;
+  }
+
+  .directions-link {
+    display: inline-block;
+    color: var(--ink);
+    font-size: 0.86rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.18s ease;
+  }
+
+  .directions-link:hover {
+    color: var(--red);
+  }
+
+  /* RIGHT PANEL: Form */
+  .contact-form-wrapper {
+    background: var(--paper);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Responsive below 900px */
+  @media (max-width: 900px) {
+    .contact-section {
+      padding: 60px 0 80px;
+    }
+
+    .wrap {
+      padding: 0 20px;
+    }
+
+    .contact-card {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-info-panel {
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+      padding: 40px 24px;
+    }
+
+    .map-card-container {
+      max-width: 380px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .wrap {
+      padding: 0 16px;
+    }
+
+    .contact-card {
+      border-radius: 14px;
+    }
+
+    .contact-info-panel {
+      padding: 32px 16px;
+    }
+
+    .map-card {
+      height: 210px;
+    }
+  }
+</style>

@@ -247,3 +247,123 @@ Whenever presenting code changes or data updates to the user, always structure t
    - `After`: Value or code snippet after change
 3. **Short explanation / rationale** if relevant.
 
+## Folder and File Structure Standardization Rule
+
+From now on, all file and folder creation, organization, and refactoring across this project and all future frontend projects must strictly adhere to this **Industrial Standardization Rule**.
+
+### 1. Architectural Directory Layout
+The repository must maintain a predictable, separation-of-concerns hierarchy:
+
+```text
+├── public/                 # Static assets served untouched at root (favicons, robots.txt, sitemaps, raw downloads)
+└── src/
+    ├── assets/             # Optimized images, vector graphics, and media processed by Astro/bundler
+    ├── components/         # Reusable UI components
+    │   ├── ui/             # Atomic, headless, or primitive design-system components (buttons, inputs, dialogs)
+    │   ├── layout/         # Shell chrome components (Header, Footer, Nav, Skyline)
+    │   ├── sections/       # Cross-page composite landing sections (Hero, FAQ, ContactSection, CtaBanner)
+    │   └── [feature]/      # Domain/feature-specific components (e.g., about/, careers/, news-media/, testimonials/)
+    ├── layouts/            # Astro layout shells and document head wrappers (BaseLayout.astro)
+    ├── lib/                # Centralized content, single sources of truth, data constants, CMS clients (site-data.ts)
+    ├── pages/              # File-based routing (pages, dynamic routes [slug].astro, and API endpoints api/)
+    ├── styles/             # Global CSS stylesheets, design tokens, font definitions (global.css)
+    ├── types/              # TypeScript declarations, data contracts, and schema interfaces (*.ts)
+    └── utils/              # Pure stateless utility functions, formatters, and validators (validation.ts, utils.ts)
+```
+
+### 2. Standardized Naming Conventions
+
+#### A. Directory / Folder Names: Strictly `kebab-case`
+- All folders must be written in **lowercase letters with hyphens separating words** (`kebab-case`).
+- **Never** use `PascalCase`, `camelCase`, `snake_case`, or uppercase letters for directory names.
+- **Never** introduce typos or misspellings (e.g. use `careers/` never `Carrer/`; `news-media/` never `NewsMedia/`; `testimonials/` never `Testimonials/`).
+- **Examples**:
+  - `src/components/ui/`
+  - `src/components/layout/`
+  - `src/components/sections/`
+  - `src/components/news-media/`
+  - `src/components/careers/`
+  - `src/components/about/`
+  - `src/pages/buyers-guide/`
+
+#### B. Component File Names: Strictly `PascalCase`
+- All UI component files (`.astro`, `.tsx`, `.jsx`, `.vue`, `.svelte`) must be named in **`PascalCase`**.
+- Do not use lowercase or camelCase for component files (e.g. `Hero.astro` not `hero.astro`; `AboutUs.astro` not `aboutus.astro`; `JobDescription.astro` not `jobdedcription.astro`).
+- When a component is specific to a feature, its name must clearly reflect its role (e.g. `CareerHero.astro`, `TestimonialsGrid.astro`).
+- **Examples**:
+  - `src/components/sections/ContactSection.astro`
+  - `src/components/sections/ContactSectionForm.astro`
+  - `src/components/ui/Button.tsx`
+  - `src/components/layout/Header.astro`
+  - `src/layouts/BaseLayout.astro`
+
+#### C. Page and Route Files: Strictly `kebab-case`
+- In Astro/Next.js, URLs map directly to file paths. All route files inside `src/pages/` must be **strictly `kebab-case`** or valid bracketed dynamic route parameters.
+- **Never** use uppercase or mixed-case for pages.
+- **Examples**:
+  - `src/pages/index.astro`
+  - `src/pages/about-us/index.astro`
+  - `src/pages/projects/[slug].astro`
+  - `src/pages/projects/udbhav-chinmaya/3-bhk-for-sale-kadri-mangalore.astro`
+  - `src/pages/api/contact.ts`
+
+#### D. Non-Component Code Files: Strictly `kebab-case` or `camelCase`
+- Configuration, utilities, types, and library files (`.ts`, `.js`, `.mjs`, `.css`) must use lowercase naming (`kebab-case` preferred):
+  - `site-data.ts`
+  - `validation.ts`
+  - `global.css`
+  - `astro.config.mjs`
+
+#### E. Static Asset Files: Strictly `kebab-case`
+- Asset file names (images, videos, PDFs) must be lowercase, hyphen-separated, and descriptive:
+  - `udbhav-chinmaya-hero.webp`
+  - `udbhav-developers-logo.png`
+  - `chinmaya-brochure.pdf`
+- Avoid raw spaces, special symbols, or raw unescaped camera names (e.g. `WhatsApp Image 2026...`).
+
+### 3. Architectural Rules & Boundaries
+
+1. **One Responsibility Per Folder**:
+   - `src/components/ui/` contains only generic primitive UI blocks with zero domain knowledge (no hardcoded project titles, company names, or specific API URLs).
+   - `src/components/layout/` contains only top-level shell chrome (navbars, headers, footers).
+   - `src/components/sections/` contains page-level section compositions.
+   - `src/lib/` contains application state, static datasets, CMS clients, and centralized configuration.
+2. **Zero Inconsistent Casing**:
+   - Never mix casing styles within the same directory.
+   - Never allow adjacent directories with varying conventions (e.g., `about/` next to `Carrer/`).
+3. **Typo Prevention**:
+   - Every file and folder name must be verified for correct spelling before creation.
+4. **Refactoring Safety**:
+   - When correcting existing legacy directories or file paths:
+     1. Update all relative and absolute path imports across the project.
+     2. Run `npm run check` (type validation) and `npm run build` (bundler validation).
+     3. Ensure static site compilation passes with 0 errors before considering the refactor complete.
+5. **No Clutter & Flat Structure Limit**:
+   - Do not nest directories deeper than 4 levels without architectural justification.
+   - Do not dump unrelated files into the root of `src/` or `src/components/`.
+
+## URL Trailing Slash Consistency & Routing Architecture Rule
+
+This project operates with `trailingSlash: 'always'` configured in `astro.config.mjs`. In this mode, Astro treats URLs without a trailing slash as an entirely different route or an invalid path.
+
+All frontend agents and developers must strictly adhere to this rule:
+
+### 1. The Strict Trailing Slash Mandate
+Every internal URL, link, API fetch path, and redirect target in the repository **MUST ALWAYS** end with a trailing slash (`/`):
+- **Page Links**: `<a href="/about-us/">`, `<a href="/contact/">`, `<a href="/projects/udbhav-chinmaya/">`
+- **Client Redirects**: `window.location.href = "/chinmaya-thank-you/";`, `window.location.href = "/thank-you/";`
+- **Server Redirects**: `Astro.redirect("/thank-you/")`, `Response.redirect(new URL("/thank-you/", request.url))`
+- **API Fetch Endpoints**: `fetch("/api/contact/", ...)`
+- **Canonical URLs**: Must resolve with a trailing slash (e.g. `https://www.udbhavdevelopers.com/about-us/`)
+
+### 2. Forbidden Patterns
+- **NEVER** write root or sub-page links without a closing slash (e.g., **NEVER** `/contact`, `/thank-you`, `/chinmaya-thank-you`, `/api/contact`).
+- **NEVER** disable or change `trailingSlash: 'always'` in `astro.config.mjs` simply to circumvent link errors.
+
+### 3. Why This Is Critical
+1. **Development Environment**: With `trailingSlash: 'always'`, Astro's Vite dev server halts non-slashed requests and shows a 404 overlay prompt asking if the user meant to visit the slashed version.
+2. **Production Performance**: Missing trailing slashes trigger unnecessary HTTP `301/308 Moved Permanently` round-trips from the edge CDN/Vercel server, degrading Core Web Vitals and user conversion rates.
+3. **SEO Integrity**: Prevents canonical cannibalization where search engines index both `/example` and `/example/` as duplicate competing pages.
+
+
+

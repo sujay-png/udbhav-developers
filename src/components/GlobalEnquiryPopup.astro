@@ -307,7 +307,7 @@ import { Icon } from "@/components/Icon";
 
       const fd = new FormData(form);
       try {
-        const res = await fetch("/api/contact", {
+        const res = await fetch("/api/contact/", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -328,9 +328,9 @@ import { Icon } from "@/components/Icon";
         dialog.close();
         form.reset();
         if (window.location.pathname.includes('chinmaya') || window.location.pathname.includes('3-bhk-for-sale-kadri-mangalore')) {
-          window.location.href = "/chinmaya-thank-you";
+          window.location.href = "/chinmaya-thank-you/";
         } else {
-          window.location.href = "/thank-you";
+          window.location.href = "/thank-you/";
         }
       } catch {
         if (errorEl) errorEl.classList.remove("hidden");

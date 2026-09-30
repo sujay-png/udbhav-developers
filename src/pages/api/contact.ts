@@ -27,7 +27,8 @@ const GF_BASE = 'https://dashboard.udbhavdevelopers.com/wp-json/gf/v2/forms';
 export const POST: APIRoute = async ({ request }) => {
   try {
     const data = await request.json();
-    const { formId, ...fields } = data;
+    const resolvedFormId = data.formId ?? (data.source === '3bhk-landing' ? 1 : undefined);
+    const { formId = resolvedFormId, ...fields } = data;
 
     if (!formId) {
       return new Response(JSON.stringify({ success: false, error: 'Missing formId' }), {
@@ -39,13 +40,28 @@ export const POST: APIRoute = async ({ request }) => {
     let gfPayload: Record<string, string> = {};
 
     if (formId === 1) {
-      // Form 1: Footer / Contact Us
+      // Form 1: Footer / Contact Us / Landing Pages
+      let subject = fields.subject || '';
+      let message = fields.message || '';
+
+      if (fields.source === '3bhk-landing') {
+        subject = subject || '3 BHK Landing Page Enquiry - Kadri';
+        const details = [
+          fields.city ? `Current City: ${fields.city}` : '',
+          fields.unitType ? `Unit Type: ${fields.unitType}` : '',
+        ].filter(Boolean).join(' | ');
+
+        if (details) {
+          message = message ? `${message}\n[${details}]` : `[${details}]`;
+        }
+      }
+
       gfPayload = {
         'input_1': fields.name || '',
         'input_8': fields.email || '',
         'input_9': fields.phone || '',
-        'input_6': fields.subject || '',
-        'input_7': fields.message || '',
+        'input_6': subject,
+        'input_7': message,
       };
       // Gravity Forms requires the reCAPTCHA token to be passed as g-recaptcha-response
       if (fields.recaptchaToken) {
