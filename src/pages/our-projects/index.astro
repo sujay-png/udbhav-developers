@@ -41,7 +41,7 @@ const filters = ["All Projects", "Ongoing", "Completed", "Residential", "Commerc
       {
         projects.map((p, i) => (
           <div class="project-item" data-status={p.status} data-category={p.category}>
-            <ProjectCard project={p} seed={i + 2} />
+            <ProjectCard project={p} seed={i + 2} showDescription={true} />
           </div>
         ))
       }
