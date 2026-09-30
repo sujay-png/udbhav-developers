@@ -27,7 +27,7 @@ const GF_BASE = 'https://dashboard.udbhavdevelopers.com/wp-json/gf/v2/forms';
 export const POST: APIRoute = async ({ request }) => {
   try {
     const data = await request.json();
-    const resolvedFormId = data.formId ?? (data.source === '3bhk-landing' ? 1 : undefined);
+    const resolvedFormId = data.formId ?? (data.source === '3bhk-landing' ? 2 : undefined);
     const { formId = resolvedFormId, ...fields } = data;
 
     if (!formId) {
@@ -40,21 +40,9 @@ export const POST: APIRoute = async ({ request }) => {
     let gfPayload: Record<string, string> = {};
 
     if (formId === 1) {
-      // Form 1: Footer / Contact Us / Landing Pages
+      // Form 1: Footer / Contact Us (Requires reCAPTCHA)
       let subject = fields.subject || '';
       let message = fields.message || '';
-
-      if (fields.source === '3bhk-landing') {
-        subject = subject || '3 BHK Landing Page Enquiry - Kadri';
-        const details = [
-          fields.city ? `Current City: ${fields.city}` : '',
-          fields.unitType ? `Unit Type: ${fields.unitType}` : '',
-        ].filter(Boolean).join(' | ');
-
-        if (details) {
-          message = message ? `${message}\n[${details}]` : `[${details}]`;
-        }
-      }
 
       gfPayload = {
         'input_1': fields.name || '',
@@ -70,21 +58,30 @@ export const POST: APIRoute = async ({ request }) => {
       }
 
     } else if (formId === 2) {
-      // Form 2: Global Popup
-      const firstName = fields.firstName || '';
-      const lastName = fields.lastName || '';
+      // Form 2: Global Popup & Landing Pages (No CAPTCHA required)
+      const fullName = (fields.name || '').trim();
+      const nameParts = fullName ? fullName.split(/\s+/) : [];
+      const firstName = fields.firstName || (nameParts.length > 0 ? nameParts[0] : '');
+      const lastName = fields.lastName || (nameParts.length > 1 ? nameParts.slice(1).join(' ') : firstName);
+
+      let cityAndNotes = fields.budget || fields.city || '';
+      if (fields.message) {
+        cityAndNotes = cityAndNotes ? `${cityAndNotes} (Note: ${fields.message})` : fields.message;
+      }
+
       gfPayload = {
         'input_1.3': firstName,
         'input_1.6': lastName,
         'input_3': fields.phone || '',
         'input_4': fields.email || '',
-        'input_10': fields.budget || fields.city || '',
+        'input_10': cityAndNotes,
       };
       // Radio fields — send the exact value text
-      if (fields.bhk) gfPayload['input_8'] = fields.bhk;
-      if (fields.intendedUse) gfPayload['input_11'] = fields.intendedUse;
-      if (fields.loanPref) gfPayload['input_12'] = fields.loanPref;
-      if (fields.whatsapp) gfPayload['input_13'] = 'I agree to receive project details and updates via WhatsApp.';
+      const unit = (fields.bhk || fields.unitType || '3BHK').replace(/\s+/g, '');
+      gfPayload['input_8'] = unit.includes('4') ? '4BHK' : '3BHK';
+      gfPayload['input_11'] = fields.intendedUse || 'Self Use';
+      gfPayload['input_12'] = fields.loanPref || 'Need Home Loan Assistance';
+      gfPayload['input_13'] = 'I agree to receive project details and updates via WhatsApp.';
 
     } else if (formId === 3) {
       // Form 3: Chinmaya sidebar
