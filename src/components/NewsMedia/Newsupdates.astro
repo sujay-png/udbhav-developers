@@ -10,50 +10,48 @@ interface Props {
 const { mediaList } = Astro.props;
 ---
 
-<section class="bg-[#FDF9F7] py-10 px-6 font-sans">
-  <div class="mx-auto max-w-7xl">
+<section class="bg-background py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 font-sans">
+  <div class="mx-auto max-w-[1180px]">
     
     <!-- Section Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6 md:gap-8">
       <div class="max-w-2xl">
-        <span class="font-sans text-xs font-bold tracking-[0.35em] text-[#B02317] uppercase block mb-4">
+        <span class="font-sans text-xs font-bold tracking-[0.35em] text-primary uppercase block mb-3 sm:mb-4">
           Updates
         </span>
-        <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-[#121417] leading-tight">
+        <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-ink leading-tight">
           News & Corporate <br />
-          <span class="italic text-[#B02317]">Highlights</span>
+          <span class="italic text-primary">Highlights</span>
         </h2>
       </div>
-      <p class="font-sans text-lg text-[#88726F] max-w-md leading-relaxed font-light">
+      <p class="font-sans text-base sm:text-lg text-muted-foreground max-w-md leading-relaxed font-light">
         Explore our latest architectural milestones, industry insights, and community impact initiatives.
       </p>
     </div>
 
     <!-- Editorial Asymmetrical Grid (Bento Style) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-8 items-stretch">
       {mediaList.map((media, index) => {
-        // Layout Logic: 
-        // 1st item is a large featured hero (spans 8 cols)
-        // 2nd item is a tall sidepiece (spans 4 cols)
-        // 3rd & 4th items split the bottom evenly (span 6 cols each)
-        // Remaining items fallback to standard 4-col masonry
-        let spanClasses = "col-span-1 md:col-span-1 lg:col-span-4";
-        let cardVariant = "standard";
+        // Desktop Layout (lg:grid-cols-12):
+        // Row 1: large card (index 0, 7 cols) + smaller card (index 1, 5 cols) -> balanced visual heights
+        // Row 2: 2 cards (index 2 & 3, 6 cols each)
+        // Row 3: 3 cards (index 4, 5, 6, 4 cols each)
+        // Row 4: 3 cards (index 7, 8, 9, 4 cols each)
+        // Tablet (<=900px): 2 columns (index 0 spans 2 cols, others 1 col)
+        // Mobile (<=560px): 1 column (all span 1 col)
+        let spanClasses = "col-span-1 sm:col-span-1 lg:col-span-4";
 
         if (index === 0) {
-          spanClasses = "col-span-1 md:col-span-2 lg:col-span-8";
-          cardVariant = "featured";
+          spanClasses = "col-span-1 sm:col-span-2 lg:col-span-7";
         } else if (index === 1) {
-          spanClasses = "col-span-1 md:col-span-1 lg:col-span-4";
-          cardVariant = "tall";
+          spanClasses = "col-span-1 sm:col-span-1 lg:col-span-5";
         } else if (index === 2 || index === 3) {
-          spanClasses = "col-span-1 md:col-span-1 lg:col-span-6";
-          cardVariant = "wide";
+          spanClasses = "col-span-1 sm:col-span-1 lg:col-span-6";
         }
 
         return (
-          <div class={spanClasses}>
-            <MediaCard media={media} variant={cardVariant as any} />
+          <div class={`${spanClasses} flex flex-col`}>
+            <MediaCard media={media} isFirst={index === 0} />
           </div>
         );
       })}

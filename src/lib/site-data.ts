@@ -631,6 +631,15 @@ export const projects: Project[] = [
 
 export const newsmedia: Media[] = [
   {
+    slug: "marcels-maison-groundbreaking",
+    name: "Udbhav Chinmaya",
+    tagline: "— New residential project 'Udbhav Chinmaya' launched in heart of Mangaluru                  ",
+    description: "Shanthi pairs elevated apartment living with ground-floor retail...",
+    units: "2 & 3 BHK",
+    image: "Chinmaya1",
+    link: "https://daijiworld.com/news/newsDisplay?newsID=1295161",
+  },
+  {
     slug: "marcels-maison-inauguration",
     name: "Marcel's Maison",
     tagline: "Marcel's Maison inaugurated in Valencia - A new landmark for premium living, business",
@@ -657,16 +666,6 @@ export const newsmedia: Media[] = [
     image: "Maison3",
     link: "https://www.daijiworld.com/news/newsDisplay?newsID=1042541",
   },
-
-  {
-    slug: "krk-aayush-inaugurated",
-    name: "K.R.K. Aayush",
-    tagline: "Udbhav Developers' 'KRK Aayush' residential building inaugurated",
-    description: "Udbhav Developers proudly inaugurates K.R.K. Aayush, a beautifully designed residential building situated in Urwa Hoigebail, Mangaluru.",
-    units: "1 & 2 BHK",
-    image: "KRKAayush",
-    link: "https://www.daijiworld.com/news/newsDisplay?newsID=974722#.Yr8JRfBFhHE.whatsapp",
-  },
   {
     slug: "udbhav-shanthi-inaugurated",
     name: "Udbhav Shanthi",
@@ -675,6 +674,15 @@ export const newsmedia: Media[] = [
     units: "3 BHK",
     image: "shanthi1",
     link: "https://www.daijiworld.com/news/newsDisplay?newsID=940244",
+  },
+  {
+    slug: "krk-aayush-inaugurated",
+    name: "K.R.K. Aayush",
+    tagline: "Udbhav Developers' 'KRK Aayush' residential building inaugurated",
+    description: "Udbhav Developers proudly inaugurates K.R.K. Aayush, a beautifully designed residential building situated in Urwa Hoigebail, Mangaluru.",
+    units: "1 & 2 BHK",
+    image: "KRKAayush",
+    link: "https://www.daijiworld.com/news/newsDisplay?newsID=974722#.Yr8JRfBFhHE.whatsapp",
   },
   {
     slug: "udbhav-square-ready-to-occupy",
@@ -711,15 +719,6 @@ export const newsmedia: Media[] = [
     units: "2 & 3 BHK",
     image: "Coconut",
     link: "https://www.daijiworld.com/news/newsDisplay?newsID=325279",
-  },
-  {
-    slug: "marcels-maison-groundbreaking",
-    name: "Udbhav Chinmaya",
-    tagline: "— New residential project 'Udbhav Chinmaya' launched in heart of Mangaluru                  ",
-    description: "Shanthi pairs elevated apartment living with ground-floor retail...",
-    units: "2 & 3 BHK",
-    image: "Chinmaya1",
-    link: "https://daijiworld.com/news/newsDisplay?newsID=1295161",
   },
 ];
 

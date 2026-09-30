@@ -1,22 +1,18 @@
 ---
 // MediaCard.astro
-import { Icon } from "@/components/Icon";
 import type { Media } from "@/lib/site-data";
 
 interface Props {
   media: Media;
-  variant?: "featured" | "tall" | "wide" | "standard";
+  isFirst?: boolean;
 }
 
-const { media, variant = "standard" } = Astro.props;
+const { media, isFirst = false } = Astro.props;
 
-// Adjust aspect ratios based on grid placement
-const aspectMap = {
-  featured: "aspect-[16/9] lg:aspect-[2/1]", // Wide and dramatic
-  tall: "aspect-[4/5] lg:aspect-[3/4]", // Portrait
-  wide: "aspect-[16/9]", // Standard widescreen
-  standard: "aspect-[4/3]", // Default
-};
+// People photos need top focal point to prevent faces being cropped; buildings use center
+const peopleImages = ["Chinmaya1", "Maison1", "Maison2", "KRKAayush", "Coconut"];
+const isPeoplePhoto = peopleImages.includes(media.image);
+const focalPosition = isPeoplePhoto ? "center 15%" : "center center";
 ---
 
 <a 
@@ -25,37 +21,41 @@ const aspectMap = {
   rel="noopener noreferrer" 
   class="group flex flex-col h-full font-sans"
 >
-  <!-- Image Wrapper -->
+  <!-- Image Wrapper: Fixed Aspect Ratio, Overflow Hidden, Zero Stretched White Gaps -->
   <div class:list={[
-    "relative overflow-hidden rounded-[32px] bg-white shadow-sm transition-all duration-500 group-hover:shadow-xl border border-gray-100", 
-    aspectMap[variant]
+    "relative w-full shrink-0 overflow-hidden rounded-[10px] sm:rounded-[20px] bg-card border border-border shadow-sm transition-all duration-500 group-hover:shadow-xl",
+    isFirst ? "aspect-[4/3] sm:aspect-[16/9]" : "aspect-[4/3]"
   ]}>
     <img
       src={`/images/${media.image}.jpg`}
       alt={media.name}
-      class="absolute inset-0 h-full w-full object-cover transition-transform duration-[10s] group-hover:scale-110"
+      loading={isFirst ? "eager" : "lazy"}
+      decoding="async"
+      fetchpriority={isFirst ? "high" : "auto"}
+      class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+      style={`object-position: ${focalPosition};`}
     />
 
     <!-- Gradient Overlay for Contrast -->
-    <div class="absolute inset-0 bg-gradient-to-t from-[#121417]/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"></div>
 
     <!-- Hover Arrow Indicator -->
-    <div class="absolute right-6 top-6 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-[#B02317] opacity-0 backdrop-blur-md transition-all duration-500 group-hover:opacity-100 group-hover:rotate-45 shadow-lg scale-75 group-hover:scale-100">
+    <div class="absolute right-5 top-5 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-primary opacity-0 backdrop-blur-md transition-all duration-500 group-hover:opacity-100 group-hover:rotate-45 shadow-lg scale-75 group-hover:scale-100 pointer-events-none">
       <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
     </div>
   </div>
 
   <!-- Text Content -->
-  <div class="mt-6 flex flex-col flex-1">
+  <div class="mt-5 sm:mt-6 flex flex-col flex-1 justify-start">
     <h3 class:list={[
-      "font-serif font-medium text-[#121417] group-hover:text-[#B02317] transition-colors leading-snug",
-      variant === "featured" ? "text-3xl sm:text-4xl" : "text-2xl"
+      "font-serif font-medium text-ink group-hover:text-primary transition-colors leading-snug",
+      isFirst ? "text-2xl sm:text-3xl lg:text-4xl" : "text-xl sm:text-2xl"
     ]}>
       {media.name}
     </h3>
     <p class:list={[
-      "text-[#88726F] leading-relaxed mt-3 font-light line-clamp-3",
-      variant === "featured" ? "text-lg" : "text-base"
+      "text-muted-foreground leading-relaxed mt-2.5 font-light line-clamp-3",
+      isFirst ? "text-base sm:text-lg" : "text-sm sm:text-base"
     ]}>
       {media.tagline}
     </p>
