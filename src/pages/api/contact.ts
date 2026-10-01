@@ -44,16 +44,8 @@ export const POST: APIRoute = async ({ request }) => {
       let subject = fields.subject || 'Website Enquiry';
       let message = fields.message || '';
 
-      if (fields.source === '3bhk-landing' || fields.city || fields.unitType) {
+      if (fields.source === '3bhk-landing') {
         subject = fields.subject || '3 BHK Landing Page Enquiry - Kadri';
-        const details = [
-          fields.city ? `Current City: ${fields.city}` : '',
-          fields.unitType ? `Unit Type: ${fields.unitType}` : '',
-        ].filter(Boolean).join(' | ');
-
-        if (details) {
-          message = message ? `${message}\n\n[Details: ${details}]` : `[Details: ${details}]`;
-        }
       }
 
       gfPayload = {
