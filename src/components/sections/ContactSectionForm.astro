@@ -158,38 +158,54 @@ import { chinmayaContact } from "@/lib/site-data";
 
     const submitBtn = document.getElementById("contact-submit-button") as HTMLButtonElement | null;
     const submitError = document.getElementById("contact-submit-error");
+    const recaptchaWrapper = form.querySelector(".contact-recaptcha-wrapper") as HTMLElement | null;
     const recaptchaEl = document.getElementById("contact-recaptcha-container");
     const recaptchaError = document.getElementById("contact-recaptcha-error");
 
-    // Load reCAPTCHA script
-    if (!document.getElementById("recaptcha-script")) {
-      const script = document.createElement("script");
-      script.id = "recaptcha-script";
-      script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit";
-      script.async = true;
-      script.defer = true;
-      document.head.appendChild(script);
+    // Only load and enforce reCAPTCHA on domains registered with Google site key (localhost & udbhavdevelopers.com)
+    // On preview deployments (e.g. *.vercel.app), Google rejects the key with 'Invalid domain for site key'.
+    const hostname = window.location.hostname;
+    const isSupportedDomain =
+      hostname === "localhost" ||
+      hostname === "127.0.0.1" ||
+      hostname === "udbhavdevelopers.com" ||
+      hostname.endsWith(".udbhavdevelopers.com");
+
+    if (!isSupportedDomain && recaptchaWrapper) {
+      recaptchaWrapper.style.display = "none";
     }
 
-    // Render reCAPTCHA widget
-    const waitAndRenderRecaptcha = () => {
-      if ((window as any).grecaptcha?.ready) {
-        (window as any).grecaptcha.ready(() => {
-          if (recaptchaEl && contactWidgetId === null) {
-            try {
-              contactWidgetId = (window as any).grecaptcha.render(recaptchaEl, {
-                sitekey: RECAPTCHA_SITE_KEY,
-              });
-            } catch (e) {
-              console.warn("reCAPTCHA render error:", e);
-            }
-          }
-        });
-      } else {
-        setTimeout(waitAndRenderRecaptcha, 200);
+    if (isSupportedDomain) {
+      // Load reCAPTCHA script
+      if (!document.getElementById("recaptcha-script")) {
+        const script = document.createElement("script");
+        script.id = "recaptcha-script";
+        script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit";
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
       }
-    };
-    waitAndRenderRecaptcha();
+
+      // Render reCAPTCHA widget
+      const waitAndRenderRecaptcha = () => {
+        if ((window as any).grecaptcha?.ready) {
+          (window as any).grecaptcha.ready(() => {
+            if (recaptchaEl && contactWidgetId === null) {
+              try {
+                contactWidgetId = (window as any).grecaptcha.render(recaptchaEl, {
+                  sitekey: RECAPTCHA_SITE_KEY,
+                });
+              } catch (e) {
+                console.warn("reCAPTCHA render error:", e);
+              }
+            }
+          });
+        } else {
+          setTimeout(waitAndRenderRecaptcha, 200);
+        }
+      };
+      waitAndRenderRecaptcha();
+    }
 
     const fields = {
       name: {
@@ -288,9 +304,9 @@ import { chinmayaContact } from "@/lib/site-data";
         return;
       }
 
-      // Validate reCAPTCHA
+      // Validate reCAPTCHA only on supported domains
       let recaptchaToken = "";
-      if ((window as any).grecaptcha && contactWidgetId !== null) {
+      if (isSupportedDomain && (window as any).grecaptcha && contactWidgetId !== null) {
         recaptchaToken = (window as any).grecaptcha.getResponse(contactWidgetId);
         if (!recaptchaToken) {
           if (recaptchaError) {
