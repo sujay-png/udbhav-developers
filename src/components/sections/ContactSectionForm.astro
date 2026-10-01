@@ -232,6 +232,9 @@ import { chinmayaContact } from "@/lib/site-data";
       });
 
       field.input.addEventListener("input", () => {
+        if (submitError && !submitError.classList.contains("hidden")) {
+          submitError.classList.add("hidden");
+        }
         if (field.input.getAttribute("aria-invalid") === "true") {
           validateSingleField(fieldKey);
         }
@@ -267,7 +270,7 @@ import { chinmayaContact } from "@/lib/site-data";
         return;
       }
 
-      // Prepare payload
+      // Prepare payload for Form 2 (No CAPTCHA required)
       const name = fields.name.input.value.trim();
       const email = fields.email.input.value.trim();
       const phone = fields.phone.input.value.trim();
@@ -304,15 +307,43 @@ import { chinmayaContact } from "@/lib/site-data";
           body: JSON.stringify(payload),
         });
 
-        if (!response.ok) {
-          throw new Error(`Submission failed with status ${response.status}`);
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok || !result.success) {
+          let errorMessage = "Something went wrong while submitting. Please check your information and try again.";
+
+          if (result.details && typeof result.details === "object") {
+            const detailList = Object.entries(result.details) as [string, string][];
+            if (detailList.length > 0) {
+              errorMessage = detailList.map(([, msg]) => msg).join(" ");
+              detailList.forEach(([fieldId, msg]) => {
+                let targetField: (typeof fields)[keyof typeof fields] | null = null;
+                if (fieldId === "4") targetField = fields.email;
+                else if (fieldId === "3") targetField = fields.phone;
+                else if (fieldId === "1" || fieldId === "1.3" || fieldId === "1.6") targetField = fields.name;
+                else if (fieldId === "10") targetField = fields.city;
+
+                if (targetField?.input && targetField?.error) {
+                  targetField.input.setAttribute("aria-invalid", "true");
+                  targetField.input.classList.add("input-has-error");
+                  targetField.error.textContent = msg;
+                  targetField.error.classList.remove("hidden");
+                }
+              });
+            }
+          } else if (result.error) {
+            errorMessage = result.error;
+          }
+
+          throw new Error(errorMessage);
         }
 
         // Redirect on success to follow chinmaya flow
         window.location.href = "/chinmaya-thank-you/";
-      } catch (err) {
+      } catch (err: any) {
         console.error("Contact form submission error:", err);
         if (submitError) {
+          submitError.textContent = err?.message || "Something went wrong while submitting. Please check your information and try again.";
           submitError.classList.remove("hidden");
         }
         if (submitBtn) {

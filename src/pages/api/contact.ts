@@ -40,9 +40,21 @@ export const POST: APIRoute = async ({ request }) => {
     let gfPayload: Record<string, string> = {};
 
     if (formId === 1) {
-      // Form 1: Footer / Contact Us (Requires reCAPTCHA)
-      let subject = fields.subject || '';
+      // Form 1: Footer / Contact Us / Landing Pages (Requires reCAPTCHA)
+      let subject = fields.subject || 'Website Enquiry';
       let message = fields.message || '';
+
+      if (fields.source === '3bhk-landing' || fields.city || fields.unitType) {
+        subject = fields.subject || '3 BHK Landing Page Enquiry - Kadri';
+        const details = [
+          fields.city ? `Current City: ${fields.city}` : '',
+          fields.unitType ? `Unit Type: ${fields.unitType}` : '',
+        ].filter(Boolean).join(' | ');
+
+        if (details) {
+          message = message ? `${message}\n\n[Details: ${details}]` : `[Details: ${details}]`;
+        }
+      }
 
       gfPayload = {
         'input_1': fields.name || '',
@@ -64,9 +76,12 @@ export const POST: APIRoute = async ({ request }) => {
       const firstName = fields.firstName || (nameParts.length > 0 ? nameParts[0] : '');
       const lastName = fields.lastName || (nameParts.length > 1 ? nameParts.slice(1).join(' ') : firstName);
 
-      let cityAndNotes = fields.budget || fields.city || '';
+      let cityAndNotes = (fields.city || fields.budget || 'Mangalore').trim();
       if (fields.message) {
         cityAndNotes = cityAndNotes ? `${cityAndNotes} (Note: ${fields.message})` : fields.message;
+      }
+      if (fields.unitType) {
+        cityAndNotes = cityAndNotes ? `${cityAndNotes} [Unit: ${fields.unitType}]` : `[Unit: ${fields.unitType}]`;
       }
       if (fields.toEmail) {
         cityAndNotes = cityAndNotes ? `${cityAndNotes} [To: ${fields.toEmail}]` : `[To: ${fields.toEmail}]`;
@@ -159,7 +174,7 @@ export const POST: APIRoute = async ({ request }) => {
     console.error('API route error:', error);
     return new Response(JSON.stringify({
       success: false,
-      error: 'Internal Server Error',
+      error: error instanceof Error ? error.message : 'Internal Server Error',
     }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
