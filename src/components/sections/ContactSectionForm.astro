@@ -138,6 +138,12 @@ import { chinmayaContact } from "@/lib/site-data";
       <span id="contact-message-error" class="form-error hidden" role="alert"></span>
     </div>
 
+    <!-- Google reCAPTCHA -->
+    <div class="form-group contact-recaptcha-wrapper">
+      <div id="contact-recaptcha-container" style="min-height: 78px;"></div>
+      <span id="contact-recaptcha-error" class="form-error hidden" role="alert">Please complete the reCAPTCHA verification.</span>
+    </div>
+
     <!-- Submit Button -->
     <div class="contact-actions">
       <button
@@ -160,6 +166,9 @@ import { chinmayaContact } from "@/lib/site-data";
     validateMessage,
   } from "@/utils/validation";
 
+  const RECAPTCHA_SITE_KEY = "6LecgFcsAAAAAHJLmH8O7RCs8JnHHJcE3ADP23mN";
+  let contactWidgetId: number | null = null;
+
   function setupContactForm() {
     const form = document.getElementById("chinmaya-contact-form") as HTMLFormElement | null;
     if (!form || form.dataset.bound === "true") return;
@@ -167,6 +176,38 @@ import { chinmayaContact } from "@/lib/site-data";
 
     const submitBtn = document.getElementById("contact-submit-button") as HTMLButtonElement | null;
     const submitError = document.getElementById("contact-submit-error");
+    const recaptchaEl = document.getElementById("contact-recaptcha-container");
+    const recaptchaError = document.getElementById("contact-recaptcha-error");
+
+    // Load reCAPTCHA script
+    if (!document.getElementById("recaptcha-script")) {
+      const script = document.createElement("script");
+      script.id = "recaptcha-script";
+      script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit";
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+
+    // Render reCAPTCHA widget
+    const waitAndRenderRecaptcha = () => {
+      if ((window as any).grecaptcha?.ready) {
+        (window as any).grecaptcha.ready(() => {
+          if (recaptchaEl && contactWidgetId === null) {
+            try {
+              contactWidgetId = (window as any).grecaptcha.render(recaptchaEl, {
+                sitekey: RECAPTCHA_SITE_KEY,
+              });
+            } catch (e) {
+              console.warn("reCAPTCHA render error:", e);
+            }
+          }
+        });
+      } else {
+        setTimeout(waitAndRenderRecaptcha, 200);
+      }
+    };
+    waitAndRenderRecaptcha();
 
     const fields = {
       name: {
@@ -270,7 +311,21 @@ import { chinmayaContact } from "@/lib/site-data";
         return;
       }
 
-      // Prepare payload for Form 2 (No CAPTCHA required)
+      // Validate reCAPTCHA
+      let recaptchaToken = "";
+      if ((window as any).grecaptcha && contactWidgetId !== null) {
+        recaptchaToken = (window as any).grecaptcha.getResponse(contactWidgetId);
+        if (!recaptchaToken) {
+          if (recaptchaError) {
+            recaptchaError.classList.remove("hidden");
+          }
+          return;
+        } else if (recaptchaError) {
+          recaptchaError.classList.add("hidden");
+        }
+      }
+
+      // Prepare payload for Form 1 (Contact Us / Landing Page form)
       const name = fields.name.input.value.trim();
       const email = fields.email.input.value.trim();
       const phone = fields.phone.input.value.trim();
@@ -282,7 +337,7 @@ import { chinmayaContact } from "@/lib/site-data";
       const toEmail = form.dataset.toEmail || "info@udbhavdevelopers.com";
 
       const payload = {
-        formId: 2,
+        formId: 1,
         source: "3bhk-landing",
         toEmail,
         name,
@@ -291,6 +346,7 @@ import { chinmayaContact } from "@/lib/site-data";
         city,
         unitType,
         message,
+        recaptchaToken,
       };
 
       if (submitBtn) {
@@ -318,10 +374,11 @@ import { chinmayaContact } from "@/lib/site-data";
               errorMessage = detailList.map(([, msg]) => msg).join(" ");
               detailList.forEach(([fieldId, msg]) => {
                 let targetField: (typeof fields)[keyof typeof fields] | null = null;
-                if (fieldId === "4") targetField = fields.email;
-                else if (fieldId === "3") targetField = fields.phone;
+                if (fieldId === "4" || fieldId === "8") targetField = fields.email;
+                else if (fieldId === "3" || fieldId === "9") targetField = fields.phone;
                 else if (fieldId === "1" || fieldId === "1.3" || fieldId === "1.6") targetField = fields.name;
                 else if (fieldId === "10") targetField = fields.city;
+                else if (fieldId === "7") targetField = fields.message;
 
                 if (targetField?.input && targetField?.error) {
                   targetField.input.setAttribute("aria-invalid", "true");
@@ -335,6 +392,12 @@ import { chinmayaContact } from "@/lib/site-data";
             errorMessage = result.error;
           }
 
+          if ((window as any).grecaptcha && contactWidgetId !== null) {
+            try {
+              (window as any).grecaptcha.reset(contactWidgetId);
+            } catch {}
+          }
+
           throw new Error(errorMessage);
         }
 
@@ -342,6 +405,11 @@ import { chinmayaContact } from "@/lib/site-data";
         window.location.href = "/chinmaya-thank-you/";
       } catch (err: any) {
         console.error("Contact form submission error:", err);
+        if ((window as any).grecaptcha && contactWidgetId !== null) {
+          try {
+            (window as any).grecaptcha.reset(contactWidgetId);
+          } catch {}
+        }
         if (submitError) {
           submitError.textContent = err?.message || "Something went wrong while submitting. Please check your information and try again.";
           submitError.classList.remove("hidden");

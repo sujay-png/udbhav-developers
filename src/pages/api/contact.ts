@@ -27,7 +27,7 @@ const GF_BASE = 'https://dashboard.udbhavdevelopers.com/wp-json/gf/v2/forms';
 export const POST: APIRoute = async ({ request }) => {
   try {
     const data = await request.json();
-    const resolvedFormId = data.formId ?? (data.source === '3bhk-landing' ? 2 : undefined);
+    const resolvedFormId = data.formId ?? (data.source === '3bhk-landing' ? 1 : undefined);
     const { formId = resolvedFormId, ...fields } = data;
 
     if (!formId) {
