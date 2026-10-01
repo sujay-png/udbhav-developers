@@ -39,8 +39,8 @@ export const POST: APIRoute = async ({ request }) => {
 
     let gfPayload: Record<string, string> = {};
 
-    if (formId === 1) {
-      // Form 1: Footer / Contact Us / Landing Pages (Requires reCAPTCHA)
+    if (formId === 1 || formId === 4) {
+      // Form 1/4: Footer / Contact Us / Landing Pages (Requires reCAPTCHA)
       let subject = fields.subject || 'Website Enquiry';
       let message = fields.message || '';
 
