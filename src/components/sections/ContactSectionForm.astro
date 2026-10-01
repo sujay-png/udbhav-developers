@@ -84,24 +84,40 @@ import { chinmayaContact } from "@/lib/site-data";
         <span id="contact-phone-error" class="form-error hidden" role="alert"></span>
       </div>
 
+      <!-- Current City Field -->
+      <div class="form-group">
+        <label for="contact-city" class="form-label">
+          CURRENT CITY
+        </label>
+        <input
+          type="text"
+          id="contact-city"
+          name="city"
+          autocomplete="address-level2"
+          placeholder=""
+          class="form-input"
+          aria-describedby="contact-city-error"
+        />
+        <span id="contact-city-error" class="form-error hidden" role="alert"></span>
+      </div>
     </div>
 
     <!-- Unit Type Field -->
-    <div class="form-group">
+    <div class="form-group hidden">
       <label class="form-label" id="contact-unit-type-label">UNIT TYPE</label>
       <div class="unit-chips" role="radiogroup" aria-labelledby="contact-unit-type-label">
         <label class="unit-chip">
           <input
             type="radio"
             name="unitType"
-            value="3 BHK Unit"
+            value="3 BHK"
             checked
             class="unit-radio"
           />
           <span class="unit-radio-custom" aria-hidden="true">
             <span class="unit-radio-dot"></span>
           </span>
-          <span class="unit-chip-text">3 BHK Unit</span>
+          <span class="unit-chip-text">3 BHK</span>
         </label>
       </div>
     </div>
@@ -223,6 +239,11 @@ import { chinmayaContact } from "@/lib/site-data";
         error: form.querySelector("#contact-phone-error") as HTMLElement,
         validator: validatePhone,
       },
+      city: {
+        input: form.querySelector("#contact-city") as HTMLInputElement,
+        error: form.querySelector("#contact-city-error") as HTMLElement,
+        validator: () => "", // Optional field, no validation needed
+      },
       message: {
         input: form.querySelector("#contact-message") as HTMLTextAreaElement,
         error: form.querySelector("#contact-message-error") as HTMLElement,
@@ -321,10 +342,11 @@ import { chinmayaContact } from "@/lib/site-data";
       const name = fields.name.input.value.trim();
       const email = fields.email.input.value.trim();
       const phone = fields.phone.input.value.trim();
+      const city = fields.city.input.value.trim();
       const message = fields.message.input.value.trim();
       
       const unitTypeInput = form.querySelector('input[name="unitType"]:checked') as HTMLInputElement | null;
-      const unitType = unitTypeInput?.value || "3 BHK Unit";
+      const unitType = unitTypeInput?.value || "3 BHK";
 
       const toEmail = form.dataset.toEmail || "info@udbhavdevelopers.com";
 
@@ -335,6 +357,7 @@ import { chinmayaContact } from "@/lib/site-data";
         name,
         email,
         phone,
+        city,
         unitType,
         message,
         recaptchaToken,
@@ -365,10 +388,11 @@ import { chinmayaContact } from "@/lib/site-data";
               errorMessage = detailList.map(([, msg]) => msg).join(" ");
               detailList.forEach(([fieldId, msg]) => {
                 let targetField: (typeof fields)[keyof typeof fields] | null = null;
-                if (fieldId === "4" || fieldId === "8") targetField = fields.email;
-                else if (fieldId === "3" || fieldId === "9") targetField = fields.phone;
+                if (fieldId === "3") targetField = fields.email;
+                else if (fieldId === "4") targetField = fields.phone;
+                else if (fieldId === "5") targetField = fields.city;
                 else if (fieldId === "1" || fieldId === "1.3" || fieldId === "1.6") targetField = fields.name;
-                else if (fieldId === "7") targetField = fields.message;
+                else if (fieldId === "8") targetField = fields.message;
 
                 if (targetField?.input && targetField?.error) {
                   targetField.input.setAttribute("aria-invalid", "true");

@@ -39,8 +39,8 @@ export const POST: APIRoute = async ({ request }) => {
 
     let gfPayload: Record<string, string> = {};
 
-    if (formId === 1 || formId === 4) {
-      // Form 1/4: Footer / Contact Us / Landing Pages (Requires reCAPTCHA)
+    if (formId === 1) {
+      // Form 1: Footer / Contact Us (Requires reCAPTCHA)
       let subject = fields.subject || 'Website Enquiry';
       let message = fields.message || '';
 
@@ -61,6 +61,28 @@ export const POST: APIRoute = async ({ request }) => {
       // Gravity Forms requires the reCAPTCHA token to be passed as g-recaptcha-response
       if (fields.recaptchaToken) {
         gfPayload['input_10'] = fields.recaptchaToken;
+        gfPayload['g-recaptcha-response'] = fields.recaptchaToken;
+      }
+
+    } else if (formId === 4) {
+      // Form 4: 3 BHK Landing Page (Requires reCAPTCHA)
+      const fullName = (fields.name || '').trim();
+      const nameParts = fullName ? fullName.split(/\s+/) : [];
+      const firstName = fields.firstName || (nameParts.length > 0 ? nameParts[0] : '');
+      const lastName = fields.lastName || (nameParts.length > 1 ? nameParts.slice(1).join(' ') : firstName);
+
+      gfPayload = {
+        'input_1.3': firstName,
+        'input_1.6': lastName,
+        'input_3': fields.email || '',
+        'input_4': fields.phone || '',
+        'input_5': fields.city || '',
+        'input_7': fields.unitType || '3 BHK',
+        'input_8': fields.message || '',
+      };
+      
+      if (fields.recaptchaToken) {
+        gfPayload['input_9'] = fields.recaptchaToken;
         gfPayload['g-recaptcha-response'] = fields.recaptchaToken;
       }
 
