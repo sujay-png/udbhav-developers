@@ -97,9 +97,15 @@ export const POST: APIRoute = async ({ request }) => {
       // Radio fields — send the exact value text
       const unit = (fields.bhk || fields.unitType || '3BHK').replace(/\s+/g, '');
       gfPayload['input_8'] = unit.includes('4') ? '4BHK' : '3BHK';
-      gfPayload['input_11'] = fields.intendedUse || 'Self Use';
-      gfPayload['input_12'] = fields.loanPref || 'Need Home Loan Assistance';
-      gfPayload['input_13'] = 'I agree to receive project details and updates via WhatsApp.';
+      if (fields.intendedUse) {
+        gfPayload['input_11'] = fields.intendedUse;
+      }
+      if (fields.loanPref) {
+        gfPayload['input_12'] = fields.loanPref;
+      }
+      if (fields.whatsapp) {
+        gfPayload['input_13'] = 'I agree to receive project details and updates via WhatsApp.';
+      }
 
     } else if (formId === 3) {
       // Form 3: Chinmaya sidebar
