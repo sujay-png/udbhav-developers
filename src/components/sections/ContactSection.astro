@@ -39,7 +39,14 @@ import ContactSectionForm from "./ContactSectionForm.astro";
 
           <!-- Dark Map Card -->
           <div class="map-card-container">
-            <div class="map-card">
+            <a
+              href={chinmayaContact.directionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="map-card"
+              title="Open Udbhav Chinmaya in Google Maps"
+              aria-label="Open Udbhav Chinmaya in Google Maps"
+            >
               <iframe
                 src={chinmayaContact.mapEmbedUrl}
                 loading="lazy"
@@ -48,12 +55,32 @@ import ContactSectionForm from "./ContactSectionForm.astro";
                 referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
 
+              <!-- Open in Maps Badge -->
+              <span class="open-in-maps-btn" aria-hidden="true">
+                Open in Maps
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </span>
+
               <!-- Marker overlay matching design -->
               <div class="map-marker-overlay" aria-hidden="true">
                 <div class="map-marker-badge">Udbhav Chinmaya</div>
                 <div class="map-marker-pin"></div>
               </div>
-            </div>
+            </a>
           </div>
 
           <!-- Get Directions Link -->
@@ -107,10 +134,6 @@ import ContactSectionForm from "./ContactSectionForm.astro";
   /* LEFT PANEL: Find Us */
   .contact-info-panel {
     background-color: var(--paper-soft);
-    background-image: radial-gradient(var(--ink-soft) 1px, transparent 1px);
-    background-size: 18px 18px;
-    background-position: 0 0;
-    opacity: 1;
     position: relative;
     padding: 44px 36px;
     display: flex;
@@ -186,6 +209,15 @@ import ContactSectionForm from "./ContactSectionForm.astro";
     background: #1e1e1e;
     box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.22);
     border: 1px solid rgba(0, 0, 0, 0.15);
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .map-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.3);
   }
 
   .map-iframe {
@@ -194,6 +226,32 @@ import ContactSectionForm from "./ContactSectionForm.astro";
     border: 0;
     display: block;
     filter: invert(90%) hue-rotate(180deg) contrast(95%);
+    pointer-events: none;
+  }
+
+  .open-in-maps-btn {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 6;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(18, 18, 18, 0.85);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: background-color 0.18s ease, transform 0.18s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  }
+
+  .map-card:hover .open-in-maps-btn {
+    background: rgba(30, 30, 30, 0.95);
+    transform: translateY(-1px);
   }
 
   .map-marker-overlay {

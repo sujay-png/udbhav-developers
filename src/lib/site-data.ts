@@ -3,12 +3,15 @@ export const mapEmbedUrl =
 export const directionsUrl =
   "https://maps.google.com/maps?q=UDBHAV+CHINMAYA,+Mangaluru";
 
+export const chinmayaDirectionsUrl =
+  "https://www.google.com/maps/dir//UDBHAV+CHINMAYA,+Chandrika+Layout,+Swami+Vivekananda+Rd,+Mallikatte,+Kadri,+Mangaluru,+Karnataka+575004,+India/@12.881254,74.848227,4238m/data=!3m1!1e3!4m17!1m7!3m6!1s0x3ba35b00175dd281:0x16d3cedc1e0bab6c!2sUDBHAV+CHINMAYA!8m2!3d12.8812544!4d74.8482267!16s%2Fg%2F11x5vzn3zs!4m8!1m0!1m5!1m1!1s0x3ba35b00175dd281:0x16d3cedc1e0bab6c!2m2!1d74.8482267!2d12.8812544!3e2?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDkyOC4wIKXMDSoASAFQAw%3D%3D";
+
 export const chinmayaContact = {
   title: "Find Us",
   address: "C6, 1st Floor, City Gate Building, Kadri Shivabhag, Mangalore - 575 002",
   email: "info@udbhavdevelopers.com",
   mapEmbedUrl,
-  directionsUrl,
+  directionsUrl: chinmayaDirectionsUrl,
 };
 
 export const siteConfig = {
@@ -307,7 +310,7 @@ export const projects: Project[] = [
           "/src/assets/images/udbahv-chinmaya/March month 2026 - Resized images/3.webp",
           "/src/assets/images/udbahv-chinmaya/March month 2026 - Resized images/4.webp",
           "/src/assets/images/udbahv-chinmaya/March month 2026 - Resized images/5.webp",
-          
+
           "/src/assets/images/udbahv-chinmaya/March month 2026 - Resized images/8.webp",
           "/src/assets/images/udbahv-chinmaya/March month 2026 - Resized images/9.webp",
           "/src/assets/images/udbahv-chinmaya/March month 2026 - Resized images/11.webp",
@@ -469,7 +472,7 @@ export const projects: Project[] = [
     Typology: "Exclusive 3 BHK Residential Apartments",
     projectarea: '18 Cents',
     projectsize: 'Ground + 4 Floors',
-    image: "udbhavshanthi",
+    image: "marcels",
     subtitle: "Exclusive 3 BHK Residences",
     mapTitle: "Kadri",
     reraNoproj: '',
@@ -498,7 +501,7 @@ export const projects: Project[] = [
     location: "Valencia, Mangaluru",
     units: "2 & 3 BHK",
     Possession: "2025 (Completed)",
-    image: "marcels",
+    image: "udbhavshanthi",
     subtitle: "Contemporary Mixed-Use Living",
     mapTitle: "Valencia",
     Typology: "Commercial & Residential Apartments",
@@ -529,7 +532,8 @@ export const projects: Project[] = [
     status: "Completed",
     tagline: "Compact, efficient family apartments",
     description:
-      "There comes a time in everyone's life where one gets to walk a different path. A path that leads to a new way of life, an opportunity to upgrade to a newer lifestyle, to be the epitome of fine living. K.R.K. AAYUSH, by Udbhav Developers is one such residential project in Mangalore which can escalate you to a new way of living. It is located in the one of the residential hubs of Mangalore at Urwa Hoigebail, with 21 contemporary styled apartments and modern amenities. With good road connectivity to major hubs of the city and being in the vicinity of all major hospitals, educational institutes, religious centres, entertainment zones and areas of business interests, one is in a good place geographically. More than that, with the build quality & all the amenities on board, one can be rest assured of truly moving towards fine living.",
+      "There comes a time in everyone's life where one gets to walk a different path. A path that leads to a new way of life, an opportunity to upgrade to a newer lifestyle, to be the epitome of fine living. K.R.K. AAYUSH, by Udbhav Developers is one such residential project in Mangalore which can escalate you to a new way of living.",
+
     location: "Urwa Hoigebail, Mangalore",
     units: "1 & 2 BHK",
     Typology: "1 and 2 BHK Residential Apartments",
@@ -563,7 +567,8 @@ export const projects: Project[] = [
     status: "Completed",
     tagline: "Elegantly designed commercial hub",
     description:
-      "Udbhav Square, an elegantly designed 20,000 sq.ft. commercial space located at Kottara Chowki, built with the contemporary touch & eco-friendly footprint to give the best experience for all types of businesses & retailers. This awesome location is best suited for banks, polyclinics, individual clinics, offices, automobile showrooms, shipping offices & supermarkets. With ample parking space at the road level & basement, you can rest assured that your dream of great office space is well cared for.",
+      "Udbhav Square, an elegantly designed 20,000 sq.ft. commercial space located at Kottara Chowki, built with the contemporary touch & eco-friendly footprint to give the best experience for all types of businesses & retailers.",
+
     location: "Kottara Chowki, Mangalore",
     units: "Office & Retail",
     Typology: 'Office & Retail Space',
@@ -599,7 +604,7 @@ export const projects: Project[] = [
     status: "Completed",
     tagline: "Green-Canopy Residences",
     description:
-      "Bhaskar Coconut Groves built in the calm and serene neighborhood near Nantoor Junction, Mangalore surrounded by abundant greenery, is an five storied premium apartment which houses a total of 28 homes including duplex. Replete with all modern amenities like children's play area, recreation room, Gym, spacious lobby, reticulated gas connection, security, power-backup, ample parking space and Automatic lift, this apartment will be the perfect place to unwind and lead a comfortable life. With Vaastu in mind while laying down the floor plan, these apartments incorporate spacious rooms that are designed in a manner that permits maximum ventilation and light.",
+      "Bhaskar Coconut Groves built in the calm and serene neighborhood near Nantoor Junction, Mangalore surrounded by abundant greenery, is an five storied premium apartment which houses a total of 28 homes including duplex.",
     location: "Maroli, Mangalore",
     projectarea: '35 Cents',
     reraNoproj: '-',

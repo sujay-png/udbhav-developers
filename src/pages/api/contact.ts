@@ -68,6 +68,9 @@ export const POST: APIRoute = async ({ request }) => {
       if (fields.message) {
         cityAndNotes = cityAndNotes ? `${cityAndNotes} (Note: ${fields.message})` : fields.message;
       }
+      if (fields.toEmail) {
+        cityAndNotes = cityAndNotes ? `${cityAndNotes} [To: ${fields.toEmail}]` : `[To: ${fields.toEmail}]`;
+      }
 
       gfPayload = {
         'input_1.3': firstName,

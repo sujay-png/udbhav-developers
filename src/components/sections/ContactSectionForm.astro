@@ -8,7 +8,15 @@ import { chinmayaContact } from "@/lib/site-data";
     <h2 class="contact-heading">Enquire 3 BHK Flat In Kadri</h2>
   </div>
 
-  <form id="chinmaya-contact-form" class="contact-form" novalidate>
+  <form
+    id="chinmaya-contact-form"
+    class="contact-form"
+    action={`mailto:${chinmayaContact.email}`}
+    data-to-email={chinmayaContact.email}
+    method="POST"
+    enctype="text/plain"
+    novalidate
+  >
     <!-- Honeypot -->
     <div class="sr-only" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;">
       <label for="contact-hp">Do not fill this</label>
@@ -268,9 +276,12 @@ import { chinmayaContact } from "@/lib/site-data";
       const unitTypeInput = form.querySelector('input[name="unitType"]:checked') as HTMLInputElement | null;
       const unitType = unitTypeInput?.value || "3 BHK Unit";
 
+      const toEmail = form.dataset.toEmail || "info@udbhavdevelopers.com";
+
       const payload = {
         formId: 2,
         source: "3bhk-landing",
+        toEmail,
         name,
         email,
         phone,

@@ -197,57 +197,8 @@ The centralized SEO data should feed into that mechanism rather than replacing i
 Developers are responsible for:
 * SEO architecture
 * metadata generation
-* reusable metadata logic
-* framework integration
-* validation
-* fallbacks
-* technical SEO implementation
-
-SEO/content team members should primarily need to modify the centralized content/data values.
-Do not require them to understand framework-specific metadata APIs merely to change an SEO title or description.
-
-### 12. Before finishing any SEO-related work
-Always verify:
-* There is no unnecessary duplicate SEO source of truth.
-* Existing centralized data structures were reused where appropriate.
-* `seoTitle` and `seoDescription` or equivalent explicit fields exist where required.
-* Naming is clear and understandable.
-* Page-level metadata is not unnecessarily hard-coded.
-* The metadata implementation is reusable.
-* Appropriate fallbacks exist.
-* The implementation follows the framework's recommended approach.
-* Existing functionality and SEO data are preserved unless intentionally changed.
-
-### 13. This is a persistent project/IDE rule
-Treat everything above as a persistent engineering rule for this project and future frontend projects.
-When working on any existing or newly created frontend project, automatically apply this SEO architecture unless I explicitly instruct you otherwise.
-Do not wait for me to repeat this instruction in future prompts.
-When starting a new project, establish this architecture as part of the initial project structure.
-When joining an existing project, inspect and adapt the existing architecture rather than blindly creating new files.
-
-The primary principle is:
-> **SEO content should have one clear, centralized, human-readable source of truth, while SEO implementation should remain reusable and framework-appropriate.**
-
-## Workspace & Repository Cleanliness Rule
-
-**Strict prohibition on unnecessary and temporary files:**
-1. **Never create temporary or scratch files in the repository:** Do NOT create `.cjs`, `.js`, `.py`, `.sh`, `.tmp`, `.txt`, or other ad-hoc scripts or scratch files directly inside the workspace (neither in project root nor in subdirectories).
-2. **Use direct editing tools:** Always use built-in tools (`replace_file_content`, `multi_replace_file_content`) to modify code directly.
-3. **No extraneous external or internal files:** Do not generate extra files, sample files, or helper scripts unless explicitly instructed by the user. Keep the workspace tree completely clean and free of leftover artifacts.
-
-## Output Explanation Format Rule
-
-Whenever presenting code changes or data updates to the user, always structure the summary using a clear, clean markdown table format with clickable file links:
-
-1. **Header sentence** specifying the file and line range with a clickable markdown link.
-2. **Summary of Changes Table** with explicit columns:
-   - `Line`: Exact line number(s) modified
-   - `Target / Item / Context`: The specific item, element, or card changed
-   - `Before`: Value or code snippet prior to change
-   - `After`: Value or code snippet after change
-3. **Short explanation / rationale** if relevant.
-
-## Folder and File Structure Standardization Rule
+ 
+ ## Folder and File Structure Standardization Rule
 
 From now on, all file and folder creation, organization, and refactoring across this project and all future frontend projects must strictly adhere to this **Industrial Standardization Rule**.
 
@@ -365,5 +316,99 @@ Every internal URL, link, API fetch path, and redirect target in the repository 
 2. **Production Performance**: Missing trailing slashes trigger unnecessary HTTP `301/308 Moved Permanently` round-trips from the edge CDN/Vercel server, degrading Core Web Vitals and user conversion rates.
 3. **SEO Integrity**: Prevents canonical cannibalization where search engines index both `/example` and `/example/` as duplicate competing pages.
 
+## Image Alt Text & Media SEO Architecture Rule
 
+From now on, all media asset handling, alt text updates, and image accessibility across this project must strictly comply with this standard:
 
+### 1. Minimal-Scope Image Modifications
+When updating an image's `alt` text:
+- **Change ONLY the `alt` attribute value**: Never accidentally modify the `src`, `width`, `height`, `loading`, `fetchpriority`, layout classes, inline styles, or surrounding DOM hierarchy.
+- **Do not touch sibling or unrelated images**: Ensure targeted selector precision so other image assets remain completely untouched.
+
+### 2. Centralized Source of Truth Inspection
+- **Inspect `@/lib/` first**: Before altering a template file, check whether the image metadata (src, alt, title, dimensions) is defined inside a centralized data module (e.g. `src/lib/site-data.ts`, `src/lib/floorPlans.ts`, or content collections).
+- **Update at the source**: If the image metadata is driven by a data structure, update the `alt` field in the data file so all consuming templates remain synchronized and unified.
+- **Component inlining fallback**: If the image is hardcoded directly inside a standalone page or section component without a backing data structure, update the attribute directly in the component file.
+
+### 3. Accessibility (a11y) & SEO Standards
+- **Keyword & Intent Alignment**: Alt text should accurately describe what the image portrays, aligned with target search intent and user context (e.g., `"Luxury 3 bhk apartment in kadri"`).
+- **No Redundant Phrasing**: Do not prefix alt text with redundant phrases like `"Image of..."` or `"Photo of..."` unless specifically required, as assistive screen readers already announce images.
+- **Non-Decorative Requirement**: Every content image that conveys information to human users must provide descriptive alternative text for screen readers (WCAG 2.1 compliance) and search engine indexing bots.
+
+## Pedagogical Explanation & Task Reporting Rule
+
+From now on, all task completions, code walkthroughs, and status updates must strictly follow this reporting and explanation framework:
+
+### 1. Mandatory Report Structure
+After completing any task, provide a report adhering strictly to this sequential structure:
+
+1. **What was wrong**: A concise 1-2 line description of the problem or defect.
+2. **What I changed**: Exact file names and line numbers modified.
+3. **Before/After (ASCII diagram)**: Visual representation contrasting the prior state with the updated state.
+4. **Why this works, explained for beginners**: Conceptual breakdown defining every technical term upon first introduction.
+5. **Real-world example**: A concrete everyday analogy (e.g., swapping photo frames, museum labels, library index cards).
+6. **Notion work report**: Formatted in first person ("I") with the following fields:
+   - **Task**: Short summary of the work request.
+   - **Date**: YYYY-MM-DD format.
+   - **Page/Project**: Target route, component, or domain.
+   - **What I did**: Bulleted list of actions performed.
+   - **Files changed**: Clickable markdown links to touched files with line numbers.
+   - **Result**: `Done, the prompt worked`
+   - **Time taken**: Estimated duration or turnaround time.
+
+### 2. "How to Explain" Teaching Persona & Communication Rules
+Act like an ex-Google, top-MNC principal engineer who is now a professor teaching students with ADHD or dyslexia:
+- **Short sentences**: Keep phrasing direct and readable. One primary idea per line or bullet.
+- **Clear visual hierarchy**: Use distinct headings, bullet lists, and generous vertical whitespace. Avoid walls of text.
+- **Deep but intuitive concepts**: Walk through foundational mechanics step-by-step without skipping context.
+- **Explicit definitions**: Define every technical term (e.g., SSR, hydration, DOM, schema, alt text) the first time it is introduced.
+- **Multi-sensory analogies & ASCII schematics**: Accompany abstract programming concepts with ASCII diagrams and relatable tangible metaphors.
+- **Zero jargon overload**: Prioritize mental clarity and immediate comprehension.
+
+## Standardized Task Report Format & Pedagogical Framework
+
+Every future task response and status report MUST strictly use this exact heading hierarchy and structure:
+
+```markdown
+### Summary of Changes
+File link with line numbers, then a table:
+| Line | Card / Item | Before | After |
+
+### Rationale & Rules Compliance
+- Why only the image was changed (scope isolation)
+- Which AGENTS.md rules were followed
+- What was left untouched (titles, badges, alt, links, styling)
+
+### Validation
+- npm run check: errors / warnings / hints
+- npm run build: pass or fail
+- git status: files changed
+
+### Current System Status
+Short bullets on check, build, and AGENTS.md.
+
+### Explained Simply (for beginners)
+Act like an ex-Google, top-MNC engineer who is now a professor teaching students with ADHD or dyslexia:
+- Short sentences, one idea per line, lots of white space.
+- Explain section by section, with deep but simple concepts.
+- Define every technical word the first time you use it.
+- Add an ASCII before/after diagram of the swap or change.
+- Add one real-world analogy (like swapping two photos between frames).
+
+### Notion Work Report (first person, copy-paste ready)
+- Task:
+- Date:
+- Page / Project:
+- What I did:
+- Files changed:
+- Result: Done, the prompt worked
+- Time taken:
+```
+
+## Rapid Localhost Review & Minimal Scope Rules
+
+1. **Do NOT create unnecessary files**: Never add scratch, dummy, or extra files unless explicitly requested.
+2. **Do NOT run build, check, or git commands automatically**: Do NOT run `npm run build`, `npm run check`, or any git commands unless the user explicitly requests them in that specific message.
+3. **Keep every change small and quick to review on localhost**: Minimize diff size and keep edits strictly isolated.
+4. **Line number reporting**: After every task, state the exact file name and lines modified.
+5. **Educational source**: After every task, provide where to learn the concept (website + specific page, e.g. docs.astro.build, developer.mozilla.org).
