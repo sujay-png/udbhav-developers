@@ -46,6 +46,9 @@ export const POST: APIRoute = async ({ request }) => {
 
       if (fields.source === '3bhk-landing') {
         subject = fields.subject || '3 BHK Landing Page Enquiry - Kadri';
+        if (fields.unitType) {
+          subject += ` (${fields.unitType})`;
+        }
       }
 
       gfPayload = {
