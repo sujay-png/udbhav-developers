@@ -16,6 +16,66 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+
+import * as cheerio from 'cheerio';
+
+let contentHtml = post.content;
+
+// Server-side HTML parsing to prevent CLS
+const $ = cheerio.load(contentHtml);
+
+// 1. Generate TOC Server-side
+const headings = $('h2, h3');
+if (headings.length > 0) {
+  const tocWidget = $('.elementor-widget-table-of-contents');
+  if (tocWidget.length > 0) {
+    const tocHeader = tocWidget.find('.elementor-toc__header');
+    const tocBody = tocWidget.find('.elementor-toc__body');
+    
+    // Clear out existing toggles
+    tocHeader.find('.elementor-toc__toggle-button').remove();
+    
+    // Add our custom arrow toggle
+    tocHeader.append(`<div class="toc-arrow" style="transition: transform 0.3s ease; cursor: pointer;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#554946" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg></div>`);
+    
+    // Generate TOC
+    const rootOl = $('<ol class="elementor-toc__list"></ol>');
+    let currentUl: any = null;
+    let lastLi: any = null;
+    
+    headings.each((i, el) => {
+      const heading = $(el);
+      if (!heading.attr('id')) {
+        heading.attr('id', 'heading-' + i);
+      }
+      
+      const li = $('<li class="elementor-toc__list-item" style="margin-bottom: 0.75rem;"></li>');
+      const a = $('<a></a>').attr('href', '#' + heading.attr('id')).text(heading.text());
+      a.css({ color: '#121417', textDecoration: 'none', transition: 'color 0.2s' });
+      li.append(a);
+      
+      if (el.tagName.toLowerCase() === 'h3') {
+        if (!currentUl) {
+          currentUl = $('<ul class="elementor-toc__nested-list"></ul>');
+          if (lastLi) {
+            lastLi.append(currentUl);
+          } else {
+            rootOl.append(currentUl);
+          }
+        }
+        currentUl.append(li);
+      } else {
+        currentUl = null;
+        rootOl.append(li);
+        lastLi = li;
+      }
+    });
+    
+    tocBody.empty().append(rootOl);
+  }
+}
+
+contentHtml = $.html();
 ---
 
 <BaseLayout seoTitle={post.title} seoDescription={post.excerpt}>
@@ -83,7 +143,7 @@ const { post } = Astro.props;
       <div class="w-full overflow-hidden">
         <div
           class="prose-content max-w-none text-lg font-light leading-relaxed text-[#554946]"
-          set:html={post.content}
+          set:html={contentHtml}
         />
 
         <div class="mt-20 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-gray-100 pt-10">
@@ -106,81 +166,28 @@ const { post } = Astro.props;
   </article>
 
   <script>
-    // Client-side script to generate the TOC if the WordPress plugin (Elementor TOC) left it empty
+    // Client-side script to handle toggles (TOC and Accordions)
     document.addEventListener('DOMContentLoaded', () => {
-      const tocWidget = document.querySelector('.elementor-widget-table-of-contents') as HTMLElement | null;
       const tocHeader = document.querySelector('.elementor-toc__header') as HTMLElement | null;
       const tocBody = document.querySelector('.elementor-toc__body') as HTMLElement | null;
       
-      if (tocWidget && tocHeader && tocBody) {
-        // Clear out existing toggle buttons from elementor
-        const existingToggles = tocHeader.querySelectorAll('.elementor-toc__toggle-button');
-        existingToggles.forEach(t => t.remove());
-
-        // Add our own toggle arrow
-        const arrow = document.createElement('div');
-        arrow.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#554946" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>`;
-        arrow.style.transition = 'transform 0.3s ease';
-        tocHeader.appendChild(arrow);
-        tocHeader.style.cursor = 'pointer';
-
-        // Toggle logic
-        let isCollapsed = false;
-        tocHeader.addEventListener('click', () => {
-          isCollapsed = !isCollapsed;
-          tocBody.style.display = isCollapsed ? 'none' : 'block';
-          arrow.style.transform = isCollapsed ? 'rotate(180deg)' : 'rotate(0deg)';
-        });
-
-        // Generate TOC list
-        const prose = document.querySelector('.prose-content');
-        if (prose) {
-          const headings = prose.querySelectorAll('h2, h3');
-          if (headings.length > 0) {
-            const rootOl = document.createElement('ol');
-            rootOl.className = 'elementor-toc__list';
-            let currentUl: HTMLUListElement | null = null;
-            let lastLi: HTMLLIElement | null = null;
-
-            headings.forEach((heading, index) => {
-              if (!heading.id) heading.id = 'heading-' + index;
-              const li = document.createElement('li');
-              li.className = 'elementor-toc__list-item';
-              li.style.marginBottom = '0.75rem';
-              
-              const a = document.createElement('a');
-              a.href = '#' + heading.id;
-              a.textContent = heading.textContent;
-              a.style.color = '#121417';
-              a.style.textDecoration = 'none';
-              a.style.transition = 'color 0.2s';
-              a.addEventListener('mouseenter', () => a.style.color = '#B02317');
-              a.addEventListener('mouseleave', () => a.style.color = '#121417');
-              li.appendChild(a);
-
-              if (heading.tagName.toLowerCase() === 'h3') {
-                // Nested item
-                if (!currentUl) {
-                  currentUl = document.createElement('ul');
-                  currentUl.className = 'elementor-toc__nested-list';
-                  if (lastLi) {
-                    lastLi.appendChild(currentUl);
-                  } else {
-                    rootOl.appendChild(currentUl);
-                  }
-                }
-                currentUl.appendChild(li);
-              } else {
-                // Top-level item
-                currentUl = null; 
-                rootOl.appendChild(li);
-                lastLi = li;
-              }
-            });
-            tocBody.innerHTML = ''; 
-            tocBody.appendChild(rootOl);
-          }
+      if (tocHeader && tocBody) {
+        const arrow = tocHeader.querySelector('.toc-arrow') as HTMLElement | null;
+        if (arrow) {
+          let isCollapsed = false;
+          tocHeader.addEventListener('click', () => {
+            isCollapsed = !isCollapsed;
+            tocBody.style.display = isCollapsed ? 'none' : 'block';
+            arrow.style.transform = isCollapsed ? 'rotate(180deg)' : 'rotate(0deg)';
+          });
         }
+        
+        // Add hover effects for TOC links
+        const tocLinks = tocBody.querySelectorAll('a');
+        tocLinks.forEach(a => {
+          a.addEventListener('mouseenter', () => a.style.color = '#B02317');
+          a.addEventListener('mouseleave', () => a.style.color = '#121417');
+        });
       }
 
       // Elementor FAQ Accordion logic
@@ -210,11 +217,6 @@ const { post } = Astro.props;
             arrow.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B02317" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
             arrow.style.transition = 'transform 0.3s ease';
             titleWrap.appendChild(arrow);
-
-            // Hide content initially
-            (content as HTMLElement).style.padding = '1.5rem 0';
-            (content as HTMLElement).style.display = 'none';
-            (content as HTMLElement).style.color = '#554946';
 
             titleWrap.addEventListener('click', (e) => {
               e.preventDefault();
@@ -259,15 +261,11 @@ const { post } = Astro.props;
             arrow.style.transition = 'transform 0.3s ease';
             a.appendChild(arrow);
             
-            // Fix collapse container
+            // Fix collapse container toggle logic
             const collapseDiv = (content as HTMLElement).closest('.collapse') as HTMLElement || (content as HTMLElement);
-            collapseDiv.style.display = 'none'; // ensure it's hidden properly initially
             collapseDiv.style.visibility = 'visible'; 
             collapseDiv.style.opacity = '1';
             collapseDiv.style.height = 'auto';
-            
-            content.style.padding = '1.5rem 0';
-            content.style.color = '#554946';
             
             (header as HTMLElement).addEventListener('click', (e) => {
               e.preventDefault();
@@ -284,6 +282,15 @@ const { post } = Astro.props;
 </BaseLayout>
 
 <style is:global>
+  /* FAQ Accordions Pre-hide to prevent CLS */
+  .prose-content .elementor-tab-content,
+  .prose-content .elementskit-card-body,
+  .prose-content .collapse:not(.show) {
+    display: none;
+    padding: 1.5rem 0;
+    color: #554946;
+  }
+  
   /* Prose Global Typography & Spacing */
   .prose-content a { color: #B02317; transition: color 0.2s; }
   .prose-content a:hover { color: #8e1c12; }
