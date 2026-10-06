@@ -84,18 +84,31 @@ const isRich = !!project.reraNo;
         <div class="absolute inset-0 overflow-hidden z-0 bg-ink">
           {project.heroVideo ? (
              <div class="absolute inset-0 pointer-events-none">
-                <iframe 
-                  src={project.heroVideo} 
-                  allow="autoplay; encrypted-media" 
-                  allowfullscreen
-                  class="w-[300vw] h-[300vh] md:w-[150vw] md:h-[150vh] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover"
-                  style="border:0;"
-                ></iframe>
+                {project.heroVideo.endsWith('.mp4') ? (
+                  <video 
+                    src={project.heroVideo} 
+                    autoplay 
+                    muted 
+                    playsinline 
+                    loop 
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full w-auto h-auto object-cover max-w-none"
+                  ></video>
+                ) : (
+                  <iframe 
+                    src={project.heroVideo} 
+                    width="1920"
+                    height="1080"
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen
+                    class="w-[300vw] h-[300vh] md:w-[150vw] md:h-[150vh] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover"
+                    style="border:0;"
+                  ></iframe>
+                )}
                 <div class="absolute inset-0 bg-ink/40"></div>
              </div>
           ) : galleryImages.length > 0 ? (
              <div class="absolute inset-0 opacity-40 mix-blend-overlay">
-               <img src={galleryImages[0].src} alt="" class="w-full h-full object-cover" />
+               <img src={galleryImages[0].src} width="1920" height="1080" alt="" class="w-full h-full object-cover" />
              </div>
           ) : (
              <ArtPanel seed={seed} tone="ink" class="absolute inset-0" />
@@ -407,7 +420,7 @@ const isRich = !!project.reraNo;
                 <h2 class="font-display text-4xl text-ink text-center mb-10">Special Amenities</h2>
                 
                 <div class="relative overflow-hidden group shadow-md bg-ink rounded-xl">
-                  <div id="amenities-carousel" class="flex transition-transform duration-500 ease-out h-[300px] md:h-[400px]">
+                  <div id="amenities-carousel" class="flex transition-transform duration-500 ease-out aspect-[4/3] md:aspect-video">
                     {project.amenities.map((amenity, idx) => {
                       const imgObj = allImages[amenity.image]?.default;
                       return (
