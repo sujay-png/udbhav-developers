@@ -13,6 +13,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   site: 'https://www.udbhavdevelopers.com',
   trailingSlash: 'always',
+  redirects: {
+    '/services/building-maintenance': '/',
+    '/services/building-maintenance/': '/',
+  },
   output: 'server', // This explicitly enables Server-Side Rendering
   adapter: vercel(),
   vite: {

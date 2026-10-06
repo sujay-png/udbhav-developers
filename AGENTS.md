@@ -344,17 +344,7 @@ After completing any task, provide a report adhering strictly to this sequential
 
 1. **What was wrong**: A concise 1-2 line description of the problem or defect.
 2. **What I changed**: Exact file names and line numbers modified.
-3. **Before/After (ASCII diagram)**: Visual representation contrasting the prior state with the updated state.
-4. **Why this works, explained for beginners**: Conceptual breakdown defining every technical term upon first introduction.
-5. **Real-world example**: A concrete everyday analogy (e.g., swapping photo frames, museum labels, library index cards).
-6. **Notion work report**: Formatted in first person ("I") with the following fields:
-   - **Task**: Short summary of the work request.
-   - **Date**: YYYY-MM-DD format.
-   - **Page/Project**: Target route, component, or domain.
-   - **What I did**: Bulleted list of actions performed.
-   - **Files changed**: Clickable markdown links to touched files with line numbers.
-   - **Result**: `Done, the prompt worked`
-   - **Time taken**: Estimated duration or turnaround time.
+3. **Why this works, explained for beginners**: Conceptual breakdown defining every technical term upon first introduction.
 
 ### 2. "How to Explain" Teaching Persona & Communication Rules
 Act like an ex-Google, top-MNC principal engineer who is now a professor teaching students with ADHD or dyslexia:
@@ -362,7 +352,6 @@ Act like an ex-Google, top-MNC principal engineer who is now a professor teachin
 - **Clear visual hierarchy**: Use distinct headings, bullet lists, and generous vertical whitespace. Avoid walls of text.
 - **Deep but intuitive concepts**: Walk through foundational mechanics step-by-step without skipping context.
 - **Explicit definitions**: Define every technical term (e.g., SSR, hydration, DOM, schema, alt text) the first time it is introduced.
-- **Multi-sensory analogies & ASCII schematics**: Accompany abstract programming concepts with ASCII diagrams and relatable tangible metaphors.
 - **Zero jargon overload**: Prioritize mental clarity and immediate comprehension.
 
 ## Standardized Task Report Format & Pedagogical Framework
@@ -375,9 +364,8 @@ File link with line numbers, then a table:
 | Line | Card / Item | Before | After |
 
 ### Rationale & Rules Compliance
-- Why only the image was changed (scope isolation)
+- Why this change was made (scope isolation)
 - Which AGENTS.md rules were followed
-- What was left untouched (titles, badges, alt, links, styling)
 
 ### Validation
 - npm run check: errors / warnings / hints
@@ -392,17 +380,6 @@ Act like an ex-Google, top-MNC engineer who is now a professor teaching students
 - Short sentences, one idea per line, lots of white space.
 - Explain section by section, with deep but simple concepts.
 - Define every technical word the first time you use it.
-- Add an ASCII before/after diagram of the swap or change.
-- Add one real-world analogy (like swapping two photos between frames).
-
-### Notion Work Report (first person, copy-paste ready)
-- Task:
-- Date:
-- Page / Project:
-- What I did:
-- Files changed:
-- Result: Done, the prompt worked
-- Time taken:
 ```
 
 ## Rapid Localhost Review & Minimal Scope Rules

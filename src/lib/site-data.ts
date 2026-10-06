@@ -731,18 +731,18 @@ export const navLinks = [
   { label: "About Us", href: "/about-us/" },
   {
     label: "Projects",
-    href: "/our-projects/",
+    href: "/projects/",
     children: [
       {
         label: "Ongoing",
         status: "Ongoing",
-        href: "/our-projects/?status=ongoing",
+        href: "/projects/?status=ongoing",
         items: projects.filter((p) => p.status === "Ongoing"),
       },
       {
         label: "Completed",
         status: "Completed",
-        href: "/our-projects/?status=completed",
+        href: "/projects/?status=completed",
         items: projects.filter((p) => p.status === "Completed"),
       },
     ],
