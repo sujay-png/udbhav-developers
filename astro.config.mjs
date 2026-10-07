@@ -14,7 +14,6 @@ export default defineConfig({
   site: 'https://www.udbhavdevelopers.com',
   trailingSlash: 'always',
   redirects: {
-    '/services/building-maintenance': '/',
     '/services/building-maintenance/': '/',
   },
   output: 'server', // This explicitly enables Server-Side Rendering
