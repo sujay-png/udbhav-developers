@@ -22,7 +22,7 @@ import * as cheerio from 'cheerio';
 let contentHtml = post.content;
 
 // Server-side HTML parsing to prevent CLS
-const $ = cheerio.load(contentHtml);
+const $ = cheerio.load(contentHtml, null, false);
 
 // 1. Generate TOC Server-side
 const headings = $('h2, h3');
