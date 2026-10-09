@@ -71,8 +71,27 @@ if (headings.length > 0) {
       }
     });
     
+    
     tocBody.empty().append(rootOl);
   }
+}
+
+// 2. Wrap ALL blockquotes into a single Swiper carousel
+const blockquotes = $('blockquote, .wp-block-quote');
+if (blockquotes.length > 0) {
+  const swiperContainer = $('<div class="swiper blog-testimonial-swiper" style="padding-bottom: 3rem; margin: 3rem 0;"><div class="swiper-wrapper"></div><div class="swiper-pagination"></div></div>');
+  const swiperWrapper = swiperContainer.find('.swiper-wrapper');
+  
+  // Insert the carousel exactly where the first testimonial was
+  $(blockquotes[0]).before(swiperContainer);
+  
+  // Move all testimonials from the article into this single carousel
+  blockquotes.each((i, el) => {
+    $(el).css('margin', '0');
+    const slide = $('<div class="swiper-slide" style="height: auto; padding: 0.5rem;"></div>');
+    slide.append($(el));
+    swiperWrapper.append(slide);
+  });
 }
 
 contentHtml = $.html();
@@ -166,8 +185,43 @@ contentHtml = $.html();
   </article>
 
   <script>
+    import Swiper from "swiper/bundle";
+    import "swiper/css/bundle";
+
     // Client-side script to handle toggles (TOC and Accordions)
     document.addEventListener('DOMContentLoaded', () => {
+      
+      // Initialize Blog Testimonial Swiper (Custom blockquotes & ElementsKit native carousels)
+      const testimonialSwipers = document.querySelectorAll('.blog-testimonial-swiper, .ekit-main-swiper');
+      testimonialSwipers.forEach(el => {
+        // If it's an ElementsKit slider, it might not have the pagination div
+        if (!el.querySelector('.swiper-pagination')) {
+          const pagination = document.createElement('div');
+          pagination.className = 'swiper-pagination';
+          el.appendChild(pagination);
+        }
+        
+        // Ensure ElementsKit sliders get our pagination styling class
+        if (el.classList.contains('ekit-main-swiper')) {
+          el.classList.add('blog-testimonial-swiper');
+        }
+
+        new Swiper(el as HTMLElement, {
+          slidesPerView: 1,
+          spaceBetween: 20,
+          loop: true,
+          speed: 800,
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: el.querySelector('.swiper-pagination') as HTMLElement,
+            clickable: true,
+          }
+        });
+      });
+
       const tocHeader = document.querySelector('.elementor-toc__header') as HTMLElement | null;
       const tocBody = document.querySelector('.elementor-toc__body') as HTMLElement | null;
       
@@ -282,6 +336,23 @@ contentHtml = $.html();
 </BaseLayout>
 
 <style is:global>
+  /* Blog Testimonial Swiper Pagination */
+  .blog-testimonial-swiper .swiper-pagination {
+    position: relative !important;
+    bottom: auto !important;
+    margin-top: 3rem !important;
+  }
+  .blog-testimonial-swiper .swiper-pagination-bullet {
+    background-color: #B02317 !important;
+    opacity: 1 !important;
+    width: 10px !important;
+    height: 10px !important;
+    margin: 0 6px !important;
+  }
+  .blog-testimonial-swiper .swiper-pagination-bullet-active {
+    background-color: #121417 !important;
+  }
+
   /* FAQ Accordions Pre-hide to prevent CLS */
   .prose-content .elementor-tab-content,
   .prose-content .elementskit-card-body,
@@ -399,42 +470,133 @@ contentHtml = $.html();
   .prose-content blockquote,
   .prose-content .wp-block-quote {
     margin: 3rem 0;
-    background: #1F1F1F;
-    color: #fff;
-    padding: 2.5rem;
-    border-radius: 1rem;
-    border-left: 4px solid var(--color-clay, #B02317);
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border: 1px solid #94a3b8;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
   }
   .prose-content blockquote p,
   .prose-content .wp-block-quote p {
-    font-size: 1.125rem;
-    line-height: 1.75;
-    color: rgba(255,255,255,0.9);
-    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #121417;
+    font-style: normal;
     margin: 0;
   }
   .prose-content blockquote cite,
   .prose-content .wp-block-quote cite {
     display: block;
     margin-top: 1.5rem;
-    font-family: var(--font-display, serif);
-    font-size: 1rem;
-    font-weight: 600;
-    color: #fff;
+    padding-top: 1rem;
+    border-top: 1px solid #E5E7EB;
+    font-family: var(--font-serif, serif);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #B02317;
     font-style: normal;
   }
   .prose-content blockquote::before,
   .prose-content .wp-block-quote::before {
-    content: '"';
-    position: absolute;
-    top: 1rem;
-    right: 2rem;
-    font-family: serif;
-    font-size: 6rem;
-    line-height: 1;
-    color: rgba(255,255,255,0.05);
-    pointer-events: none;
+    display: none;
+  }
+
+  /* Universal SVG Fix to prevent giant icons */
+  .prose-content svg {
+    max-width: 2rem;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* Elementor Icon Lists & Lists containing SVGs (Stars) */
+  .prose-content .elementor-icon-list-items,
+  .prose-content ul:has(svg) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-left: 0;
+    margin: 0 0 1.5rem 0;
+    list-style: none;
+  }
+  .prose-content .elementor-icon-list-item,
+  .prose-content ul:has(svg) > li {
+    padding-left: 0 !important;
+    margin-bottom: 0 !important;
+    display: flex;
+    align-items: center;
+  }
+  .prose-content .elementor-icon-list-item::before,
+  .prose-content ul:has(svg) > li::before {
+    display: none !important;
+  }
+  .prose-content .elementor-icon-list-icon svg,
+  .prose-content .elementor-icon-list-icon i,
+  .prose-content ul:has(svg) > li svg {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    flex-shrink: 0;
+    font-size: 1.5rem;
+    color: #B02317;
+    fill: currentColor;
+  }
+  /* ElementsKit Native Testimonial Styling */
+  .prose-content .elementskit-single-testimonial-slider {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+    margin: 0.5rem 0.5rem; /* Prevent clipping of box shadow in swiper */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%; /* Make cards equal height */
+  }
+  .prose-content .elementskit-commentor-content p {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: #374151;
+    margin: 0;
+  }
+  .prose-content .elementskit-profile-info {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 1.5rem;
+    margin-top: 0.5rem;
+    display: block;
+  }
+  .prose-content .elementskit-author-name {
+    display: block;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #B02317;
+    margin-bottom: 0.25rem;
+  }
+  .prose-content .elementskit-author-des {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  .prose-content .elementskit-stars {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    list-style: none !important;
+    padding-left: 0 !important;
+  }
+  .prose-content .elementskit-stars li {
+    padding-left: 0 !important;
+    margin-bottom: 0 !important;
+    display: flex;
+    align-items: center;
+  }
+  .prose-content .elementskit-stars li::before {
+    display: none !important;
+  }
+  .prose-content .elementskit-stars svg {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    fill: #B02317;
+    flex-shrink: 0;
   }
 </style>
