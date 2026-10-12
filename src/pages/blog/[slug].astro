@@ -96,6 +96,12 @@ if (blockquotes.length > 0) {
 
 // 3. Prepare Elementor Nested Floor Plan Carousels
 $('.elementor-invisible').removeClass('elementor-invisible');
+
+// Remove broken Elementor action links wrapping images
+$('a[href*="elementor-action"], a[data-elementor-open-lightbox]').each((_, a) => {
+  $(a).replaceWith($(a).children());
+});
+
 $('.elementor-widget-n-carousel, .elementor-widget-nested-carousel').each((_, el) => {
   const widget = $(el);
   const prevBtn = widget.find('.elementor-swiper-button-prev');
@@ -108,16 +114,20 @@ $('.elementor-widget-n-carousel, .elementor-widget-nested-carousel').each((_, el
   }
 });
 
-// Ensure all slide images retain high quality descriptive alt text
+// Ensure all slide images retain high quality descriptive alt text and clean click trigger
 $('.swiper-slide').each((_, slideEl) => {
   const slide = $(slideEl);
   const title = slide.find('h3, .elementor-heading-title').text().replace(/\s+/g, ' ').trim();
   const img = slide.find('img');
-  if (img.length > 0 && title) {
-    const currentAlt = img.attr('alt');
-    if (!currentAlt || currentAlt.trim() === '' || currentAlt.toLowerCase() === 'image') {
-      img.attr('alt', `Floor Plan — ${title} — Udbhav Chinmaya, Kadri`);
+  if (img.length > 0) {
+    if (title) {
+      const currentAlt = img.attr('alt');
+      if (!currentAlt || currentAlt.trim() === '' || currentAlt.toLowerCase() === 'image') {
+        img.attr('alt', `Floor Plan — ${title} — Udbhav Chinmaya, Kadri`);
+      }
     }
+    img.attr('onclick', 'window.openBlogLightbox && window.openBlogLightbox(this.currentSrc || this.src)');
+    img.addClass('cursor-pointer');
   }
 });
 
@@ -211,6 +221,16 @@ contentHtml = $.html();
     </section>
   </article>
 
+  <!-- Image Preview Lightbox Modal -->
+  <div id="blog-lightbox" class="fixed inset-0 z-[100] bg-black/85 hidden items-center justify-center p-4 md:p-10 backdrop-blur-md opacity-0 transition-opacity duration-300">
+    <button id="close-blog-lightbox" class="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-[#B02317] transition-colors z-50 p-2 cursor-pointer rounded-full hover:bg-white/10" aria-label="Close Preview">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <div class="relative w-full max-w-5xl max-h-full flex items-center justify-center overflow-hidden rounded-xl p-2">
+      <img id="blog-lightbox-img" src="" alt="Floor Plan Preview" class="max-w-full max-h-[85vh] object-contain shadow-2xl scale-95 transition-transform duration-300 rounded-lg bg-white p-2" />
+    </div>
+  </div>
+
   <script>
     import Swiper from "swiper/bundle";
     import "swiper/css/bundle";
@@ -278,6 +298,66 @@ contentHtml = $.html();
             clickable: true,
           },
         });
+      });
+
+      // Lightbox preview logic
+      const lightbox = document.getElementById('blog-lightbox');
+      const lightboxImg = document.getElementById('blog-lightbox-img') as HTMLImageElement | null;
+      const closeBtn = document.getElementById('close-blog-lightbox');
+
+      (window as any).openBlogLightbox = (imgSrc: string) => {
+        if (!imgSrc || imgSrc.startsWith('#') || !lightbox || !lightboxImg) return;
+        lightboxImg.src = imgSrc;
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+        setTimeout(() => {
+          lightbox.classList.remove('opacity-0');
+          lightboxImg.classList.remove('scale-95');
+          lightboxImg.classList.add('scale-100');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeLightbox = () => {
+        if (!lightbox || !lightboxImg) return;
+        lightbox.classList.add('opacity-0');
+        lightboxImg.classList.remove('scale-100');
+        lightboxImg.classList.add('scale-95');
+        setTimeout(() => {
+          lightbox.classList.remove('flex');
+          lightbox.classList.add('hidden');
+          lightboxImg.src = '';
+          document.body.style.overflow = '';
+        }, 300);
+      };
+
+      if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+      if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox || (e.target as HTMLElement).closest('#close-blog-lightbox')) {
+            closeLightbox();
+          }
+        });
+      }
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox && !lightbox.classList.contains('hidden')) {
+          closeLightbox();
+        }
+      });
+
+      // Delegated click handling for floor plan images (works on all original and cloned slides)
+      document.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement | null;
+        if (!target) return;
+        const img = target.closest('.swiper-slide img') as HTMLImageElement | null;
+        if (img) {
+          e.preventDefault();
+          e.stopPropagation();
+          const src = img.currentSrc || img.src || img.getAttribute('src');
+          if (src && !src.startsWith('#') && (window as any).openBlogLightbox) {
+            (window as any).openBlogLightbox(src);
+          }
+        }
       });
 
       const tocHeader = document.querySelector('.elementor-toc__header') as HTMLElement | null;
@@ -688,7 +768,13 @@ contentHtml = $.html();
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
     background: #ffffff;
     margin: 0 auto 1.25rem auto !important;
-    transition: transform 0.3s ease;
+    cursor: zoom-in !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .prose-content .elementor-widget-n-carousel .swiper-slide img:hover,
+  .prose-content .elementor-widget-nested-carousel .swiper-slide img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.12), 0 10px 15px -6px rgba(0, 0, 0, 0.06);
   }
   .prose-content .elementor-widget-n-carousel .swiper-slide h3,
   .prose-content .elementor-widget-nested-carousel .swiper-slide h3 {
