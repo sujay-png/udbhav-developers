@@ -13,12 +13,16 @@ export const POST: APIRoute = async ({ request }) => {
 
     const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
 
-    const clientEmail = import.meta.env.GOOGLE_CLIENT_EMAIL || process.env.GOOGLE_CLIENT_EMAIL;
+    const clientEmail =
+      import.meta.env.GOOGLE_SERVICE_ACCOUNT_EMAIL ||
+      process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL ||
+      import.meta.env.GOOGLE_CLIENT_EMAIL ||
+      process.env.GOOGLE_CLIENT_EMAIL;
     const rawPrivateKey = import.meta.env.GOOGLE_PRIVATE_KEY || process.env.GOOGLE_PRIVATE_KEY;
     const privateKey = rawPrivateKey?.replace(/\\n/g, '\n');
 
     if (!clientEmail || !privateKey) {
-      console.warn("Google Sheets credentials (GOOGLE_CLIENT_EMAIL, GOOGLE_PRIVATE_KEY) not found. Skipping sheet append.");
+      console.warn("Google Sheets credentials (GOOGLE_SERVICE_ACCOUNT_EMAIL, GOOGLE_PRIVATE_KEY) not found. Skipping sheet append.");
       // Return 200 so the frontend doesn't throw an error if the user hasn't configured it yet
       return new Response(JSON.stringify({ success: true, warning: 'No credentials configured' }), { 
         status: 200,
