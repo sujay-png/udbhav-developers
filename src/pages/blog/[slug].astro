@@ -437,4 +437,23 @@ contentHtml = $.html();
     color: rgba(255,255,255,0.05);
     pointer-events: none;
   }
+  
+  /* Fix oversized SVGs in WP content (like Elementor Star Ratings / Testimonials) */
+  .prose-content .elementor-star-rating svg,
+  .prose-content .star-rating svg,
+  .prose-content .wp-block-quote svg,
+  .prose-content blockquote svg,
+  .prose-content svg.star-icon {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    display: inline-block;
+    fill: currentColor;
+    color: var(--color-clay, #B02317);
+  }
+  
+  /* Fallback constraint for any rogue SVG without attributes */
+  .prose-content svg:not([width]):not([height]) {
+    max-width: 1.5rem;
+    height: auto;
+  }
 </style>
