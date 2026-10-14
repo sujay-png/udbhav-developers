@@ -105,7 +105,7 @@ export const projects: Project[] = [
     name: "Udbhav Chinmaya",
     sublinks: [
       {
-        title: "Kadri 3BHK",
+        title: ". 3BHK Kadri",
         href: "/projects/udbhav-chinmaya/3-bhk-for-sale-kadri-mangalore/",
       },
     ],
