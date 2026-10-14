@@ -47,16 +47,22 @@ const year = new Date().getFullYear();
                 {p.name}
               </a>
               {p.sublinks && p.sublinks.length > 0 && (
-                <div class="mt-1 space-y-1">
+                <ul class="mt-1.5 space-y-1.5 pl-3">
                   {p.sublinks.map((sub) => (
-                    <a
-                      href={sub.href}
-                      class="block text-xs text-cream/50 hover:text-clay transition-colors"
-                    >
-                      {sub.title}
-                    </a>
+                    <li>
+                      <a
+                        href={sub.href}
+                        class="group inline-flex items-center gap-2 text-xs text-cream/50 hover:text-clay transition-colors"
+                      >
+                        <span
+                          class="h-1.5 w-1.5 rounded-full bg-clay shrink-0 transition-transform group-hover:scale-125"
+                          aria-hidden="true"
+                        />
+                        <span>{sub.title}</span>
+                      </a>
+                    </li>
                   ))}
-                </div>
+                </ul>
               )}
             </li>
           ))
