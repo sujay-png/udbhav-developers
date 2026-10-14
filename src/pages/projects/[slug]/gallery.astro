@@ -64,12 +64,12 @@ const allImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/imag
               {update.images.map((imgSrc) => {
                 const imgObj = allImages[imgSrc]?.default;
                 return (
-                <div class="relative overflow-hidden rounded-2xl aspect-[4/3] bg-ink/5 shadow-sm border border-border group">
+                <div class="gallery-card relative overflow-hidden rounded-2xl aspect-[3/2] bg-transparent shadow-sm border border-border group p-0">
                   {imgObj ? (
                     <Image 
                       src={imgObj} 
                       alt={update.title} 
-                      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      class="absolute inset-0 block !h-full !w-full !object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                       widths={[320, 640]}
                       sizes="(max-width: 640px) 320px, 640px"
@@ -78,12 +78,12 @@ const allImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/imag
                     <img 
                       src={imgSrc} 
                       alt={update.title} 
-                      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      class="absolute inset-0 block !h-full !w-full !object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                     />
                   )}
                   <!-- Hover Overlay -->
-                  <div class="absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                  <div class="gallery-overlay absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
                     <button class="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full font-medium tracking-wide border border-white/30 transition-colors pointer-events-auto" onclick={`openLightbox('${imgObj ? imgObj.src : imgSrc}')`}>
                       View
                     </button>
@@ -168,3 +168,31 @@ const allImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/imag
   setupLightbox();
   document.addEventListener('astro:page-load', setupLightbox);
 </script>
+
+<style>
+  .gallery-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    padding: 0 !important;
+    background-color: transparent !important;
+  }
+
+  .gallery-card :global(img) {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .gallery-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+  }
+</style>
