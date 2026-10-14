@@ -46,6 +46,18 @@ const year = new Date().getFullYear();
               <a href={`/projects/${p.slug}/`} class="hover:text-cream">
                 {p.name}
               </a>
+              {p.sublinks && p.sublinks.length > 0 && (
+                <div class="mt-1 space-y-1">
+                  {p.sublinks.map((sub) => (
+                    <a
+                      href={sub.href}
+                      class="block text-xs text-cream/50 hover:text-clay transition-colors"
+                    >
+                      {sub.title}
+                    </a>
+                  ))}
+                </div>
+              )}
             </li>
           ))
         }

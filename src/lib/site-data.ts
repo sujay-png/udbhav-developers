@@ -83,6 +83,7 @@ export type Project = {
     title: string;
     images: string[];
   }[];
+  sublinks?: { title: string; href: string }[];
 };
 
 export type Media = {
@@ -102,6 +103,12 @@ export const projects: Project[] = [
   {
     slug: "udbhav-chinmaya",
     name: "Udbhav Chinmaya",
+    sublinks: [
+      {
+        title: "Kadri 3BHK",
+        href: "/projects/udbhav-chinmaya/3-bhk-for-sale-kadri-mangalore/",
+      },
+    ],
     seoTitle: "3 & 4 BHK Mangalore Apartment | From 1.60 Cr* | Kadri",
     seoDescription: "With only 40 exclusive 3 & 4 BHK apartments, Udbhav Chinmaya ensures privacy, comfort, and a refined living experience in a prime urban location. 1715 to 2255 sq.ft.",
     category: "Residential",
