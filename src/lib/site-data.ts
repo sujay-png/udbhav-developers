@@ -102,8 +102,8 @@ export const projects: Project[] = [
   {
     slug: "udbhav-chinmaya",
     name: "Udbhav Chinmaya",
-    seoTitle: "3 & 4 BHK Mangalore Apartment | From 1.60 Cr* | Kadri",
-    seoDescription: "With only 40 exclusive 3 & 4 BHK apartments, Udbhav Chinmaya ensures privacy, comfort, and a refined living experience in a prime urban location. 1715 to 2255 sq.ft.",
+    seoTitle: "Luxury Apartments For Sale In Mangalore",
+    seoDescription: "RERA approved luxury flats for sale in Mangalore. This new premium apartment is located at Chandrika layout, Swami Vevikananda road, Kadri Mangalore. Starting @ ₹1.60* Cr onwards.",
     category: "Residential",
     status: "Ongoing",
     tagline: "Sophisticated low-density residences limited to only 40 luxury homes designed for privacy and luxury living.",
@@ -116,7 +116,7 @@ export const projects: Project[] = [
     projectarea: '64 Cents',
     projectsize: 'Ground + 5 Floors',
     image: "Udbhav-website",
-    subtitle: "Premium Luxury 3 & 4 BHK Mangalore Apartments <br/> Located In Prime Kadri Area",
+    subtitle: "Luxury Apartments For Sale In Mangalore <br/> Located In Prime Kadri Area",
     heroVideo: "/videos/Udbhav-Chinmaya-Hero.mp4",
     mapTitle: "Kadri",
     mapDesc:
