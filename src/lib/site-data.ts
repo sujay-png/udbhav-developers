@@ -152,31 +152,43 @@ export const projects: Project[] = [
       "Automatic high-speed elevators"
     ],
     faqs: [
-      {
-        question: "1. What is the difference between Carpet Area, Built-up, and Super Built-up Area?",
-        answer: "Carpet Area is the actual usable floor space inside your apartment — the area where you can lay a carpet. Built-up Area includes the carpet area plus the thickness of the walls. Super Built-up Area includes the built-up area along with your proportionate share of common spaces such as lobbies, staircases, and lift areas.\n\nAt Udbhav Chinmaya, the apartment sizes ranging from 1715 to 2255 sq.ft are quoted in Super Built-up Area. For exact carpet area details of your preferred unit, our team will walk you through the floor plan in detail during your site visit."
-      },
-      {
-        question: "2. How much loan can I avail for Udbhav Chinmaya?",
-        answer: "You can avail a home loan of up to 80% of the agreement value of your apartment. For example, on a ₹1.55 Crore* apartment, you may be eligible for a loan of up to ₹1.16 Crore, with the remaining amount payable as down payment.\n\nUdbhav Chinmaya is loan-approved by Karnataka Bank, Canara Bank & SBI — ensuring smooth processing and competitive interest rates. Our team provides end-to-end home loan assistance at no extra cost."
-      },
-      {
-        question: "3. What is Pre-EMI and how does it apply to Udbhav Chinmaya?",
-        answer: "Since Udbhav Chinmaya follows a construction-linked payment plan, your bank disburses the loan in stages as construction progresses. During this period, you only pay interest on the amount disbursed so far — this is called Pre-EMI. Your full EMI begins only after the complete loan amount is disbursed, typically closer to possession.\n\nThis means your financial outgo remains lower during the construction phase, giving you better control over your monthly budget until you take possession in December 2027."
-      },
-      {
-        question: "4. What tax benefits can I claim by taking a home loan for Udbhav Chinmaya?",
-        answer: "Taking a home loan for Udbhav Chinmaya makes you eligible for two significant tax deductions every financial year. Under Section 24, you can claim a deduction of up to ₹1.5* Lakhs on the interest component of your EMI. Under Section 80C, you can claim up to ₹1 Lakh on the principal repayment, within the overall 80C limit.\n\nThese deductions apply once you are in possession of your apartment. Over the loan tenure, this can result in substantial savings — effectively reducing the real cost of owning your home at Chinmaya."
-      },
-      {
-        question: "5. What documents should I verify before purchasing at Udbhav Chinmaya?",
-        answer: "Udbhav Chinmaya is a fully transparent and legally clear project. Key documents you should verify — and which are available on request — include the RERA Registration Certificate (PRM/KA/RERA/1257/334/PR/311225/008371), the approved building plan and layout, title documents, environmental clearance, and the commencement certificate.\n\nWe strongly encourage every buyer to review these documents before booking. Our team is available to walk you through each document and we recommend consulting your advocate for independent legal verification. Transparency is non-negotiable at Udbhav."
-      },
-      {
-        question: "6. Over how many years can I repay my home loan for this apartment?",
-        answer: "You can repay your home loan over a maximum period of 20 years, subject to your age and income eligibility as assessed by the bank. The repayment tenure will not ordinarily extend beyond your retirement age or 65 years, whichever is earlier.\n\nSince EMI varies based on your loan amount, tenure, and the bank's current interest rate, we recommend using our <a href='/buyers-guide/?tab=emi' class='text-[#c32828] hover:underline underline-offset-4 decoration-1 decoration-[#c32828]'>EMI Calculator</a> on the <a href='/buyers-guide/' class='text-[#c32828] hover:underline underline-offset-4 decoration-1 decoration-[#c32828]'>Buyers Guide</a> page to get an instant personalised estimate — or simply speak to our team and we will work out the numbers for you."
-      }
-    ],
+  {
+    question: "1. Is it worth buying flats in Mangalore?",
+    answer: "Yes, buying an apartment in Mangalore is a strong investment for both self-use and long-term capital appreciation. As a growing commercial, educational, and healthcare hub, Mangaluru offers high rental yields, excellent coastal connectivity, and a superior quality of life compared to congested Tier-1 metros.\n\nTo get the best return and living experience, buyers should focus on low-density, premium developments in prime residential corridors like Kadri. Projects like Udbhav Chinmaya stand out by offering ultra-spacious 3 BHK and 4 BHK layouts with Vaastu compliance, and exclusive private amenities ensuring lasting property value, minimal maintenance, and higher resale demand."
+  },
+  {
+    question: "2. Where can I find apartments in Mangalore?",
+    answer: "You can find apartments across various neighborhoods in Mangaluru, but prime central localities like Kadri and Bejai are considered the most sought-after residential addresses. These areas provide a peaceful, green environment surrounded by independent homes while keeping you minutes away from top schools, hospitals, daily retail, and transit hubs.\n\nFor home-seekers looking for an exclusive apartment in Mangalore, Udbhav Chinmaya is located in the serene Chandrika Layout on Swami Vivekananda Road in Kadri. It offers a central urban location tucked away in a quiet, low-traffic neighborhood, providing the ideal balance of city connectivity and residential privacy."
+  },
+  {
+    question: "3. What are some new and upcoming flats in Mangalore?",
+    answer: "Among the top new and upcoming residential developments in Mangaluru, Udbhav Chinmaya by Udbhav Developers is a premier choice for home buyers seeking modern luxury and privacy.\n\nCurrently under active construction with a target possession date of December 2027, Udbhav Chinmaya is a RERA-approved, single-tower boutique project limited to just 40 exclusive luxury residences on 64 cents of land. Key features of this upcoming project include:\n- Spacious Layouts: 3 BHK and 4 BHK configurations ranging from 1,715 to 1,880+ sq. ft.\n- Rooftop & Wellness Amenities: A rooftop swimming pool, 2-floor private clubhouse, fully equipped gym, yoga room, and terrace party hall.\n- Advanced Infrastructure: 100% full-generator power backup, EV charging provisions, biometric access controls, and child-safe play zones."
+  },
+  {
+    question: "4. What is the difference between Carpet Area, Built-up, and Super Built-up Area?",
+    answer: "Carpet Area is the actual usable floor space inside your apartment — the area where you can lay a carpet. Built-up Area includes the carpet area plus the thickness of the walls. Super Built-up Area includes the built-up area along with your proportionate share of common spaces such as lobbies, staircases, and lift areas.\n\nAt Udbhav Chinmaya, the apartment sizes ranging from 1715 to 2255 sq.ft are quoted in Super Built-up Area. For exact carpet area details of your preferred unit, our team will walk you through the floor plan in detail during your site visit."
+  },
+  {
+    question: "5. How much loan can I avail for Udbhav Chinmaya?",
+    answer: "You can avail a home loan of up to 80% of the agreement value of your apartment. For example, on a ₹1.55 Crore* apartment, you may be eligible for a loan of up to ₹1.16 Crore, with the remaining amount payable as down payment.\n\nUdbhav Chinmaya is loan-approved by Karnataka Bank, Canara Bank & SBI — ensuring smooth processing and competitive interest rates. Our team provides end-to-end home loan assistance at no extra cost."
+  },
+  {
+    question: "6. What is Pre-EMI and how does it apply to Udbhav Chinmaya?",
+    answer: "Since Udbhav Chinmaya follows a construction-linked payment plan, your bank disburses the loan in stages as construction progresses. During this period, you only pay interest on the amount disbursed so far — this is called Pre-EMI. Your full EMI begins only after the complete loan amount is disbursed, typically closer to possession.\n\nThis means your financial outgo remains lower during the construction phase, giving you better control over your monthly budget until you take possession in December 2027."
+  },
+  {
+    question: "7. What tax benefits can I claim by taking a home loan for Udbhav Chinmaya?",
+    answer: "Taking a home loan for Udbhav Chinmaya makes you eligible for two significant tax deductions every financial year. Under Section 24, you can claim a deduction of up to ₹1.5* Lakhs on the interest component of your EMI. Under Section 80C, you can claim up to ₹1 Lakh on the principal repayment, within the overall 80C limit.\n\nThese deductions apply once you are in possession of your apartment. Over the loan tenure, this can result in substantial savings — effectively reducing the real cost of owning your home at Chinmaya."
+  },
+  {
+    question: "8. What documents should I verify before purchasing at Udbhav Chinmaya?",
+    answer: "Udbhav Chinmaya is a fully transparent and legally clear project. Key documents you should verify — and which are available on request — include the RERA Registration Certificate (PRM/KA/RERA/1257/334/PR/311225/008371), the approved building plan and layout, title documents, environmental clearance, and the commencement certificate.\n\nWe strongly encourage every buyer to review these documents before booking. Our team is available to walk you through each document and we recommend consulting your advocate for independent legal verification. Transparency is non-negotiable at Udbhav."
+  },
+  {
+    question: "9. Over how many years can I repay my home loan for this apartment?",
+    answer: "You can repay your home loan over a maximum period of 20 years, subject to your age and income eligibility as assessed by the bank. The repayment tenure will not ordinarily extend beyond your retirement age or 65 years, whichever is earlier.\n\nSince EMI varies based on your loan amount, tenure, and the bank's current interest rate, we recommend using our <a href='/buyers-guide/?tab=emi' class='text-[#c32828] hover:underline underline-offset-4 decoration-1 decoration-[#c32828]'>EMI Calculator</a> on the <a href='/buyers-guide/' class='text-[#c32828] hover:underline underline-offset-4 decoration-1 decoration-[#c32828]'>Buyers Guide</a> page to get an instant personalised estimate — or simply speak to our team and we will work out the numbers for you."
+  }
+],
     apartmentConfigurations: [
       { type: "3 BHK", area: "1715 - 1880 sq ft", image: "/src/assets/images/udbahv-chinmaya/gallery/udbhav-chinmaya-2.jpg" },
       { type: "4 BHK", area: "2255 sq ft", image: "/src/assets/images/udbahv-chinmaya/gallery/udbhav-chinmaya-3.jpg" }

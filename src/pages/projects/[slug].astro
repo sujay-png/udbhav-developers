@@ -593,16 +593,28 @@ const isRich = !!project.reraNo;
             </div>
 
             <!-- FAQs -->
-            {project.faqs && project.faqs.length > 0 && (
-              <div class="pt-20 pb-8">
-                <div class="text-center mb-10">
-                  <h2 class="font-display text-4xl text-ink">Frequently Asked Questions</h2>
-                </div>
-                <div class="bg-white rounded-3xl p-6 sm:p-10 border border-border shadow-sm">
-                  <Faq items={project.faqs.map(f => ({ q: f.question, a: f.answer }))} client:idle />
-                </div>
-              </div>
-            )}
+           {project.faqs && project.faqs.length > 0 && (
+  <div class="pt-20 pb-8">
+    <div class="text-left mb-10">
+      <h2 class="font-display text-4xl text-ink">Frequently Asked Questions</h2>
+    </div>
+    
+    <div class="bg-white rounded-3xl p-6 sm:p-10 border border-border shadow-sm flex flex-col gap-8">
+      {project.faqs.map((faq) => (
+        <div class="border-b border-border pb-6 last:border-0 last:pb-0">
+          <h2 class="text-xl font-semibold text-ink mb-3">
+            {faq.question}
+          </h2>
+          
+          <p 
+            class="text-base text-gray-700 font-normal leading-relaxed whitespace-pre-line"
+            set:html={faq.answer}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+)}
          </div>
         
         <!-- Right Column (Sticky Sidebar) -->
