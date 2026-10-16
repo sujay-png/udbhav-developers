@@ -286,7 +286,7 @@ const isRich = !!project.reraNo;
            <!-- Why Choose Us -->
            {project.whyChooseUs && (
              <div class="space-y-6">
-               <h2 class="font-display text-3xl text-ink">Why Choose {project.name}?</h2>
+               <h2 class="font-display text-3xl text-ink">Premium Flats For Sale In Mangalore</h2>
                <div class="prose prose-ink max-w-none text-ink/90 leading-relaxed">
                  <p>Finding a home in the city often means compromising — either on space, peace, or connectivity. {project.name} eliminates that compromise.</p>
                  <p>{project.whyChooseUs}</p>
@@ -298,57 +298,57 @@ const isRich = !!project.reraNo;
              </div>
            )}
 
-           <!-- How We Help -->
+           <!-- Our Process -->
            <div>
-             <h2 class="font-display text-3xl text-ink mb-8">How We Help</h2>
+             <h2 class="font-display text-3xl text-ink mb-8">Our Process</h2>
              <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-500">
-                   <Image src={propertySelectionImg} alt="Property Selection" class="w-12 h-12 mx-auto mb-4 object-contain" />
-                   <h4 class="font-bold text-sm text-clay mb-2">Property Selection</h4>
+                   <Image src={propertySelectionImg} alt="Unit Selection" class="w-12 h-12 mx-auto mb-4 object-contain" />
+                   <h3 class="font-bold text-sm text-clay mb-2">Unit Selection</h3>
                    <p class="text-[11px] text-ink/80 leading-relaxed">We assist you in identifying properties that perfectly align with your investment goals and personal preferences. Our team offers comprehensive information, virtual tours, and personalized support to ensure you make a confident and informed decision.</p>
                 </div>
                 <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-500">
                    <Image src={legalFinanceImg} alt="Legal and Financial Assistance" class="w-12 h-12 mx-auto mb-4 object-contain" />
-                   <h4 class="font-bold text-sm text-clay mb-2">Legal and Financial Assistance</h4>
+                   <h3 class="font-bold text-sm text-clay mb-2">Legal and Financial Assistance</h3>
                    <p class="text-[11px] text-ink/80 leading-relaxed">Our experts provide comprehensive guidance on the legal and financial aspects of property investment, ensuring full compliance with regulations and facilitating smooth, hassle-free transactions.</p>
                 </div>
                 <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-500">
                    <Image src={postPurchaseImg} alt="Post-Purchase Support" class="w-12 h-12 mx-auto mb-4 object-contain" />
-                   <h4 class="font-bold text-sm text-clay mb-2">Post-Purchase Support</h4>
+                   <h3 class="font-bold text-sm text-clay mb-2">Post-Purchase Support</h3>
                    <p class="text-[11px] text-ink/80 leading-relaxed">Our commitment to you goes beyond the purchase. We provide comprehensive post-purchase support, including property management, rental assistance, and resale services, ensuring your investment remains valuable, well-maintained, and rewarding.</p>
                 </div>
              </div>
            </div>
 
-           <!-- Apartment Configuration -->
+           <!-- Mangalore Apartment Configuration -->
            <div>
-             <h2 class="font-display text-3xl text-ink mb-1 inline-block">Apartment Configuration</h2>
+             <h2 class="font-display text-3xl text-ink mb-1 inline-block">Mangalore Apartment Configuration</h2>
              <div class="h-1 w-24 bg-yellow-400 mb-8 mt-2"></div>
              
              <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
                 <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center gap-3 h-32">
                    <Image src={propertySelectionImg} alt="Configuration" class="w-10 h-10 object-contain" />
-                   <h4 class="font-bold text-xs text-clay">{project.configurations}</h4>
+                   <h3 class="font-bold text-xs text-clay">{project.configurations}</h3>
                 </div>
                 <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center gap-3 h-32">
                    <Image src={propertySelectionImg} alt="Total Units" class="w-10 h-10 object-contain" />
-                   <h4 class="font-bold text-xs text-clay">Total Units: {project.totalUnits}</h4>
+                   <h3 class="font-bold text-xs text-clay">Total Units: {project.totalUnits}</h3>
                 </div>
                 <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center gap-3 h-32">
                    <Image src={groundStructureImg} alt="Structure" class="w-10 h-10 object-contain" />
-                   <h4 class="font-bold text-xs text-clay">Structure: Ground + 5 Floors</h4>
+                   <h3 class="font-bold text-xs text-clay">Structure: Ground + 5 Floors</h3>
                 </div>
                 <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center gap-3 h-32">
                    <Image src={projectAreaImg} alt="Project Area" class="w-10 h-10 object-contain" />
-                   <h4 class="font-bold text-xs text-clay">Project Area: {project.developmentSize}</h4>
+                   <h3 class="font-bold text-xs text-clay">Project Area: {project.developmentSize}</h3>
                 </div>
                 <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center gap-3 h-32">
                    <Image src={postPurchaseImg} alt="Possession" class="w-10 h-10 object-contain" />
-                   <h4 class="font-bold text-xs text-clay">Possession: {project.completionDate}</h4>
+                   <h3 class="font-bold text-xs text-clay">Possession: {project.completionDate}</h3>
                 </div>
                 <div class="bg-white rounded-2xl border border-border p-6 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center gap-3 h-32">
                    <Image src={groundStructureImg} alt="Price" class="w-10 h-10 object-contain" />
-                   <h4 class="font-bold text-xs text-clay">Starts From {project.price}</h4>
+                   <h3 class="font-bold text-xs text-clay">Starts From {project.price}</h3>
                 </div>
              </div>
            </div>
@@ -356,7 +356,7 @@ const isRich = !!project.reraNo;
            <!-- Plans -->
            {project.floorPlans && project.floorPlans.length > 0 && (
              <div>
-               <h2 class="font-display text-3xl text-ink mb-6">Plans</h2>
+               <h2 class="font-display text-3xl text-ink mb-6">Premium Apartment Floor Plan</h2>
                
                <div class="flex items-center justify-between mb-8">
                  <div class="flex flex-wrap gap-3 filter-buttons">
@@ -390,7 +390,7 @@ const isRich = !!project.reraNo;
                             )}
                           </div>
                           <div class="p-4 text-center bg-white">
-                            <h4 class="font-display text-sm font-bold text-ink">{plan.title}</h4>
+                            <h3 class="font-display text-sm font-bold text-ink">{plan.title}</h3>
                           </div>
                         </div>
                       )
@@ -417,7 +417,7 @@ const isRich = !!project.reraNo;
             <!-- Special Amenities -->
             {project.amenities && project.amenities.length > 0 && (
               <div class="space-y-6 pt-12">
-                <h2 class="font-display text-4xl text-ink text-center mb-10">Special Amenities</h2>
+                <h2 class="font-display text-4xl text-ink text-center mb-10">Special Amenities of Udbhav Chinmaya</h2>
                 
                 <div class="relative overflow-hidden group shadow-md bg-ink rounded-xl">
                   <div id="amenities-carousel" class="flex transition-transform duration-500 ease-out aspect-[4/3] md:aspect-video">
@@ -549,37 +549,37 @@ const isRich = !!project.reraNo;
               
               {project.whyChooseUs && (
                 <div class="space-y-8">
-                  <h2 class="font-display text-4xl text-ink">Why Invest Now?</h2>
+                  <h2 class="font-display text-4xl text-ink">Why Invest In Mangalore Luxury Apartment?</h2>
                   <div class="space-y-5">
                     <div class="flex items-start gap-4">
                       <div class="mt-1 flex-shrink-0 text-[#c32828] bg-[#c32828]/10 p-1 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd" /></svg>
                       </div>
-                      <p class="text-[15px] text-ink font-medium">Prime Kadri location with limited land availability</p>
+                      <h3 class="text-[15px] text-ink font-medium">Prime Kadri location with limited land availability</h3>
                     </div>
                     <div class="flex items-start gap-4">
                       <div class="mt-1 flex-shrink-0 text-[#c32828] bg-[#c32828]/10 p-1 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd" /></svg>
                       </div>
-                      <p class="text-[15px] text-ink font-medium">Only 40 exclusive apartments — low-density living</p>
+                      <h3 class="text-[15px] text-ink font-medium">Only 40 exclusive luxury apartments — low-density living</h3>
                     </div>
                     <div class="flex items-start gap-4">
                       <div class="mt-1 flex-shrink-0 text-[#c32828] bg-[#c32828]/10 p-1 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd" /></svg>
                       </div>
-                      <p class="text-[15px] text-ink font-medium">Premium construction & branded fittings</p>
+                      <h3 class="text-[15px] text-ink font-medium">Premium construction & branded fittings</h3>
                     </div>
                     <div class="flex items-start gap-4">
                       <div class="mt-1 flex-shrink-0 text-[#c32828] bg-[#c32828]/10 p-1 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd" /></svg>
                       </div>
-                      <p class="text-[15px] text-ink font-medium">Strong appreciation potential</p>
+                      <h3 class="text-[15px] text-ink font-medium">Strong appreciation potential</h3>
                     </div>
                     <div class="flex items-start gap-4">
                       <div class="mt-1 flex-shrink-0 text-[#c32828] bg-[#c32828]/10 p-1 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd" /></svg>
                       </div>
-                      <p class="text-[15px] text-ink font-medium">Ideal for self-use and long-term investment</p>
+                      <h3 class="text-[15px] text-ink font-medium">Ideal for self-use and long-term investment</h3>
                     </div>
                   </div>
                   
@@ -593,16 +593,28 @@ const isRich = !!project.reraNo;
             </div>
 
             <!-- FAQs -->
-            {project.faqs && project.faqs.length > 0 && (
-              <div class="pt-20 pb-8">
-                <div class="text-center mb-10">
-                  <h2 class="font-display text-4xl text-ink">Frequently Asked Questions</h2>
-                </div>
-                <div class="bg-white rounded-3xl p-6 sm:p-10 border border-border shadow-sm">
-                  <Faq items={project.faqs.map(f => ({ q: f.question, a: f.answer }))} client:idle />
-                </div>
-              </div>
-            )}
+           {project.faqs && project.faqs.length > 0 && (
+  <div class="pt-20 pb-8">
+    <div class="text-left mb-10">
+      <h2 class="font-display text-4xl text-ink">Frequently Asked Questions</h2>
+    </div>
+    
+    <div class="bg-white rounded-3xl p-6 sm:p-10 border border-border shadow-sm flex flex-col gap-8">
+      {project.faqs.map((faq) => (
+        <div class="border-b border-border pb-6 last:border-0 last:pb-0">
+          <h2 class="text-xl font-semibold text-ink mb-3">
+            {faq.question}
+          </h2>
+          
+          <p 
+            class="text-base text-gray-700 font-normal leading-relaxed whitespace-pre-line"
+            set:html={faq.answer}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+)}
          </div>
         
         <!-- Right Column (Sticky Sidebar) -->
