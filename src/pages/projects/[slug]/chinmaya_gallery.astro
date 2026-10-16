@@ -46,12 +46,12 @@ const allImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/imag
                 const imgObj = allImages[imgSrc]?.default;
                 return (
                 <div class="w-[calc(100%-8px)] sm:w-[calc((100%-24px)/2)] md:w-[calc((100%-48px)/3)] lg:w-[calc((100%-72px)/4)] flex-shrink-0 group snap-center sm:snap-start">
-                  <div class="relative overflow-hidden rounded-2xl aspect-[3/2] bg-ink/5 shadow-sm border border-border">
+                  <div class="relative overflow-hidden rounded-2xl aspect-[3/2] bg-ink/5 shadow-sm border border-border p-0">
                     {imgObj ? (
                       <Image
                         src={imgObj}
                         alt={`${update.title} - Photo ${imgIdx + 1}`}
-                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        class="absolute inset-0 block h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                         widths={[320, 640]}
                         sizes="(max-width: 640px) 320px, 640px"
@@ -60,7 +60,7 @@ const allImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/imag
                       <img
                         src={imgSrc}
                         alt={`${update.title} - Photo ${imgIdx + 1}`}
-                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        class="absolute inset-0 block h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                       />
                     )}

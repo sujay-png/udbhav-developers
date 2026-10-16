@@ -83,6 +83,7 @@ export type Project = {
     title: string;
     images: string[];
   }[];
+  sublinks?: { title: string; href: string }[];
 };
 
 export type Media = {
@@ -102,6 +103,12 @@ export const projects: Project[] = [
   {
     slug: "udbhav-chinmaya",
     name: "Udbhav Chinmaya",
+    sublinks: [
+      {
+        title: "3BHK Kadri",
+        href: "/projects/udbhav-chinmaya/3-bhk-for-sale-kadri-mangalore/",
+      },
+    ],
     seoTitle: "Luxury Apartments For Sale In Mangalore",
     seoDescription: "RERA approved luxury flats for sale in Mangalore. This new premium apartment is located at Chandrika layout, Swami Vevikananda road, Kadri Mangalore. Starting @ ₹1.60* Cr onwards.",
     category: "Residential",
@@ -463,6 +470,33 @@ export const projects: Project[] = [
           "/src/assets/images/udbahv-chinmaya/september 2026/WhatsApp Image 2026-09-10 at 5.13.40 PM (1).webp",
           "/src/assets/images/udbahv-chinmaya/september 2026/WhatsApp Image 2026-09-10 at 5.13.40 PM (2).webp",
           "/src/assets/images/udbahv-chinmaya/september 2026/WhatsApp Image 2026-09-10 at 5.13.40 PM.webp"
+        ]
+      },
+      {
+        title: "Project Updates ( October 13th 2026 )",
+        images: [
+          "/src/assets/images/udbahv-chinmaya/oct 2026/udbhav-chimaya.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/ongoing-apartment-project.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/mangaloreapartments.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3229.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3225.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3223.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3211.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3209.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3196.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3187.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3175.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3169.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3152.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3149.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3146.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3143.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3141.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3134.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3130.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3127.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3125.webp",
+          "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3120.webp"
         ]
       }
 
