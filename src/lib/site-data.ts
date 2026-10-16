@@ -997,8 +997,8 @@ export const pageSeoData: Record<string, { seoTitle: string; seoDescription: str
     seoDescription: "Privacy Policy, Terms & Conditions, Refund Policy, and Cookie Policy for Udbhav Developers.",
   },
   ourProjects: {
-    seoTitle: "Projects Archive",
-    seoDescription: "At Udbhav Developers, we stand for excellence, integrity, and innovation in the development of premium residential apartments, commercial spaces, and retail shops.",
+    seoTitle: "Best apartments in mangalore | udbhav developers",
+    seoDescription: "Find the best apartments in Mangalore by Udbhav Developers. Explore spacious 3 & 4 BHK luxury flats in prime locations with world-class modern amenities.",
   },
   thankYou: {
     seoTitle: "Thank You",
