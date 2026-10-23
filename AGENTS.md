@@ -1,4 +1,4 @@
-## Development
+<!-- ## Development
 
 When starting the dev server, use background mode:
 
@@ -555,4 +555,4 @@ Write 3-5 short steps on how the work was done:
 - Maximum 1 page. Short sentences. Simple words.
 - Use the same format every time.
 - Leave out any empty group (for example, no "Deleted" if nothing was deleted).
-- Do not add anything I did not do.
+- Do not add anything I did not do. -->

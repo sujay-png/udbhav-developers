@@ -5,6 +5,7 @@ import ArtPanel from "@/components/ArtPanel.astro";
 import { Icon } from "@/components/Icon";
 import { getAllPosts, formatDate, estimateReadTime } from "@/lib/wordpress";
 import { SidebarEnquiryForm } from "@/components/SidebarEnquiryForm";
+import "swiper/css/bundle";
 
 export const prerender = true;
 export async function getStaticPaths() {
@@ -97,22 +98,17 @@ if (blockquotes.length > 0) {
 // 3. Prepare Elementor Nested Floor Plan Carousels
 $('.elementor-invisible').removeClass('elementor-invisible');
 
+// 4. Strip Elementor's baked-in swiper-initialized class so our JS can re-init cleanly
+$('.swiper-initialized').removeClass('swiper-initialized');
+
 // Remove broken Elementor action links wrapping images
 $('a[href*="elementor-action"], a[data-elementor-open-lightbox]').each((_, a) => {
   $(a).replaceWith($(a).children());
 });
 
-$('.elementor-widget-n-carousel, .elementor-widget-nested-carousel').each((_, el) => {
-  const widget = $(el);
-  const prevBtn = widget.find('.elementor-swiper-button-prev');
-  const nextBtn = widget.find('.elementor-swiper-button-next');
-  if (prevBtn.length > 0) {
-    prevBtn.empty().append('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>');
-  }
-  if (nextBtn.length > 0) {
-    nextBtn.empty().append('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>');
-  }
-});
+// Replace empty/broken font icons in all carousel prev/next buttons with crisp SVGs
+$('.elementor-swiper-button-prev, .swiper-button-prev').empty().append('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>');
+$('.elementor-swiper-button-next, .swiper-button-next').empty().append('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>');
 
 // Ensure all slide images retain high quality descriptive alt text and clean click trigger
 $('.swiper-slide').each((_, slideEl) => {
@@ -232,28 +228,32 @@ contentHtml = $.html();
   </div>
 
   <script>
-    import Swiper from "swiper/bundle";
+    import Swiper from "swiper";
+    import { Navigation, Pagination, Autoplay } from "swiper/modules";
     import "swiper/css/bundle";
 
-    // Client-side script to handle toggles (TOC and Accordions)
-    document.addEventListener('DOMContentLoaded', () => {
-      
-      // Initialize Blog Testimonial Swiper (Custom blockquotes & ElementsKit native carousels)
-      const testimonialSwipers = document.querySelectorAll('.blog-testimonial-swiper, .ekit-main-swiper');
+    // Centralized Global Carousel Initializer for all blog carousels
+    function initBlogCarousels() {
+      const PREV_SVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>';
+      const NEXT_SVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+
+      // 1. Initialize Blog Testimonial Swipers (Custom blockquotes & ElementsKit native carousels)
+      const testimonialSwipers = document.querySelectorAll<HTMLElement>('.blog-testimonial-swiper, .ekit-main-swiper');
       testimonialSwipers.forEach(el => {
-        // If it's an ElementsKit slider, it might not have the pagination div
+        if ((el as any).swiper || el.classList.contains('swiper-initialized')) return;
+
         if (!el.querySelector('.swiper-pagination')) {
           const pagination = document.createElement('div');
           pagination.className = 'swiper-pagination';
           el.appendChild(pagination);
         }
         
-        // Ensure ElementsKit sliders get our pagination styling class
         if (el.classList.contains('ekit-main-swiper')) {
           el.classList.add('blog-testimonial-swiper');
         }
 
-        new Swiper(el as HTMLElement, {
+        new Swiper(el, {
+          modules: [Navigation, Pagination, Autoplay],
           slidesPerView: 1,
           spaceBetween: 20,
           loop: true,
@@ -269,36 +269,82 @@ contentHtml = $.html();
         });
       });
 
-      // Initialize Elementor Nested Floor Plan Carousel
-      const nestedCarousels = document.querySelectorAll('.elementor-widget-n-carousel, .elementor-widget-nested-carousel, .e-n-carousel');
-      nestedCarousels.forEach(widget => {
-        const swiperEl = widget.classList.contains('swiper') ? widget : widget.querySelector('.swiper');
+      // 2. Universal Handler for Elementor Image Carousels, Nested Carousels, Media Carousels, and generic article swipers
+      const carouselContainers = document.querySelectorAll<HTMLElement>(
+        '.elementor-widget-image-carousel, .elementor-widget-n-carousel, .elementor-widget-nested-carousel, .elementor-widget-media-carousel, .elementor-image-carousel-wrapper, article .swiper:not(.blog-testimonial-swiper):not(.ekit-main-swiper)'
+      );
+
+      carouselContainers.forEach(container => {
+        const swiperEl = container.classList.contains('swiper')
+          ? container
+          : container.querySelector<HTMLElement>('.swiper');
+
         if (!swiperEl) return;
+        if ((swiperEl as any).swiper || swiperEl.classList.contains('swiper-initialized')) return;
 
-        const prevBtn = widget.querySelector('.elementor-swiper-button-prev') as HTMLElement | null;
-        const nextBtn = widget.querySelector('.elementor-swiper-button-next') as HTMLElement | null;
-        const paginationEl = widget.querySelector('.swiper-pagination') as HTMLElement | null;
+        const slides = swiperEl.querySelectorAll('.swiper-slide');
+        if (slides.length === 0) return;
 
-        new Swiper(swiperEl as HTMLElement, {
+        const parentWidget = swiperEl.closest('.elementor-widget') || swiperEl.parentElement;
+
+        const prevBtn = swiperEl.querySelector<HTMLElement>('.elementor-swiper-button-prev, .swiper-button-prev')
+          || parentWidget?.querySelector<HTMLElement>('.elementor-swiper-button-prev, .swiper-button-prev') || null;
+        const nextBtn = swiperEl.querySelector<HTMLElement>('.elementor-swiper-button-next, .swiper-button-next')
+          || parentWidget?.querySelector<HTMLElement>('.elementor-swiper-button-next, .swiper-button-next') || null;
+
+        // Ensure navigation buttons have crisp SVG icons if missing
+        if (prevBtn && !prevBtn.querySelector('svg')) {
+          prevBtn.innerHTML = PREV_SVG;
+        }
+        if (nextBtn && !nextBtn.querySelector('svg')) {
+          nextBtn.innerHTML = NEXT_SVG;
+        }
+
+        const paginationEl = swiperEl.querySelector<HTMLElement>('.swiper-pagination')
+          || parentWidget?.querySelector<HTMLElement>('.swiper-pagination') || null;
+
+        const hasMultipleSlides = slides.length > 1;
+
+        new Swiper(swiperEl, {
+          modules: [Navigation, Pagination, Autoplay],
           slidesPerView: 1,
           spaceBetween: 24,
-          loop: true,
-          speed: 600, // Smooth 0.6s slide animation
-          autoplay: {
-            delay: 4000, // Move to next slide every 4 seconds
+          loop: hasMultipleSlides,
+          speed: 600,
+          observer: true,
+          observeParents: true,
+          resizeObserver: true,
+          grabCursor: true,
+          autoplay: hasMultipleSlides ? {
+            delay: 4000,
             disableOnInteraction: false,
-            pauseOnMouseEnter: true, // Pause auto-rotation on hover / touch
-          },
-          navigation: {
+            pauseOnMouseEnter: true,
+          } : false,
+          navigation: hasMultipleSlides && prevBtn && nextBtn ? {
             prevEl: prevBtn,
             nextEl: nextBtn,
-          },
-          pagination: {
+          } : undefined,
+          pagination: hasMultipleSlides && paginationEl ? {
             el: paginationEl,
             clickable: true,
-          },
+          } : undefined,
         });
       });
+    }
+
+    // Attach to window so it is accessible as a global function everywhere
+    (window as any).initBlogCarousels = initBlogCarousels;
+
+    // Run carousel initializer immediately or on DOM ready, plus Astro page navigation
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initBlogCarousels);
+    } else {
+      initBlogCarousels();
+    }
+    document.addEventListener('astro:page-load', initBlogCarousels);
+
+    // Client-side script to handle toggles (TOC and Accordions)
+    document.addEventListener('DOMContentLoaded', () => {
 
       // Lightbox preview logic
       const lightbox = document.getElementById('blog-lightbox');
@@ -785,6 +831,48 @@ contentHtml = $.html();
     margin: 0.5rem 0 0 0 !important;
     line-height: 1.4 !important;
   }
+  /* Elementor Image Carousel Styling */
+  .prose-content .elementor-widget-image-carousel {
+    position: relative;
+    margin: 2.5rem 0 !important;
+  }
+  .prose-content .elementor-widget-image-carousel .elementor-image-carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  }
+  .prose-content .elementor-widget-image-carousel .swiper-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    transition-property: transform !important;
+    box-sizing: content-box;
+  }
+  .prose-content .elementor-widget-image-carousel .swiper-slide {
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .prose-content .elementor-widget-image-carousel .swiper-slide figure {
+    margin: 0;
+    width: 100%;
+  }
+  .prose-content .elementor-widget-image-carousel .swiper-slide img {
+    width: 100%;
+    max-height: 520px;
+    object-fit: cover;
+    border-radius: 1rem;
+    display: block;
+    margin: 0 !important;
+    cursor: zoom-in !important;
+    transition: transform 0.3s ease;
+  }
+  .prose-content .elementor-widget-image-carousel .swiper-slide img:hover {
+    transform: scale(1.01);
+  }
+
   /* Small Left and Right Navigation Arrows */
   .prose-content .elementor-swiper-button {
     position: absolute;
@@ -803,6 +891,18 @@ contentHtml = $.html();
     z-index: 10;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     transition: all 0.25s ease;
+    pointer-events: auto;
+  }
+  .prose-content .elementor-swiper-button * {
+    pointer-events: none;
+  }
+  .prose-content .elementor-swiper-button svg {
+    width: 18px !important;
+    height: 18px !important;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    fill: none;
+    flex-shrink: 0;
   }
   .prose-content .elementor-swiper-button:hover {
     background: #B02317;
@@ -815,6 +915,32 @@ contentHtml = $.html();
   }
   .prose-content .elementor-swiper-button-next {
     right: 0.25rem;
+  }
+
+  /* Image Carousel Arrow Overrides (Centered vertically inside image) */
+  .prose-content .elementor-widget-image-carousel .elementor-swiper-button {
+    top: 50%;
+  }
+  .prose-content .elementor-widget-image-carousel .elementor-swiper-button-prev,
+  .prose-content .elementor-arrows-position-inside .elementor-swiper-button-prev {
+    left: 1rem;
+  }
+  .prose-content .elementor-widget-image-carousel .elementor-swiper-button-next,
+  .prose-content .elementor-arrows-position-inside .elementor-swiper-button-next {
+    right: 1rem;
+  }
+  @media (max-width: 640px) {
+    .prose-content .elementor-widget-image-carousel .swiper-slide img {
+      max-height: 320px;
+    }
+    .prose-content .elementor-widget-image-carousel .elementor-swiper-button-prev,
+    .prose-content .elementor-arrows-position-inside .elementor-swiper-button-prev {
+      left: 0.5rem;
+    }
+    .prose-content .elementor-widget-image-carousel .elementor-swiper-button-next,
+    .prose-content .elementor-arrows-position-inside .elementor-swiper-button-next {
+      right: 0.5rem;
+    }
   }
   /* Small Dots Below the Text */
   .prose-content .elementor-widget-n-carousel .swiper-pagination,
