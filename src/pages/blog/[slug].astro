@@ -98,8 +98,22 @@ if (blockquotes.length > 0) {
 // 3. Prepare Elementor Nested Floor Plan Carousels
 $('.elementor-invisible').removeClass('elementor-invisible');
 
-// 4. Strip Elementor's baked-in swiper-initialized class so our JS can re-init cleanly
+// 4. Strip ALL Elementor-baked Swiper state so our JS can re-init cleanly
+// a) Remove swiper-initialized class — our guard skips any element with this class
 $('.swiper-initialized').removeClass('swiper-initialized');
+// b) Remove stale inline transform/width on swiper-wrapper — Swiper recalculates these on init
+//    Without this, the wrapper stays at Elementor's old offset and slides can't move
+$('.swiper-wrapper').each((_, el) => {
+  $(el).removeAttr('style');
+});
+// c) Remove stale inline width/margin on each slide — Swiper sets these fresh on init
+//    Stale values cause wrong slide widths, breaking navigation
+$('.swiper-slide').each((_, el) => {
+  const $el = $(el);
+  $el.removeAttr('style');
+  // Also strip Elementor's per-slide state classes that confuse Swiper
+  $el.removeClass('swiper-slide-active swiper-slide-next swiper-slide-prev swiper-slide-visible swiper-slide-fully-visible swiper-slide-duplicate swiper-slide-duplicate-active swiper-slide-duplicate-next swiper-slide-duplicate-prev');
+});
 
 // Remove broken Elementor action links wrapping images
 $('a[href*="elementor-action"], a[data-elementor-open-lightbox]').each((_, a) => {
@@ -228,8 +242,7 @@ contentHtml = $.html();
   </div>
 
   <script>
-    import Swiper from "swiper";
-    import { Navigation, Pagination, Autoplay } from "swiper/modules";
+    import Swiper from "swiper/bundle";
     import "swiper/css/bundle";
 
     // Centralized Global Carousel Initializer for all blog carousels
@@ -253,7 +266,6 @@ contentHtml = $.html();
         }
 
         new Swiper(el, {
-          modules: [Navigation, Pagination, Autoplay],
           slidesPerView: 1,
           spaceBetween: 20,
           loop: true,
@@ -274,23 +286,31 @@ contentHtml = $.html();
         '.elementor-widget-image-carousel, .elementor-widget-n-carousel, .elementor-widget-nested-carousel, .elementor-widget-media-carousel, .elementor-image-carousel-wrapper, article .swiper:not(.blog-testimonial-swiper):not(.ekit-main-swiper)'
       );
 
-      carouselContainers.forEach(container => {
+      console.log('[DEBUG] carouselContainers found:', carouselContainers.length);
+
+      carouselContainers.forEach((container, idx) => {
+        console.log(`[DEBUG] Container #${idx}:`, container.className, container.tagName);
+        
         const swiperEl = container.classList.contains('swiper')
           ? container
           : container.querySelector<HTMLElement>('.swiper');
 
-        if (!swiperEl) return;
-        if ((swiperEl as any).swiper || swiperEl.classList.contains('swiper-initialized')) return;
+        if (!swiperEl) { console.log(`[DEBUG] #${idx} — no swiperEl found, skipping`); return; }
+        if ((swiperEl as any).swiper || swiperEl.classList.contains('swiper-initialized')) { console.log(`[DEBUG] #${idx} — already initialized, skipping`); return; }
 
         const slides = swiperEl.querySelectorAll('.swiper-slide');
-        if (slides.length === 0) return;
+        if (slides.length === 0) { console.log(`[DEBUG] #${idx} — 0 slides, skipping`); return; }
+        console.log(`[DEBUG] #${idx} — ${slides.length} slides found`);
 
         const parentWidget = swiperEl.closest('.elementor-widget') || swiperEl.parentElement;
+        console.log(`[DEBUG] #${idx} — parentWidget:`, parentWidget?.className);
 
         const prevBtn = swiperEl.querySelector<HTMLElement>('.elementor-swiper-button-prev, .swiper-button-prev')
           || parentWidget?.querySelector<HTMLElement>('.elementor-swiper-button-prev, .swiper-button-prev') || null;
         const nextBtn = swiperEl.querySelector<HTMLElement>('.elementor-swiper-button-next, .swiper-button-next')
           || parentWidget?.querySelector<HTMLElement>('.elementor-swiper-button-next, .swiper-button-next') || null;
+
+        console.log(`[DEBUG] #${idx} — prevBtn:`, prevBtn?.className, '| nextBtn:', nextBtn?.className);
 
         // Ensure navigation buttons have crisp SVG icons if missing
         if (prevBtn && !prevBtn.querySelector('svg')) {
@@ -304,31 +324,37 @@ contentHtml = $.html();
           || parentWidget?.querySelector<HTMLElement>('.swiper-pagination') || null;
 
         const hasMultipleSlides = slides.length > 1;
+        console.log(`[DEBUG] #${idx} — hasMultiple: ${hasMultipleSlides}, pagination: ${!!paginationEl}`);
+        console.log(`[DEBUG] #${idx} — swiperEl outerHTML (first 500):`, swiperEl.outerHTML.substring(0, 500));
 
-        new Swiper(swiperEl, {
-          modules: [Navigation, Pagination, Autoplay],
-          slidesPerView: 1,
-          spaceBetween: 24,
-          loop: hasMultipleSlides,
-          speed: 600,
-          observer: true,
-          observeParents: true,
-          resizeObserver: true,
-          grabCursor: true,
-          autoplay: hasMultipleSlides ? {
-            delay: 4000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          } : false,
-          navigation: hasMultipleSlides && prevBtn && nextBtn ? {
-            prevEl: prevBtn,
-            nextEl: nextBtn,
-          } : undefined,
-          pagination: hasMultipleSlides && paginationEl ? {
-            el: paginationEl,
-            clickable: true,
-          } : undefined,
-        });
+        try {
+          const instance = new Swiper(swiperEl, {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            loop: hasMultipleSlides,
+            speed: 600,
+            observer: true,
+            observeParents: true,
+            resizeObserver: true,
+            grabCursor: true,
+            autoplay: hasMultipleSlides ? {
+              delay: 4000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            } : false,
+            navigation: hasMultipleSlides && prevBtn && nextBtn ? {
+              prevEl: prevBtn,
+              nextEl: nextBtn,
+            } : false,
+            pagination: hasMultipleSlides && paginationEl ? {
+              el: paginationEl,
+              clickable: true,
+            } : false,
+          });
+          console.log(`[DEBUG] #${idx} — Swiper created OK. slides:`, instance.slides?.length, 'navigation:', !!(instance.params?.navigation));
+        } catch (err) {
+          console.error(`[DEBUG] #${idx} — Swiper FAILED:`, err);
+        }
       });
     }
 
