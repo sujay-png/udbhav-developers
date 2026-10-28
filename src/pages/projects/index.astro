@@ -1,20 +1,216 @@
 ---
 import { pageSeoData } from "@/lib/site-data";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Eyebrow from "@/components/Eyebrow.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
 import CtaBanner from "@/components/sections/CtaBanner.astro";
 import { projects } from "@/lib/site-data";
 
 const filters = ["All Projects", "Ongoing", "Completed", "Residential", "Commercial"];
+
+const investmentAreas = [
+  {
+    tag: "Kadri & Shivabhag",
+    title: "Kadri & Shivabhag",
+    sublabel: "Residential · Premium",
+    description:
+      "These areas are often seen as the best in Mangaluru for residential properties. They mix old-world charm with calm, tree-lined streets and are close to top healthcare, fine dining, and excellent schools.",
+  },
+  {
+    tag: "Kottara Chowki",
+    title: "Kottara Chowki",
+    sublabel: "Commercial · Prime Transit",
+    description:
+      "This area is a key hub for commerce and transportation. Near main highways, it is ideal for retail businesses, corporate offices, and other ventures that need high visibility and foot traffic.",
+  },
+  {
+    tag: "Nantoor",
+    title: "Nantoor",
+    sublabel: "Residential · Greenery",
+    description:
+      "This busy central area is surrounded by greenery, offering a peaceful and convenient lifestyle. It's ideal for families looking for high-quality homes, and our development is a great option here.",
+  },
+];
+
+const commitments = [
+  {
+    title: "Strict RERA Compliance",
+    description:
+      "All our ongoing projects have full RERA approvals and clear ownership, making it easier to get loans from major banks like Karnataka Bank.",
+  },
+  {
+    title: "Architectural Excellence",
+    description:
+      "Our designs use natural cross-ventilation and plenty of natural light. We use high-quality materials and top engineering standards to create long-lasting, elegant homes that improve your lifestyle and maintain their value for many years.",
+  },
+  {
+    title: "Sustainable Engineering",
+    description:
+      "We include features like rainwater harvesting and eco-friendly building methods. These help reduce environmental impact and keep future maintenance costs low.",
+  },
+];
+
+const projectsSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.udbhavdevelopers.com/projects/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.udbhavdevelopers.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://www.udbhavdevelopers.com/projects/"
+        }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://www.udbhavdevelopers.com/projects/#webpage",
+      "url": "https://www.udbhavdevelopers.com/projects/",
+      "name": "Rera Approved Real Estate Project In Mangalore",
+      "description": "Explore RERA approved real estate projects in Mangalore by Udbhav Developers. Discover premier residencies and commercial spaces in prime locations.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://www.udbhavdevelopers.com/#website",
+        "name": "Udbhav Developers",
+        "url": "https://www.udbhavdevelopers.com/"
+      },
+      "about": {
+        "@id": "https://www.udbhavdevelopers.com/#organization"
+      }
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://www.udbhavdevelopers.com/projects/#itemlist",
+      "name": "Real Estate Projects in Mangalore by Udbhav Developers",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "ApartmentComplex",
+            "name": "Udbhav Chinmaya",
+            "url": "https://www.udbhavdevelopers.com/projects/udbhav-chinmaya/",
+            "description": "RERA-approved luxury 3 & 4 BHK apartments located in Chandrika Layout, Swami Vivekananda Road, Kadri, Mangalore.",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Chandrika Layout, Swami Vivekananda Road, Kadri",
+              "addressLocality": "Mangaluru",
+              "addressRegion": "Karnataka",
+              "postalCode": "575002",
+              "addressCountry": "IN"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "ApartmentComplex",
+            "name": "Udbhav Shanthi",
+            "url": "https://www.udbhavdevelopers.com/projects/udbhav-shanthi/",
+            "description": "Delivered boutique residential project in Kadri, Mangaluru (Completed 2023)."
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "CommercialBuilding",
+            "name": "Udbhav Square",
+            "url": "https://www.udbhavdevelopers.com/projects/udbhav-square/",
+            "description": "Modern commercial property and retail hub in Kottara Chowki, Mangaluru."
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "ApartmentComplex",
+            "name": "KRK Aayush",
+            "description": "Delivered residential apartment project in Urwa, Mangaluru (Completed 2022)."
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "ApartmentComplex",
+            "name": "Marcel's Maison",
+            "description": "Delivered premium residential development in Valencia, Mangaluru (Completed 2025)."
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "ApartmentComplex",
+            "name": "Bhaskar Coconut Groves",
+            "description": "Delivered residential project in Nantoor / Maroli area, Mangaluru (Completed 2015)."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://www.udbhavdevelopers.com/#organization",
+      "name": "Udbhav Developers",
+      "url": "https://www.udbhavdevelopers.com/",
+      "logo": "https://www.udbhavdevelopers.com/assets/images/logo.png",
+      "telephone": "+91-9845082466",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "name": "CREDAI (Confederation of Real Estate Developers' Associations of India)",
+          "sameAs": "https://credai.org/"
+        }
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Mr. B.K. Kiran",
+        "jobTitle": "Founder & Managing Director",
+        "description": "Qualified Civil Engineer with over two decades of domestic and international real estate development and structural engineering expertise."
+      },
+      "knowsAbout": [
+        "RERA Approved Real Estate Projects in Mangalore",
+        "Civil Engineering Standards",
+        "Structural Quality Auditing",
+        "Luxury Residential Construction"
+      ],
+      "areaServed": {
+        "@type": "City",
+        "name": "Mangaluru"
+      }
+    }
+  ]
+};
 ---
 
 <BaseLayout seoTitle={pageSeoData.ourProjects.seoTitle} seoDescription={pageSeoData.ourProjects.seoDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(projectsSchema)} />
   <section class="mx-auto max-w-[1400px] px-5 pb-10 pt-16 md:px-10 md:pt-24">
-    <Eyebrow>Our Work</Eyebrow>
-    <h1 class="mt-4 max-w-2xl text-balance font-display text-5xl leading-[1.05] md:text-6xl">
-      Projects built to <em class="italic text-clay">last.</em>
+    <h1 class="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-clay md:text-base">
+      <span class="h-px w-6 bg-current"></span>
+      Premium Real Estate Projects in Mangalore
     </h1>
+    <p class="mt-4 max-w-2xl text-balance font-display text-5xl leading-[1.05] text-ink md:text-6xl">
+      Projects built to <em class="italic text-clay">last.</em>
+    </p>
+    <div class="mt-6 max-w-3xl">
+      <h2 class="font-display text-2xl font-medium text-ink md:text-3xl">
+        Building Trust and Structural Excellence in Mangaluru
+      </h2>
+      <p class="mt-3 text-[15px] leading-relaxed text-muted-foreground md:text-base">
+        At Udbhav Developers, we build top-quality residential apartments, commercial spaces, and retail shops with excellence, honesty, and creativity throughout Mangaluru. Each of our developments follows our core values: precise architecture, strong construction, and the best locations. Explore Our Portfolio of Premier Residential and Commercial Developments.
+      </p>
+    </div>
   </section>
 
   <section class="mx-auto max-w-[1400px] px-5 md:px-10">
@@ -50,6 +246,125 @@ const filters = ["All Projects", "Ongoing", "Completed", "Residential", "Commerc
       No projects match this filter yet — check back soon.
     </p>
   </section>
+
+  <section class="mx-auto max-w-[1400px] px-5 pb-20 pt-2 md:px-10">
+    <div class="border-t border-border pt-12 md:pt-16">
+      <div class="max-w-3xl">
+        <h2 class="font-display text-3xl font-medium text-ink md:text-4xl">
+          Why Invest in Mangalore Real Estate Projects?
+        </h2>
+        <div class="mt-5 space-y-4 text-[15px] leading-relaxed text-muted-foreground md:text-base">
+          <p>
+            Mangaluru is becoming one of India's fastest-growing second-tier real estate markets. Strong infrastructure, airport connectivity, quality educational institutions, and a growing IT and corporate presence are driving this growth. These factors make the city a strong place for property investment, offering significant value appreciation and high rental returns.
+          </p>
+          <p>
+            When looking for real estate projects in Mangalore, choose the right local area for long-term value.
+          </p>
+        </div>
+      </div>
+
+      <!-- Area Cards -->
+      <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          investmentAreas.map((area) => (
+            <div class="location-card relative overflow-hidden flex flex-col rounded-xl border border-border bg-white p-6 md:p-8">
+              <!-- 📍 Tag -->
+              <div class="mb-5">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-sand/40 px-3 py-1 font-sans text-xs font-semibold uppercase tracking-wider text-ink border border-border/60">
+                  <span class="text-xs">📍</span>
+                  <span>{area.tag}</span>
+                </span>
+              </div>
+
+              <!-- Card Content and Information -->
+              <div class="flex flex-1 flex-col">
+                <h3 class="location-title font-display text-2xl font-medium text-ink">
+                  {area.title}
+                </h3>
+                <p class="mt-1.5 font-sans text-xs font-semibold uppercase tracking-wider text-clay">
+                  {area.sublabel}
+                </p>
+                <p class="mt-4 text-[15px] leading-relaxed text-muted-foreground">
+                  {area.description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Our Commitment to Excellence -->
+      <div class="mt-16 border-t border-border pt-12 md:mt-20 md:pt-16">
+        <div class="max-w-3xl">
+          <h2 class="font-display text-2xl font-medium text-ink md:text-3xl">
+            Our Commitment to Excellence
+          </h2>
+          <p class="mt-4 text-[15px] leading-relaxed text-muted-foreground md:text-base">
+            Every project we create in Mangaluru meets strict international standards, ensuring your property grows in value over time.
+          </p>
+        </div>
+
+        <!-- Commitment Cards -->
+        <div class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            commitments.map((item) => (
+              <div class="location-card relative overflow-hidden flex flex-col rounded-xl border border-border bg-white p-6 md:p-8">
+                <div class="flex flex-1 flex-col">
+                  <h3 class="location-title font-display text-2xl font-medium text-ink">
+                    {item.title}
+                  </h3>
+                  <p class="mt-4 text-[15px] leading-relaxed text-muted-foreground">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .location-card {
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .location-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background-color: var(--color-clay, #a83a24);
+      transition: width 0.3s ease-in-out;
+    }
+
+    .location-title {
+      transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    @media (hover: hover) {
+      .location-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      .location-card:hover::before {
+        width: 100%;
+      }
+
+      .location-card:hover .location-title {
+        transform: translateX(4px);
+        color: var(--color-clay, #a83a24);
+      }
+    }
+  </style>
 
   <CtaBanner seed={14} />
 </BaseLayout>
