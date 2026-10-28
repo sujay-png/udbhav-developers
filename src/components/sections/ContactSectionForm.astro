@@ -1,11 +1,23 @@
 ---
 import { chinmayaContact } from "@/lib/site-data";
+
+interface Props {
+  heading?: string;
+  showHeading?: boolean;
+  eyebrow?: string;
+}
+
+const {
+  heading = "Enquire 3 BHK Flat In Kadri",
+  showHeading = true,
+  eyebrow = "CONTACT US",
+} = Astro.props;
 ---
 
 <div class="contact-form-panel">
   <div class="contact-form-header">
-    <span class="contact-eyebrow">CONTACT US</span>
-    <h2 class="contact-heading">Enquire 3 BHK Flat In Kadri</h2>
+    <span class="contact-eyebrow">{eyebrow}</span>
+    {showHeading && heading && <h2 class="contact-heading">{heading}</h2>}
   </div>
 
   <form
@@ -442,6 +454,16 @@ import { chinmayaContact } from "@/lib/site-data";
 
 <style>
   .contact-form-panel {
+    --ink: #0c0c0c;
+    --ink-soft: #5b5349;
+    --paper: #ffffff;
+    --paper-soft: #f7f1e7;
+    --line: #e7decc;
+    --red: #b3261e;
+    --red-deep: #8a1b15;
+    --red-tint: #fbeae7;
+    --cream-on-red: #fcefe8;
+    --font-display: "Fraunces", Georgia, serif;
     display: flex;
     flex-direction: column;
     height: 100%;

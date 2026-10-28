@@ -3,6 +3,7 @@ import { pageSeoData } from "@/lib/site-data";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
 import CtaBanner from "@/components/sections/CtaBanner.astro";
+import ContactSection from "@/components/sections/ContactSection.astro";
 import { projects } from "@/lib/site-data";
 
 const filters = ["All Projects", "Ongoing", "Completed", "Residential", "Commercial"];
@@ -200,14 +201,11 @@ const projectsSchema = {
       <span class="h-px w-6 bg-current"></span>
       Premium Real Estate Projects in Mangalore
     </h1>
-    <p class="mt-4 max-w-2xl text-balance font-display text-5xl leading-[1.05] text-ink md:text-6xl">
-      Projects built to <em class="italic text-clay">last.</em>
-    </p>
     <div class="mt-6 max-w-3xl">
       <h2 class="font-display text-2xl font-medium text-ink md:text-3xl">
         Building Trust and Structural Excellence in Mangaluru
       </h2>
-      <p class="mt-3 text-[15px] leading-relaxed text-muted-foreground md:text-base">
+      <p class="mt-3 text-[15px] leading-relaxed text-ink-soft md:text-base">
         At Udbhav Developers, we build top-quality residential apartments, commercial spaces, and retail shops with excellence, honesty, and creativity throughout Mangaluru. Each of our developments follows our core values: precise architecture, strong construction, and the best locations. Explore Our Portfolio of Premier Residential and Commercial Developments.
       </p>
     </div>
@@ -253,7 +251,7 @@ const projectsSchema = {
         <h2 class="font-display text-3xl font-medium text-ink md:text-4xl">
           Why Invest in Mangalore Real Estate Projects?
         </h2>
-        <div class="mt-5 space-y-4 text-[15px] leading-relaxed text-muted-foreground md:text-base">
+        <div class="mt-5 space-y-4 text-[15px] leading-relaxed text-ink-soft md:text-base">
           <p>
             Mangaluru is becoming one of India's fastest-growing second-tier real estate markets. Strong infrastructure, airport connectivity, quality educational institutions, and a growing IT and corporate presence are driving this growth. These factors make the city a strong place for property investment, offering significant value appreciation and high rental returns.
           </p>
@@ -284,7 +282,7 @@ const projectsSchema = {
                 <p class="mt-1.5 font-sans text-xs font-semibold uppercase tracking-wider text-clay">
                   {area.sublabel}
                 </p>
-                <p class="mt-4 text-[15px] leading-relaxed text-muted-foreground">
+                <p class="mt-4 text-[15px] leading-relaxed text-ink-soft">
                   {area.description}
                 </p>
               </div>
@@ -299,7 +297,7 @@ const projectsSchema = {
           <h2 class="font-display text-2xl font-medium text-ink md:text-3xl">
             Our Commitment to Excellence
           </h2>
-          <p class="mt-4 text-[15px] leading-relaxed text-muted-foreground md:text-base">
+          <p class="mt-4 text-[15px] leading-relaxed text-ink-soft md:text-base">
             Every project we create in Mangaluru meets strict international standards, ensuring your property grows in value over time.
           </p>
         </div>
@@ -313,7 +311,7 @@ const projectsSchema = {
                   <h3 class="location-title font-display text-2xl font-medium text-ink">
                     {item.title}
                   </h3>
-                  <p class="mt-4 text-[15px] leading-relaxed text-muted-foreground">
+                  <p class="mt-4 text-[15px] leading-relaxed text-ink-soft">
                     {item.description}
                   </p>
                 </div>
@@ -324,6 +322,8 @@ const projectsSchema = {
       </div>
     </div>
   </section>
+
+  <ContactSection showHeading={false} />
 
   <style>
     .location-card {
@@ -363,6 +363,10 @@ const projectsSchema = {
         transform: translateX(4px);
         color: var(--color-clay, #a83a24);
       }
+    }
+
+    :global(#project-grid p) {
+      color: var(--color-ink-soft, #2a231d) !important;
     }
   </style>
 
