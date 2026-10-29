@@ -1,115 +1,205 @@
 ---
 // Contactcta.astro
+interface Props {
+  showBadge?: boolean;
+}
+const { showBadge = false } = Astro.props;
 ---
+
 <section class="relative overflow-hidden bg-[#121417] text-white">
-    <!-- Subtle Brand Glows -->
-    <div class="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-[#B02317]/20 blur-[120px] pointer-events-none"></div>
+  <!-- Subtle Brand Glows -->
+  <div
+    class="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-[#B02317]/20 blur-[120px] pointer-events-none"
+  >
+  </div>
 
-    <div class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 py-24 lg:grid-cols-2 lg:px-12 lg:py-32">
-        
-        <!-- Left Content -->
-        <div class="z-10">
-            <div class="mb-8 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-4 py-2 font-sans text-xs font-medium uppercase tracking-widest text-white/80 backdrop-blur-md">
-                <h2 class="h-2 w-2 rounded-full bg-[#B02317] animate-pulse"></h2>
-                Partner With The Leading Real Estate Firm In Mangalore
-            </div>
+  <div
+    class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 py-24 lg:grid-cols-2 lg:px-12 lg:py-32"
+  >
+    <!-- Left Content -->
+    <div class="z-10">
+      {
+        showBadge && (
+          <div class="mb-8 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-4 py-2 font-sans text-xs font-medium uppercase tracking-widest text-white/80 backdrop-blur-md">
+            <span class="h-2 w-2 rounded-full bg-[#B02317] animate-pulse" />
+            Partner With The Leading Real Estate Firm In Mangalore
+          </div>
+        )
+      }
 
-            <h3 class="font-serif text-4xl font-medium leading-tight lg:text-6xl">
-               Let’s build or Choose from the 
-                <span class="font-serif italic text-[#B02317]"> dream space </span> 
-                 you always wanted.
-            </h3>
+      <h3 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium leading-tight text-balance">
+        Partner With The Leading <span class="font-serif italic text-[#B02317]">Construction Company</span> In Mangalore
+      </h3>
 
-            <p class="mt-8 max-w-md font-sans text-lg font-light leading-relaxed text-gray-400">
-                Contact Us and get ready to move into the dream space of your choice. Its time to upgrade to a lifestyle of your choice.
-            </p>
+      <p
+        class="mt-8 max-w-md font-sans text-lg font-light leading-relaxed text-gray-400"
+      >
+        Reach out to Udbhav Developers today for consultations, site visits, and
+        direct assistance from our experienced leadership.
+      </p>
 
-            <div class="mt-12 flex flex-wrap items-center gap-8">
-             
-
-                <div >
-                    <p class="font-serif text-3xl text-white">100%</p>
-                    <p class="mt-1 font-sans text-xs uppercase tracking-widest text-gray-400">Tailored Spaces</p>
-                </div>
-            </div>
+      <div class="mt-12 flex flex-wrap items-center gap-8">
+        <div>
+          
+          <p class="font-serif text-3xl text-white">100%</p>
+          <p
+            class="mt-1 font-sans text-xs uppercase tracking-widest text-gray-400"
+          >
+            Tailored Spaces
+          </p>
         </div>
-
-        <!-- Right Visual (Form) -->
-        <div class="relative flex justify-center lg:justify-end w-full mt-10 lg:mt-0">
-            <div class="w-full max-w-[550px] rounded-3xl bg-white p-8 lg:p-10 shadow-2xl relative z-10">
-                <div class="space-y-2 mb-8 text-left">
-                    <h4 class="text-xs font-bold text-clay uppercase tracking-widest"> Contact Udbhav Developers</h4>
-                    <h2 class="text-3xl font-display text-[#1B2436]">Get in touch with us</h2>
-                </div>
-
-                <form id="home-contact-form" class="space-y-5 text-left">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <div class="space-y-1.5">
-                            <label for="name" class="text-[11px] font-medium text-gray-500 uppercase tracking-wider">Enter Your Name</label>
-                            <input type="text" id="name" name="name" required class="w-full border border-gray-300 rounded-md p-2.5 text-sm focus:outline-none focus:border-clay focus:ring-1 focus:ring-clay transition-colors bg-white text-gray-900" />
-                        </div>
-                        <div class="space-y-1.5">
-                            <label for="email" class="text-[11px] font-medium text-gray-500 uppercase tracking-wider">Enter Your Email</label>
-                            <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded-md p-2.5 text-sm focus:outline-none focus:border-clay focus:ring-1 focus:ring-clay transition-colors bg-white text-gray-900" />
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <div class="space-y-1.5">
-                            <label for="phone" class="text-[11px] font-medium text-gray-500 uppercase tracking-wider">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" required class="w-full border border-gray-300 rounded-md p-2.5 text-sm focus:outline-none focus:border-clay focus:ring-1 focus:ring-clay transition-colors bg-white text-gray-900" />
-                        </div>
-                        <div class="space-y-1.5">
-                            <label for="subject" class="text-[11px] font-medium text-gray-500 uppercase tracking-wider">Subject</label>
-                            <input type="text" id="subject" name="subject" class="w-full border border-gray-300 rounded-md p-2.5 text-sm focus:outline-none focus:border-clay focus:ring-1 focus:ring-clay transition-colors bg-white text-gray-900" />
-                        </div>
-                    </div>
-
-                    <div class="space-y-1.5">
-                        <label for="message" class="text-[11px] font-medium text-gray-500 uppercase tracking-wider">Message</label>
-                        <textarea id="message" name="message" rows="3" class="w-full border border-gray-300 rounded-md p-2.5 text-sm focus:outline-none focus:border-clay focus:ring-1 focus:ring-clay transition-colors bg-white text-gray-900"></textarea>
-                    </div>
-
-
-                    <!-- Google reCAPTCHA -->
-                    <div id="home-recaptcha-container" class="my-2" style="min-height:78px;"></div>
-
-                    <div class="pt-2 flex justify-center md:justify-start">
-                        <button type="submit" class="bg-[#c32828] hover:bg-[#a02020] text-white px-10 py-3 rounded-md font-medium transition-colors shadow-sm disabled:opacity-70 disabled:cursor-not-allowed">
-                            Submit
-                        </button>
-                    </div>
-
-                    <div id="form-success-msg" class="hidden mt-4 p-4 rounded-md bg-green-50 border border-green-200 text-green-700 text-sm">
-                        Thank you! Your message has been sent successfully. We will get back to you soon.
-                    </div>
-                    <div id="form-error-msg" class="hidden mt-4 p-4 rounded-md bg-red-50 border border-red-200 text-red-700 text-sm">
-                        Failed to send message. Please try again.
-                    </div>
-                </form>
-            </div>
-        </div>
+      </div>
     </div>
+
+    <!-- Right Visual (Form) -->
+    <div
+      class="relative flex justify-center lg:justify-end w-full mt-10 lg:mt-0"
+    >
+      <div
+        class="w-full max-w-[550px] rounded-3xl bg-white p-8 lg:p-10 shadow-2xl relative z-10"
+      >
+        <div class="space-y-2 mb-8 text-left">
+          <h4 class="text-xs font-bold text-clay uppercase tracking-widest">
+            Contact Udbhav Developers
+          </h4>
+          <h2 class="text-3xl font-display text-[#1B2436]">
+            Get in touch with us
+          </h2>
+        </div>
+
+        <form id="home-contact-form" class="space-y-5 text-left">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="space-y-1.5">
+              <label
+                for="name"
+                class="text-[11px] font-medium text-gray-500 uppercase tracking-wider"
+                >Enter Your Name</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full border border-gray-300 rounded-md p-2.5 text-sm focus:outline-none focus:border-clay focus:ring-1 focus:ring-clay transition-colors bg-white text-gray-900"
+              />
+            </div>
+            <div class="space-y-1.5">
+              <label
+                for="email"
+                class="text-[11px] font-medium text-gray-500 uppercase tracking-wider"
+                >Enter Your Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full border border-gray-300 rounded-md p-2.5 text-sm focus:outline-none focus:border-clay focus:ring-1 focus:ring-clay transition-colors bg-white text-gray-900"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="space-y-1.5">
+              <label
+                for="phone"
+                class="text-[11px] font-medium text-gray-500 uppercase tracking-wider"
+                >Phone Number</label
+              >
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                class="w-full border border-gray-300 rounded-md p-2.5 text-sm focus:outline-none focus:border-clay focus:ring-1 focus:ring-clay transition-colors bg-white text-gray-900"
+              />
+            </div>
+            <div class="space-y-1.5">
+              <label
+                for="subject"
+                class="text-[11px] font-medium text-gray-500 uppercase tracking-wider"
+                >Subject</label
+              >
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                class="w-full border border-gray-300 rounded-md p-2.5 text-sm focus:outline-none focus:border-clay focus:ring-1 focus:ring-clay transition-colors bg-white text-gray-900"
+              />
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <label
+              for="message"
+              class="text-[11px] font-medium text-gray-500 uppercase tracking-wider"
+              >Message</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="3"
+              class="w-full border border-gray-300 rounded-md p-2.5 text-sm focus:outline-none focus:border-clay focus:ring-1 focus:ring-clay transition-colors bg-white text-gray-900"
+            ></textarea>
+          </div>
+
+          <!-- Google reCAPTCHA -->
+          <div
+            id="home-recaptcha-container"
+            class="my-2"
+            style="min-height:78px;"
+          >
+          </div>
+
+          <div class="pt-2 flex justify-center md:justify-start">
+            <button
+              type="submit"
+              class="bg-[#c32828] hover:bg-[#a02020] text-white px-10 py-3 rounded-md font-medium transition-colors shadow-sm disabled:opacity-70 disabled:cursor-not-allowed"
+            >
+              Submit
+            </button>
+          </div>
+
+          <div
+            id="form-success-msg"
+            class="hidden mt-4 p-4 rounded-md bg-green-50 border border-green-200 text-green-700 text-sm"
+          >
+            Thank you! Your message has been sent successfully. We will get back
+            to you soon.
+          </div>
+          <div
+            id="form-error-msg"
+            class="hidden mt-4 p-4 rounded-md bg-red-50 border border-red-200 text-red-700 text-sm"
+          >
+            Failed to send message. Please try again.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </section>
 
 <script>
-  const RECAPTCHA_SITE_KEY = '6LecgFcsAAAAAHJLmH8O7RCs8JnHHJcE3ADP23mN';
+  const RECAPTCHA_SITE_KEY = "6LecgFcsAAAAAHJLmH8O7RCs8JnHHJcE3ADP23mN";
   let homeWidgetId: number | null = null;
 
   function initHomeForm() {
-    const form = document.getElementById('home-contact-form') as HTMLFormElement;
-    const successMsg = document.getElementById('form-success-msg');
-    const errorMsg = document.getElementById('form-error-msg');
-    const recaptchaEl = document.getElementById('home-recaptcha-container');
+    const form = document.getElementById(
+      "home-contact-form",
+    ) as HTMLFormElement;
+    const successMsg = document.getElementById("form-success-msg");
+    const errorMsg = document.getElementById("form-error-msg");
+    const recaptchaEl = document.getElementById("home-recaptcha-container");
 
-    if (!form || form.dataset.init === 'true') return;
-    form.dataset.init = 'true';
+    if (!form || form.dataset.init === "true") return;
+    form.dataset.init = "true";
 
     // Load reCAPTCHA script
-    if (!document.getElementById('recaptcha-script')) {
-      const script = document.createElement('script');
-      script.id = 'recaptcha-script';
-      script.src = 'https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit';
+    if (!document.getElementById("recaptcha-script")) {
+      const script = document.createElement("script");
+      script.id = "recaptcha-script";
+      script.src =
+        "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit";
       script.async = true;
       script.defer = true;
       document.head.appendChild(script);
@@ -125,7 +215,7 @@
                 sitekey: RECAPTCHA_SITE_KEY,
               });
             } catch (e) {
-              console.warn('reCAPTCHA render error:', e);
+              console.warn("reCAPTCHA render error:", e);
             }
           }
         });
@@ -135,64 +225,68 @@
     };
     waitAndRender();
 
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      
-      successMsg?.classList.add('hidden');
-      errorMsg?.classList.add('hidden');
+
+      successMsg?.classList.add("hidden");
+      errorMsg?.classList.add("hidden");
 
       // Validate reCAPTCHA
-      let recaptchaToken = '';
+      let recaptchaToken = "";
       if ((window as any).grecaptcha && homeWidgetId !== null) {
         recaptchaToken = (window as any).grecaptcha.getResponse(homeWidgetId);
         if (!recaptchaToken) {
-          alert('Please complete the reCAPTCHA verification.');
+          alert("Please complete the reCAPTCHA verification.");
           return;
         }
       }
 
-      const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const submitBtn = form.querySelector(
+        'button[type="submit"]',
+      ) as HTMLButtonElement;
       const originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Sending...';
+      submitBtn.textContent = "Sending...";
       submitBtn.disabled = true;
 
       const formData = new FormData(form);
 
       try {
-        const response = await fetch('/api/contact/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+        const response = await fetch("/api/contact/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             formId: 1,
-            name: formData.get('name'),
-            email: formData.get('email'),
-            phone: formData.get('phone'),
-            subject: formData.get('subject'),
-            message: formData.get('message'),
+            name: formData.get("name"),
+            email: formData.get("email"),
+            phone: formData.get("phone"),
+            subject: formData.get("subject"),
+            message: formData.get("message"),
             recaptchaToken,
           }),
         });
 
         if (response.ok) {
-          successMsg?.classList.remove('hidden');
+          successMsg?.classList.remove("hidden");
           form.reset();
           if ((window as any).grecaptcha && homeWidgetId !== null) {
             (window as any).grecaptcha.reset(homeWidgetId);
           }
           setTimeout(() => {
-            successMsg?.classList.add('hidden');
+            successMsg?.classList.add("hidden");
           }, 3000);
         } else {
           const err = await response.json();
           if (errorMsg) {
-            errorMsg.textContent = 'Error: ' + (err.error || 'Failed to send message. Please try again.');
-            errorMsg.classList.remove('hidden');
+            errorMsg.textContent =
+              "Error: " +
+              (err.error || "Failed to send message. Please try again.");
+            errorMsg.classList.remove("hidden");
           }
         }
       } catch (error) {
         if (errorMsg) {
-          errorMsg.textContent = 'A network error occurred. Please try again.';
-          errorMsg.classList.remove('hidden');
+          errorMsg.textContent = "A network error occurred. Please try again.";
+          errorMsg.classList.remove("hidden");
         }
       } finally {
         submitBtn.textContent = originalText;
@@ -201,7 +295,7 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', initHomeForm);
-  document.addEventListener('astro:page-load', initHomeForm);
-  if (document.readyState !== 'loading') initHomeForm();
+  document.addEventListener("DOMContentLoaded", initHomeForm);
+  document.addEventListener("astro:page-load", initHomeForm);
+  if (document.readyState !== "loading") initHomeForm();
 </script>

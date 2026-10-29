@@ -11,14 +11,169 @@ import ContactCta from "@/components/about/contactCta.astro";
 import Aboutus from "@/components/about/aboutus.astro";
 import Philosophies from "@/components/about/philosophies.astro";
 
-
 // import TestimonialCard from "@/components/TestimonialCard.astro";
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.udbhavdevelopers.com/about-us/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.udbhavdevelopers.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About Us",
+          "item": "https://www.udbhavdevelopers.com/about-us/"
+        }
+      ]
+    },
+    {
+      "@type": "AboutPage",
+      "@id": "https://www.udbhavdevelopers.com/about-us/#webpage",
+      "url": "https://www.udbhavdevelopers.com/about-us/",
+      "name": "Real Estate Developers in Mangaluru | Udbhav Developers",
+      "description": "Looking for trusted real estate developers in Mangalore? Udbhav Developers delivers premier RERA-approved luxury apartments & commercial spaces. Learn more!",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://www.udbhavdevelopers.com/#website",
+        "name": "Udbhav Developers",
+        "url": "https://www.udbhavdevelopers.com/"
+      },
+      "about": {
+        "@id": "https://www.udbhavdevelopers.com/#organization"
+      }
+    },
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://www.udbhavdevelopers.com/#organization",
+      "name": "Udbhav Developers",
+      "url": "https://www.udbhavdevelopers.com/",
+      "logo": "https://www.udbhavdevelopers.com/assets/images/logo.png",
+      "image": "https://www.udbhavdevelopers.com/assets/images/logo.png",
+      "description": "Established in 2012, Udbhav Developers is one of the premier real estate developers in Mangalore, specializing in RERA-approved boutique luxury apartments and commercial structures.",
+      "telephone": "+91-9845082466",
+      "email": "info@udbhavdevelopers.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "C6, 1st Floor, City Gate Building, Above Jimmy's Super Mart, Kadri, Shivabhag",
+        "addressLocality": "Mangaluru",
+        "addressRegion": "Karnataka",
+        "postalCode": "575002",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 12.8763,
+        "longitude": 74.8561
+      },
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "name": "CREDAI (Confederation of Real Estate Developers' Associations of India)",
+          "sameAs": "https://credai.org/"
+        }
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://www.udbhavdevelopers.com/about-us/#founder",
+        "name": "Mr. B.K. Kiran",
+        "jobTitle": "Founder & Managing Director",
+        "description": "Kadri-based entrepreneur and qualified Civil Engineer with over two decades of domestic and international real estate development and structural engineering expertise."
+      },
+      "knowsAbout": [
+        "Real Estate Developers in Mangalore",
+        "Civil Engineering Standards",
+        "Structural Quality Auditing",
+        "Luxury Apartment Construction",
+        "Karnataka RERA Compliance"
+      ],
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Mangaluru"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://www.udbhavdevelopers.com/about-us/#track-record",
+      "name": "Delivered Landmarks & Real Estate Projects in Mangalore by Udbhav Developers",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "ApartmentComplex",
+            "name": "Udbhav Chinmaya",
+            "url": "https://www.udbhavdevelopers.com/projects/udbhav-chinmaya/",
+            "description": "Boutique 40-family luxury residential project located in Chandrika Layout, Kadri, Mangaluru."
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "ApartmentComplex",
+            "name": "Udbhav Shanthi",
+            "url": "https://www.udbhavdevelopers.com/projects/udbhav-shanthi/",
+            "description": "Completed landmark residential project in Kadri, Mangaluru (Completion 2023)."
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "CommercialBuilding",
+            "name": "Udbhav Square",
+            "url": "https://www.udbhavdevelopers.com/projects/udbhav-square/",
+            "description": "Modern commercial property in Kottara, Mangaluru."
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "ApartmentComplex",
+            "name": "KRK Aayush",
+            "description": "Delivered residential project in Urwa, Mangaluru (Completion 2022)."
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "ApartmentComplex",
+            "name": "Marcel's Maison",
+            "description": "Delivered residential development in Valencia, Mangaluru (Completion 2025)."
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "ApartmentComplex",
+            "name": "Bhaskar Coconut Groves",
+            "description": "Delivered residential project in Maroli, Mangaluru (Completion 2015)."
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <BaseLayout
   title="Real Estate Developers in Mangaluru | Udbhav Developers"
   description="Looking for trusted real estate developers in Mangalore? Udbhav Developers delivers premier RERA-approved luxury apartments & commercial spaces. Learn more!"
 >
+  <script type="application/ld+json" set:html={JSON.stringify(aboutSchema)} />
   <Hero />
   <Aboutus/>
     <AboutUdbhav />

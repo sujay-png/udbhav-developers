@@ -1073,8 +1073,8 @@ export const processSteps = [
 
 export const pageSeoData: Record<string, { seoTitle: string; seoDescription: string }> = {
   home: {
-    seoTitle: "Best Builder & Developer in Mangalore / Mangaluru",
-    seoDescription: "Udbhav Developers is the leading Builder & Developer in Mangalore offering premium residential apartments, commercial spaces, quality construction, and modern living.",
+    seoTitle: "Leading Construction Company in Mangaluru",
+    seoDescription: "Udbhav Developers is a premier construction company and builder in Mangaluru founded by Mr. B.K. Kiran. Discover luxury residential apartments and commercial spaces.",
   },
   aboutUs: {
     seoTitle: "About Udbhav Developers | Trusted Builders in Mangalore",
