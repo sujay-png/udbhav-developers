@@ -15,6 +15,10 @@ export default defineConfig({
   trailingSlash: 'always',
   redirects: {
     '/services/building-maintenance/': '/',
+    '/blog/why-kadri-is-one-of-mangalurus-most-sought-after-residential-locations/': '/blog/why-kadri-is-best-residential-area-mangalore/',
+    '/blog/list-of-the-most-popular-cities-for-real-estate-investment-in-mangalore/': '/blog/best-residential-areas-in-mangalore/',
+    '/blog/kadri-mangalore-apartments-with-resort-style-amenities/': '/blog/must-have-amenities-in-modern-apartments/',
+    '/blog/vaastu-compliant-homes-how-udbhav-chinmaya-is-designed-for-positive-living/': '/blog/vaastu-compliant-flats-mangalore/',
   },
   output: 'server', // This explicitly enables Server-Side Rendering
   adapter: vercel(),
