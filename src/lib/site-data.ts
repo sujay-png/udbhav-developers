@@ -39,6 +39,7 @@ export type Project = {
   name: string;
   seoTitle?: string;
   seoDescription?: string;
+  schema?: Record<string, any>;
   category: "Residential" | "Commercial";
   status: "Ongoing" | "Completed";
   tagline: string;
@@ -109,8 +110,139 @@ export const projects: Project[] = [
         href: "/projects/udbhav-chinmaya/3-bhk-for-sale-kadri-mangalore/",
       },
     ],
-    seoTitle: "Luxury Apartments For Sale In Mangalore",
-    seoDescription: "RERA approved luxury flats for sale in Mangalore. This new premium apartment is located at Chandrika layout, Swami Vevikananda road, Kadri Mangalore. Starting @ ₹1.60* Cr onwards.",
+    seoTitle: "Luxury Apartment For Sale In Mangalore",
+    seoDescription: "RERA approved luxury Apartment for sale in Mangalore. This new premium apartment is located at Chandrika layout, Swami Vevikananda road, Kadri Mangalore. Starting @ ₹1.60* Cr onwards.",
+    schema: {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://www.udbhavdevelopers.com/projects/udbhav-chinmaya/#breadcrumb",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://www.udbhavdevelopers.com/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Projects",
+                        "item": "https://www.udbhavdevelopers.com/projects/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Udbhav Chinmaya",
+                        "item": "https://www.udbhavdevelopers.com/projects/udbhav-chinmaya/"
+                    }
+                ]
+            },
+            {
+                "@type": "RealEstateListing",
+                "@id": "https://www.udbhavdevelopers.com/projects/udbhav-chinmaya/#listing",
+                "name": "Luxury Apartment For Sale In Mangalore · Udbhav Developers",
+                "url": "https://www.udbhavdevelopers.com/projects/udbhav-chinmaya/",
+                "description": "RERA approved luxury Apartment for sale in Mangalore. This new premium apartment is located at Chandrika layout, Swami Vevikananda road, Kadri Mangalore. Starting @ ₹1.60* Cr onwards.",
+                "datePosted": "2026-01-01",
+                "offers": {
+                    "@type": "Offer",
+                    "priceCurrency": "INR",
+                    "price": "16000000",
+                    "priceSpecification": {
+                        "@type": "UnitPriceSpecification",
+                        "price": "16000000",
+                        "priceCurrency": "INR",
+                        "valueAddedTaxIncluded": "false"
+                    },
+                    "availability": "https://schema.org/InStock",
+                    "description": "Flexible home loan EMI options available with pre-approved financing from SBI, Canara Bank and Karnataka Bank."
+                }
+            },
+            {
+                "@type": "ApartmentComplex",
+                "@id": "https://www.udbhavdevelopers.com/projects/udbhav-chinmaya/#building",
+                "name": "Udbhav Chinmaya",
+                "url": "https://www.udbhavdevelopers.com/projects/udbhav-chinmaya/",
+                "description": "RERA approved boutique low-density 40-family luxury residential project in Kadri, Mangalore.",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Chandrika Layout, Swami Vivekananda Road, Kadri",
+                    "addressLocality": "Mangaluru",
+                    "addressRegion": "Karnataka",
+                    "postalCode": "575004",
+                    "addressCountry": "IN"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 12.8833,
+                    "longitude": 74.85
+                },
+                "numberOfAccommodationUnits": 40,
+                "amenityFeature": [
+                    {
+                        "@type": "LocationFeatureSpecification",
+                        "name": "100% Individual Unit Vaastu Compliance",
+                        "value": true
+                    },
+                    {
+                        "@type": "LocationFeatureSpecification",
+                        "name": "RERA Approved",
+                        "value": "PRM/KA/RERA/1257/334/PR/311225/008371"
+                    }
+                ],
+                "offeredBy": {
+                    "@type": "RealEstateAgent",
+                    "@id": "https://www.udbhavdevelopers.com/#organization"
+                }
+            },
+            {
+                "@type": "VideoObject",
+                "@id": "https://www.udbhavdevelopers.com/projects/udbhav-chinmaya/#video",
+                "name": "Udbhav Chinmaya Walkthrough & Construction Site Progress",
+                "description": "Watch the virtual tour and construction update for Udbhav Chinmaya luxury apartments in Kadri, Mangalore.",
+                "thumbnailUrl": [
+                    "https://www.udbhavdevelopers.com/assets/images/chinmaya-video-thumbnail.jpg"
+                ],
+                "uploadDate": "2026-01-15T08:00:00+05:30",
+                "contentUrl": "https://www.udbhavdevelopers.com/projects/udbhav-chinmaya/",
+                "embedUrl": "https://www.youtube.com/embed/YOUR_VIDEO_ID"
+            },
+            {
+                "@type": "RealEstateAgent",
+                "@id": "https://www.udbhavdevelopers.com/#organization",
+                "name": "Udbhav Developers",
+                "url": "https://www.udbhavdevelopers.com/",
+                "logo": "https://www.udbhavdevelopers.com/assets/images/logo.png",
+                "telephone": "+91-9845082466",
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "reviewCount": "3",
+                    "bestRating": "5",
+                    "worstRating": "4"
+                },
+                "memberOf": [
+                    {
+                        "@type": "Organization",
+                        "name": "CREDAI (Confederation of Real Estate Developers' Associations of India)",
+                        "sameAs": "https://credai.org/"
+                    }
+                ],
+                "founder": {
+                    "@type": "Person",
+                    "name": "Mr. B.K. Kiran",
+                    "jobTitle": "Founder & Managing Director",
+                    "description": "Qualified Civil Engineer with over two decades of domestic and international real estate development and structural engineering expertise."
+                },
+                "areaServed": {
+                    "@type": "City",
+                    "name": "Mangaluru"
+                }
+            }
+        ]
+    },
     category: "Residential",
     status: "Ongoing",
     tagline: "Sophisticated low-density residences limited to only 40 luxury homes designed for privacy and luxury living.",
