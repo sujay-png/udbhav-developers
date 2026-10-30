@@ -77,7 +77,7 @@ const jobs = [
         <h2 class="font-serif text-4xl sm:text-5xl font-medium text-[#121417] tracking-tight mb-4">
           Current Opportunities
         </h2>
-        <p class="font-sans text-lg leading-relaxed text-[#88726F]">
+        <p class="font-sans text-lg leading-relaxed text-black">
           Discover roles that challenge your skills and offer meaningful growth in the real estate industry.
         </p>
       </div>
@@ -101,7 +101,7 @@ const jobs = [
               <span class="bg-[#B02317]/10 text-[#B02317] text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full transition-colors group-hover:bg-[#B02317] group-hover:text-white">
                 {job.department}
               </span>
-              <span class="text-xs font-medium tracking-wider text-[#88726F]">
+              <span class="text-xs font-medium tracking-wider text-black">
                 {job.ref}
               </span>
             </div>
@@ -110,7 +110,7 @@ const jobs = [
               {job.title}
             </h3>
 
-            <div class="space-y-3 mb-10 text-[#88726F] text-sm font-medium">
+            <div class="space-y-3 mb-10 text-black text-sm font-medium">
               <div class="flex items-center gap-3">
                 <svg class="w-4 h-4 text-[#B02317]/50" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                 <span>{job.experience} Experience</span>
@@ -150,10 +150,10 @@ const jobs = [
         <div>
           <div class="flex items-center gap-3 mb-3">
             <span id="modal-department" class="bg-[#B02317]/10 text-[#B02317] text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full"></span>
-            <span id="modal-ref" class="text-xs font-medium tracking-wider text-[#88726F]"></span>
+            <span id="modal-ref" class="text-xs font-medium tracking-wider text-black"></span>
           </div>
           <h3 id="modal-title" class="text-3xl font-serif font-medium text-[#121417]"></h3>
-          <div class="flex items-center gap-6 mt-4 text-sm font-medium text-[#88726F]">
+          <div class="flex items-center gap-6 mt-4 text-sm font-medium text-black">
             <span id="modal-experience" class="flex items-center gap-2"></span>
             <span id="modal-openings" class="flex items-center gap-2"></span>
           </div>
@@ -166,13 +166,13 @@ const jobs = [
 
       <!-- Modal Body -->
       <div class="p-8 overflow-y-auto space-y-10 flex-1 hide-scrollbar">
-        <p id="modal-intro" class="hidden font-sans text-base leading-relaxed text-[#88726F] italic border-l-4 border-[#B02317] pl-4"></p>
+        <p id="modal-intro" class="hidden font-sans text-base leading-relaxed text-black italic border-l-4 border-[#B02317] pl-4"></p>
 
         <div>
           <h4 class="font-sans text-xs font-bold tracking-widest text-[#B02317] uppercase mb-4">
             Roles & Responsibilities
           </h4>
-          <ul id="modal-responsibilities" class="space-y-3 font-sans text-base leading-relaxed text-[#88726F] list-disc pl-5 marker:text-[#B02317]">
+          <ul id="modal-responsibilities" class="space-y-3 font-sans text-base leading-relaxed text-black list-disc pl-5 marker:text-[#B02317]">
             <!-- Injected via client script -->
           </ul>
         </div>
@@ -181,7 +181,7 @@ const jobs = [
           <h4 class="font-sans text-xs font-bold tracking-widest text-[#B02317] uppercase mb-4">
             Skills Required
           </h4>
-          <ul id="modal-skills" class="space-y-3 font-sans text-base leading-relaxed text-[#88726F] list-disc pl-5 marker:text-[#B02317]">
+          <ul id="modal-skills" class="space-y-3 font-sans text-base leading-relaxed text-black list-disc pl-5 marker:text-[#B02317]">
             <!-- Injected via client script -->
           </ul>
         </div>

@@ -6,7 +6,7 @@
   --color-cream-deep: #f7e5db;
   --color-blush: #fbe4da;
   --color-ink: #1a1410;
-  --color-ink-soft: #2a231d;
+  --color-ink-soft: #121417;
   --color-clay: #a83a24;
   --color-clay-hover: #8f2f1b;
   --color-ember: #e0632c;
@@ -23,7 +23,7 @@
   --color-secondary-foreground: var(--color-cream);
 
   --color-muted: var(--color-blush);
-  --color-muted-foreground: #6b5c50;
+  --color-muted-foreground: #121417;
 
   --color-accent: var(--color-ember);
   --color-accent-foreground: #fff;

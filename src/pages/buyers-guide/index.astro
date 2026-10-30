@@ -185,7 +185,7 @@ const generalFaqs = [
           data-tab={tab.id}
           class:list={[
             "guide-tab relative shrink-0 whitespace-nowrap py-6 font-sans text-sm font-medium uppercase tracking-widest transition-colors duration-300 hover:text-[#B02317]",
-            i === 0 ? "text-[#B02317]" : "text-[#88726F]"
+            i === 0 ? "text-[#B02317]" : "text-black"
           ]}
         >
           {tab.label}
@@ -211,7 +211,7 @@ const generalFaqs = [
           <h4 class="font-serif text-2xl font-medium text-[#121417] mb-6">Resident of India</h4>
           <ul class="space-y-4">
             {bookingDocs.resident.map((doc) => (
-              <li class="flex items-start gap-4 text-base leading-relaxed text-[#88726F]">
+              <li class="flex items-start gap-4 text-base leading-relaxed text-black">
                 <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#B02317]/10 text-[#B02317] transition-colors group-hover:bg-[#B02317] group-hover:text-white">
                   <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 </div>
@@ -224,7 +224,7 @@ const generalFaqs = [
           <h4 class="font-serif text-2xl font-medium text-[#121417] mb-6">NRI / Foreign National</h4>
           <ul class="space-y-4">
             {bookingDocs.nri.map((doc) => (
-              <li class="flex items-start gap-4 text-base leading-relaxed text-[#88726F]">
+              <li class="flex items-start gap-4 text-base leading-relaxed text-black">
                 <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#B02317]/10 text-[#B02317] transition-colors group-hover:bg-[#B02317] group-hover:text-white">
                   <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 </div>
@@ -253,7 +253,7 @@ const generalFaqs = [
                 </div>
               </button>
               <div class="accordion-content hidden overflow-hidden transition-all duration-500">
-                <p class="pb-8 pr-12 text-base leading-relaxed text-[#88726F]">
+                <p class="pb-8 pr-12 text-base leading-relaxed text-black">
                   {item.a}
                 </p>
               </div>
@@ -275,7 +275,7 @@ const generalFaqs = [
           {whyInvest.map((item) => (
             <div class="rounded-[28px] bg-[#FDF9F7] p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:bg-white border border-transparent hover:border-[#B02317]/10">
               <h4 class="font-serif text-xl font-medium text-[#121417] mb-4">{item.title}</h4>
-              <p class="text-sm leading-relaxed text-[#88726F]">{item.body}</p>
+              <p class="text-sm leading-relaxed text-black">{item.body}</p>
             </div>
           ))}
         </div>
@@ -286,7 +286,7 @@ const generalFaqs = [
             {InvstOpportunities.map((item) => (
               <div class="border-l-2 border-[#B02317]/20 pl-6 transition-colors hover:border-[#B02317]">
                 <h4 class="font-serif text-xl font-medium text-[#B02317] mb-2">{item.title}</h4>
-                <p class="text-base leading-relaxed text-[#88726F]">{item.body}</p>
+                <p class="text-base leading-relaxed text-black">{item.body}</p>
               </div>
             ))}
           </div>
@@ -300,7 +300,7 @@ const generalFaqs = [
             {nriGuidelines.map((item) => (
               <div class="border-l-2 border-[#B02317]/20 pl-6 transition-colors hover:border-[#B02317]">
                 <h4 class="font-serif text-xl font-medium text-[#B02317] mb-2">{item.title}</h4>
-                <p class="text-base leading-relaxed text-[#88726F]">{item.body}</p>
+                <p class="text-base leading-relaxed text-black">{item.body}</p>
               </div>
             ))}
           </div>
@@ -326,7 +326,7 @@ const generalFaqs = [
       <div class="max-w-2xl">
         <h3 class="font-sans text-xs font-bold uppercase tracking-[0.35em] text-[#B02317] mb-4">Plan Ahead</h3>
         <h2 class="font-serif text-4xl sm:text-5xl font-medium text-[#121417]">EMI Calculator</h2>
-        <p class="mt-6 text-lg text-[#88726F]">Adjust the figures below to estimate your monthly instalment and total interest payload.</p>
+        <p class="mt-6 text-lg text-black">Adjust the figures below to estimate your monthly instalment and total interest payload.</p>
       </div>
 
       <div class="rounded-[40px] bg-[#FDF9F7] p-8 sm:p-12 grid gap-12 lg:grid-cols-[1.2fr_0.8fr] items-center border border-gray-100 shadow-sm">
@@ -341,7 +341,7 @@ const generalFaqs = [
           ].map(ctrl => (
             <div class="group">
               <div class="flex items-center justify-between mb-4">
-                <label for={ctrl.id} class="font-sans text-xs font-semibold uppercase tracking-widest text-[#88726F] group-hover:text-[#121417] transition-colors">{ctrl.label}</label>
+                <label for={ctrl.id} class="font-sans text-xs font-semibold uppercase tracking-widest text-black group-hover:text-[#121417] transition-colors">{ctrl.label}</label>
                 <span class="font-serif text-xl font-medium text-[#B02317]" id={`${ctrl.id}-display`}></span>
               </div>
               <input id={ctrl.id} type="range" min={ctrl.min} max={ctrl.max} step={ctrl.step} value={ctrl.val} class="emi-slider w-full" />
@@ -358,20 +358,20 @@ const generalFaqs = [
                 stroke-dasharray="0 502" stroke-linecap="round" class="transition-all duration-700 ease-out" />
             </svg>
             <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <span class="text-xs font-semibold uppercase tracking-widest text-[#88726F]">Monthly EMI</span>
+              <span class="text-xs font-semibold uppercase tracking-widest text-black">Monthly EMI</span>
               <span class="font-serif text-2xl font-bold text-[#121417] mt-1" id="emi-monthly">—</span>
             </div>
           </div>
           
           <div class="w-full space-y-4 text-sm">
             <div class="flex items-center justify-between border-b border-gray-100 pb-4">
-              <span class="flex items-center gap-3 font-medium text-[#88726F]">
+              <span class="flex items-center gap-3 font-medium text-black">
                 <span class="h-3 w-3 rounded-full bg-[#B02317] shadow-sm"></span>Principal
               </span>
               <span class="font-serif text-lg font-medium text-[#121417]" id="emi-principal">—</span>
             </div>
             <div class="flex items-center justify-between pt-2">
-              <span class="flex items-center gap-3 font-medium text-[#88726F]">
+              <span class="flex items-center gap-3 font-medium text-black">
                 <span class="h-3 w-3 rounded-full bg-[#FDF9F7] border border-gray-200 shadow-sm"></span>Total Interest
               </span>
               <span class="font-serif text-lg font-medium text-[#121417]" id="emi-interest">—</span>
@@ -379,7 +379,7 @@ const generalFaqs = [
           </div>
         </div>
       </div>
-      <p class="text-sm text-[#88726F] italic max-w-3xl">Note: This calculator provides an estimate. Actual EMI may vary depending on the lender's final terms, processing fees, and fluctuations in interest rates.</p>
+      <p class="text-sm text-black italic max-w-3xl">Note: This calculator provides an estimate. Actual EMI may vary depending on the lender's final terms, processing fees, and fluctuations in interest rates.</p>
     </section>
 
   </div>
@@ -459,11 +459,11 @@ const generalFaqs = [
 
         tabButtons.forEach((b) => {
           b.classList.remove('text-[#B02317]');
-          b.classList.add('text-[#88726F]');
+          b.classList.add('text-black');
           b.querySelector('span')?.classList.replace('scale-x-100', 'scale-x-0');
         });
         
-        btn.classList.remove('text-[#88726F]');
+        btn.classList.remove('text-black');
         btn.classList.add('text-[#B02317]');
         btn.querySelector('span')?.classList.replace('scale-x-0', 'scale-x-100');
 

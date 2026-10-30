@@ -33,7 +33,7 @@ const rest = page.currentPage === 1 ? posts.slice(1) : posts;
         Architectural <br />
         <span class="italic text-[#B02317]">Chronicles.</span>
       </h1>
-      <p class="mt-6 max-w-lg text-lg leading-relaxed text-[#88726F] font-light">
+      <p class="mt-6 max-w-lg text-lg leading-relaxed text-black font-light">
         Exploring the future of urban living, investment strategies, and the craft of luxury development.
       </p>
     </div>
@@ -56,13 +56,13 @@ const rest = page.currentPage === 1 ? posts.slice(1) : posts;
               {featured.categories[0]}
             </span>
           )}
-          <p class="mt-6 text-xs font-semibold uppercase tracking-widest text-[#88726F]">
+          <p class="mt-6 text-xs font-semibold uppercase tracking-widest text-black">
             {formatDate(featured.date)}
           </p>
           <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-medium leading-tight text-[#121417] group-hover:text-[#B02317] transition-colors">
             {featured.title}
           </h2>
-          <p class="mt-4 text-base leading-relaxed text-[#88726F] line-clamp-3 font-light">
+          <p class="mt-4 text-base leading-relaxed text-black line-clamp-3 font-light">
             {featured.excerpt}
           </p>
           <div class="mt-8 flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-[#121417] group-hover:text-[#B02317] transition-colors">
@@ -76,7 +76,7 @@ const rest = page.currentPage === 1 ? posts.slice(1) : posts;
   <!-- Standard Grid -->
   <section class="mx-auto max-w-7xl px-6 pb-24 md:px-12 font-sans">
     {rest.length === 0 && !featured ? (
-      <p class="py-20 text-center text-lg text-[#88726F] font-light">
+      <p class="py-20 text-center text-lg text-black font-light">
         No posts published yet — check back soon.
       </p>
     ) : (
@@ -99,13 +99,13 @@ const rest = page.currentPage === 1 ? posts.slice(1) : posts;
             </div>
             
             <div class="flex flex-col flex-1 px-2 py-6">
-              <p class="text-[11px] font-semibold uppercase tracking-widest text-[#88726F]">
+              <p class="text-[11px] font-semibold uppercase tracking-widest text-black">
                 {formatDate(post.date)}
               </p>
               <h3 class="mt-3 font-serif text-2xl font-medium leading-snug text-[#121417] group-hover:text-[#B02317] transition-colors">
                 {post.title}
               </h3>
-              <p class="mt-3 text-sm leading-relaxed text-[#88726F] line-clamp-2 font-light">
+              <p class="mt-3 text-sm leading-relaxed text-black line-clamp-2 font-light">
                 {post.excerpt}
               </p>
             </div>
@@ -124,7 +124,7 @@ const rest = page.currentPage === 1 ? posts.slice(1) : posts;
         ) : <span class="text-sm font-semibold uppercase tracking-widest text-gray-300">← Previous</span>}
       </div>
       
-      <div class="text-xs font-semibold uppercase tracking-widest text-[#88726F]">
+      <div class="text-xs font-semibold uppercase tracking-widest text-black">
         Page {page.currentPage} of {page.lastPage}
       </div>
       

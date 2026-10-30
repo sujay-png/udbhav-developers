@@ -35,14 +35,14 @@ const tone = project.category === "Commercial" ? "ink" : seed % 2 === 0 ? "sand"
       </h3>
       {showDescription ? (
         project.slug === "udbhav-chinmaya" ? (
-          <p class="mt-2 text-sm text-muted-foreground leading-relaxed">
+          <p class="mt-2 text-sm text-black leading-relaxed">
             Sophisticated low-density residences limited to only 40 luxury homes designed for privacy and luxury living. Discover our ongoing project offering <a href="/projects/udbhav-chinmaya/3-bhk-for-sale-kadri-mangalore/" class="text-clay underline underline-offset-4 font-medium hover:text-clay-hover transition-colors">3 BHK luxury flats</a> with complete RERA approval (PRM/KA/RERA/1257/334/PR/311225/008371), major bank loan sanctions, and high ROI potential in one of Mangaluru's prime residential hubs.
           </p>
         ) : (
-          <p class="mt-2 text-sm text-muted-foreground leading-relaxed">{project.description || project.tagline}</p>
+          <p class="mt-2 text-sm text-black leading-relaxed">{project.description || project.tagline}</p>
         )
       ) : (
-        <p class="mt-1 text-sm text-muted-foreground">{project.tagline}</p>
+        <p class="mt-1 text-sm text-black">{project.tagline}</p>
       )}
     </div>
   </div>
