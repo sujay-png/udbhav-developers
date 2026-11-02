@@ -41,7 +41,7 @@ export function EnquiryForm({ dark = true, redirectUrl, showCaptcha = false }: {
     if (!existing) {
       const script = document.createElement("script");
       script.id = "recaptcha-script";
-      script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit";
+      script.src = "https://www.recaptcha.net/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit";
       script.async = true;
       script.defer = true;
       document.head.appendChild(script);
