@@ -40,6 +40,7 @@ const aboutSchema = {
       "url": "https://www.udbhavdevelopers.com/about-us/",
       "name": "Real Estate Developers in Mangaluru | Udbhav Developers",
       "description": "Looking for trusted real estate developers in Mangalore? Udbhav Developers delivers premier RERA-approved luxury apartments & commercial spaces. Learn more!",
+      "keywords": pageSeoData.aboutUs.seoKeywords,
       "isPartOf": {
         "@type": "WebSite",
         "@id": "https://www.udbhavdevelopers.com/#website",
@@ -170,8 +171,9 @@ const aboutSchema = {
 ---
 
 <BaseLayout
-  title="Real Estate Developers in Mangaluru | Udbhav Developers"
-  description="Looking for trusted real estate developers in Mangalore? Udbhav Developers delivers premier RERA-approved luxury apartments & commercial spaces. Learn more!"
+  seoTitle={pageSeoData.aboutUs.seoTitle}
+  seoKeywords={pageSeoData.aboutUs.seoKeywords}
+  seoDescription={pageSeoData.aboutUs.seoDescription}
 >
   <script type="application/ld+json" set:html={JSON.stringify(aboutSchema)} />
   <Hero />

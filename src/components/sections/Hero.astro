@@ -60,6 +60,7 @@ const slides = [
               class="hero-image absolute inset-0 !h-full w-full object-cover"
               loading={index === 0 ? "eager" : "lazy"}
               fetchpriority={index === 0 ? "high" : "auto"}
+              decoding={index === 0 ? "sync" : "async"}
             />
 
             <!-- Full Image Overlay (Slight darkening) -->
@@ -148,7 +149,11 @@ const slides = [
   import Swiper from "swiper";
   import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
-  new Swiper(".heroSwiper", {
+  const initHeroSwiper = () => {
+    const el = document.querySelector(".heroSwiper");
+    if (!el || (el as any)._swiper) return;
+
+    (el as any)._swiper = new Swiper(el as HTMLElement, {
     modules: [Navigation, Pagination, Autoplay],
 
     loop: true,
@@ -168,7 +173,17 @@ const slides = [
       el: ".swiper-pagination",
       clickable: true,
     },
-  });
+    });
+  };
+
+  if (typeof window !== "undefined") {
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(() => initHeroSwiper(), { timeout: 2000 });
+    } else {
+      window.addEventListener("load", () => setTimeout(initHeroSwiper, 100));
+    }
+    document.addEventListener("astro:page-load", initHeroSwiper);
+  }
 </script>
 <style>
   @media (max-width: 640px) {

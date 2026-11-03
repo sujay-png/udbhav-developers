@@ -7,17 +7,24 @@ import "@/styles/global.css";
 interface Props {
   seoTitle?: string;
   seoDescription?: string;
+  seoKeywords?: string;
+  preloadImage?: string;
   // Legacy / fallback props
   title?: string;
   description?: string;
+  keywords?: string;
   image?: string;
 }
 
 const {
-  seoTitle,
+  seoTitle = "Best Developers in Mangalore | Udbhav Developers",
   seoDescription,
+  preloadImage,
+  seoKeywords = "Mangaluru real estate, 3 BHK apartments, commercial spaces, Mangalore, Udbhav Developers",
+  seoKeywords = "Mangaluru real estate, 3 BHK apartments, commercial spaces, Mangalore, Udbhav Developers",
   title,
   description = "Udbhav Developers — premium residential apartments and commercial spaces in Mangalore. Building with purpose, driven by trust since 2012.",
+  keywords,
   image = "/og-image.jpg",
 } = Astro.props;
 
@@ -25,6 +32,7 @@ const fallbackTitle = title || "Udbhav Developers";
 const finalTitle = seoTitle || fallbackTitle;
 const pageTitle = /udbhav developers/i.test(finalTitle) ? finalTitle : `${finalTitle} · Udbhav Developers`;
 const finalDescription = seoDescription || description;
+const finalKeywords = seoKeywords || keywords;
 const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const canonicalURL = new URL(pathname, Astro.site);
 ---
@@ -37,6 +45,11 @@ const canonicalURL = new URL(pathname, Astro.site);
     <link rel="icon" type="image/svg+xml" href="/images/udbhav-developers-logo-1.svg"  />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {preloadImage && (
+      <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />
+    )}
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="https://fonts.gstatic.com/s/fraunces/v38/6NU78FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0KxC9TeP2Xz5c.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" />
     <link
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap"
@@ -53,6 +66,7 @@ const canonicalURL = new URL(pathname, Astro.site);
     <link rel="canonical" href={canonicalURL} />
     <title>{pageTitle}</title>
     <meta name="description" content={finalDescription} />
+    {finalKeywords && <meta name="keywords" content={finalKeywords} />}
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />

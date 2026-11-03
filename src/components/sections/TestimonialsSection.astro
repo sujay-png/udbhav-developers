@@ -96,10 +96,30 @@ const { title = "What people are saying", subtitle = "Voices of our proud home-o
   }
 
   // Init on first load and on Astro page transitions
-  document.addEventListener("DOMContentLoaded", initTestimonialSwiper);
-  document.addEventListener("astro:page-load", initTestimonialSwiper);
+  const setupTestimonialsObserver = () => {
+    const el = document.querySelector(".testimonialSwiper") as HTMLElement;
+    if (!el) return;
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            initTestimonialSwiper();
+            observer.disconnect();
+          }
+        },
+        { rootMargin: "300px" },
+      );
+      observer.observe(el);
+    } else {
+      initTestimonialSwiper();
+    }
+  };
+
+  document.addEventListener("DOMContentLoaded", setupTestimonialsObserver);
+  document.addEventListener("astro:page-load", setupTestimonialsObserver);
   // Also try immediately in case DOM is already loaded
-  if (document.readyState !== "loading") initTestimonialSwiper();
+  if (document.readyState !== "loading") setupTestimonialsObserver();
 </script>
 
 <style is:global>

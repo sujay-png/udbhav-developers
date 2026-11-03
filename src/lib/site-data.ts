@@ -39,6 +39,7 @@ export type Project = {
   name: string;
   seoTitle?: string;
   seoDescription?: string;
+  seoKeywords?: string;
   schema?: Record<string, any>;
   category: "Residential" | "Commercial";
   status: "Ongoing" | "Completed";
@@ -112,6 +113,7 @@ export const projects: Project[] = [
     ],
     seoTitle: "Luxury Apartment For Sale In Mangalore",
     seoDescription: "RERA approved luxury Apartment for sale in Mangalore. This new premium apartment is located at Chandrika layout, Swami Vevikananda road, Kadri Mangalore. Starting @ ₹1.60* Cr onwards.",
+    seoKeywords: "3 bhk flat in kadri, 3 bhk flat in mangaluru, 3 bhk apartment in kadri mangaluru",
     schema: {
         "@context": "https://schema.org",
         "@graph": [
@@ -1071,14 +1073,16 @@ export const processSteps = [
   },
 ];
 
-export const pageSeoData: Record<string, { seoTitle: string; seoDescription: string }> = {
+export const pageSeoData: Record<string, { seoTitle: string; seoDescription: string; seoKeywords?: string }> = {
   home: {
     seoTitle: "Leading Construction Company in Mangaluru",
     seoDescription: "Udbhav Developers is a premier construction company and builder in Mangaluru founded by Mr. B.K. Kiran. Discover luxury residential apartments and commercial spaces.",
+    seoKeywords: "Developers in mangaluru, Builders in mangaluru",
   },
   aboutUs: {
-    seoTitle: "About Udbhav Developers | Trusted Builders in Mangalore",
-    seoDescription: "Learn about Udbhav Developers, trusted builders in Mangalore since 2012, delivering premium residential apartments, commercial spaces, and quality construction.",
+    seoTitle: "Real Estate Developers in Mangaluru | Udbhav Developers",
+    seoDescription: "Looking for trusted real estate developers in Mangalore? Udbhav Developers delivers premier RERA-approved luxury apartments & commercial spaces. Learn more!",
+    seoKeywords: "Real estate builders and developers in mangaluru",
   },
   buyersGuide: {
     seoTitle: "Property Buyers Guide - Udbhav Developers",
@@ -1139,6 +1143,11 @@ export const pageSeoData: Record<string, { seoTitle: string; seoDescription: str
   chinmayaThankYou: {
     seoTitle: "Thank You — Udbhav Chinmaya",
     seoDescription: "Thank you for your interest in Udbhav Chinmaya.",
+  },
+  chinmaya3BhkKadri: {
+    seoTitle: "Luxury 3 BHK Flats For Sale In Kadri Mangalore | RERA Approved",
+    seoDescription: "RERA-approved 3 BHK luxury flats for sale in Kadri, Mangalore. Located in peaceful Chandrika Layout. Bank Approved. Starting at ₹1.60 Cr*. Enquire now!",
+    seoKeywords: "3 bhk flat in kadri, 3 bhk flat in mangaluru, 3 bhk apartment in kadri mangaluru",
   },
   notFound: {
     seoTitle: "Page Not Found - 404",
