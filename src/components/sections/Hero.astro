@@ -177,8 +177,9 @@ const slides = [
   };
 
   if (typeof window !== "undefined") {
-    if ("requestIdleCallback" in window) {
-      requestIdleCallback(() => initHeroSwiper(), { timeout: 2000 });
+    const win = window as any;
+    if (typeof win.requestIdleCallback === "function") {
+      win.requestIdleCallback(() => initHeroSwiper(), { timeout: 2000 });
     } else {
       window.addEventListener("load", () => setTimeout(initHeroSwiper, 100));
     }
