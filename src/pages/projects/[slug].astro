@@ -64,7 +64,11 @@ const updateImages = project.updates ? project.updates.flatMap(u => u.images) : 
 const isRich = !!project.reraNo;
 ---
 
-<BaseLayout seoTitle={project.seoTitle || project.name} seoDescription={project.seoDescription || `${project.tagline} — ${project.name} by Udbhav Developers in ${project.location}.`}>
+<BaseLayout
+  seoTitle={project.seoTitle || project.name}
+  seoDescription={project.seoDescription || `${project.tagline} — ${project.name} by Udbhav Developers in ${project.location}.`}
+  seoKeywords={project.seoKeywords}
+>
   {project.schema ? (
     <script type="application/ld+json" set:html={JSON.stringify(project.schema)} />
   ) : (

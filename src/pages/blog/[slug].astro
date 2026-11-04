@@ -18,6 +18,18 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 
+const blogRedirects: Record<string, string> = {
+  "why-kadri-is-one-of-mangalurus-most-sought-after-residential-locations": "/blog/why-kadri-is-best-residential-area-mangalore/",
+  "list-of-the-most-popular-cities-for-real-estate-investment-in-mangalore": "/blog/best-residential-areas-in-mangalore/",
+  "kadri-mangalore-apartments-with-resort-style-amenities": "/blog/must-have-amenities-in-modern-apartments/",
+  "vaastu-compliant-homes-how-udbhav-chinmaya-is-designed-for-positive-living": "/blog/vaastu-compliant-flats-mangalore/",
+};
+
+const currentSlug = Astro.params.slug;
+if (currentSlug && blogRedirects[currentSlug]) {
+  return Astro.redirect(blogRedirects[currentSlug], 301);
+}
+
 import * as cheerio from 'cheerio';
 
 let contentHtml = post.content;

@@ -18,8 +18,8 @@ export const siteConfig = {
   name: "Udbhav Developers",
   tagline: "Future-Ready Living.",
   founded: 2012,
-  phone: "+91 77604 71269",
-  phoneAlt1: "+91 (824) 4282324",
+  phone: "+91 824 428 2324",
+  phoneAlt1: "+91 (824) 428 2324",
   email: "info@udbhavdevelopers.com",
   address: "C6, 1st Floor, City Gate Building, Above Jimmy's Super Market, Kadri Shivabhag, Mangalore – 575 002",
   location: "Mangalore, Karnataka",
@@ -113,7 +113,7 @@ export const projects: Project[] = [
     ],
     seoTitle: "Luxury Apartment For Sale In Mangalore",
     seoDescription: "RERA approved luxury Apartment for sale in Mangalore. This new premium apartment is located at Chandrika layout, Swami Vevikananda road, Kadri Mangalore. Starting @ ₹1.60* Cr onwards.",
-    seoKeywords: "3 bhk flat in kadri, 3 bhk flat in mangaluru, 3 bhk apartment in kadri mangaluru",
+    seoKeywords: "Luxury Apartment For Sale In Mangalore, New apartments in mangalore, Best 3 & 4 BHK apartments in mangaluru",
     schema: {
         "@context": "https://schema.org",
         "@graph": [
@@ -1087,10 +1087,12 @@ export const pageSeoData: Record<string, { seoTitle: string; seoDescription: str
   buyersGuide: {
     seoTitle: "Property Buyers Guide - Udbhav Developers",
     seoDescription: "Expert buyer's guide for homes in Mangaluru. Learn about RERA, home loans, payment plans, legal checks, and investment tips. Explore exclusive 3 & 4 BHK apartments at Udbhav Chinmaya in Kadri.",
+    seoKeywords: "Property buyers guide in mangaluru, flat registration charges in Mangaluru",
   },
   contact: {
     seoTitle: "Contact Us - Udbhav Developers",
     seoDescription: "Get in touch with Udbhav Developers — visit our Mangalore office, call, or send an enquiry about our residential and commercial projects.",
+    seoKeywords: "Real Estate Consultation Mangalore, Udbhav Developers Office Address Kadri Mangaluru, Enquire 3 BHK Flats in Mangaluru",
   },
   company: {
     seoTitle: "Company",
@@ -1107,14 +1109,17 @@ export const pageSeoData: Record<string, { seoTitle: string; seoDescription: str
   testimonials: {
     seoTitle: "Testimonials - Udbhav Developers",
     seoDescription: "Hear from the visionaries and families who have chosen to build their legacy with Udbhav Developers.",
+    seoKeywords: "top construction companies in Mangaluru, leading construction companies in Mangaluru, best construction companies in Mangaluru",
   },
   careers: {
     seoTitle: "Careers - Udbhav Developers",
     seoDescription: "Be a part of our journey At Udbhav, we believe great spaces are built by great teams.",
+    seoKeywords: "project engineer jobs in Mangaluru construction, civil engineering jobs in Mangaluru, real estate jobs in Mangaluru",
   },
   newsMedia: {
     seoTitle: "News & Media - Udbhav Developers",
     seoDescription: "News, corporate updates, and media resources for Udbhav Developers.",
+    seoKeywords: "Upcomming apartments in mangaluru, Mangaluru real estate market, Mangaluru property market updates",
   },
   media: {
     seoTitle: "Media & Press",
@@ -1123,6 +1128,7 @@ export const pageSeoData: Record<string, { seoTitle: string; seoDescription: str
   blog: {
     seoTitle: "Blog",
     seoDescription: "Architectural Chronicles — insights on luxury real estate, investment strategy, and the craft of development from Udbhav Developers.",
+    seoKeywords: "Ongoing flats and apartments in Mangaluru, luxurious flats Mangaluru",
   },
   terms: {
     seoTitle: "Terms & Conditions",
@@ -1139,6 +1145,11 @@ export const pageSeoData: Record<string, { seoTitle: string; seoDescription: str
   thankYou: {
     seoTitle: "Thank You",
     seoDescription: "Thank you for contacting Udbhav Developers.",
+  },
+  udbhavChinmaya: {
+    seoTitle: "Luxury Apartment For Sale In Mangalore",
+    seoDescription: "RERA approved luxury Apartment for sale in Mangalore. This new premium apartment is located at Chandrika layout, Swami Vevikananda road, Kadri Mangalore. Starting @ ₹1.60* Cr onwards.",
+    seoKeywords: "Luxury Apartment For Sale In Mangalore, New apartments in mangalore, Best 3 & 4 BHK apartments in mangaluru",
   },
   chinmayaThankYou: {
     seoTitle: "Thank You — Udbhav Chinmaya",

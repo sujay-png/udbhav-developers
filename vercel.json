@@ -1,0 +1,51 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/services/building-maintenance/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-kadri-is-one-of-mangalurus-most-sought-after-residential-locations/:path*",
+      "destination": "/blog/why-kadri-is-best-residential-area-mangalore/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-kadri-is-one-of-mangalurus-most-sought-after-residential-locations",
+      "destination": "/blog/why-kadri-is-best-residential-area-mangalore/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/list-of-the-most-popular-cities-for-real-estate-investment-in-mangalore/:path*",
+      "destination": "/blog/best-residential-areas-in-mangalore/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/list-of-the-most-popular-cities-for-real-estate-investment-in-mangalore",
+      "destination": "/blog/best-residential-areas-in-mangalore/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kadri-mangalore-apartments-with-resort-style-amenities/:path*",
+      "destination": "/blog/must-have-amenities-in-modern-apartments/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kadri-mangalore-apartments-with-resort-style-amenities",
+      "destination": "/blog/must-have-amenities-in-modern-apartments/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vaastu-compliant-homes-how-udbhav-chinmaya-is-designed-for-positive-living/:path*",
+      "destination": "/blog/vaastu-compliant-flats-mangalore/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vaastu-compliant-homes-how-udbhav-chinmaya-is-designed-for-positive-living",
+      "destination": "/blog/vaastu-compliant-flats-mangalore/",
+      "permanent": true
+    }
+  ]
+}
+

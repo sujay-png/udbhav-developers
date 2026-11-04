@@ -1,6 +1,7 @@
 ---
 // src/pages/blog/[...page].astro
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { pageSeoData } from "@/lib/site-data";
 import ArtPanel from "@/components/ArtPanel.astro";
 import { Icon } from "@/components/Icon";
 import { getAllPosts, formatDate } from "@/lib/wordpress";
@@ -8,8 +9,15 @@ import { getAllPosts, formatDate } from "@/lib/wordpress";
 export const prerender = true;
 export async function getStaticPaths({ paginate }: { paginate: any }) {
   const allPosts = await getAllPosts();
+  const redirectedSlugs = new Set([
+    "why-kadri-is-one-of-mangalurus-most-sought-after-residential-locations",
+    "list-of-the-most-popular-cities-for-real-estate-investment-in-mangalore",
+    "kadri-mangalore-apartments-with-resort-style-amenities",
+    "vaastu-compliant-homes-how-udbhav-chinmaya-is-designed-for-positive-living",
+  ]);
+  const activePosts = allPosts.filter((p: any) => !redirectedSlugs.has(p.slug));
   // Generate pages with 15 items per page
-  return paginate(allPosts, { pageSize: 15 });
+  return paginate(activePosts, { pageSize: 15 });
 }
 
 type Post = Awaited<ReturnType<typeof getAllPosts>>[number];
@@ -21,7 +29,11 @@ const featured = page.currentPage === 1 ? posts[0] : null;
 const rest = page.currentPage === 1 ? posts.slice(1) : posts;
 ---
 
-<BaseLayout seoTitle={`Blog - Page ${page.currentPage}`} seoDescription="Architectural Chronicles — insights on luxury real estate, investment strategy, and the craft of development from Udbhav Developers.">
+<BaseLayout
+  seoTitle={page.currentPage === 1 ? (pageSeoData.blog?.seoTitle || "Blog") : `Blog - Page ${page.currentPage}`}
+  seoDescription={pageSeoData.blog?.seoDescription || "Architectural Chronicles — insights on luxury real estate, investment strategy, and the craft of development from Udbhav Developers."}
+  seoKeywords={pageSeoData.blog?.seoKeywords}
+>
   
   <!-- Header -->
   <section class="bg-[#FDF9F7] px-6 pb-16 pt-24 md:px-12 md:pb-24 md:pt-32 font-sans">

@@ -10,7 +10,7 @@ import { updates } from "@/lib/updates";
 import LatestUpdates from "@/components/NewsMedia/LatestUpdates.astro";
 ---
 
-<BaseLayout seoTitle={pageSeoData.newsMedia.seoTitle} seoDescription={pageSeoData.newsMedia.seoDescription}>
+<BaseLayout seoTitle={pageSeoData.newsMedia.seoTitle} seoDescription={pageSeoData.newsMedia.seoDescription} seoKeywords={pageSeoData.newsMedia.seoKeywords}>
   <Hero />
   <LatestUpdates updatelist={updates} />
 
