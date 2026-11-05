@@ -12,13 +12,17 @@ interface Props {
 }
 const { project, seed = 1, size = "default", showDescription = false } = Astro.props;
 const tone = project.category === "Commercial" ? "ink" : seed % 2 === 0 ? "sand" : "clay";
+const webpImages = ["marcels", "Udbhav-website", "chinmaya", "aayush", "KRKAayush", "krkAayush_gallery"];
+const imageSrc = project.image.includes(".")
+  ? (project.image.startsWith("/") ? project.image : `/images/${project.image}`)
+  : (webpImages.includes(project.image) ? `/images/${project.image}.webp` : `/images/${project.image}.jpg`);
 ---
 
 <div class="group block">
   <a href={`/projects/${project.slug}/`} class="block" aria-label={`View ${project.name} details`}>
     <div class:list={["relative overflow-hidden rounded-lg", size === "large" ? "aspect-[16/11]" : "aspect-[4/3]"]}>
       <!-- <ArtPanel seed={seed} tone={tone} class="h-full w-full transition-transform duration-700 group-hover:scale-[1.04]" /> -->
-       <img src={`/images/${project.image}.jpg`} alt={project.name} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" loading="lazy" />
+       <img src={imageSrc} alt={project.name} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" loading="lazy" />
     
       <div class="absolute left-4 top-4">
         <Badge variant={project.status === "Ongoing" ? "default" : "dark"}>{project.status}</Badge>

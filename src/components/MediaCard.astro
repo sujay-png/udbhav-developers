@@ -19,6 +19,7 @@ const peopleImages = [
 ];
 const isPeoplePhoto = peopleImages.includes(media.image);
 const focalPosition = isPeoplePhoto ? "center 15%" : "center center";
+const mediaImageSrc = media.image === "KRKAayush" ? `/images/${media.image}.webp` : `/images/${media.image}.jpg`;
 ---
 
 <a
@@ -35,7 +36,7 @@ const focalPosition = isPeoplePhoto ? "center 15%" : "center center";
     ]}
   >
     <img
-      src={`/images/${media.image}.jpg`}
+      src={mediaImageSrc}
       alt={media.name}
       loading={isFirst ? "eager" : "lazy"}
       decoding="async"

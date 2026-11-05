@@ -730,7 +730,7 @@ export const projects: Project[] = [
       "https://maps.google.com/maps?q=KRK%20Aayush%2C%20Urva%2C%20Mangalore&t=m&z=16&output=embed&iwloc=near",
     mapQueryName: "Urwa Hoigebail, Mangaluru",
     galleryImages: [
-      { src: "/images/krkAayush_gallery.jpg", alt: "K.R.K. Aayush Building", title: "K.R.K. Aayush", subtitle: "Urwa Hoigebail, Mangalore" },
+      { src: "/images/krkAayush_gallery.webp", alt: "K.R.K. Aayush Building", title: "K.R.K. Aayush", subtitle: "Urwa Hoigebail, Mangalore" },
       { src: "/images/krkAayush_gallery1.jpg", alt: "K.R.K. Aayush Exterior", title: "Exterior View", subtitle: "Urwa Hoigebail, Mangalore" },
       { src: "/images/krkAayush_gallery2.jpg", alt: "K.R.K. Aayush Building", title: "K.R.K. Aayush", subtitle: "Urwa Hoigebail, Mangalore" },
       { src: "/images/krkAayush_gallery3.jpg", alt: "K.R.K. Aayush Exterior", title: "Exterior View", subtitle: "Urwa Hoigebail, Mangalore" },
