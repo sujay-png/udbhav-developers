@@ -12,7 +12,7 @@ interface Props {
 }
 const { project, seed = 1, size = "default", showDescription = false } = Astro.props;
 const tone = project.category === "Commercial" ? "ink" : seed % 2 === 0 ? "sand" : "clay";
-const webpImages = ["marcels", "Udbhav-website", "chinmaya", "aayush", "KRKAayush", "krkAayush_gallery"];
+const webpImages = ["marcels", "Udbhav-website", "chinmaya", "aayush", "KRKAayush", "krkAayush_gallery", "udbhavshanthi"];
 const imageSrc = project.image.includes(".")
   ? (project.image.startsWith("/") ? project.image : `/images/${project.image}`)
   : (webpImages.includes(project.image) ? `/images/${project.image}.webp` : `/images/${project.image}.jpg`);
