@@ -12,72 +12,27 @@ const homeSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "WebSite",
-      "@id": "https://www.udbhavdevelopers.com/#website",
+      "@type": "WebPage",
+      "@id": "https://www.udbhavdevelopers.com/#webpage",
       "url": "https://www.udbhavdevelopers.com/",
-      "name": "Udbhav Developers",
+      "name": "Leading Real Estate Builders In Mangalore · Udbhav Developers",
       "description": "A premier real estate developers and builders in Mangalore founded by Mr. B.K. Kiran. Discover RERA approved projects by Udbhav Developers.",
-      "publisher": {
+      "keywords": "Developers in mangaluru, Builders in mangaluru",
+      "about": {
         "@id": "https://www.udbhavdevelopers.com/#organization"
       }
     },
     {
-      "@type": "ConstructionBusiness",
+      "@type": "RealEstateAgent",
       "@id": "https://www.udbhavdevelopers.com/#organization",
       "name": "Udbhav Developers",
-      "alternateName": "Leading Real Estate Builders In Mangalore",
       "url": "https://www.udbhavdevelopers.com/",
-      "logo": "https://www.udbhavdevelopers.com/images/udbhav-developers-logo-1.webp",
-      "image": "https://www.udbhavdevelopers.com/images/udbhav-developers-logo.webp",
-      "telephone": "+91-7760471269",
-      "priceRange": "₹₹₹",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "C6, 1st Floor, City Gate Commercial Complex, Shivbagh Rd, Kadri",
-        "addressLocality": "Mangaluru",
-        "addressRegion": "Karnataka",
-        "postalCode": "575002",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 12.8765,
-        "longitude": 74.8485
-      },
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "name": "CREDAI (Confederation of Real Estate Developers' Associations of India)",
-          "sameAs": "https://credai.org/"
-        }
-      ],
+      "logo": "https://www.udbhavdevelopers.com/wp-content/uploads/logo.png",
+      "telephone": "+91 77604 71269",
       "founder": {
         "@type": "Person",
-        "name": "Mr. B.K. Kiran",
-        "jobTitle": "Founder & Managing Director",
-        "description": "Qualified Civil Engineer with over two decades of domestic and international real estate development and structural engineering expertise."
+        "name": "Mr. B.K. Kiran"
       },
-      "areaServed": [
-        {
-          "@type": "City",
-          "name": "Mangaluru"
-        },
-        {
-          "@type": "AdministrativeArea",
-          "name": "Kadri"
-        }
-      ],
-      "knowsAbout": [
-        "Leading Real Estate Builders In Mangalore",
-        "Real Estate Developers In Mangalore",
-        "Developers & Builders In Mangalore"
-      ]
-    },
-    {
-      "@type": "LocalBusiness",
-      "@id": "https://www.udbhavdevelopers.com/#ratingsubject",
-      "name": "Udbhav Developers - Office & Reviews",
-      "telephone": "+91-7760471269",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "C6, 1st Floor, City Gate Commercial Complex, Shivbagh Rd, Kadri",
@@ -86,13 +41,11 @@ const homeSchema = {
         "postalCode": "575002",
         "addressCountry": "IN"
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.5",
-        "reviewCount": "23",
-        "bestRating": "5",
-        "worstRating": "1"
-      }
+      "sameAs": [
+        "https://www.facebook.com/udbhavdevelopers/",
+        "https://www.instagram.com/udbhavdevelopers/",
+        "https://www.youtube.com/@udbhavdevelopersmlr"
+      ]
     }
   ]
 };
