@@ -1,7 +1,19 @@
+export const officeDirectionsUrl =
+  "https://www.google.com/maps/dir//C6,+1st+Floor,+UDBHAV+DEVELOPERS,+City+Gate+Commercial+Complex,+Shivbagh+Rd,+Kadri,+Mangaluru,+Karnataka+575002/@12.8813491,74.8592632,1059m/data=!3m1!1e3!4m17!1m7!3m6!1s0x3ba35a2d129d7101:0x10eaf7d428261c32!2sUDBHAV+DEVELOPERS!8m2!3d12.8813491!4d74.8618381!16s%2Fg%2F11bvt59thy!4m8!1m0!1m5!1m1!1s0x3ba35a2d129d7101:0x10eaf7d428261c32!2m2!1d74.8618381!2d12.8813491!3e2?entry=ttu&g_ep=EgoyMDI2MTEwMi4wIKXMDSoASAFQAw%3D%3D";
+
+export const officeContact = {
+  title: "Find Us",
+  name: "Udbhav Developers",
+  address: "C6, 1st Floor, City Gate Building, Kadri Shivabhag, Mangalore - 575 002",
+  email: "info@udbhavdevelopers.com",
+  mapEmbedUrl:
+    "https://maps.google.com/maps?q=UDBHAV+DEVELOPERS,+City+Gate,+Kadri+Shivabhag,+Mangaluru&t=&z=15&ie=UTF8&iwloc=&output=embed",
+  directionsUrl: officeDirectionsUrl,
+};
+
 export const mapEmbedUrl =
   "https://maps.google.com/maps?q=UDBHAV+CHINMAYA,+Mangaluru&t=&z=15&ie=UTF8&iwloc=&output=embed";
-export const directionsUrl =
-  "https://maps.google.com/maps?q=UDBHAV+CHINMAYA,+Mangaluru";
+export const directionsUrl = officeDirectionsUrl;
 
 export const chinmayaDirectionsUrl =
   "https://www.google.com/maps/dir//UDBHAV+CHINMAYA,+Chandrika+Layout,+Swami+Vivekananda+Rd,+Mallikatte,+Kadri,+Mangaluru,+Karnataka+575004,+India/@12.881254,74.848227,4238m/data=!3m1!1e3!4m17!1m7!3m6!1s0x3ba35b00175dd281:0x16d3cedc1e0bab6c!2sUDBHAV+CHINMAYA!8m2!3d12.8812544!4d74.8482267!16s%2Fg%2F11x5vzn3zs!4m8!1m0!1m5!1m1!1s0x3ba35b00175dd281:0x16d3cedc1e0bab6c!2m2!1d74.8482267!2d12.8812544!3e2?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDkyOC4wIKXMDSoASAFQAw%3D%3D";
@@ -1075,8 +1087,8 @@ export const processSteps = [
 
 export const pageSeoData: Record<string, { seoTitle: string; seoDescription: string; seoKeywords?: string }> = {
   home: {
-    seoTitle: "Leading Construction Company in Mangaluru",
-    seoDescription: "Udbhav Developers is a premier construction company and builder in Mangaluru founded by Mr. B.K. Kiran. Discover luxury residential apartments and commercial spaces.",
+    seoTitle: "Leading Real Estate Builders In Mangalore",
+    seoDescription: "A premier real estate developers and builders in Mangalore founded by Mr. B.K. Kiran. Discover RERA approved projects by Udbhav Developers.",
     seoKeywords: "Developers in mangaluru, Builders in mangaluru",
   },
   aboutUs: {
