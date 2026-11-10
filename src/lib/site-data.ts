@@ -664,12 +664,7 @@ export const projects: Project[] = [
           "/src/assets/images/udbahv-chinmaya/Nov 2026/luxury-apartment-mangalore.webp",
           "/src/assets/images/udbahv-chinmaya/Nov 2026/luxury-flat-under-construction.webp",
           "/src/assets/images/udbahv-chinmaya/Nov 2026/SAI_5291.webp",
-          "/src/assets/images/udbahv-chinmaya/Nov 2026/SAI_5294.webp",
-          
-
-          
-          
-          
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/SAI_5294.webp"
         ]
       }
 
