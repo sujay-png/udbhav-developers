@@ -1,4 +1,6 @@
 // src/lib/wordpress.ts
+import { blogSeoData } from "./blog-seo-data";
+
 const WP_BASE_URL = import.meta.env.PUBLIC_WP_BASE_URL || "https://dashboard.udbhavdevelopers.com";
 const WP_GRAPHQL_URL = `${WP_BASE_URL}/graphql`;
 
@@ -12,6 +14,9 @@ export interface Post {
 	author: string;
 	featuredImage: string | null;
 	categories: string[];
+	seoKeywords?: string;
+	seoTitle?: string;
+	seoDescription?: string;
 }
 
 async function fetchGraphQL(query: string, variables = {}) {
@@ -61,17 +66,23 @@ export async function getAllPosts(): Promise<Post[]> {
 		const data = await fetchGraphQL(query, { first: 100, after: afterCursor });
 		if (!data?.posts?.nodes) break;
 
-		const nodes = data.posts.nodes.map((node: any) => ({
-			id: String(node.databaseId),
-			slug: node.slug,
-			date: node.date,
-			title: node.title,
-			excerpt: stripHtml(node.excerpt),
-			content: node.content,
-			author: node.author?.node?.name || "Udbhav Developers",
-			featuredImage: node.featuredImage?.node?.sourceUrl || null,
-			categories: node.categories?.nodes?.map((cat: any) => cat.name) || [],
-		}));
+		const nodes = data.posts.nodes.map((node: any) => {
+			const seo = blogSeoData[node.slug];
+			return {
+				id: String(node.databaseId),
+				slug: node.slug,
+				date: node.date,
+				title: node.title,
+				excerpt: stripHtml(node.excerpt),
+				content: node.content,
+				author: node.author?.node?.name || "Udbhav Developers",
+				featuredImage: node.featuredImage?.node?.sourceUrl || null,
+				categories: node.categories?.nodes?.map((cat: any) => cat.name) || [],
+				seoKeywords: seo?.seoKeywords || "",
+				seoTitle: seo?.seoTitle || node.title,
+				seoDescription: seo?.seoDescription || stripHtml(node.excerpt),
+			};
+		});
 
 		allPosts = [...allPosts, ...nodes];
 		hasNextPage = data.posts.pageInfo.hasNextPage;

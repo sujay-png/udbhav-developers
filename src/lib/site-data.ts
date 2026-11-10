@@ -644,6 +644,29 @@ export const projects: Project[] = [
           "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3125.webp",
           "/src/assets/images/udbahv-chinmaya/oct 2026/SAI_3120.webp"
         ]
+      },
+      {
+        title: "Project Updates ( November 10th 2026 )",
+        images: [
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/luxury-apartment-mangalore.webp",
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/luxury-apartment-mangalore-1.webp",
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/luxury-flat-mangalore-under-construction.webp",
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/luxury-flat-mangalore-1.webp",
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/luxury-flat-mangalore.webp",
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/luxury-flat-under-construction.webp",
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/premium-flat-mangalore.webp",
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/Udbhva-chinmaya-luxury-flat-mangalore.webp",
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/SAI_5291.webp",
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/SAI_5294.webp",
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/SAI_5300.webp",
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/SAI_5311.webp",
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/SAI_5313.webp",
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/SAI_5318.webp",
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/SAI_5327.webp",
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/SAI_5331.webp",
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/SAI_5339.webp",
+          "/src/assets/images/udbahv-chinmaya/Nov 2026/SAI_5348.webp"
+        ]
       }
 
     ]
@@ -1177,3 +1200,5 @@ export const pageSeoData: Record<string, { seoTitle: string; seoDescription: str
     seoDescription: "The page you are looking for does not exist.",
   }
 };
+
+export { blogSeoData, type BlogSeoEntry } from "./blog-seo-data";

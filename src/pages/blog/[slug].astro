@@ -154,9 +154,45 @@ $('.swiper-slide').each((_, slideEl) => {
 });
 
 contentHtml = $.html();
+
+const postTitle = post.seoTitle || post.title;
+const postDescription = post.seoDescription || post.excerpt;
+const postKeywords = post.seoKeywords || "";
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": `https://www.udbhavdevelopers.com/blog/${post.slug}/#richSnippet`,
+      "isPartOf": {
+        "@type": "WebPage",
+        "@id": `https://www.udbhavdevelopers.com/blog/${post.slug}/#webpage`
+      },
+      "headline": postTitle,
+      "description": postDescription,
+      ...(postKeywords ? { "keywords": postKeywords } : {}),
+      "datePublished": post.date,
+      "inLanguage": "en-US",
+      "mainEntityOfPage": `https://www.udbhavdevelopers.com/blog/${post.slug}/`,
+      "publisher": {
+        "@type": "Organization",
+        "name": "Udbhav Developers",
+        "url": "https://www.udbhavdevelopers.com/"
+      },
+      ...(post.featuredImage ? {
+        "image": {
+          "@type": "ImageObject",
+          "url": post.featuredImage
+        }
+      } : {})
+    }
+  ]
+};
 ---
 
-<BaseLayout seoTitle={post.title} seoDescription={post.excerpt}>
+<BaseLayout seoTitle={postTitle} seoDescription={postDescription} seoKeywords={postKeywords}>
+  <script type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
   <article class="bg-white font-sans">
     
     <!-- Hero Header -->
