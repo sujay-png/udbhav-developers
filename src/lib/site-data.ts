@@ -1092,9 +1092,9 @@ export const pageSeoData: Record<string, { seoTitle: string; seoDescription: str
     seoKeywords: "Developers in mangaluru, Builders in mangaluru",
   },
   aboutUs: {
-    seoTitle: "Real Estate Developers in Mangaluru | Udbhav Developers",
-    seoDescription: "Looking for trusted real estate developers in Mangalore? Udbhav Developers delivers premier RERA-approved luxury apartments & commercial spaces. Learn more!",
-    seoKeywords: "Real estate builders and developers in mangaluru",
+    seoTitle: "About | Construction Company In Mangalore",
+    seoDescription: "Learn about Udbhav Developers, a premier construction company in Mangalore. Constructing residential & commercial landmarks since 2012",
+    seoKeywords: "Construction Company In Mangalore, residential & commercial company in Mangalore",
   },
   buyersGuide: {
     seoTitle: "Property Buyers Guide - Udbhav Developers",

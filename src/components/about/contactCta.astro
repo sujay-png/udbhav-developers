@@ -197,36 +197,61 @@ const { showBadge = false } = Astro.props;
     if (!form || form.dataset.init === "true") return;
     form.dataset.init = "true";
 
-    // Load reCAPTCHA script
-    if (!document.getElementById("recaptcha-script")) {
-      const script = document.createElement("script");
-      script.id = "recaptcha-script";
-      script.src =
-        "https://www.recaptcha.net/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit";
-      script.async = true;
-      script.defer = true;
-      document.head.appendChild(script);
-    }
+    // Lazy-load reCAPTCHA on viewport scroll or user interaction to eliminate main-thread blocking
+    const loadRecaptcha = () => {
+      if ((window as any)._aboutRecaptchaLoaded) return;
+      (window as any)._aboutRecaptchaLoaded = true;
 
-    // Render reCAPTCHA widget
-    const waitAndRender = () => {
-      if ((window as any).grecaptcha?.ready) {
-        (window as any).grecaptcha.ready(() => {
-          if (recaptchaEl && aboutWidgetId === null) {
-            try {
-              aboutWidgetId = (window as any).grecaptcha.render(recaptchaEl, {
-                sitekey: RECAPTCHA_SITE_KEY,
-              });
-            } catch (e) {
-              console.warn("reCAPTCHA render error:", e);
-            }
+      const renderWidget = () => {
+        if (recaptchaEl && aboutWidgetId === null && (window as any).grecaptcha?.render) {
+          try {
+            aboutWidgetId = (window as any).grecaptcha.render(recaptchaEl, {
+              sitekey: RECAPTCHA_SITE_KEY,
+            });
+          } catch (e) {
+            console.warn("reCAPTCHA render error:", e);
           }
-        });
-      } else {
-        setTimeout(waitAndRender, 200);
+        }
+      };
+
+      (window as any).onAboutRecaptchaLoad = () => {
+        if ((window as any).grecaptcha?.ready) {
+          (window as any).grecaptcha.ready(renderWidget);
+        } else {
+          renderWidget();
+        }
+      };
+
+      if ((window as any).grecaptcha?.render) {
+        renderWidget();
+      } else if (!document.getElementById("recaptcha-script")) {
+        const script = document.createElement("script");
+        script.id = "recaptcha-script";
+        script.src =
+          "https://www.recaptcha.net/recaptcha/api.js?onload=onAboutRecaptchaLoad&render=explicit";
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
       }
     };
-    waitAndRender();
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            loadRecaptcha();
+            observer.disconnect();
+          }
+        },
+        { rootMargin: "400px" },
+      );
+      observer.observe(form);
+    } else {
+      loadRecaptcha();
+    }
+
+    form.addEventListener("focusin", loadRecaptcha, { once: true });
+    form.addEventListener("pointerdown", loadRecaptcha, { once: true });
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
