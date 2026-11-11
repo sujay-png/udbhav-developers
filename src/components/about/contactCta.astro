@@ -235,26 +235,15 @@ const { showBadge = false } = Astro.props;
       }
     };
 
-    if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (entries[0].isIntersecting) {
-            loadRecaptcha();
-            observer.disconnect();
-          }
-        },
-        { rootMargin: "400px" },
-      );
-      observer.observe(form);
-    } else {
-      loadRecaptcha();
-    }
-
+    // Lazy-load reCAPTCHA on user interaction or form submit to prevent blocking the main thread
     form.addEventListener("focusin", loadRecaptcha, { once: true });
     form.addEventListener("pointerdown", loadRecaptcha, { once: true });
+    form.addEventListener("touchstart", loadRecaptcha, { once: true, passive: true });
+    form.addEventListener("keydown", loadRecaptcha, { once: true });
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
+      loadRecaptcha();
 
       successMsg?.classList.add("hidden");
       errorMsg?.classList.add("hidden");

@@ -1,7 +1,7 @@
 ---
-import building from "/public/images/udbhav-developers-logo.webp";
+const building = "/images/udbhav-developers-logo.webp";
 ---
-<section class="relative overflow-hiddenbg-gradient-to-br from-slate-50 via-white to-[#FDF9F7] py-28">
+<section class="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-[#FDF9F7] py-28">
     <div class="absolute -left-20 -top-20 h-96 w-96 rounded-full bg-[#B02317]/10 blur-[120px] pointer-events-none"></div>
 
     <div class="relative mx-auto max-w-7xl px-6 lg:px-12">
@@ -11,8 +11,12 @@ import building from "/public/images/udbhav-developers-logo.webp";
             <div class="relative group">
                 <div class="aspect-[4/5] w-full overflow-hidden rounded-[32px] bg-gradient-to-br from-slate-50 via-white to-[#FDF9F7] shadow-2xl transition-all duration-500 group-hover:shadow-3xl">
                     <img
-                        src={building.src}
+                        src={building}
                         alt="Udbhav Developers Building"
+                        loading="lazy"
+                        decoding="async"
+                        width="800"
+                        height="1000"
                         class="h-full w-full object-contain object-center p-8 md:p-16 transition-transform duration-700 group-hover:scale-105"
                     />
                 </div>
@@ -26,8 +30,8 @@ import building from "/public/images/udbhav-developers-logo.webp";
 
             <!-- Right Content -->
             <div>
-                <span class="font-serif text-sm font-semibold  tracking-[0.35em] text-[#B02317]">
-                     <h2>About Udbhav Developers</h2>
+                <span class="font-serif text-sm font-semibold tracking-[0.35em] text-[#B02317]">
+                     About Udbhav Developers
                 </span>
                 <h2 class="mt-6 font-serif text-5xl font-medium leading-tight text-[#121417]">
                     Building Trust.<br>Creating Landmarks.
