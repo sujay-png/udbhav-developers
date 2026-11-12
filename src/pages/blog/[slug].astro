@@ -5,7 +5,6 @@ import ArtPanel from "@/components/ArtPanel.astro";
 import { Icon } from "@/components/Icon";
 import { getAllPosts, formatDate, estimateReadTime } from "@/lib/wordpress";
 import { SidebarEnquiryForm } from "@/components/SidebarEnquiryForm";
-import "swiper/css/bundle";
 
 export const prerender = true;
 export async function getStaticPaths() {
@@ -191,7 +190,7 @@ const blogSchema = {
 };
 ---
 
-<BaseLayout seoTitle={postTitle} seoDescription={postDescription} seoKeywords={postKeywords}>
+<BaseLayout seoTitle={postTitle} seoDescription={postDescription} seoKeywords={postKeywords} preloadImage={post.featuredImage}>
   <script type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
   <article class="bg-white font-sans">
     
@@ -199,7 +198,14 @@ const blogSchema = {
     <section class="relative overflow-hidden bg-[#121417]">
       {
         post.featuredImage ? (
-          <img src={post.featuredImage} alt={post.title} class="h-[50vh] w-full object-cover md:h-[65vh] opacity-60" />
+          <img
+            src={post.featuredImage}
+            alt={post.title}
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
+            class="h-[50vh] w-full object-cover md:h-[65vh] opacity-60"
+          />
         ) : (
           <ArtPanel seed={post.id.length + post.slug.length} tone="ink" class="h-[50vh] w-full md:h-[65vh] opacity-60" />
         )
@@ -290,11 +296,26 @@ const blogSchema = {
   </div>
 
   <script>
-    import Swiper from "swiper/bundle";
-    import "swiper/css/bundle";
+    const CAROUSEL_SELECTOR =
+      '.blog-testimonial-swiper, .ekit-main-swiper, .elementor-widget-image-carousel, .elementor-widget-n-carousel, .elementor-widget-nested-carousel, .elementor-widget-media-carousel, .elementor-image-carousel-wrapper, article .swiper';
+
+    let swiperLoadPromise: Promise<typeof import("swiper/bundle")["default"]> | null = null;
+    function loadSwiper() {
+      if (!swiperLoadPromise) {
+        swiperLoadPromise = Promise.all([
+          import("swiper/bundle"),
+          import("swiper/css/bundle"),
+        ]).then(([mod]) => mod.default);
+      }
+      return swiperLoadPromise;
+    }
 
     // Centralized Global Carousel Initializer for all blog carousels
-    function initBlogCarousels() {
+    async function initBlogCarousels() {
+      const targets = document.querySelectorAll<HTMLElement>(CAROUSEL_SELECTOR);
+      if (targets.length === 0) return;
+
+      const Swiper = await loadSwiper();
       const PREV_SVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>';
       const NEXT_SVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>';
 
@@ -308,7 +329,7 @@ const blogSchema = {
           pagination.className = 'swiper-pagination';
           el.appendChild(pagination);
         }
-        
+
         if (el.classList.contains('ekit-main-swiper')) {
           el.classList.add('blog-testimonial-swiper');
         }
@@ -334,31 +355,23 @@ const blogSchema = {
         '.elementor-widget-image-carousel, .elementor-widget-n-carousel, .elementor-widget-nested-carousel, .elementor-widget-media-carousel, .elementor-image-carousel-wrapper, article .swiper:not(.blog-testimonial-swiper):not(.ekit-main-swiper)'
       );
 
-      console.log('[DEBUG] carouselContainers found:', carouselContainers.length);
-
-      carouselContainers.forEach((container, idx) => {
-        console.log(`[DEBUG] Container #${idx}:`, container.className, container.tagName);
-        
+      carouselContainers.forEach((container) => {
         const swiperEl = container.classList.contains('swiper')
           ? container
           : container.querySelector<HTMLElement>('.swiper');
 
-        if (!swiperEl) { console.log(`[DEBUG] #${idx} — no swiperEl found, skipping`); return; }
-        if ((swiperEl as any).swiper || swiperEl.classList.contains('swiper-initialized')) { console.log(`[DEBUG] #${idx} — already initialized, skipping`); return; }
+        if (!swiperEl) return;
+        if ((swiperEl as any).swiper || swiperEl.classList.contains('swiper-initialized')) return;
 
         const slides = swiperEl.querySelectorAll('.swiper-slide');
-        if (slides.length === 0) { console.log(`[DEBUG] #${idx} — 0 slides, skipping`); return; }
-        console.log(`[DEBUG] #${idx} — ${slides.length} slides found`);
+        if (slides.length === 0) return;
 
         const parentWidget = swiperEl.closest('.elementor-widget') || swiperEl.parentElement;
-        console.log(`[DEBUG] #${idx} — parentWidget:`, parentWidget?.className);
 
         const prevBtn = swiperEl.querySelector<HTMLElement>('.elementor-swiper-button-prev, .swiper-button-prev')
           || parentWidget?.querySelector<HTMLElement>('.elementor-swiper-button-prev, .swiper-button-prev') || null;
         const nextBtn = swiperEl.querySelector<HTMLElement>('.elementor-swiper-button-next, .swiper-button-next')
           || parentWidget?.querySelector<HTMLElement>('.elementor-swiper-button-next, .swiper-button-next') || null;
-
-        console.log(`[DEBUG] #${idx} — prevBtn:`, prevBtn?.className, '| nextBtn:', nextBtn?.className);
 
         // Ensure navigation buttons have crisp SVG icons if missing
         if (prevBtn && !prevBtn.querySelector('svg')) {
@@ -372,11 +385,9 @@ const blogSchema = {
           || parentWidget?.querySelector<HTMLElement>('.swiper-pagination') || null;
 
         const hasMultipleSlides = slides.length > 1;
-        console.log(`[DEBUG] #${idx} — hasMultiple: ${hasMultipleSlides}, pagination: ${!!paginationEl}`);
-        console.log(`[DEBUG] #${idx} — swiperEl outerHTML (first 500):`, swiperEl.outerHTML.substring(0, 500));
 
         try {
-          const instance = new Swiper(swiperEl, {
+          new Swiper(swiperEl, {
             slidesPerView: 1,
             spaceBetween: 24,
             loop: hasMultipleSlides,
@@ -399,23 +410,42 @@ const blogSchema = {
               clickable: true,
             } : false,
           });
-          console.log(`[DEBUG] #${idx} — Swiper created OK. slides:`, instance.slides?.length, 'navigation:', !!(instance.params?.navigation));
         } catch (err) {
-          console.error(`[DEBUG] #${idx} — Swiper FAILED:`, err);
+          console.error('Swiper init failed:', err);
         }
       });
+    }
+
+    function setupCarouselObserver() {
+      const targets = document.querySelectorAll<HTMLElement>(CAROUSEL_SELECTOR);
+      if (targets.length === 0) return;
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+              observer.disconnect();
+              initBlogCarousels();
+            }
+          },
+          { rootMargin: '250px' }
+        );
+        targets.forEach((el) => observer.observe(el));
+      } else {
+        initBlogCarousels();
+      }
     }
 
     // Attach to window so it is accessible as a global function everywhere
     (window as any).initBlogCarousels = initBlogCarousels;
 
-    // Run carousel initializer immediately or on DOM ready, plus Astro page navigation
+    // Defer carousel bundle loading until carousel approaches viewport
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initBlogCarousels);
+      document.addEventListener('DOMContentLoaded', setupCarouselObserver);
     } else {
-      initBlogCarousels();
+      setupCarouselObserver();
     }
-    document.addEventListener('astro:page-load', initBlogCarousels);
+    document.addEventListener('astro:page-load', setupCarouselObserver);
 
     // Client-side script to handle toggles (TOC and Accordions)
     document.addEventListener('DOMContentLoaded', () => {
