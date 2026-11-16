@@ -7,6 +7,7 @@ import AboutTeaser from "@/components/sections/AboutTeaser.astro";
 import TestimonialsSection from "@/components/sections/TestimonialsSection.astro";
 import Whychooseus from "@/components/sections/Whychooseus.astro";
 import HomeContactSection from "@/components/sections/HomeContactSection.astro";
+import HomeFaqSection from "@/components/sections/HomeFaqSection.astro";
 
 const homeSchema = {
   "@context": "https://schema.org",
@@ -46,6 +47,44 @@ const homeSchema = {
         "https://www.instagram.com/udbhavdevelopers/",
         "https://www.youtube.com/@udbhavdevelopersmlr"
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.udbhavdevelopers.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who are the leading builders in Mangalore for luxury apartments?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Udbhav Developers is recognized as one of the premier builders in Mangalore, founded in 2012 by qualified civil engineer Mr. B.K. Kiran. Specializing in luxury residential spaces and premium commercial properties in prime micro-locations like Kadri, Udbhav Developers delivers uncompromising structural integrity and complete RERA compliance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes Udbhav Developers a trusted real estate builder in Mangalore?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As a CREDAI-affiliated construction company, Udbhav Developers stands out among real estate builders in Mangalore due to direct civil engineering leadership, transparent project tracking, earthquake-resistant architectural designs, and a proven track record of delivering premium homes like Udbhav Chinmaya."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are projects by Udbhav Developers RERA approved?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, all ongoing and completed residential and commercial projects by Udbhav Developers are 100% RERA-approved, ensuring complete legal transparency, secure title deeds, and adherence to Karnataka real estate regulatory standards."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which localities do Udbhav Developers build in?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Udbhav Developers focuses on high-demand, prime urban micro-markets across Mangaluru, including Kadri, Shivbagh Road, and surrounding central residential hubs."
+          }
+        }
+      ]
     }
   ]
 };
@@ -64,4 +103,5 @@ const homeSchema = {
   <TestimonialsSection />
   <Whychooseus/>
   <HomeContactSection />
+  <HomeFaqSection />
 </BaseLayout>
