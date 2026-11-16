@@ -1126,7 +1126,7 @@ export const processSteps = [
 export const pageSeoData: Record<string, { seoTitle: string; seoDescription: string; seoKeywords?: string }> = {
   home: {
     seoTitle: "Leading Real Estate Builders In Mangalore",
-    seoDescription: "A premier real estate developers and builders in Mangalore founded by Mr. B.K. Kiran. Discover RERA approved projects by Udbhav Developers.",
+    seoDescription: "A premier real estate developers and builders in Mangalore with 13+ years of experience. Discover RERA approved projects by builders in mangalore.",
     seoKeywords: "Developers in mangaluru, Builders in mangaluru",
   },
   aboutUs: {
