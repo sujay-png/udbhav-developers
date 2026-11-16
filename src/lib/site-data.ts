@@ -123,7 +123,7 @@ export const projects: Project[] = [
         href: "/projects/udbhav-chinmaya/3-bhk-for-sale-kadri-mangalore/",
       },
     ],
-    seoTitle: "Luxury Apartment For Sale In Mangalore | RERA Approved",
+    seoTitle: "Flats In Mangalore | RERA Approved",
     seoDescription: "RERA approved luxury flats in mangalore, premium apartments in mangalore. New flats in Mangalore, ongoing apartment project in mangalore.",
     seoKeywords: "Luxury Apartment For Sale In Mangalore, New apartments in mangalore, Best 3 & 4 BHK apartments in mangaluru",
     schema: {
@@ -156,13 +156,10 @@ export const projects: Project[] = [
         {
           "@type": "RealEstateListing",
           "@id": "https://www.udbhavdevelopers.com/projects/udbhav-chinmaya/#listing",
-          "name": "Luxury Apartment For Sale In Mangalore | RERA Approved",
+          "name": "Flats In Mangalore · Udbhav Developers",
           "url": "https://www.udbhavdevelopers.com/projects/udbhav-chinmaya/",
-          "description": "RERA approved luxury flats in mangalore, premium apartments in mangalore. New flats in Mangalore, ongoing apartment project in mangalore.",
+          "description": " RERA approved luxury flats in mangalore, premium apartments in mangalore. New flats in Mangalore, ongoing apartment project in mangalore. Starting @ ₹1.60* Cr onwards.",
           "datePosted": "2026-01-01",
-          "about": {
-            "@id": "https://www.udbhavdevelopers.com/projects/udbhav-chinmaya/#building"
-          },
           "offers": {
             "@type": "Offer",
             "priceCurrency": "INR",
@@ -171,13 +168,10 @@ export const projects: Project[] = [
               "@type": "UnitPriceSpecification",
               "price": "16000000",
               "priceCurrency": "INR",
-              "valueAddedTaxIncluded": false
+              "valueAddedTaxIncluded": "false"
             },
             "availability": "https://schema.org/InStock",
-            "description": "Flexible home loan EMI options available with pre-approved financing from SBI, Canara Bank and Karnataka Bank.",
-            "offeredBy": {
-              "@id": "https://www.udbhavdevelopers.com/#organization"
-            }
+            "description": "Flexible home loan EMI options available with pre-approved financing from SBI, Canara Bank and Karnataka Bank."
           }
         },
         {
@@ -185,7 +179,6 @@ export const projects: Project[] = [
           "@id": "https://www.udbhavdevelopers.com/projects/udbhav-chinmaya/#building",
           "name": "Udbhav Chinmaya",
           "url": "https://www.udbhavdevelopers.com/projects/udbhav-chinmaya/",
-          "image": "https://www.udbhavdevelopers.com/images/Udbhav-website.webp",
           "description": "RERA approved boutique low-density 40-family luxury residential project in Kadri, Mangalore.",
           "address": {
             "@type": "PostalAddress",
@@ -197,8 +190,8 @@ export const projects: Project[] = [
           },
           "geo": {
             "@type": "GeoCoordinates",
-            "latitude": 12.8812544,
-            "longitude": 74.8482267
+            "latitude": 12.8833,
+            "longitude": 74.8500
           },
           "numberOfAccommodationUnits": 40,
           "amenityFeature": [
@@ -212,7 +205,11 @@ export const projects: Project[] = [
               "name": "RERA Approved",
               "value": "PRM/KA/RERA/1257/334/PR/311225/008371"
             }
-          ]
+          ],
+          "offeredBy": {
+            "@type": "RealEstateAgent",
+            "@id": "https://www.udbhavdevelopers.com/#organization"
+          }
         },
         {
           "@type": "VideoObject",
@@ -220,27 +217,19 @@ export const projects: Project[] = [
           "name": "Udbhav Chinmaya Walkthrough & Construction Site Progress",
           "description": "Watch the virtual tour and construction update for Udbhav Chinmaya luxury apartments in Kadri, Mangalore.",
           "thumbnailUrl": [
-            "https://i.ytimg.com/vi/kknoLaXHTaQ/hqdefault.jpg"
+            "https://www.udbhavdevelopers.com/assets/images/chinmaya-video-thumbnail.jpg"
           ],
           "uploadDate": "2026-01-15T08:00:00+05:30",
           "contentUrl": "https://www.udbhavdevelopers.com/projects/udbhav-chinmaya/",
-          "embedUrl": "https://www.youtube.com/embed/kknoLaXHTaQ"
+          "embedUrl": "https://www.youtube.com/embed/YOUR_VIDEO_ID"
         },
         {
           "@type": "RealEstateAgent",
           "@id": "https://www.udbhavdevelopers.com/#organization",
           "name": "Udbhav Developers",
           "url": "https://www.udbhavdevelopers.com/",
-          "logo": "https://www.udbhavdevelopers.com/images/udbhav-developers-logo-1.webp",
-          "telephone": "+91-7760471269",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "C6, 1st Floor, City Gate Commercial Complex, Shivbagh Rd, Kadri",
-            "addressLocality": "Mangaluru",
-            "addressRegion": "Karnataka",
-            "postalCode": "575002",
-            "addressCountry": "IN"
-          },
+          "logo": "https://www.udbhavdevelopers.com/assets/images/logo.png",
+          "telephone": "+91-9845082466",
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.9",
@@ -264,12 +253,7 @@ export const projects: Project[] = [
           "areaServed": {
             "@type": "City",
             "name": "Mangaluru"
-          },
-          "sameAs": [
-            "https://www.facebook.com/udbhavdevelopers/",
-            "https://www.instagram.com/udbhavdevelopers/",
-            "https://www.youtube.com/@udbhavdevelopersmlr"
-          ]
+          }
         }
       ]
     },
