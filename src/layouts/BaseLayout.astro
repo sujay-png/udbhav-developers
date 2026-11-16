@@ -8,6 +8,7 @@ interface Props {
   seoTitle?: string;
   seoDescription?: string;
   seoKeywords?: string;
+  seoRobots?: string;
   preloadImage?: string;
   // Legacy / fallback props
   title?: string;
@@ -21,6 +22,7 @@ const {
   seoDescription,
   preloadImage,
   seoKeywords = "Mangaluru real estate, 3 BHK apartments, commercial spaces, Mangalore, Udbhav Developers",
+  seoRobots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   title,
   description = "Udbhav Developers — premium residential apartments and commercial spaces in Mangalore. Building with purpose, driven by trust since 2012.",
   keywords,
@@ -66,6 +68,10 @@ const canonicalURL = new URL(pathname, Astro.site);
     <title>{pageTitle}</title>
     <meta name="description" content={finalDescription} />
     {finalKeywords && <meta name="keywords" content={finalKeywords} />}
+    <meta name="robots" content={seoRobots} />
+    <meta name="googlebot" content={seoRobots} />
+    <meta name="publisher" content="Udbhav Developers" />
+    <meta name="author" content="Udbhav Developers" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
@@ -75,6 +81,7 @@ const canonicalURL = new URL(pathname, Astro.site);
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Udbhav Developers" />
     <meta property="og:url" content={canonicalURL} />
+    <meta property="article:publisher" content="https://www.facebook.com/udbhavdevelopers/" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />

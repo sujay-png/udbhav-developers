@@ -1123,7 +1123,7 @@ export const processSteps = [
   },
 ];
 
-export const pageSeoData: Record<string, { seoTitle: string; seoDescription: string; seoKeywords?: string }> = {
+export const pageSeoData: Record<string, { seoTitle: string; seoDescription: string; seoKeywords?: string; seoRobots?: string }> = {
   home: {
     seoTitle: "Leading Real Estate Builders In Mangalore",
     seoDescription: "A premier real estate developers and builders in Mangalore with 13+ years of experience. Discover RERA approved projects by builders in mangalore.",
