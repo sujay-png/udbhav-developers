@@ -261,7 +261,7 @@ export const projects: Project[] = [
     status: "Ongoing",
     tagline: "Sophisticated low-density residences limited to only 40 luxury homes designed for privacy and luxury living.",
     description:
-      "Sophisticated low-density residences limited to only 40 luxury homes designed for privacy and luxury living. Discover our ongoing project offering 3 BHK luxury flats with complete RERA approval (PRM/KA/RERA/1257/334/PR/311225/008371), major bank loan sanctions, and high ROI potential in one of Mangaluru's prime residential hubs.",
+      "Udbhav Chinmaya is an upcoming premium residential flats in mangalore located in the peaceful and upscale surroundings of Chandrika Layout, Swami Vivekanand Road, Kadri, one of Mangaluru’s most sought-after residential neighborhoods. Designed for modern families, working professionals, first-time home buyers, and retirees, this project combines spacious Vaastu-compliant homes, premium amenities, and unmatched city connectivity.",
     location: "Kadri, Mangaluru",
     units: "3 BHK & 4 BHK only",
     Possession: "December 2027",
