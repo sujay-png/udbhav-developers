@@ -23,6 +23,8 @@ export default defineConfig({
     '/blog/kadri-mangalore-apartments-with-resort-style-amenities/': '/blog/must-have-amenities-in-modern-apartments/',
     '/blog/vaastu-compliant-homes-how-udbhav-chinmaya-is-designed-for-positive-living': '/blog/vaastu-compliant-flats-mangalore/',
     '/blog/vaastu-compliant-homes-how-udbhav-chinmaya-is-designed-for-positive-living/': '/blog/vaastu-compliant-flats-mangalore/',
+    '/blog/new-launch-vs-ready-to-move-properties-in-2026-which-one-should-you-choose': '/blog/new-launch-properties-in-mangaluru/',
+    '/blog/new-launch-vs-ready-to-move-properties-in-2026-which-one-should-you-choose/': '/blog/new-launch-properties-in-mangaluru/',
   },
   output: 'server', // This explicitly enables Server-Side Rendering
   adapter: vercel(),

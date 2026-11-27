@@ -56,6 +56,16 @@
       "source": "/blog/vaastu-compliant-homes-how-udbhav-chinmaya-is-designed-for-positive-living",
       "destination": "/blog/vaastu-compliant-flats-mangalore/",
       "permanent": true
+    },
+    {
+      "source": "/blog/new-launch-vs-ready-to-move-properties-in-2026-which-one-should-you-choose/:path*",
+      "destination": "/blog/new-launch-properties-in-mangaluru/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/new-launch-vs-ready-to-move-properties-in-2026-which-one-should-you-choose",
+      "destination": "/blog/new-launch-properties-in-mangaluru/",
+      "permanent": true
     }
   ]
 }
